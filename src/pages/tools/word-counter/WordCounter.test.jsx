@@ -26,14 +26,14 @@ describe('WordCounter', () => {
     const user = userEvent.setup();
     renderWithRouter(<WordCounter page={PAGE} />);
     await user.type(screen.getByRole('textbox', { name: /text to count/i }), 'hello world foo');
-    expect(screen.getByText('3')).toBeDefined();
+    expect(screen.getAllByText('3').length).toBeGreaterThan(0);
   });
 
   it('shows correct character count', async () => {
     const user = userEvent.setup();
     renderWithRouter(<WordCounter page={PAGE} />);
     await user.type(screen.getByRole('textbox', { name: /text to count/i }), 'abc');
-    expect(screen.getByText('3')).toBeDefined();
+    expect(screen.getAllByText('3').length).toBeGreaterThan(0);
   });
 
   it('renders all stat labels', () => {

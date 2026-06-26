@@ -21,6 +21,7 @@ function Dropdown({ category, pages, onClose }) {
               to={page.path}
               className={styles.dropdownItem}
               role="menuitem"
+              aria-label={page.title}
               onClick={onClose}
             >
               <span className={styles.dropdownItemTitle}>{page.title}</span>

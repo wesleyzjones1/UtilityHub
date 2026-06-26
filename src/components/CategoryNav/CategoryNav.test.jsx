@@ -55,7 +55,7 @@ describe('CategoryNav', () => {
     await user.hover(screen.getByRole('button', { name: new RegExp(firstCat.label, 'i') }));
     const pages = PAGE_BY_CATEGORY[firstCatId];
     for (const page of pages) {
-      expect(screen.getByRole('menuitem', { name: new RegExp(page.title, 'i') })).toBeDefined();
+      expect(screen.getByRole('menuitem', { name: page.title })).toBeDefined();
     }
   });
 

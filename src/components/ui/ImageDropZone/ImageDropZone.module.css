@@ -1,0 +1,159 @@
+.zone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color var(--transition-base), background-color var(--transition-base);
+  overflow: hidden;
+}
+
+.zone:hover:not(.hasFile) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+.zone:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.dragging {
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+.hasError {
+  border-color: var(--color-danger);
+}
+
+.hasFile {
+  cursor: default;
+  border-style: solid;
+  border-color: var(--color-border);
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Empty prompt ── */
+.prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.promptIcon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-2);
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.dragging .promptIcon,
+.zone:hover:not(.hasFile) .promptIcon {
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+}
+
+.promptLabel {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.promptSub {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.errorMsg {
+  font-size: 0.8125rem;
+  color: var(--color-danger);
+  font-weight: 500;
+}
+
+/* ── File preview ── */
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.previewImg {
+  max-height: 180px;
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
+
+.previewMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.previewName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.previewSize {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+.clearBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.clearBtn:hover {
+  background: var(--color-danger-subtle);
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}

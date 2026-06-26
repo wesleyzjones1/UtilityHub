@@ -1,0 +1,73 @@
+.overlay {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: var(--color-bg);
+  overflow-y: auto;
+  animation: slideDown 200ms ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.searchSection {
+  padding: 1rem var(--container-pad);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.nav {
+  padding: 0.5rem 0 2rem;
+}
+
+.catGroup {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.catButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.875rem var(--container-pad);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+  transition: background-color var(--transition-fast);
+}
+
+.catButton:hover {
+  background: var(--color-surface-2);
+}
+
+.toolList {
+  padding-bottom: 0.5rem;
+}
+
+.toolLink {
+  display: block;
+  padding: 0.5625rem var(--container-pad) 0.5625rem calc(var(--container-pad) + 1rem);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.toolLink:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* Only show on mobile */
+@media (min-width: 769px) {
+  .overlay {
+    display: none;
+  }
+}

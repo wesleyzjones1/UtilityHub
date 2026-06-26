@@ -1,0 +1,41 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-end;
+}
+
+.charInputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.charLabel {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.charInput {
+  height: 38px;
+  padding: 0 0.75rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  width: 200px;
+}
+
+.charInput:focus {
+  border-color: var(--color-primary);
+}
+
+.charInput::placeholder {
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+}

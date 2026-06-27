@@ -2,13 +2,16 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { ProProvider } from './context/ProContext';
 
 function AllProviders({ children }) {
   return (
     <MemoryRouter>
       <ThemeProvider>
         <LanguageProvider>
-          {children}
+          <ProProvider>
+            {children}
+          </ProProvider>
         </LanguageProvider>
       </ThemeProvider>
     </MemoryRouter>

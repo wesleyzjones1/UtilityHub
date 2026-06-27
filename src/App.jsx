@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { ProProvider } from './context/ProContext';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
@@ -123,7 +124,9 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <RouterProvider router={router} />
+        <ProProvider>
+          <RouterProvider router={router} />
+        </ProProvider>
       </LanguageProvider>
     </ThemeProvider>
   );

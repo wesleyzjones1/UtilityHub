@@ -1,0 +1,76 @@
+import { useState, useEffect } from 'react';
+import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
+import Select from '../../../components/ui/Select/Select';
+import { minifyJS } from '../../../utils/formatters';
+
+const MODE_OPTIONS = [
+  { value: 'format', label: 'Format' },
+  { value: 'minify', label: 'Minify' },
+];
+
+const HOW_TO_USE = [
+  'Paste your JavaScript into the input panel.',
+  'Choose Format to prettify, or Minify to strip whitespace and comments.',
+  'Copy the result from the output panel.',
+];
+
+export default function JsFormatter({ page }) {
+  const [mode, setMode] = useState('format');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!input.trim()) { setOutput(''); setError(null); return; }
+
+    if (mode === 'minify') {
+      setOutput(minifyJS(input));
+      setError(null);
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const [{ format }, { default: parserBabel }, { default: parserEstree }] = await Promise.all([
+          import('prettier/standalone'),
+          import('prettier/plugins/babel'),
+          import('prettier/plugins/estree'),
+        ]);
+        const result = await format(input, {
+          parser: 'babel',
+          plugins: [parserBabel, parserEstree],
+        });
+        if (!cancelled) { setOutput(result); setError(null); }
+      } catch (e) {
+        if (!cancelled) setError(e.message);
+      }
+    })();
+
+    return () => { cancelled = true; };
+  }, [input, mode]);
+
+  return (
+    <DualPanelTemplate
+      page={page}
+      howToUse={HOW_TO_USE}
+      topControls={
+        <Select
+          label="Mode"
+          options={MODE_OPTIONS}
+          value={mode}
+          onChange={setMode}
+        />
+      }
+      input={input}
+      onInputChange={setInput}
+      output={error ? `// Error: ${error}` : output}
+      inputLabel="JavaScript Input"
+      outputLabel="JavaScript Output"
+      inputMono
+      outputMono
+      inputPlaceholder="Paste JavaScript here…"
+      outputPlaceholder="Output appears here…"
+    />
+  );
+}

@@ -60,7 +60,7 @@ describe('Home page', () => {
     const user = userEvent.setup();
     render(<Wrapped />);
     await user.type(screen.getByLabelText('Search all tools'), 'json');
-    expect(screen.getAllByText('JSON Formatter')[0]).toBeDefined();
+    expect(screen.getAllByText('JSON Formatter / Minifier')[0]).toBeDefined();
   });
 
   it('search shows empty state for no match', async () => {

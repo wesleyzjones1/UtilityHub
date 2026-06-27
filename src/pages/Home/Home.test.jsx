@@ -84,4 +84,43 @@ describe('Home page', () => {
     const links = screen.getAllByRole('link');
     expect(links.some(l => l.getAttribute('href')?.startsWith('/tools/'))).toBe(true);
   });
+
+  it('ArrowDown moves active result to the first item', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    const input = screen.getByLabelText('Search all tools');
+    await user.type(input, 'json');
+    await user.keyboard('{ArrowDown}');
+    const options = screen.getAllByRole('option');
+    expect(options[0].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('ArrowDown then ArrowUp returns to no active item', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    const input = screen.getByLabelText('Search all tools');
+    await user.type(input, 'json');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{ArrowUp}');
+    const options = screen.getAllByRole('option');
+    expect(options.every(o => o.getAttribute('aria-selected') === 'false')).toBe(true);
+  });
+
+  it('Escape clears the search query', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    const input = screen.getByLabelText('Search all tools');
+    await user.type(input, 'json');
+    await user.keyboard('{Escape}');
+    expect(input.value).toBe('');
+  });
+
+  it('"View all" link points to category page for categories with more than 4 tools', () => {
+    render(<Wrapped />);
+    const viewAllLinks = screen.getAllByRole('link', { name: /view all \d+ tools/i });
+    expect(viewAllLinks.length).toBeGreaterThan(0);
+    for (const link of viewAllLinks) {
+      expect(link.getAttribute('href')).toMatch(/^\/tools\/category\//);
+    }
+  });
 });

@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
+import CategoryPage from './pages/CategoryPage/CategoryPage';
 import ToolPage from './pages/ToolPage/ToolPage';
 import NotFound from './pages/NotFound/NotFound';
 import { PAGES } from './registry/pages';
@@ -101,6 +102,7 @@ function buildRouter() {
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
+        { path: '/tools/category/:categoryId', element: <CategoryPage /> },
         ...PAGES.map(page => {
           const Component = TOOL_COMPONENTS[page.id] ?? ToolPage;
           return {

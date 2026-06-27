@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY, PAGES, searchPages } from '../../registry/pages';
 import styles from './Home.module.css';
 
@@ -14,9 +14,41 @@ function SearchIcon() {
 
 function HeroSearch() {
   const [query, setQuery] = useState('');
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const navigate = useNavigate();
   const results = query.trim() ? searchPages(query) : [];
   const showResults = results.length > 0;
   const showEmpty = query.trim() && results.length === 0;
+
+  function handleChange(e) {
+    setQuery(e.target.value);
+    setActiveIndex(-1);
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === 'ArrowDown') {
+      if (!showResults) return;
+      e.preventDefault();
+      setActiveIndex(i => Math.min(i + 1, results.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      if (!showResults) return;
+      e.preventDefault();
+      setActiveIndex(i => Math.max(i - 1, -1));
+    } else if (e.key === 'Enter' && activeIndex >= 0 && results[activeIndex]) {
+      e.preventDefault();
+      navigate(results[activeIndex].path);
+      setQuery('');
+      setActiveIndex(-1);
+    } else if (e.key === 'Escape') {
+      setQuery('');
+      setActiveIndex(-1);
+    }
+  }
+
+  function dismiss() {
+    setQuery('');
+    setActiveIndex(-1);
+  }
 
   return (
     <div className={styles.heroSearchWrap}>
@@ -27,23 +59,30 @@ function HeroSearch() {
           placeholder="Search all tools…"
           className={styles.heroInput}
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
           aria-label="Search all tools"
+          aria-autocomplete="list"
+          aria-activedescendant={activeIndex >= 0 ? `hero-result-${activeIndex}` : undefined}
           autoComplete="off"
           spellCheck={false}
         />
         {query && (
-          <button className={styles.heroClear} onClick={() => setQuery('')} aria-label="Clear search">
+          <button className={styles.heroClear} onClick={dismiss} aria-label="Clear search">
             ✕
           </button>
         )}
       </div>
 
       {showResults && (
-        <ul className={styles.heroResults}>
-          {results.map(page => (
-            <li key={page.id}>
-              <Link to={page.path} className={styles.heroResult} onClick={() => setQuery('')}>
+        <ul className={styles.heroResults} role="listbox">
+          {results.map((page, i) => (
+            <li key={page.id} id={`hero-result-${i}`} role="option" aria-selected={i === activeIndex}>
+              <Link
+                to={page.path}
+                className={`${styles.heroResult} ${i === activeIndex ? styles.heroResultActive : ''}`}
+                onClick={dismiss}
+              >
                 <div className={styles.heroResultTitle}>{page.title}</div>
                 <div className={styles.heroResultMeta}>
                   {CATEGORIES[page.category]?.label} · {page.description}
@@ -82,7 +121,9 @@ function CategoryCard({ category }) {
         ))}
         {pages.length > 4 && (
           <li>
-            <span className={styles.catCardMore}>+{pages.length - 4} more</span>
+            <Link to={`/tools/category/${category.id}`} className={styles.catCardMore}>
+              View all {pages.length} tools →
+            </Link>
           </li>
         )}
       </ul>

@@ -114,7 +114,8 @@
   border-bottom: none;
 }
 
-.heroResult:hover {
+.heroResult:hover,
+.heroResultActive {
   background: var(--color-surface-2);
   text-decoration: none;
 }
@@ -238,6 +239,14 @@
 
 .catCardMore {
   font-size: 0.8125rem;
-  color: var(--color-text-muted);
-  font-style: italic;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 0.125rem 0;
+  display: inline-block;
+  transition: color var(--transition-fast);
+}
+
+.catCardMore:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
 }

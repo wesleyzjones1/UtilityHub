@@ -4,7 +4,7 @@ const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem('uh-theme') || 'light'
+    () => localStorage.getItem('uh-theme') || 'dark'
   );
 
   const toggleTheme = useCallback(() => {

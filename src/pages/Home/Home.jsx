@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY, PAGES, searchPages } from '../../registry/pages';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Home.module.css';
 
 function SearchIcon() {
@@ -16,6 +17,7 @@ function HeroSearch() {
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(-1);
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const results = query.trim() ? searchPages(query) : [];
   const showResults = results.length > 0;
   const showEmpty = query.trim() && results.length === 0;
@@ -56,19 +58,19 @@ function HeroSearch() {
         <span className={styles.heroSearchIcon}><SearchIcon /></span>
         <input
           type="search"
-          placeholder="Search all tools…"
+          placeholder={t('searchPlaceholder')}
           className={styles.heroInput}
           value={query}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          aria-label="Search all tools"
+          aria-label={t('searchLabel')}
           aria-autocomplete="list"
           aria-activedescendant={activeIndex >= 0 ? `hero-result-${activeIndex}` : undefined}
           autoComplete="off"
           spellCheck={false}
         />
         {query && (
-          <button className={styles.heroClear} onClick={dismiss} aria-label="Clear search">
+          <button className={styles.heroClear} onClick={dismiss} aria-label={t('clearSearch')}>
             ✕
           </button>
         )}
@@ -95,7 +97,7 @@ function HeroSearch() {
 
       {showEmpty && (
         <div className={styles.heroEmpty}>
-          No tools found for &ldquo;{query}&rdquo;
+          {t('searchNoResults')} &ldquo;{query}&rdquo;
         </div>
       )}
     </div>
@@ -132,6 +134,8 @@ function CategoryCard({ category }) {
 }
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className={styles.page}>
       {/* Hero */}
@@ -148,7 +152,7 @@ export default function Home() {
       {/* Category grid */}
       <section className={styles.grid} aria-labelledby="categories-heading">
         <div className={styles.gridInner}>
-          <h2 id="categories-heading" className={styles.sectionTitle}>Browse by category</h2>
+          <h2 id="categories-heading" className={styles.sectionTitle}>{t('browseByCategory')}</h2>
           <div className={styles.cards}>
             {Object.values(CATEGORIES).map(cat => (
               <CategoryCard key={cat.id} category={cat} />

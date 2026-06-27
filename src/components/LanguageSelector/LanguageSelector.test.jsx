@@ -28,6 +28,12 @@ describe('LanguageSelector', () => {
     expect(screen.getByText('EN')).toBeDefined();
   });
 
+  it('shows current language flag', () => {
+    render(<Wrapped />);
+    const enLang = LANGUAGES.find(l => l.code === 'en');
+    expect(screen.getAllByText(enLang.flag).length).toBeGreaterThan(0);
+  });
+
   it('dropdown is hidden initially', () => {
     render(<Wrapped />);
     expect(screen.queryByRole('listbox')).toBeNull();
@@ -40,12 +46,21 @@ describe('LanguageSelector', () => {
     expect(screen.getByRole('listbox')).toBeDefined();
   });
 
-  it('shows all language options when open', async () => {
+  it('shows all language names when open', async () => {
     const user = userEvent.setup();
     render(<Wrapped />);
     await user.click(screen.getByRole('button', { name: /language/i }));
     for (const lang of LANGUAGES) {
       expect(screen.getByText(lang.label)).toBeDefined();
+    }
+  });
+
+  it('shows flags for all languages when open', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    await user.click(screen.getByRole('button', { name: /language/i }));
+    for (const lang of LANGUAGES) {
+      expect(screen.getAllByText(lang.flag).length).toBeGreaterThan(0);
     }
   });
 

@@ -9,6 +9,13 @@ import NotFound from './pages/NotFound/NotFound';
 import { PAGES } from './registry/pages';
 
 import AddPunctuation from './pages/tools/add-punctuation/AddPunctuation';
+import ArrayFormatter from './pages/tools/array-formatter/ArrayFormatter';
+import BaseConverter from './pages/tools/base-converter/BaseConverter';
+import DistanceConverter from './pages/tools/distance-converter/DistanceConverter';
+import EngineeringCheatSheet from './pages/tools/engineering-cheat-sheet/EngineeringCheatSheet';
+import FahrenheitCelsius from './pages/tools/fahrenheit-celsius/FahrenheitCelsius';
+import MarkdownTable from './pages/tools/markdown-table/MarkdownTable';
+import NumberSorter from './pages/tools/number-sorter/NumberSorter';
 import BoldText from './pages/tools/bold-text/BoldText';
 import CaseConverter from './pages/tools/case-converter/CaseConverter';
 import InlineColumnConverter from './pages/tools/inline-column-converter/InlineColumnConverter';
@@ -29,6 +36,13 @@ import WordFrequency from './pages/tools/word-frequency/WordFrequency';
 
 const TOOL_COMPONENTS = {
   'add-punctuation':        AddPunctuation,
+  'array-formatter':        ArrayFormatter,
+  'base-converter':         BaseConverter,
+  'distance-converter':     DistanceConverter,
+  'engineering-cheat-sheet': EngineeringCheatSheet,
+  'fahrenheit-celsius':     FahrenheitCelsius,
+  'markdown-table':         MarkdownTable,
+  'number-sorter':          NumberSorter,
   'bold-text':              BoldText,
   'case-converter':         CaseConverter,
   'inline-column-converter': InlineColumnConverter,

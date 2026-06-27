@@ -1,0 +1,73 @@
+import { useState } from 'react';
+import PageShell from '../../../templates/PageShell/PageShell';
+import { convertTemperature } from '../../../utils/converters';
+import styles from './FahrenheitCelsius.module.css';
+
+const HOW_TO_USE = [
+  'Type a temperature in any field — Fahrenheit, Celsius, or Kelvin.',
+  'The other two values update instantly.',
+  'Clear the field to reset.',
+];
+
+export default function FahrenheitCelsius({ page }) {
+  const [active, setActive] = useState({ unit: 'f', value: '' });
+
+  const result = convertTemperature(active.value, active.unit);
+
+  function displayFor(unit) {
+    if (active.unit === unit) return active.value;
+    return result[unit];
+  }
+
+  function handleChange(unit, val) {
+    setActive({ unit, value: val });
+  }
+
+  return (
+    <PageShell page={page} howToUse={HOW_TO_USE}>
+      <div className={styles.grid}>
+        <TempField
+          label="Fahrenheit"
+          unit="°F"
+          value={displayFor('f')}
+          onChange={v => handleChange('f', v)}
+          aria-label="Fahrenheit"
+        />
+        <TempField
+          label="Celsius"
+          unit="°C"
+          value={displayFor('c')}
+          onChange={v => handleChange('c', v)}
+          aria-label="Celsius"
+        />
+        <TempField
+          label="Kelvin"
+          unit="K"
+          value={displayFor('k')}
+          onChange={v => handleChange('k', v)}
+          aria-label="Kelvin"
+        />
+      </div>
+    </PageShell>
+  );
+}
+
+function TempField({ label, unit, value, onChange, 'aria-label': ariaLabel }) {
+  return (
+    <div className={styles.field}>
+      <label className={styles.label}>{label}</label>
+      <div className={styles.inputWrap}>
+        <input
+          className={styles.input}
+          type="number"
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          placeholder="0"
+          aria-label={ariaLabel}
+          step="any"
+        />
+        <span className={styles.unit} aria-hidden="true">{unit}</span>
+      </div>
+    </div>
+  );
+}

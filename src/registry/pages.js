@@ -86,6 +86,14 @@ export const PAGES = [
     keywords: ['italic', 'unicode', 'slanted', 'social media', 'mathematical italic'],
   },
   {
+    id: 'markdown-table',
+    title: 'Markdown Table Generator',
+    description: 'Convert CSV or tab-separated data into a formatted Markdown table.',
+    category: 'text',
+    path: '/tools/markdown-table',
+    keywords: ['markdown', 'table', 'csv', 'tsv', 'convert', 'pipe', 'generator'],
+  },
+  {
     id: 'lorem-ipsum',
     title: 'Lorem Ipsum Generator',
     description: 'Generate placeholder dummy text in various lengths.',
@@ -217,11 +225,43 @@ export const PAGES = [
   // ── Math & Numbers ──────────────────────────────────────────────────────────
   {
     id: 'base-converter',
-    title: 'Number Base Converter',
-    description: 'Convert numbers between binary, octal, decimal, and hexadecimal.',
+    title: 'Base Converter',
+    description: 'Convert values between binary, octal, decimal, hexadecimal, and text.',
     category: 'math',
     path: '/tools/base-converter',
-    keywords: ['binary', 'hex', 'octal', 'decimal', 'base'],
+    keywords: ['binary', 'hex', 'octal', 'decimal', 'base', 'text', 'ascii'],
+  },
+  {
+    id: 'distance-converter',
+    title: 'Distance Converter',
+    description: 'Convert between millimetres, centimetres, metres, kilometres, inches, feet, miles, and more.',
+    category: 'math',
+    path: '/tools/distance-converter',
+    keywords: ['distance', 'length', 'mm', 'cm', 'm', 'km', 'inch', 'feet', 'miles', 'convert'],
+  },
+  {
+    id: 'engineering-cheat-sheet',
+    title: 'Engineering Cheat Sheet',
+    description: 'Quick-reference tables for SI prefixes, capacitors, frequency, time, mass, and common engineering shorthand.',
+    category: 'math',
+    path: '/tools/engineering-cheat-sheet',
+    keywords: ['si prefix', 'capacitor', 'frequency', 'time', 'mass', 'engineering', 'reference', 'units'],
+  },
+  {
+    id: 'fahrenheit-celsius',
+    title: 'Fahrenheit to Celsius',
+    description: 'Convert temperatures between Fahrenheit, Celsius, and Kelvin.',
+    category: 'math',
+    path: '/tools/fahrenheit-celsius',
+    keywords: ['temperature', 'fahrenheit', 'celsius', 'kelvin', 'convert', '°F', '°C'],
+  },
+  {
+    id: 'number-sorter',
+    title: 'Number Sorter',
+    description: 'Sort a list of numbers numerically, ascending or descending, with optional duplicate removal.',
+    category: 'math',
+    path: '/tools/number-sorter',
+    keywords: ['sort', 'numbers', 'ascending', 'descending', 'order', 'list'],
   },
   {
     id: 'percentage-calc',
@@ -299,6 +339,14 @@ export const PAGES = [
   },
 
   // ── Web & Code ──────────────────────────────────────────────────────────────
+  {
+    id: 'array-formatter',
+    title: 'Array Formatter',
+    description: 'Format a list of items into a JavaScript, JSON, Python, or SQL array literal.',
+    category: 'web',
+    path: '/tools/array-formatter',
+    keywords: ['array', 'list', 'format', 'javascript', 'json', 'python', 'sql', 'brackets'],
+  },
   {
     id: 'base64',
     title: 'Base64 Encoder / Decoder',

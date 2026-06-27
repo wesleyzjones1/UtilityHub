@@ -115,12 +115,25 @@ describe('Home page', () => {
     expect(input.value).toBe('');
   });
 
-  it('"View all" link points to category page for categories with more than 4 tools', () => {
+  it('renders a link for every tool in the registry', () => {
     render(<Wrapped />);
-    const viewAllLinks = screen.getAllByRole('link', { name: /view all \d+ tools/i });
-    expect(viewAllLinks.length).toBeGreaterThan(0);
-    for (const link of viewAllLinks) {
-      expect(link.getAttribute('href')).toMatch(/^\/tools\/category\//);
+    const links = screen.getAllByRole('link');
+    const hrefs = new Set(links.map(l => l.getAttribute('href')));
+    for (const page of PAGES) {
+      expect(hrefs.has(page.path)).toBe(true);
+    }
+  });
+
+  it('does not show truncating "View all" links', () => {
+    render(<Wrapped />);
+    expect(screen.queryByText(/view all \d+ tools/i)).toBeNull();
+  });
+
+  it('shows a tool count badge for each category', () => {
+    render(<Wrapped />);
+    for (const cat of Object.values(CATEGORIES)) {
+      const count = PAGES.filter(p => p.category === cat.id).length;
+      expect(screen.getAllByText(`${count} tools`).length).toBeGreaterThan(0);
     }
   });
 });

@@ -416,6 +416,14 @@ export const PAGES = [
     path: '/tools/svg-to-png',
     keywords: ['svg', 'png', 'convert', 'vector', 'raster', 'export', 'image'],
   },
+  {
+    id: 'video-to-gif',
+    title: 'Video to GIF',
+    description: 'Convert an MP4 or WebM clip to an animated GIF right in your browser.',
+    category: 'image',
+    path: '/tools/video-to-gif',
+    keywords: ['video', 'gif', 'animate', 'convert', 'mp4', 'webm', 'animation', 'clip'],
+  },
 
   // ── Web & Code ──────────────────────────────────────────────────────────────
   {

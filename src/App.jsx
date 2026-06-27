@@ -20,6 +20,7 @@ import JpgToPng from './pages/tools/jpg-to-png/JpgToPng';
 import PngMinifier from './pages/tools/png-minifier/PngMinifier';
 import PngToJpg from './pages/tools/png-to-jpg/PngToJpg';
 import SvgToPng from './pages/tools/svg-to-png/SvgToPng';
+import VideoToGif from './pages/tools/video-to-gif/VideoToGif';
 import ArrayFormatter from './pages/tools/array-formatter/ArrayFormatter';
 import BaseConverter from './pages/tools/base-converter/BaseConverter';
 import CssMinifier from './pages/tools/css-minifier/CssMinifier';
@@ -68,6 +69,7 @@ const TOOL_COMPONENTS = {
   'png-minifier':           PngMinifier,
   'png-to-jpg':             PngToJpg,
   'svg-to-png':             SvgToPng,
+  'video-to-gif':           VideoToGif,
   'distance-converter':     DistanceConverter,
   'engineering-cheat-sheet': EngineeringCheatSheet,
   'fahrenheit-celsius':     FahrenheitCelsius,

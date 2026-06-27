@@ -104,32 +104,26 @@ function HeroSearch() {
   );
 }
 
-function CategoryCard({ category }) {
+function CategorySection({ category }) {
   const pages = PAGE_BY_CATEGORY[category.id] ?? [];
-  const preview = pages.slice(0, 4);
 
   return (
-    <div className={styles.catCard}>
-      <div className={styles.catCardHeader}>
-        <h2 className={styles.catCardTitle}>{category.label}</h2>
-        <span className={styles.catCardCount}>{pages.length} tools</span>
+    <section className={styles.catSection}>
+      <div className={styles.catSectionHead}>
+        <div>
+          <h2 className={styles.catSectionTitle}>{category.label}</h2>
+          <p className={styles.catSectionDesc}>{category.description}</p>
+        </div>
+        <span className={styles.catSectionCount}>{pages.length} tools</span>
       </div>
-      <p className={styles.catCardDesc}>{category.description}</p>
-      <ul className={styles.catCardLinks}>
-        {preview.map(page => (
+      <ul className={styles.toolGrid}>
+        {pages.map(page => (
           <li key={page.id}>
-            <Link to={page.path} className={styles.catCardLink}>{page.title}</Link>
+            <Link to={page.path} className={styles.toolLink}>{page.title}</Link>
           </li>
         ))}
-        {pages.length > 4 && (
-          <li>
-            <Link to={`/tools/category/${category.id}`} className={styles.catCardMore}>
-              View all {pages.length} tools →
-            </Link>
-          </li>
-        )}
       </ul>
-    </div>
+    </section>
   );
 }
 
@@ -149,15 +143,13 @@ export default function Home() {
         <HeroSearch />
       </section>
 
-      {/* Category grid */}
-      <section className={styles.grid} aria-labelledby="categories-heading">
-        <div className={styles.gridInner}>
+      {/* All categories with every tool */}
+      <section className={styles.categories} aria-labelledby="categories-heading">
+        <div className={styles.catInner}>
           <h2 id="categories-heading" className={styles.sectionTitle}>{t('browseByCategory')}</h2>
-          <div className={styles.cards}>
-            {Object.values(CATEGORIES).map(cat => (
-              <CategoryCard key={cat.id} category={cat} />
-            ))}
-          </div>
+          {Object.values(CATEGORIES).map(cat => (
+            <CategorySection key={cat.id} category={cat} />
+          ))}
         </div>
       </section>
     </div>

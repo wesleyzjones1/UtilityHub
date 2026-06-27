@@ -11,7 +11,7 @@ function ChevronIcon() {
 }
 
 export default function LanguageSelector() {
-  const { currentLanguage, languages, changeLanguage } = useLanguage();
+  const { currentLanguage, languages, changeLanguage, t } = useLanguage();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -38,21 +38,22 @@ export default function LanguageSelector() {
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label={`Language: ${currentLanguage.label}`}
+        aria-label={`${t('languageLabel')}: ${currentLanguage.label}`}
       >
+        <span className={styles.flag} aria-hidden="true">{currentLanguage.flag}</span>
         <span className={styles.short}>{currentLanguage.short}</span>
         <ChevronIcon />
       </button>
 
       {open && (
-        <ul className={styles.dropdown} role="listbox" aria-label="Select language">
+        <ul className={styles.dropdown} role="listbox" aria-label={t('selectLanguage')}>
           {languages.map(lang => (
             <li key={lang.code} role="option" aria-selected={lang.code === currentLanguage.code}>
               <button
                 className={`${styles.option} ${lang.code === currentLanguage.code ? styles.optionSelected : ''}`}
                 onClick={() => { changeLanguage(lang.code); close(); }}
               >
-                <span className={styles.optionShort}>{lang.short}</span>
+                <span className={styles.optionFlag} aria-hidden="true">{lang.flag}</span>
                 <span className={styles.optionLabel}>{lang.label}</span>
               </button>
             </li>

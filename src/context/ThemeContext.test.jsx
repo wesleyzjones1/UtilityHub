@@ -26,7 +26,13 @@ function Consumer() {
 }
 
 describe('ThemeProvider', () => {
-  it('defaults to light theme', () => {
+  it('defaults to dark theme', () => {
+    render(<ThemeProvider><Consumer /></ThemeProvider>);
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+  });
+
+  it('reads persisted light theme from localStorage', () => {
+    store['uh-theme'] = 'light';
     render(<ThemeProvider><Consumer /></ThemeProvider>);
     expect(screen.getByTestId('theme').textContent).toBe('light');
   });
@@ -37,34 +43,34 @@ describe('ThemeProvider', () => {
     expect(screen.getByTestId('theme').textContent).toBe('dark');
   });
 
-  it('toggles from light to dark', async () => {
+  it('toggles from dark to light', async () => {
     const user = userEvent.setup();
-    render(<ThemeProvider><Consumer /></ThemeProvider>);
-    await user.click(screen.getByRole('button'));
-    expect(screen.getByTestId('theme').textContent).toBe('dark');
-  });
-
-  it('toggles from dark back to light', async () => {
-    const user = userEvent.setup();
-    store['uh-theme'] = 'dark';
     render(<ThemeProvider><Consumer /></ThemeProvider>);
     await user.click(screen.getByRole('button'));
     expect(screen.getByTestId('theme').textContent).toBe('light');
   });
 
-  it('persists theme to localStorage on toggle', async () => {
+  it('toggles from light back to dark', async () => {
+    const user = userEvent.setup();
+    store['uh-theme'] = 'light';
+    render(<ThemeProvider><Consumer /></ThemeProvider>);
+    await user.click(screen.getByRole('button'));
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+  });
+
+  it('persists toggled theme to localStorage', async () => {
     const user = userEvent.setup();
     render(<ThemeProvider><Consumer /></ThemeProvider>);
     await user.click(screen.getByRole('button'));
-    expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-theme', 'dark');
+    expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-theme', 'light');
   });
 
   it('sets data-theme attribute on documentElement', async () => {
     const user = userEvent.setup();
     render(<ThemeProvider><Consumer /></ThemeProvider>);
-    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
-    await user.click(screen.getByRole('button'));
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    await user.click(screen.getByRole('button'));
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
   });
 
   it('throws if useTheme is used outside provider', () => {

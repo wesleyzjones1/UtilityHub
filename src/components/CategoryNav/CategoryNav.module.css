@@ -61,6 +61,26 @@
 
 .dropdownList {
   padding: 0.375rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.dropdownFooter {
+  padding: 0.5rem 1rem 0.625rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.dropdownFooterLink {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.dropdownFooterLink:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
 }
 
 .dropdownItem {

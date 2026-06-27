@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import MobileMenu from './MobileMenu';
+import { usePro } from '../../context/ProContext';
 import styles from './Header.module.css';
 
 function HamburgerIcon({ open }) {
@@ -23,17 +24,8 @@ function HamburgerIcon({ open }) {
   );
 }
 
-function SupportIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M6 6a2 2 0 1 1 2.5 1.937V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="8.5" cy="11.5" r="0.75" fill="currentColor" />
-    </svg>
-  );
-}
-
-export default function Header() {
+export default function Header({ onOpenSupport }) {
+  const { isPro } = usePro();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const headerRef = useRef(null);
@@ -70,14 +62,15 @@ export default function Header() {
               <SearchBar onClose={closeMobile} />
             </div>
             <LanguageSelector />
-            <Link
-              to="/support"
-              className={styles.supportBtn}
-              aria-label="Help and support"
-              title="Help & Support"
-            >
-              <SupportIcon />
-            </Link>
+            {!isPro && (
+              <button
+                className={styles.removeAdsBtn}
+                onClick={onOpenSupport}
+                aria-label="Remove ads — support us for $5/mo"
+              >
+                Remove ads
+              </button>
+            )}
             <ThemeToggle />
             <button
               className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerActive : ''}`}

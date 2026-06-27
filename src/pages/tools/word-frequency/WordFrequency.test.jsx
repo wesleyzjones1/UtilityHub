@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouter } from '../../../test-utils';
 import WordFrequency from './WordFrequency';
@@ -34,7 +34,7 @@ describe('WordFrequency', () => {
     const user = userEvent.setup();
     renderWithRouter(<WordFrequency page={PAGE} />);
     await user.type(screen.getByRole('textbox', { name: /text to analyze/i }), 'apple apple');
-    expect(screen.getByText('2')).toBeDefined();
+    expect(within(screen.getByRole('table')).getByText('2')).toBeDefined();
   });
 
   it('renders toggles for stop words and case sensitivity', () => {

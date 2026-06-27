@@ -1,0 +1,41 @@
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.625rem var(--container-pad);
+  background: var(--color-primary-subtle);
+  border-bottom: 1px solid var(--color-primary-subtle-border);
+}
+
+.text {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.upgradeBtn {
+  color: var(--color-primary);
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.upgradeBtn:hover {
+  opacity: 0.8;
+}
+
+.dismiss {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.dismiss:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}

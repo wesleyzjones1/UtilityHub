@@ -20,7 +20,7 @@ export default function ItalicText({ page }) {
       onInputChange={setInput}
       output={output}
       inputLabel="Input"
-      outputLabel="𝐼𝑡𝑎𝑙𝑖𝑐"
+      outputLabel="Italic Output"
     />
   );
 }

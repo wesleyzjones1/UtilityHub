@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY, PAGES, searchPages } from '../../registry/pages';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Home.module.css';
 
 function SearchIcon() {
@@ -14,9 +15,42 @@ function SearchIcon() {
 
 function HeroSearch() {
   const [query, setQuery] = useState('');
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const navigate = useNavigate();
+  const { t } = useLanguage();
   const results = query.trim() ? searchPages(query) : [];
   const showResults = results.length > 0;
   const showEmpty = query.trim() && results.length === 0;
+
+  function handleChange(e) {
+    setQuery(e.target.value);
+    setActiveIndex(-1);
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === 'ArrowDown') {
+      if (!showResults) return;
+      e.preventDefault();
+      setActiveIndex(i => Math.min(i + 1, results.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      if (!showResults) return;
+      e.preventDefault();
+      setActiveIndex(i => Math.max(i - 1, -1));
+    } else if (e.key === 'Enter' && activeIndex >= 0 && results[activeIndex]) {
+      e.preventDefault();
+      navigate(results[activeIndex].path);
+      setQuery('');
+      setActiveIndex(-1);
+    } else if (e.key === 'Escape') {
+      setQuery('');
+      setActiveIndex(-1);
+    }
+  }
+
+  function dismiss() {
+    setQuery('');
+    setActiveIndex(-1);
+  }
 
   return (
     <div className={styles.heroSearchWrap}>
@@ -24,26 +58,33 @@ function HeroSearch() {
         <span className={styles.heroSearchIcon}><SearchIcon /></span>
         <input
           type="search"
-          placeholder="Search all tools…"
+          placeholder={t('searchPlaceholder')}
           className={styles.heroInput}
           value={query}
-          onChange={e => setQuery(e.target.value)}
-          aria-label="Search all tools"
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          aria-label={t('searchLabel')}
+          aria-autocomplete="list"
+          aria-activedescendant={activeIndex >= 0 ? `hero-result-${activeIndex}` : undefined}
           autoComplete="off"
           spellCheck={false}
         />
         {query && (
-          <button className={styles.heroClear} onClick={() => setQuery('')} aria-label="Clear search">
+          <button className={styles.heroClear} onClick={dismiss} aria-label={t('clearSearch')}>
             ✕
           </button>
         )}
       </div>
 
       {showResults && (
-        <ul className={styles.heroResults}>
-          {results.map(page => (
-            <li key={page.id}>
-              <Link to={page.path} className={styles.heroResult} onClick={() => setQuery('')}>
+        <ul className={styles.heroResults} role="listbox">
+          {results.map((page, i) => (
+            <li key={page.id} id={`hero-result-${i}`} role="option" aria-selected={i === activeIndex}>
+              <Link
+                to={page.path}
+                className={`${styles.heroResult} ${i === activeIndex ? styles.heroResultActive : ''}`}
+                onClick={dismiss}
+              >
                 <div className={styles.heroResultTitle}>{page.title}</div>
                 <div className={styles.heroResultMeta}>
                   {CATEGORIES[page.category]?.label} · {page.description}
@@ -56,41 +97,39 @@ function HeroSearch() {
 
       {showEmpty && (
         <div className={styles.heroEmpty}>
-          No tools found for &ldquo;{query}&rdquo;
+          {t('searchNoResults')} &ldquo;{query}&rdquo;
         </div>
       )}
     </div>
   );
 }
 
-function CategoryCard({ category }) {
+function CategorySection({ category }) {
   const pages = PAGE_BY_CATEGORY[category.id] ?? [];
-  const preview = pages.slice(0, 4);
 
   return (
-    <div className={styles.catCard}>
-      <div className={styles.catCardHeader}>
-        <h2 className={styles.catCardTitle}>{category.label}</h2>
-        <span className={styles.catCardCount}>{pages.length} tools</span>
+    <section className={styles.catSection}>
+      <div className={styles.catSectionHead}>
+        <div>
+          <h2 className={styles.catSectionTitle}>{category.label}</h2>
+          <p className={styles.catSectionDesc}>{category.description}</p>
+        </div>
+        <span className={styles.catSectionCount}>{pages.length} tools</span>
       </div>
-      <p className={styles.catCardDesc}>{category.description}</p>
-      <ul className={styles.catCardLinks}>
-        {preview.map(page => (
+      <ul className={styles.toolGrid}>
+        {pages.map(page => (
           <li key={page.id}>
-            <Link to={page.path} className={styles.catCardLink}>{page.title}</Link>
+            <Link to={page.path} className={styles.toolLink}>{page.title}</Link>
           </li>
         ))}
-        {pages.length > 4 && (
-          <li>
-            <span className={styles.catCardMore}>+{pages.length - 4} more</span>
-          </li>
-        )}
       </ul>
-    </div>
+    </section>
   );
 }
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className={styles.page}>
       {/* Hero */}
@@ -99,20 +138,18 @@ export default function Home() {
           Free tools for<br />developers and power users
         </h1>
         <p className={styles.heroSub}>
-          {PAGES.length} tools across {Object.keys(CATEGORIES).length} categories — no sign-up, no ads.
+          {PAGES.length} tools across {Object.keys(CATEGORIES).length} categories — no sign-up required.
         </p>
         <HeroSearch />
       </section>
 
-      {/* Category grid */}
-      <section className={styles.grid} aria-labelledby="categories-heading">
-        <div className={styles.gridInner}>
-          <h2 id="categories-heading" className={styles.sectionTitle}>Browse by category</h2>
-          <div className={styles.cards}>
-            {Object.values(CATEGORIES).map(cat => (
-              <CategoryCard key={cat.id} category={cat} />
-            ))}
-          </div>
+      {/* All categories with every tool */}
+      <section className={styles.categories} aria-labelledby="categories-heading">
+        <div className={styles.catInner}>
+          <h2 id="categories-heading" className={styles.sectionTitle}>{t('browseByCategory')}</h2>
+          {Object.values(CATEGORIES).map(cat => (
+            <CategorySection key={cat.id} category={cat} />
+          ))}
         </div>
       </section>
     </div>

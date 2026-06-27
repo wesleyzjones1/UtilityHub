@@ -18,12 +18,14 @@ beforeEach(() => {
 });
 
 function Consumer() {
-  const { language, currentLanguage, changeLanguage, languages } = useLanguage();
+  const { language, currentLanguage, changeLanguage, languages, t } = useLanguage();
   return (
     <div>
       <span data-testid="code">{language}</span>
       <span data-testid="short">{currentLanguage.short}</span>
+      <span data-testid="flag">{currentLanguage.flag}</span>
       <span data-testid="count">{languages.length}</span>
+      <span data-testid="t-nav-home">{t('navHome')}</span>
       <button onClick={() => changeLanguage('es')}>switch-es</button>
     </div>
   );
@@ -53,6 +55,26 @@ describe('LanguageProvider', () => {
     await user.click(screen.getByRole('button'));
     expect(screen.getByTestId('code').textContent).toBe('es');
     expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-lang', 'es');
+  });
+
+  it('each language has a flag emoji', () => {
+    render(<LanguageProvider><Consumer /></LanguageProvider>);
+    expect(screen.getByTestId('flag').textContent).toBeTruthy();
+    for (const lang of LANGUAGES) {
+      expect(lang.flag).toBeTruthy();
+    }
+  });
+
+  it('t() returns translation for current language', () => {
+    render(<LanguageProvider><Consumer /></LanguageProvider>);
+    expect(screen.getByTestId('t-nav-home').textContent).toBe('Home');
+  });
+
+  it('t() returns translated string after language change', async () => {
+    const user = userEvent.setup();
+    render(<LanguageProvider><Consumer /></LanguageProvider>);
+    await user.click(screen.getByRole('button'));
+    expect(screen.getByTestId('t-nav-home').textContent).toBe('Inicio');
   });
 
   it('throws if useLanguage is used outside provider', () => {

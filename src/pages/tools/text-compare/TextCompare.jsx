@@ -63,8 +63,8 @@ export default function TextCompare({ page }) {
       )}
 
       {/* ── Diff output ── */}
-      {hasInput && !isIdentical && rows.length > 0 && (
-        <div className={styles.diffWrap} aria-label="Diff output">
+      {textA && textB && !isIdentical && rows.length > 0 && (
+        <div className={styles.diffWrap} role="region" aria-label="Diff output">
           {/* Header */}
           <div className={styles.diffHeader}>
             <div className={styles.diffHeaderCell}>Original</div>

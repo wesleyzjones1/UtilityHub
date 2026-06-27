@@ -20,7 +20,7 @@ export default function BoldText({ page }) {
       onInputChange={setInput}
       output={output}
       inputLabel="Input"
-      outputLabel="𝐁𝐨𝐥𝐝"
+      outputLabel="Bold Output"
     />
   );
 }

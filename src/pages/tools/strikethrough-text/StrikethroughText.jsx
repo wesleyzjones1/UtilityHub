@@ -20,7 +20,7 @@ export default function StrikethroughText({ page }) {
       onInputChange={setInput}
       output={output}
       inputLabel="Input"
-      outputLabel="S̶t̶r̶i̶k̶e̶t̶h̶r̶o̶u̶g̶h̶"
+      outputLabel="Strikethrough Output"
     />
   );
 }

@@ -21,6 +21,7 @@ function Dropdown({ category, pages, onClose }) {
               to={page.path}
               className={styles.dropdownItem}
               role="menuitem"
+              aria-label={page.title}
               onClick={onClose}
             >
               <span className={styles.dropdownItemTitle}>{page.title}</span>
@@ -29,6 +30,15 @@ function Dropdown({ category, pages, onClose }) {
           </li>
         ))}
       </ul>
+      <div className={styles.dropdownFooter}>
+        <Link
+          to={`/tools/category/${category.id}`}
+          className={styles.dropdownFooterLink}
+          onClick={onClose}
+        >
+          View all {pages.length} tools →
+        </Link>
+      </div>
     </div>
   );
 }

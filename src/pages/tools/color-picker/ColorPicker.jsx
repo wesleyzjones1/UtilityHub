@@ -24,7 +24,7 @@ function ColorValue({ label, value, copyText }) {
     <div className={styles.valueRow}>
       <span className={styles.valueLabel}>{label}</span>
       <span className={styles.valueData}>{value}</span>
-      <CopyButton text={copyText ?? value} size="sm" />
+      <CopyButton value={copyText ?? value} size="sm" />
     </div>
   );
 }

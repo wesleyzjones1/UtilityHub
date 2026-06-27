@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { ProProvider } from './context/ProContext';
@@ -54,6 +54,11 @@ import StrikethroughText from './pages/tools/strikethrough-text/StrikethroughTex
 import TextCompare from './pages/tools/text-compare/TextCompare';
 import WordCounter from './pages/tools/word-counter/WordCounter';
 import WordFrequency from './pages/tools/word-frequency/WordFrequency';
+import UuidGenerator from './pages/tools/uuid-generator/UuidGenerator';
+import PercentageCalc from './pages/tools/percentage-calc/PercentageCalc';
+import UnitConverter from './pages/tools/unit-converter/UnitConverter';
+import ColorConverter from './pages/tools/color-converter/ColorConverter';
+import ContrastChecker from './pages/tools/contrast-checker/ContrastChecker';
 
 const TOOL_COMPONENTS = {
   'add-punctuation':        AddPunctuation,
@@ -100,10 +105,15 @@ const TOOL_COMPONENTS = {
   'text-compare':           TextCompare,
   'word-counter':           WordCounter,
   'word-frequency':         WordFrequency,
+  'uuid-generator':         UuidGenerator,
+  'percentage-calc':        PercentageCalc,
+  'unit-converter':         UnitConverter,
+  'color-converter':        ColorConverter,
+  'contrast-checker':       ContrastChecker,
 };
 
 function buildRouter() {
-  return createBrowserRouter([
+  return createHashRouter([
     {
       path: '/',
       element: <Layout />,

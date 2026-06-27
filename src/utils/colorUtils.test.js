@@ -1,5 +1,14 @@
 import { describe, it, expect } from 'vitest';
-import { hexToRgb, rgbToHex, hexToHsl, contrastLabel } from './colorUtils';
+import {
+  hexToRgb,
+  rgbToHex,
+  hexToHsl,
+  contrastLabel,
+  rgbToHsv,
+  rgbToCmyk,
+  relativeLuminance,
+  contrastRatio,
+} from './colorUtils';
 
 describe('hexToRgb', () => {
   it('parses white', () => expect(hexToRgb('#FFFFFF')).toEqual({ r: 255, g: 255, b: 255 }));
@@ -28,4 +37,28 @@ describe('contrastLabel', () => {
   it('returns white for black background', () => expect(contrastLabel('#000000')).toBe('#FFFFFF'));
   it('returns white for dark blue', () => expect(contrastLabel('#1E3A5F')).toBe('#FFFFFF'));
   it('returns black for light yellow', () => expect(contrastLabel('#FFFF99')).toBe('#000000'));
+});
+
+describe('rgbToHsv', () => {
+  it('white is 0/0/100', () => expect(rgbToHsv(255, 255, 255)).toEqual({ h: 0, s: 0, v: 100 }));
+  it('black is 0/0/0', () => expect(rgbToHsv(0, 0, 0)).toEqual({ h: 0, s: 0, v: 0 }));
+  it('pure red is 0/100/100', () => expect(rgbToHsv(255, 0, 0)).toEqual({ h: 0, s: 100, v: 100 }));
+  it('pure green is 120/100/100', () => expect(rgbToHsv(0, 255, 0)).toEqual({ h: 120, s: 100, v: 100 }));
+});
+
+describe('rgbToCmyk', () => {
+  it('white is all zero', () => expect(rgbToCmyk(255, 255, 255)).toEqual({ c: 0, m: 0, y: 0, k: 0 }));
+  it('black is k=100', () => expect(rgbToCmyk(0, 0, 0)).toEqual({ c: 0, m: 0, y: 0, k: 100 }));
+  it('pure red is magenta+yellow', () => expect(rgbToCmyk(255, 0, 0)).toEqual({ c: 0, m: 100, y: 100, k: 0 }));
+});
+
+describe('relativeLuminance', () => {
+  it('white is ~1', () => expect(relativeLuminance('#FFFFFF')).toBeCloseTo(1, 5));
+  it('black is 0', () => expect(relativeLuminance('#000000')).toBeCloseTo(0, 5));
+});
+
+describe('contrastRatio', () => {
+  it('black on white is 21:1', () => expect(contrastRatio('#000000', '#FFFFFF')).toBeCloseTo(21, 1));
+  it('is symmetric', () => expect(contrastRatio('#FFFFFF', '#000000')).toBeCloseTo(21, 1));
+  it('same color is 1:1', () => expect(contrastRatio('#777777', '#777777')).toBeCloseTo(1, 5));
 });

@@ -59,6 +59,19 @@ import PercentageCalc from './pages/tools/percentage-calc/PercentageCalc';
 import UnitConverter from './pages/tools/unit-converter/UnitConverter';
 import ColorConverter from './pages/tools/color-converter/ColorConverter';
 import ContrastChecker from './pages/tools/contrast-checker/ContrastChecker';
+import DateCalculator from './pages/tools/date-calculator/DateCalculator';
+import UnixTimestamp from './pages/tools/unix-timestamp/UnixTimestamp';
+import TimezoneConverter from './pages/tools/timezone-converter/TimezoneConverter';
+import Base64 from './pages/tools/base64/Base64';
+import UrlEncoder from './pages/tools/url-encoder/UrlEncoder';
+import RegexTester from './pages/tools/regex-tester/RegexTester';
+import GradientGenerator from './pages/tools/gradient-generator/GradientGenerator';
+import ColorPalette from './pages/tools/color-palette/ColorPalette';
+import RandomNumber from './pages/tools/random-number/RandomNumber';
+import StatisticsCalc from './pages/tools/statistics-calc/StatisticsCalc';
+import ScientificCalc from './pages/tools/scientific-calc/ScientificCalc';
+import LoremIpsum from './pages/tools/lorem-ipsum/LoremIpsum';
+import TextDiff from './pages/tools/text-diff/TextDiff';
 
 const TOOL_COMPONENTS = {
   'add-punctuation':        AddPunctuation,
@@ -110,6 +123,19 @@ const TOOL_COMPONENTS = {
   'unit-converter':         UnitConverter,
   'color-converter':        ColorConverter,
   'contrast-checker':       ContrastChecker,
+  'date-calculator':        DateCalculator,
+  'unix-timestamp':         UnixTimestamp,
+  'timezone-converter':     TimezoneConverter,
+  'base64':                 Base64,
+  'url-encoder':            UrlEncoder,
+  'regex-tester':           RegexTester,
+  'gradient-generator':     GradientGenerator,
+  'color-palette':          ColorPalette,
+  'random-number':          RandomNumber,
+  'statistics-calc':        StatisticsCalc,
+  'scientific-calc':        ScientificCalc,
+  'lorem-ipsum':            LoremIpsum,
+  'text-diff':              TextDiff,
 };
 
 function buildRouter() {

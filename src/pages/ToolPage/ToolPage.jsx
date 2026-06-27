@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
-import { CATEGORIES } from '../../registry/pages';
+import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
 import styles from './ToolPage.module.css';
 
 export default function ToolPage({ page }) {
   const category = CATEGORIES[page.category];
+  const siblings = (PAGE_BY_CATEGORY[page.category] ?? [])
+    .filter(p => p.id !== page.id)
+    .slice(0, 3);
 
   return (
     <div className={styles.page}>
@@ -37,6 +40,20 @@ export default function ToolPage({ page }) {
             ← Back to all tools
           </Link>
         </div>
+
+        {/* Related tools in same category */}
+        {siblings.length > 0 && (
+          <div className={styles.related}>
+            <p className={styles.relatedTitle}>Other {category?.label}:</p>
+            <ul className={styles.relatedList}>
+              {siblings.map(p => (
+                <li key={p.id}>
+                  <Link to={p.path} className={styles.relatedLink}>{p.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

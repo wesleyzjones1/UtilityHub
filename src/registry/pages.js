@@ -319,6 +319,14 @@ export const PAGES = [
 
   // ── Color Tools ─────────────────────────────────────────────────────────────
   {
+    id: 'color-picker',
+    title: 'Color Picker',
+    description: 'Pick any color from your screen and instantly get its HEX, RGB, and HSL values.',
+    category: 'color',
+    path: '/tools/color-picker',
+    keywords: ['eyedropper', 'pick', 'screen', 'rgb', 'hex', 'hsl', 'color picker'],
+  },
+  {
     id: 'color-converter',
     title: 'Color Converter',
     description: 'Convert colors between HEX, RGB, HSL, HSV, and CMYK.',

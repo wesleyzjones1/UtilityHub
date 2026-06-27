@@ -11,6 +11,8 @@ import NotFound from './pages/NotFound/NotFound';
 import { PAGES } from './registry/pages';
 
 import AddPunctuation from './pages/tools/add-punctuation/AddPunctuation';
+import ColorPicker from './pages/tools/color-picker/ColorPicker';
+import CountdownTimer from './pages/tools/countdown-timer/CountdownTimer';
 import IcoCreator from './pages/tools/ico-creator/IcoCreator';
 import ImageCropper from './pages/tools/image-cropper/ImageCropper';
 import ImageResizer from './pages/tools/image-resizer/ImageResizer';
@@ -54,6 +56,8 @@ import WordFrequency from './pages/tools/word-frequency/WordFrequency';
 
 const TOOL_COMPONENTS = {
   'add-punctuation':        AddPunctuation,
+  'color-picker':           ColorPicker,
+  'countdown-timer':        CountdownTimer,
   'array-formatter':        ArrayFormatter,
   'base-converter':         BaseConverter,
   'css-minifier':           CssMinifier,

@@ -1,0 +1,65 @@
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sliderLabel {
+  font-size: 0.875rem;
+  white-space: nowrap;
+  color: var(--color-text, #111827);
+}
+
+.slider {
+  width: 180px;
+  accent-color: var(--color-primary, #3b82f6);
+  cursor: pointer;
+}
+
+.dims {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted, #6b7280);
+  font-family: var(--font-mono, monospace);
+}
+
+.status {
+  text-align: center;
+  color: var(--color-text-muted, #6b7280);
+  font-size: 0.875rem;
+}
+
+.error {
+  text-align: center;
+  color: var(--color-error, #ef4444);
+  font-size: 0.875rem;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #6b7280);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.saving {
+  color: var(--color-success, #22c55e);
+  font-weight: 600;
+}
+
+.img {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  object-fit: contain;
+}

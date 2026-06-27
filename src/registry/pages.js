@@ -31,6 +31,11 @@ export const CATEGORIES = {
     label: 'Color Tools',
     description: 'Pick, convert, and generate color schemes',
   },
+  image: {
+    id: 'image',
+    label: 'Image Tools',
+    description: 'Convert, resize, crop, and optimize images',
+  },
   web: {
     id: 'web',
     label: 'Web & Code',
@@ -344,6 +349,64 @@ export const PAGES = [
     category: 'color',
     path: '/tools/gradient-generator',
     keywords: ['gradient', 'css', 'linear', 'radial', 'conic'],
+  },
+
+  // ── Image Tools ────────────────────────────────────────────────────────────
+  {
+    id: 'ico-creator',
+    title: 'ICO Creator',
+    description: 'Convert any image to a multi-size .ico file for favicons.',
+    category: 'image',
+    path: '/tools/ico-creator',
+    keywords: ['ico', 'favicon', 'icon', 'convert', 'png', 'website'],
+  },
+  {
+    id: 'image-cropper',
+    title: 'Image Cropper',
+    description: 'Crop an image to a custom region entirely in your browser.',
+    category: 'image',
+    path: '/tools/image-cropper',
+    keywords: ['crop', 'image', 'cut', 'trim', 'region', 'png', 'jpg'],
+  },
+  {
+    id: 'image-resizer',
+    title: 'Image Resizer',
+    description: 'Resize images to exact pixel dimensions, keeping or ignoring the aspect ratio.',
+    category: 'image',
+    path: '/tools/image-resizer',
+    keywords: ['resize', 'scale', 'image', 'width', 'height', 'dimensions', 'png', 'jpg'],
+  },
+  {
+    id: 'jpg-to-png',
+    title: 'JPG to PNG',
+    description: 'Convert JPEG images to lossless PNG format in your browser.',
+    category: 'image',
+    path: '/tools/jpg-to-png',
+    keywords: ['jpg', 'jpeg', 'png', 'convert', 'lossless', 'image'],
+  },
+  {
+    id: 'png-minifier',
+    title: 'PNG Minifier',
+    description: 'Reduce PNG file size by scaling or re-encoding without leaving your browser.',
+    category: 'image',
+    path: '/tools/png-minifier',
+    keywords: ['png', 'minify', 'compress', 'optimize', 'reduce', 'file size', 'image'],
+  },
+  {
+    id: 'png-to-jpg',
+    title: 'PNG to JPG',
+    description: 'Convert PNG images to JPEG with a custom quality setting.',
+    category: 'image',
+    path: '/tools/png-to-jpg',
+    keywords: ['png', 'jpg', 'jpeg', 'convert', 'compress', 'quality', 'image'],
+  },
+  {
+    id: 'svg-to-png',
+    title: 'SVG to PNG',
+    description: 'Convert SVG vector graphics to PNG at any resolution.',
+    category: 'image',
+    path: '/tools/svg-to-png',
+    keywords: ['svg', 'png', 'convert', 'vector', 'raster', 'export', 'image'],
   },
 
   // ── Web & Code ──────────────────────────────────────────────────────────────

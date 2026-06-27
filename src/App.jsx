@@ -9,6 +9,13 @@ import NotFound from './pages/NotFound/NotFound';
 import { PAGES } from './registry/pages';
 
 import AddPunctuation from './pages/tools/add-punctuation/AddPunctuation';
+import IcoCreator from './pages/tools/ico-creator/IcoCreator';
+import ImageCropper from './pages/tools/image-cropper/ImageCropper';
+import ImageResizer from './pages/tools/image-resizer/ImageResizer';
+import JpgToPng from './pages/tools/jpg-to-png/JpgToPng';
+import PngMinifier from './pages/tools/png-minifier/PngMinifier';
+import PngToJpg from './pages/tools/png-to-jpg/PngToJpg';
+import SvgToPng from './pages/tools/svg-to-png/SvgToPng';
 import ArrayFormatter from './pages/tools/array-formatter/ArrayFormatter';
 import BaseConverter from './pages/tools/base-converter/BaseConverter';
 import CssMinifier from './pages/tools/css-minifier/CssMinifier';
@@ -48,6 +55,13 @@ const TOOL_COMPONENTS = {
   'array-formatter':        ArrayFormatter,
   'base-converter':         BaseConverter,
   'css-minifier':           CssMinifier,
+  'ico-creator':            IcoCreator,
+  'image-cropper':          ImageCropper,
+  'image-resizer':          ImageResizer,
+  'jpg-to-png':             JpgToPng,
+  'png-minifier':           PngMinifier,
+  'png-to-jpg':             PngToJpg,
+  'svg-to-png':             SvgToPng,
   'distance-converter':     DistanceConverter,
   'engineering-cheat-sheet': EngineeringCheatSheet,
   'fahrenheit-celsius':     FahrenheitCelsius,

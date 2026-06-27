@@ -144,7 +144,7 @@ export default function Home() {
           Free tools for<br />developers and power users
         </h1>
         <p className={styles.heroSub}>
-          {PAGES.length} tools across {Object.keys(CATEGORIES).length} categories — no sign-up, no ads.
+          {PAGES.length} tools across {Object.keys(CATEGORIES).length} categories — no sign-up required.
         </p>
         <HeroSearch />
       </section>

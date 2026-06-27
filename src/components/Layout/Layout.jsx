@@ -21,9 +21,10 @@ export default function Layout() {
 
   return (
     <div className={styles.root}>
+      <a href="#main-content" className={styles.skipLink}>Skip to main content</a>
       <Header onOpenSupport={openSupport} />
       <AdBlockerBanner onOpenSupport={openSupport} />
-      <main className={styles.main}>
+      <main id="main-content" className={styles.main}>
         <AdBanner />
         <Outlet />
       </main>

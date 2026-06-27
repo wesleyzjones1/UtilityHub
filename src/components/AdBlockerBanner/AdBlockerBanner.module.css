@@ -3,13 +3,8 @@
   align-items: center;
   gap: 1rem;
   padding: 0.625rem var(--container-pad);
-  background: #7c3aed14;
-  border-bottom: 1px solid #7c3aed33;
-}
-
-[data-theme='dark'] .banner {
-  background: #7c3aed22;
-  border-bottom-color: #7c3aed44;
+  background: var(--color-primary-subtle);
+  border-bottom: 1px solid var(--color-primary-subtle-border);
 }
 
 .text {
@@ -20,15 +15,11 @@
 }
 
 .upgradeBtn {
-  color: #7c3aed;
+  color: var(--color-primary);
   font-size: inherit;
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
-}
-
-[data-theme='dark'] .upgradeBtn {
-  color: #a78bfa;
 }
 
 .upgradeBtn:hover {

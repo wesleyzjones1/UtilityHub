@@ -112,7 +112,7 @@
 }
 
 .pauseControl:hover {
-  background: var(--color-surface-hover);
+  background: var(--color-surface-2);
   transform: translateY(-1px);
 }
 
@@ -247,6 +247,6 @@
 }
 
 .exampleBtn:hover {
-  background: var(--color-surface-hover);
+  background: var(--color-surface-2);
   border-color: var(--color-primary);
 }

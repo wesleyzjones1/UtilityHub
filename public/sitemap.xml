@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  UtilityHub uses client-side hash routing, so individual tools live at
+  fragment URLs (e.g. /#/tools/word-counter) that search engines treat as the
+  same document. This sitemap therefore lists the site root, which is the page
+  crawlers fetch and index.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://wesleyzjones1.github.io/UtilityHub/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

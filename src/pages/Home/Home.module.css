@@ -21,6 +21,12 @@
   margin-bottom: 1.75rem;
 }
 
+.heroBadge {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
 /* Hero search */
 .heroSearchWrap {
   position: relative;

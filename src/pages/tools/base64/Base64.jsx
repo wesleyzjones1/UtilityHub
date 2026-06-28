@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
+import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useUrlState } from '../../../hooks/useUrlState';
 import styles from './Base64.module.css';
 
 const HOW_TO_USE = [
@@ -22,7 +24,7 @@ function decode(input) {
 }
 
 export default function Base64({ page }) {
-  const [mode, setMode] = useState('encode');
+  const [mode, setMode] = useUrlState('mode', 'encode');
   const [input, setInput] = useState('');
 
   const output = input.trim()
@@ -59,6 +61,7 @@ export default function Base64({ page }) {
       outputMono
       inputPlaceholder={mode === 'encode' ? 'Enter text to encode…' : 'Enter Base64 to decode…'}
       outputPlaceholder="Result will appear here…"
+      actions={<CopyButton value={typeof window !== 'undefined' ? window.location.href : ''} label="Copy link" />}
     />
   );
 }

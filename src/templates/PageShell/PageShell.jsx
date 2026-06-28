@@ -4,6 +4,7 @@ import { CATEGORIES } from '../../registry/pages';
 import SupportCard from '../../components/SupportCard/SupportCard';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import { recordRecentTool } from '../../hooks/useRecentTools';
+import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import styles from './PageShell.module.css';
 
 /**
@@ -12,6 +13,8 @@ import styles from './PageShell.module.css';
  */
 export default function PageShell({ page, children, howToUse = [] }) {
   const category = CATEGORIES[page.category];
+
+  useDocumentMeta({ title: page.title, description: page.description });
 
   // Record this tool as recently used so it can be surfaced on the home page.
   useEffect(() => {

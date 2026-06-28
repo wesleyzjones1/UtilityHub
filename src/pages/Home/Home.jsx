@@ -4,7 +4,9 @@ import { CATEGORIES, PAGE_BY_CATEGORY, PAGE_BY_ID, PAGES, searchPages } from '..
 import { useLanguage } from '../../context/LanguageContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { readRecentTools } from '../../hooks/useRecentTools';
+import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
+import PrivacyBadge from '../../components/PrivacyBadge/PrivacyBadge';
 import styles from './Home.module.css';
 
 function SearchIcon() {
@@ -216,6 +218,7 @@ function PinnedSection() {
 
 export default function Home() {
   const { t } = useLanguage();
+  useDocumentMeta();
 
   return (
     <div className={styles.page}>
@@ -228,6 +231,9 @@ export default function Home() {
           {PAGES.length} tools across {Object.keys(CATEGORIES).length} categories — no sign-up required.
         </p>
         <HeroSearch />
+        <div className={styles.heroBadge}>
+          <PrivacyBadge />
+        </div>
       </section>
 
       {/* Favorites + recently used (only when present) */}

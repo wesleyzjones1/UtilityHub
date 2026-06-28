@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from '../../context/ThemeContext';
 import { LanguageProvider } from '../../context/LanguageContext';
+import { FavoritesProvider } from '../../context/FavoritesContext';
 import Home from './Home';
 import { CATEGORIES, PAGES } from '../../registry/pages';
 
@@ -26,7 +27,9 @@ function Wrapped() {
     <MemoryRouter>
       <ThemeProvider>
         <LanguageProvider>
-          <Home />
+          <FavoritesProvider>
+            <Home />
+          </FavoritesProvider>
         </LanguageProvider>
       </ThemeProvider>
     </MemoryRouter>

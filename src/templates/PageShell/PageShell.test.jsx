@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import { renderWithRouter } from '../../test-utils';
 import PageShell from './PageShell';
 
 const mockPage = {
@@ -13,12 +13,10 @@ const mockPage = {
 };
 
 function renderShell(props = {}) {
-  return render(
-    <MemoryRouter>
-      <PageShell page={mockPage} {...props}>
-        <div>Tool UI here</div>
-      </PageShell>
-    </MemoryRouter>
+  return renderWithRouter(
+    <PageShell page={mockPage} {...props}>
+      <div>Tool UI here</div>
+    </PageShell>
   );
 }
 

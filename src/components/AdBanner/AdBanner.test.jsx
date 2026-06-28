@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { ProProvider } from '../../context/ProContext';
+import { AdPreferenceProvider } from '../../context/AdPreferenceContext';
 import AdBanner from './AdBanner';
 
 let store = {};
@@ -19,19 +19,19 @@ beforeEach(() => {
 });
 
 describe('AdBanner', () => {
-  it('renders ad placeholder for non-pro users', () => {
-    render(<ProProvider><AdBanner /></ProProvider>);
+  it('renders ad placeholder when ads are visible', () => {
+    render(<AdPreferenceProvider><AdBanner /></AdPreferenceProvider>);
     expect(screen.getByText('Advertisement')).toBeDefined();
   });
 
-  it('renders nothing for pro users', () => {
-    store['uh-pro'] = 'true';
-    render(<ProProvider><AdBanner /></ProProvider>);
+  it('renders nothing when ads are hidden', () => {
+    store['uh-hide-ads'] = 'true';
+    render(<AdPreferenceProvider><AdBanner /></AdPreferenceProvider>);
     expect(screen.queryByText('Advertisement')).toBeNull();
   });
 
   it('has accessible role label', () => {
-    render(<ProProvider><AdBanner /></ProProvider>);
+    render(<AdPreferenceProvider><AdBanner /></AdPreferenceProvider>);
     expect(screen.getByRole('complementary', { name: /advertisement/i })).toBeDefined();
   });
 });

@@ -1,0 +1,47 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+.btn.active {
+  color: var(--color-warning, #f59e0b);
+}
+
+.btn.active:hover {
+  color: var(--color-warning, #f59e0b);
+}
+
+/* Compact variant for dense chips/grids */
+.chip {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+/* Labelled pill for the tool-page header */
+.labelled {
+  width: auto;
+  gap: 0.375rem;
+  padding: 0 0.75rem;
+  height: 32px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-color: var(--color-border);
+}
+
+.labelled:hover {
+  border-color: var(--color-primary-subtle-border);
+}

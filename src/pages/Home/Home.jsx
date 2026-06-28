@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CATEGORIES, PAGE_BY_CATEGORY, PAGES, searchPages } from '../../registry/pages';
+import { CATEGORIES, PAGE_BY_CATEGORY, PAGE_BY_ID, PAGES, searchPages } from '../../registry/pages';
 import { useLanguage } from '../../context/LanguageContext';
+import { useFavorites } from '../../context/FavoritesContext';
+import { readRecentTools } from '../../hooks/useRecentTools';
+import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import styles from './Home.module.css';
 
 function SearchIcon() {
@@ -148,6 +151,15 @@ const CATEGORY_ICONS = {
   ),
 };
 
+function ToolChip({ page }) {
+  return (
+    <li className={styles.toolItem}>
+      <Link to={page.path} className={styles.toolLink}>{page.title}</Link>
+      <FavoriteButton pageId={page.id} title={page.title} variant="chip" />
+    </li>
+  );
+}
+
 function CategorySection({ category }) {
   const pages = PAGE_BY_CATEGORY[category.id] ?? [];
 
@@ -164,12 +176,40 @@ function CategorySection({ category }) {
         <span className={styles.catSectionCount}>{pages.length} tools</span>
       </div>
       <ul className={styles.toolGrid}>
-        {pages.map(page => (
-          <li key={page.id}>
-            <Link to={page.path} className={styles.toolLink}>{page.title}</Link>
-          </li>
-        ))}
+        {pages.map(page => <ToolChip key={page.id} page={page} />)}
       </ul>
+    </section>
+  );
+}
+
+function PinnedRow({ title, pages }) {
+  return (
+    <div className={styles.pinnedRow}>
+      <h2 className={styles.pinnedTitle}>{title}</h2>
+      <ul className={styles.toolGrid}>
+        {pages.map(page => <ToolChip key={page.id} page={page} />)}
+      </ul>
+    </div>
+  );
+}
+
+function PinnedSection() {
+  const { favorites } = useFavorites();
+  const favPages = favorites.map(id => PAGE_BY_ID[id]).filter(Boolean);
+  const recentPages = readRecentTools()
+    .map(id => PAGE_BY_ID[id])
+    .filter(Boolean)
+    .filter(p => !favorites.includes(p.id))
+    .slice(0, 8);
+
+  if (favPages.length === 0 && recentPages.length === 0) return null;
+
+  return (
+    <section className={styles.pinned} aria-label="Your tools">
+      <div className={styles.catInner}>
+        {favPages.length > 0 && <PinnedRow title="Favorites" pages={favPages} />}
+        {recentPages.length > 0 && <PinnedRow title="Recently used" pages={recentPages} />}
+      </div>
     </section>
   );
 }
@@ -189,6 +229,9 @@ export default function Home() {
         </p>
         <HeroSearch />
       </section>
+
+      {/* Favorites + recently used (only when present) */}
+      <PinnedSection />
 
       {/* All categories with every tool */}
       <section className={styles.categories} aria-labelledby="categories-heading">

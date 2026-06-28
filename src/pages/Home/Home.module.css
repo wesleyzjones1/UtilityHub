@@ -236,7 +236,15 @@
   gap: 0.375rem;
 }
 
+.toolItem {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
 .toolLink {
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   min-height: 36px;
@@ -255,6 +263,42 @@
   border-color: var(--color-primary-subtle-border);
   color: var(--color-primary);
   text-decoration: none;
+}
+
+/* Star stays out of the way until the chip is hovered/focused or favourited */
+.toolItem button {
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.toolItem:hover button,
+.toolItem:focus-within button,
+.toolItem button[aria-pressed='true'] {
+  opacity: 1;
+}
+
+/* Pinned (favorites / recent) section */
+.pinned {
+  padding: 1.5rem var(--container-pad) 0;
+}
+
+.pinnedRow {
+  margin-bottom: 1.5rem;
+}
+
+.pinnedTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 640px) {
+  /* Touch devices can't hover — keep stars visible. */
+  .toolItem button {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 640px) {

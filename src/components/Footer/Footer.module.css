@@ -7,9 +7,42 @@
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .copy {
   font-size: 0.8125rem;
   color: var(--color-text-muted);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.linkBtn,
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.linkBtn:hover,
+.link:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.heart {
+  color: var(--color-primary);
 }

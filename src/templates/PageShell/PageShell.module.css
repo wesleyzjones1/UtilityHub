@@ -73,6 +73,10 @@
   line-height: 1.65;
 }
 
+.favRow {
+  margin-top: 1rem;
+}
+
 /* ── Tool content ── */
 .content {
   margin-bottom: 2.5rem;

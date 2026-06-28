@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import { renderWithRouter } from '../../test-utils';
 import SinglePanelTemplate from './SinglePanelTemplate';
 
 const mockPage = {
@@ -13,11 +13,7 @@ const mockPage = {
 };
 
 function renderTemplate(props = {}) {
-  return render(
-    <MemoryRouter>
-      <SinglePanelTemplate page={mockPage} {...props} />
-    </MemoryRouter>
-  );
+  return renderWithRouter(<SinglePanelTemplate page={mockPage} {...props} />);
 }
 
 describe('SinglePanelTemplate', () => {

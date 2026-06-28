@@ -1,9 +1,9 @@
-import { usePro } from '../../context/ProContext';
+import { useAdPreference } from '../../context/AdPreferenceContext';
 import styles from './AdBanner.module.css';
 
 export default function AdBanner() {
-  const { isPro } = usePro();
-  if (isPro) return null;
+  const { adsHidden } = useAdPreference();
+  if (adsHidden) return null;
 
   return (
     <div className={styles.wrap} aria-label="Advertisement" role="complementary">

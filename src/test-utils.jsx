@@ -2,16 +2,22 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
-import { ProProvider } from './context/ProContext';
+import { AdPreferenceProvider } from './context/AdPreferenceContext';
+import { SupportProvider } from './context/SupportContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 function AllProviders({ children }) {
   return (
     <MemoryRouter>
       <ThemeProvider>
         <LanguageProvider>
-          <ProProvider>
-            {children}
-          </ProProvider>
+          <AdPreferenceProvider>
+            <FavoritesProvider>
+              <SupportProvider>
+                {children}
+              </SupportProvider>
+            </FavoritesProvider>
+          </AdPreferenceProvider>
         </LanguageProvider>
       </ThemeProvider>
     </MemoryRouter>
@@ -19,7 +25,7 @@ function AllProviders({ children }) {
 }
 
 export function renderWithRouter(ui) {
-  return render(ui, { wrapper: MemoryRouter });
+  return render(ui, { wrapper: AllProviders });
 }
 
 export function renderWithProviders(ui) {

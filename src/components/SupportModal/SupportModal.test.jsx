@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ProProvider } from '../../context/ProContext';
+import { AdPreferenceProvider } from '../../context/AdPreferenceContext';
 import SupportModal from './SupportModal';
 
 let store = {};
@@ -21,9 +21,9 @@ beforeEach(() => {
 
 function Wrapped({ open = true, onClose = vi.fn() }) {
   return (
-    <ProProvider>
+    <AdPreferenceProvider>
       <SupportModal open={open} onClose={onClose} />
-    </ProProvider>
+    </AdPreferenceProvider>
   );
 }
 
@@ -38,15 +38,29 @@ describe('SupportModal', () => {
     expect(screen.getByRole('dialog')).toBeDefined();
   });
 
-  it('shows the price and benefits', () => {
+  it('frames support honestly (no fake payment / subscription)', () => {
     render(<Wrapped />);
-    expect(screen.getByText(/go ad-free for \$5\/mo/i)).toBeDefined();
-    expect(screen.getByText(/no ads anywhere/i)).toBeDefined();
+    expect(screen.getByText(/support utilityhub/i)).toBeDefined();
+    expect(screen.queryByText(/i've paid/i)).toBeNull();
+    expect(screen.queryByText(/\$5\/mo/i)).toBeNull();
   });
 
-  it('shows "Continue to payment" button initially', () => {
+  it('offers share actions including a GitHub star link', () => {
     render(<Wrapped />);
-    expect(screen.getByRole('button', { name: /continue to payment/i })).toBeDefined();
+    expect(screen.getByRole('link', { name: /star on github/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /copy link/i })).toBeDefined();
+  });
+
+  it('shows a free "Hide ads" option when ads are visible', () => {
+    render(<Wrapped />);
+    expect(screen.getByRole('button', { name: /hide ads/i })).toBeDefined();
+  });
+
+  it('hiding ads persists the honest preference', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    await user.click(screen.getByRole('button', { name: /hide ads/i }));
+    expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-hide-ads', 'true');
   });
 
   it('closes when ✕ is clicked', async () => {
@@ -71,32 +85,5 @@ describe('SupportModal', () => {
     render(<Wrapped onClose={onClose} />);
     await user.click(screen.getByRole('dialog'));
     expect(onClose).toHaveBeenCalledOnce();
-  });
-
-  it('shows post-payment state after clicking Continue', async () => {
-    const user = userEvent.setup();
-    // Mock window.open
-    const openMock = vi.fn();
-    vi.stubGlobal('open', openMock);
-    render(<Wrapped />);
-    await user.click(screen.getByRole('button', { name: /continue to payment/i }));
-    expect(screen.getByRole('button', { name: /i've paid/i })).toBeDefined();
-    vi.unstubAllGlobals();
-  });
-
-  it('activates pro when "I\'ve paid" is clicked', async () => {
-    const user = userEvent.setup();
-    vi.stubGlobal('open', vi.fn());
-    render(<Wrapped />);
-    await user.click(screen.getByRole('button', { name: /continue to payment/i }));
-    await user.click(screen.getByRole('button', { name: /i've paid/i }));
-    expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-pro', 'true');
-    vi.unstubAllGlobals();
-  });
-
-  it('shows pro confirmation when isPro is already true', () => {
-    store['uh-pro'] = 'true';
-    render(<Wrapped />);
-    expect(screen.getByText(/you're ad-free/i)).toBeDefined();
   });
 });

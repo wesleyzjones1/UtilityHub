@@ -1,5 +1,9 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CATEGORIES } from '../../registry/pages';
+import SupportCard from '../../components/SupportCard/SupportCard';
+import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
+import { recordRecentTool } from '../../hooks/useRecentTools';
 import styles from './PageShell.module.css';
 
 /**
@@ -8,6 +12,11 @@ import styles from './PageShell.module.css';
  */
 export default function PageShell({ page, children, howToUse = [] }) {
   const category = CATEGORIES[page.category];
+
+  // Record this tool as recently used so it can be surfaced on the home page.
+  useEffect(() => {
+    recordRecentTool(page.id);
+  }, [page.id]);
 
   return (
     <article className={styles.shell}>
@@ -25,6 +34,9 @@ export default function PageShell({ page, children, howToUse = [] }) {
         <span className={styles.badge}>{category?.label}</span>
         <h1 className={styles.title}>{page.title}</h1>
         <p className={styles.description}>{page.description}</p>
+        <div className={styles.favRow}>
+          <FavoriteButton pageId={page.id} title={page.title} showLabel />
+        </div>
       </header>
 
       {/* ── Tool interface ── */}
@@ -46,6 +58,8 @@ export default function PageShell({ page, children, howToUse = [] }) {
           </ol>
         </section>
       )}
+
+      <SupportCard />
     </article>
   );
 }

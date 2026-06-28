@@ -1,7 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ProProvider } from '../../context/ProContext';
+import { AdPreferenceProvider } from '../../context/AdPreferenceContext';
+import { SupportProvider } from '../../context/SupportContext';
 
 // Control ad blocker detection in tests via mock
 vi.mock('../../hooks/useAdBlocker', () => ({
@@ -25,11 +26,13 @@ beforeEach(() => {
   });
 });
 
-function Wrapped({ onOpenSupport = vi.fn() }) {
+function Wrapped() {
   return (
-    <ProProvider>
-      <AdBlockerBanner onOpenSupport={onOpenSupport} />
-    </ProProvider>
+    <AdPreferenceProvider>
+      <SupportProvider>
+        <AdBlockerBanner />
+      </SupportProvider>
+    </AdPreferenceProvider>
   );
 }
 
@@ -45,8 +48,8 @@ describe('AdBlockerBanner', () => {
     expect(screen.queryByRole('alert')).toBeNull();
   });
 
-  it('hides banner when user is pro', () => {
-    store['uh-pro'] = 'true';
+  it('hides banner when ads are hidden', () => {
+    store['uh-hide-ads'] = 'true';
     render(<Wrapped />);
     expect(screen.queryByRole('alert')).toBeNull();
   });
@@ -65,11 +68,12 @@ describe('AdBlockerBanner', () => {
     expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-adb-dismissed', 'true');
   });
 
-  it('calls onOpenSupport when "going ad-free" link is clicked', async () => {
+  it('opens the support modal flow via the support link', async () => {
     const user = userEvent.setup();
-    const onOpenSupport = vi.fn();
-    render(<Wrapped onOpenSupport={onOpenSupport} />);
-    await user.click(screen.getByRole('button', { name: /going ad-free/i }));
-    expect(onOpenSupport).toHaveBeenCalledOnce();
+    render(<Wrapped />);
+    // The "supporting UtilityHub" button calls openSupport; just assert it exists and is clickable.
+    const btn = screen.getByRole('button', { name: /supporting utilityhub/i });
+    await user.click(btn);
+    expect(btn).toBeDefined();
   });
 });

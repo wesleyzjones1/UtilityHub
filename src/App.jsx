@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
-import { ProProvider } from './context/ProContext';
+import { AdPreferenceProvider } from './context/AdPreferenceContext';
+import { SupportProvider } from './context/SupportContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
@@ -166,9 +168,13 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <ProProvider>
-          <RouterProvider router={router} />
-        </ProProvider>
+        <AdPreferenceProvider>
+          <FavoritesProvider>
+            <SupportProvider>
+              <RouterProvider router={router} />
+            </SupportProvider>
+          </FavoritesProvider>
+        </AdPreferenceProvider>
       </LanguageProvider>
     </ThemeProvider>
   );

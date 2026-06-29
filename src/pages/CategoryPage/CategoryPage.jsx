@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import styles from './CategoryPage.module.css';
 
 export default function CategoryPage() {
@@ -20,11 +21,12 @@ export default function CategoryPage() {
 
       <ul className={styles.grid} aria-label={`${category.label} tools`}>
         {pages.map(page => (
-          <li key={page.id}>
+          <li key={page.id} className={styles.item}>
             <Link to={page.path} className={styles.card}>
               <span className={styles.cardTitle}>{page.title}</span>
               <span className={styles.cardDesc}>{page.description}</span>
             </Link>
+            <FavoriteButton pageId={page.id} title={page.title} variant="chip" />
           </li>
         ))}
       </ul>

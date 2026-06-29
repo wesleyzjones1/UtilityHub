@@ -238,8 +238,17 @@
 
 .toolItem {
   display: flex;
-  align-items: center;
-  gap: 2px;
+  align-items: stretch;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.toolItem:hover {
+  background: var(--color-primary-subtle);
+  border-color: var(--color-primary-subtle-border);
 }
 
 .toolLink {
@@ -251,30 +260,32 @@
   padding: 0.4375rem 0.75rem;
   font-size: 0.8125rem;
   color: var(--color-text);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  background: transparent;
+  border: none;
   text-decoration: none;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
-.toolLink:hover {
-  background: var(--color-primary-subtle);
-  border-color: var(--color-primary-subtle-border);
+.toolItem:hover .toolLink {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-/* Star stays out of the way until the chip is hovered/focused or favourited */
+/* Star sits on the right edge inside the card, hidden until hovered/active */
 .toolItem button {
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 0;
+  border-left: 1px solid transparent;
   opacity: 0;
-  transition: opacity var(--transition-fast);
+  transition: opacity var(--transition-fast), border-color var(--transition-fast);
 }
 
 .toolItem:hover button,
 .toolItem:focus-within button,
 .toolItem button[aria-pressed='true'] {
   opacity: 1;
+  border-left-color: var(--color-border);
 }
 
 /* Pinned (favorites / recent) section */
@@ -311,9 +322,9 @@
 }
 
 @media (max-width: 640px) {
-  /* Touch devices can't hover — keep stars visible. */
   .toolItem button {
     opacity: 1;
+    border-left-color: var(--color-border);
   }
 }
 

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import { CATEGORIES, PAGE_BY_CATEGORY, PAGES } from '../../registry/pages';
+import { useFavorites } from '../../context/FavoritesContext';
 import styles from './CategoryNav.module.css';
 
 function ChevronIcon() {
@@ -11,10 +12,51 @@ function ChevronIcon() {
   );
 }
 
-function Dropdown({ category, pages, onClose }) {
+function StarIcon() {
   return (
-    <div className={styles.dropdown} role="menu" aria-label={`${category.label} tools`}>
-      <ul className={styles.dropdownList}>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 3.5l2.6 5.27 5.82.85-4.21 4.1.99 5.8L12 17.77 6.8 19.52l.99-5.8-4.21-4.1 5.82-.85L12 3.5z" />
+    </svg>
+  );
+}
+
+function FavoritesDropdown({ groups, onClose }) {
+  return (
+    <div className={styles.dropdown} role="menu" aria-label="Favorites">
+      <div className={styles.favDropdownInner}>
+        {groups.map(({ cat, pages }) => (
+          <div key={cat.id} className={styles.favGroup}>
+            <div className={styles.favGroupLabel}>{cat.label}</div>
+            <ul className={styles.favGroupList}>
+              {pages.map(page => (
+                <li key={page.id}>
+                  <Link
+                    to={page.path}
+                    className={styles.dropdownItem}
+                    role="menuitem"
+                    onClick={onClose}
+                  >
+                    <span className={styles.dropdownItemTitle}>{page.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Dropdown({ category, pages, onClose }) {
+  const isWide = pages.length > 8;
+  return (
+    <div
+      className={`${styles.dropdown} ${isWide ? styles.dropdownWide : ''}`}
+      role="menu"
+      aria-label={`${category.label} tools`}
+    >
+      <ul className={`${styles.dropdownList} ${isWide ? styles.dropdownListWide : ''}`}>
         {pages.map(page => (
           <li key={page.id}>
             <Link
@@ -46,19 +88,21 @@ export default function CategoryNav() {
   const [openCategory, setOpenCategory] = useState(null);
   const navRef = useRef(null);
   const navigate = useNavigate();
+  const { favorites } = useFavorites();
 
   const close = useCallback(() => setOpenCategory(null), []);
 
-  // Close on Escape
+  const favPages = PAGES.filter(p => favorites.includes(p.id));
+  const favGroups = Object.values(CATEGORIES)
+    .map(cat => ({ cat, pages: favPages.filter(p => p.category === cat.id) }))
+    .filter(g => g.pages.length > 0);
+
   useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'Escape') close();
-    };
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [close]);
 
-  // Close on outside click
   useEffect(() => {
     if (!openCategory) return;
     const onPointer = (e) => {
@@ -70,6 +114,28 @@ export default function CategoryNav() {
 
   return (
     <nav className={styles.nav} ref={navRef} aria-label="Category navigation">
+      {/* Favorites hover toggle — only rendered when tools are saved */}
+      {favGroups.length > 0 && (
+        <div
+          className={styles.navItem}
+          onMouseEnter={() => setOpenCategory('__favorites__')}
+          onMouseLeave={close}
+        >
+          <button
+            className={`${styles.navButton} ${styles.navButtonFav} ${openCategory === '__favorites__' ? styles.navButtonActive : ''}`}
+            aria-expanded={openCategory === '__favorites__'}
+            aria-haspopup="menu"
+            aria-label="Favorites"
+          >
+            <StarIcon />
+            <span className={styles.favChevron}><ChevronIcon /></span>
+          </button>
+          {openCategory === '__favorites__' && (
+            <FavoritesDropdown groups={favGroups} onClose={close} />
+          )}
+        </div>
+      )}
+
       {Object.values(CATEGORIES).map(cat => {
         const isOpen = openCategory === cat.id;
         const pages = PAGE_BY_CATEGORY[cat.id] ?? [];

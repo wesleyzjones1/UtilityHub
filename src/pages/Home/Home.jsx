@@ -165,13 +165,13 @@ function CategorySection({ category }) {
   return (
     <section className={styles.catSection}>
       <div className={styles.catSectionHead}>
-        <div className={styles.catSectionHeadLeft}>
+        <Link to={`/tools/category/${category.id}`} className={styles.catSectionHeadLeft}>
           <span className={styles.catIcon}>{CATEGORY_ICONS[category.id]}</span>
           <div>
             <h2 className={styles.catSectionTitle}>{category.label}</h2>
             <p className={styles.catSectionDesc}>{category.description}</p>
           </div>
-        </div>
+        </Link>
         <span className={styles.catSectionCount}>{pages.length} tools</span>
       </div>
       <ul className={styles.toolGrid}>
@@ -182,7 +182,6 @@ function CategorySection({ category }) {
 }
 
 export default function Home() {
-  const { t } = useLanguage();
   useDocumentMeta();
 
   return (
@@ -199,9 +198,8 @@ export default function Home() {
       </section>
 
       {/* All categories with every tool */}
-      <section className={styles.categories} aria-labelledby="categories-heading">
+      <section className={styles.categories} aria-label="All tools by category">
         <div className={styles.catInner}>
-          <h2 id="categories-heading" className={styles.sectionTitle}>{t('browseByCategory')}</h2>
           {Object.values(CATEGORIES).map(cat => (
             <CategorySection key={cat.id} category={cat} />
           ))}

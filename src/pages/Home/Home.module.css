@@ -154,7 +154,7 @@
 
 /* All categories */
 .categories {
-  padding: 2.5rem var(--container-pad) 4rem;
+  padding: 1.75rem var(--container-pad) 4rem;
 }
 
 .catInner {
@@ -162,17 +162,13 @@
   margin: 0 auto;
 }
 
-.sectionTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.01em;
-}
-
 .catSection {
   padding: 1.75rem 0;
   border-bottom: 1px solid var(--color-border);
+}
+
+.catSection:first-child {
+  padding-top: 0;
 }
 
 .catSection:last-child {
@@ -192,6 +188,22 @@
   display: flex;
   align-items: flex-start;
   gap: 0.625rem;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: opacity var(--transition-fast);
+}
+
+.catSectionHeadLeft:hover {
+  text-decoration: none;
+}
+
+.catSectionHeadLeft:hover .catSectionTitle {
+  color: var(--color-primary);
+}
+
+.catSectionHeadLeft:hover .catIcon {
+  background: var(--color-primary);
+  color: #fff;
 }
 
 .catIcon {
@@ -206,6 +218,7 @@
   color: var(--color-primary);
   flex-shrink: 0;
   margin-top: 2px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .catSectionTitle {
@@ -213,6 +226,7 @@
   font-weight: 700;
   color: var(--color-text);
   margin-bottom: 0.25rem;
+  transition: color var(--transition-fast);
 }
 
 .catSectionDesc {

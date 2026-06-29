@@ -52,6 +52,11 @@ describe('PageShell', () => {
 
   it('does not render how-to-use section when steps are empty', () => {
     renderShell({ howToUse: [] });
-    expect(screen.queryByRole('heading', { level: 2 })).not.toBeInTheDocument();
+    expect(screen.queryByRole('heading', { level: 2, name: 'How to use' })).not.toBeInTheDocument();
+  });
+
+  it('renders related tools suggestions', () => {
+    renderShell();
+    expect(screen.getByRole('heading', { level: 2, name: 'Related tools' })).toBeInTheDocument();
   });
 });

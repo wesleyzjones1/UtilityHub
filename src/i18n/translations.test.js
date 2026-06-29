@@ -5,7 +5,7 @@ import { LANGUAGES } from '../context/LanguageContext';
 const REQUIRED_KEYS = [
   'searchPlaceholder', 'searchLabel', 'searchNoResults', 'clearSearch',
   'switchToDark', 'switchToLight', 'navHome', 'openMenu', 'closeMenu',
-  'browseByCategory', 'selectLanguage', 'languageLabel', 'tools', 'tool',
+  'selectLanguage', 'languageLabel', 'tools', 'tool',
 ];
 
 describe('translations', () => {

@@ -569,6 +569,19 @@ export const PAGE_BY_CATEGORY = Object.keys(CATEGORIES).reduce((acc, catId) => {
 /** Fast lookup by page id. */
 export const PAGE_BY_ID = Object.fromEntries(PAGES.map(p => [p.id, p]));
 
+/**
+ * Suggest related tools for a given page.
+ * Prefers other tools in the same category, then fills from other categories
+ * (in registry order) up to `count` suggestions.
+ */
+export function getRelatedPages(pageId, count = 4) {
+  const current = PAGE_BY_ID[pageId];
+  if (!current) return [];
+  const sameCategory = PAGES.filter(p => p.id !== pageId && p.category === current.category);
+  const otherCategories = PAGES.filter(p => p.id !== pageId && p.category !== current.category);
+  return [...sameCategory, ...otherCategories].slice(0, count);
+}
+
 /** Search pages by query string (title, description, keywords). */
 export function searchPages(query) {
   if (!query || !query.trim()) return [];

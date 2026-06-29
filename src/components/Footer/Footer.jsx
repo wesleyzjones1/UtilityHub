@@ -14,11 +14,14 @@ export default function Footer() {
         <span className={styles.copy}>
           &copy; {new Date().getFullYear()} UtilityHub
         </span>
-        <button className={styles.support} onClick={openSupport} aria-label="Support UtilityHub">
-          <span className={styles.lead}>Free to use.</span>{' '}
-          If this tool saved you time, you can support the project.{' '}
-          <span className={styles.heart} aria-hidden="true">♥</span>
-        </button>
+        <div className={styles.supportGroup}>
+          <span className={styles.supportText}>
+            If this tool saved you time, consider supporting the project.
+          </span>
+          <button className={styles.supportBtn} onClick={openSupport} aria-label="Support UtilityHub">
+            Support <span className={styles.heart} aria-hidden="true">♥</span>
+          </button>
+        </div>
         <div className={styles.links}>
           <InstallButton />
           <Link className={styles.link} to="/about">About</Link>

@@ -1,15 +1,19 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import { recordRecentTool } from '../../hooks/useRecentTools';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
+import { getRelatedPages } from '../../registry/pages';
 import styles from './PageShell.module.css';
 
 /**
  * Shared wrapper for every tool page.
- * Renders: title/description → children → how-to-use → support card.
+ * Renders: title/description → children → how-to-use → related tools.
  */
 export default function PageShell({ page, children, howToUse = [] }) {
   useDocumentMeta({ title: page.title, description: page.description });
+
+  const related = getRelatedPages(page.id, 4);
 
   // Record this tool as recently used so it can be surfaced on the home page.
   useEffect(() => {
@@ -44,6 +48,23 @@ export default function PageShell({ page, children, howToUse = [] }) {
               </li>
             ))}
           </ol>
+        </section>
+      )}
+
+      {/* ── Related tools ── */}
+      {related.length > 0 && (
+        <section className={styles.related} aria-labelledby="related-heading">
+          <h2 id="related-heading" className={styles.relatedTitle}>Related tools</h2>
+          <ul className={styles.relatedGrid}>
+            {related.map(p => (
+              <li key={p.id}>
+                <Link to={p.path} className={styles.relatedCard}>
+                  <span className={styles.relatedCardTitle}>{p.title}</span>
+                  <span className={styles.relatedCardDesc}>{p.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
     </article>

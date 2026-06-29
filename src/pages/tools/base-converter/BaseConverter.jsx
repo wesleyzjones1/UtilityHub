@@ -7,9 +7,9 @@ import styles from './BaseConverter.module.css';
 
 const BASE_OPTIONS = [
   { value: 'binary',      label: 'Binary',  title: 'Binary (Base 2)' },
-  { value: 'octal',       label: 'Octal',   title: 'Octal (Base 8)' },
-  { value: 'decimal',     label: 'Decimal', title: 'Decimal (Base 10)' },
   { value: 'hexadecimal', label: 'Hex',     title: 'Hexadecimal (Base 16)' },
+  { value: 'decimal',     label: 'Decimal', title: 'Decimal (Base 10)' },
+  { value: 'octal',       label: 'Octal',   title: 'Octal (Base 8)' },
   { value: 'text',        label: 'Text',    title: 'Text (UTF-8)' },
 ];
 

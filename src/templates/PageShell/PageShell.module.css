@@ -1,7 +1,7 @@
 .shell {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 2rem var(--container-pad) 4rem;
+  padding: 1.5rem var(--container-pad) 0rem;
 }
 
 /* ── Breadcrumb ── */

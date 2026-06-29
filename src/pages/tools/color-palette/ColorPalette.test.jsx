@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouter } from '../../../test-utils';
 import ColorPalette from './ColorPalette';
@@ -18,16 +18,18 @@ describe('ColorPalette', () => {
     expect(screen.getAllByText('Color Palette Generator').length).toBeGreaterThan(0);
   });
 
-  it('default shows complementary scheme with exactly 2 swatches', () => {
+  it('default shows complementary scheme with the chosen color count', () => {
     renderWithRouter(<ColorPalette page={PAGE} />);
-    expect(screen.getAllByLabelText('Color swatch').length).toBe(2);
+    // Default count is 5: base color + 4 complementary variations.
+    expect(screen.getAllByLabelText('Color swatch').length).toBe(5);
   });
 
-  it('changing scheme to "triadic" shows 3 swatches', async () => {
+  it('changing scheme to "triadic" shows 3 swatches and hides the count field', async () => {
     const user = userEvent.setup();
     renderWithRouter(<ColorPalette page={PAGE} />);
     await user.selectOptions(screen.getByLabelText('Color scheme'), 'triadic');
     expect(screen.getAllByLabelText('Color swatch').length).toBe(3);
+    expect(screen.queryByLabelText('Number of colors')).toBeNull();
   });
 
   it('changing scheme to "monochromatic" shows 5 swatches', async () => {
@@ -35,5 +37,12 @@ describe('ColorPalette', () => {
     renderWithRouter(<ColorPalette page={PAGE} />);
     await user.selectOptions(screen.getByLabelText('Color scheme'), 'monochromatic');
     expect(screen.getAllByLabelText('Color swatch').length).toBe(5);
+  });
+
+  it('changing the color count updates the number of swatches', () => {
+    renderWithRouter(<ColorPalette page={PAGE} />);
+    const countInput = screen.getByLabelText('Number of colors');
+    fireEvent.change(countInput, { target: { value: '3' } });
+    expect(screen.getAllByLabelText('Color swatch').length).toBe(3);
   });
 });

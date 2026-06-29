@@ -186,18 +186,19 @@
   white-space: pre-wrap;
 }
 
-/* Word-level highlights */
+/* Word-level highlights — no rounding/side padding so adjacent changed
+   characters render as one continuous block instead of separate pills. */
 .wordDel {
   background: #fca5a5;
-  border-radius: 2px;
-  padding: 0 1px;
+  border-radius: 0;
+  padding: 0;
 }
 [data-theme='dark'] .wordDel { background: #7f1d1d; color: #fca5a5; }
 
 .wordIns {
   background: #86efac;
-  border-radius: 2px;
-  padding: 0 1px;
+  border-radius: 0;
+  padding: 0;
 }
 [data-theme='dark'] .wordIns { background: #14532d; color: #86efac; }
 

@@ -20,7 +20,7 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .th {
@@ -49,12 +49,18 @@
 }
 
 .td {
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1rem;
   color: var(--color-text);
   vertical-align: middle;
 }
 
 .mono {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
+}
+
+/* Superscript exponents (e.g. 10¹²) render tiny — nudge them up for legibility */
+.mono sup,
+.td sup {
+  font-size: 0.85em;
 }

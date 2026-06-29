@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
-import Select from '../../../components/ui/Select/Select';
+import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
 import { convertBase } from '../../../utils/converters';
 import styles from './BaseConverter.module.css';
 
 const BASE_OPTIONS = [
-  { value: 'binary',      label: 'Binary (Base 2)' },
-  { value: 'octal',       label: 'Octal (Base 8)' },
-  { value: 'decimal',     label: 'Decimal (Base 10)' },
-  { value: 'hexadecimal', label: 'Hexadecimal (Base 16)' },
-  { value: 'text',        label: 'Text (UTF-8)' },
+  { value: 'binary',      label: 'Binary',  title: 'Binary (Base 2)' },
+  { value: 'octal',       label: 'Octal',   title: 'Octal (Base 8)' },
+  { value: 'decimal',     label: 'Decimal', title: 'Decimal (Base 10)' },
+  { value: 'hexadecimal', label: 'Hex',     title: 'Hexadecimal (Base 16)' },
+  { value: 'text',        label: 'Text',    title: 'Text (UTF-8)' },
 ];
 
 const HOW_TO_USE = [
-  'Choose the "From" base in the left dropdown.',
-  'Choose the "To" base in the right dropdown.',
+  'Pick the "From" base using the first row of buttons.',
+  'Pick the "To" base using the second row of buttons.',
   'Enter your value in the input panel — the result appears instantly.',
   'For Text conversions, each character is space-separated in the output.',
 ];
@@ -32,14 +32,13 @@ export default function BaseConverter({ page }) {
       howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.controls}>
-          <Select
+          <ButtonGroup
             label="From"
             options={BASE_OPTIONS}
             value={from}
             onChange={setFrom}
           />
-          <span className={styles.arrow} aria-hidden="true">→</span>
-          <Select
+          <ButtonGroup
             label="To"
             options={BASE_OPTIONS}
             value={to}

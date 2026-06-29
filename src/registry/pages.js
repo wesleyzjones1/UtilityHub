@@ -157,10 +157,10 @@ export const PAGES = [
   {
     id: 'reverse-text',
     title: 'Reverse Text',
-    description: 'Reverse your entire text so it reads backward, character by character.',
+    description: 'Reverse your text backward by character, or flip the order of words — pick a mode.',
     category: 'text',
     path: '/tools/reverse-text',
-    keywords: ['reverse', 'mirror', 'backwards', 'flip'],
+    keywords: ['reverse', 'mirror', 'backwards', 'flip', 'words', 'word order', 'sentence'],
   },
   {
     id: 'reverse-text-in-word',
@@ -169,14 +169,6 @@ export const PAGES = [
     category: 'text',
     path: '/tools/reverse-text-in-word',
     keywords: ['reverse', 'word', 'characters', 'scramble'],
-  },
-  {
-    id: 'reverse-words',
-    title: 'Reverse Words',
-    description: 'Reverse the order of words in a sentence or block of text.',
-    category: 'text',
-    path: '/tools/reverse-words',
-    keywords: ['reverse', 'words', 'order', 'sentence'],
   },
   {
     id: 'sort-words',
@@ -201,14 +193,6 @@ export const PAGES = [
     category: 'text',
     path: '/tools/text-compare',
     keywords: ['compare', 'diff', 'difference', 'changes', 'side by side'],
-  },
-  {
-    id: 'text-diff',
-    title: 'Text Diff Viewer',
-    description: 'Compare two text blocks and highlight the differences.',
-    category: 'text',
-    path: '/tools/text-diff',
-    keywords: ['compare', 'difference', 'diff', 'changes'],
   },
   {
     id: 'word-counter',
@@ -399,6 +383,14 @@ export const PAGES = [
     category: 'image',
     path: '/tools/png-minifier',
     keywords: ['png', 'minify', 'compress', 'optimize', 'reduce', 'file size', 'image'],
+  },
+  {
+    id: 'remove-background',
+    title: 'Remove Background',
+    description: 'Remove a simple solid background (white, black, or auto) and export a transparent PNG.',
+    category: 'image',
+    path: '/tools/remove-background',
+    keywords: ['remove', 'background', 'transparent', 'white', 'black', 'png', 'cutout', 'erase'],
   },
   {
     id: 'png-to-jpg',

@@ -52,7 +52,7 @@
 .result {
   display: flex;
   gap: 1.5rem;
-  align-items: flex-start;
+  align-items: stretch;
   width: 100%;
   max-width: 560px;
   flex-wrap: wrap;
@@ -84,7 +84,8 @@
   min-width: 240px;
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  justify-content: center;
+  gap: 0.625rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);

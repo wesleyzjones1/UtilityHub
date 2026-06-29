@@ -22,6 +22,7 @@ import ImageResizer from './pages/tools/image-resizer/ImageResizer';
 import JpgToPng from './pages/tools/jpg-to-png/JpgToPng';
 import PngMinifier from './pages/tools/png-minifier/PngMinifier';
 import PngToJpg from './pages/tools/png-to-jpg/PngToJpg';
+import RemoveBackground from './pages/tools/remove-background/RemoveBackground';
 import SvgToPng from './pages/tools/svg-to-png/SvgToPng';
 import VideoToGif from './pages/tools/video-to-gif/VideoToGif';
 import ArrayFormatter from './pages/tools/array-formatter/ArrayFormatter';
@@ -51,7 +52,6 @@ import RemoveTextFormatting from './pages/tools/remove-text-formatting/RemoveTex
 import RemoveTrailingWhitespace from './pages/tools/remove-trailing-whitespace/RemoveTrailingWhitespace';
 import ReverseText from './pages/tools/reverse-text/ReverseText';
 import ReverseTextInWord from './pages/tools/reverse-text-in-word/ReverseTextInWord';
-import ReverseWords from './pages/tools/reverse-words/ReverseWords';
 import SortWords from './pages/tools/sort-words/SortWords';
 import StrikethroughText from './pages/tools/strikethrough-text/StrikethroughText';
 import TextCompare from './pages/tools/text-compare/TextCompare';
@@ -74,7 +74,6 @@ import RandomNumber from './pages/tools/random-number/RandomNumber';
 import StatisticsCalc from './pages/tools/statistics-calc/StatisticsCalc';
 import ScientificCalc from './pages/tools/scientific-calc/ScientificCalc';
 import LoremIpsum from './pages/tools/lorem-ipsum/LoremIpsum';
-import TextDiff from './pages/tools/text-diff/TextDiff';
 
 const TOOL_COMPONENTS = {
   'add-punctuation':        AddPunctuation,
@@ -89,6 +88,7 @@ const TOOL_COMPONENTS = {
   'jpg-to-png':             JpgToPng,
   'png-minifier':           PngMinifier,
   'png-to-jpg':             PngToJpg,
+  'remove-background':      RemoveBackground,
   'svg-to-png':             SvgToPng,
   'video-to-gif':           VideoToGif,
   'distance-converter':     DistanceConverter,
@@ -115,7 +115,6 @@ const TOOL_COMPONENTS = {
   'remove-trailing-whitespace': RemoveTrailingWhitespace,
   'reverse-text':           ReverseText,
   'reverse-text-in-word':   ReverseTextInWord,
-  'reverse-words':          ReverseWords,
   'sort-words':             SortWords,
   'strikethrough-text':     StrikethroughText,
   'text-compare':           TextCompare,
@@ -138,7 +137,6 @@ const TOOL_COMPONENTS = {
   'statistics-calc':        StatisticsCalc,
   'scientific-calc':        ScientificCalc,
   'lorem-ipsum':            LoremIpsum,
-  'text-diff':              TextDiff,
 };
 
 function buildRouter() {

@@ -27,4 +27,12 @@ describe('ReverseText', () => {
     renderWithRouter(<ReverseText page={PAGE} />);
     expect(screen.getByRole('textbox', { name: /reversed/i }).value).toBe('');
   });
+
+  it('reverses word order in "Reverse word order" mode', async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<ReverseText page={PAGE} />);
+    await user.click(screen.getByRole('button', { name: /reverse word order/i }));
+    await user.type(screen.getByRole('textbox', { name: /original/i }), 'hello world');
+    expect(screen.getByRole('textbox', { name: /reversed/i }).value).toBe('world hello');
+  });
 });

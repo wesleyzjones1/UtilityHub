@@ -23,8 +23,8 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  width: min(440px, 80vmin);
-  height: min(440px, 80vmin);
+  width: min(580px, 86vmin);
+  height: min(580px, 86vmin);
 }
 
 .timerBtn:disabled {
@@ -50,6 +50,8 @@
   stroke-width: 8;
   stroke-linecap: round;
   transition: stroke-dasharray 0.9s linear;
+  /* Subtle blue glow around the progress arc */
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.65));
 }
 
 .overlayDone .ringProgress {
@@ -66,12 +68,14 @@
 }
 
 .time {
-  font-size: clamp(2.75rem, 10vmin, 5.5rem);
+  font-size: clamp(3.5rem, 13vmin, 7rem);
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   line-height: 1;
   color: var(--color-text);
   letter-spacing: -0.02em;
+  /* Soft glow hue behind the numbers */
+  text-shadow: 0 0 28px rgba(59, 130, 246, 0.35);
 }
 
 .pausedLabel {

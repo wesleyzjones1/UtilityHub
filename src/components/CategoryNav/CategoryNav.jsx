@@ -13,13 +13,21 @@ function ChevronIcon() {
 
 function Dropdown({ category, pages, onClose }) {
   const isWide = pages.length > 8;
+  // For the 2-column layout, fill column-major (down the first column, then the
+  // second) by laying the items out in a fixed number of rows.
+  const wideStyle = isWide
+    ? { gridTemplateRows: `repeat(${Math.ceil(pages.length / 2)}, auto)` }
+    : undefined;
   return (
     <div
       className={`${styles.dropdown} ${isWide ? styles.dropdownWide : ''}`}
       role="menu"
       aria-label={`${category.label} tools`}
     >
-      <ul className={`${styles.dropdownList} ${isWide ? styles.dropdownListWide : ''}`}>
+      <ul
+        className={`${styles.dropdownList} ${isWide ? styles.dropdownListWide : ''}`}
+        style={wideStyle}
+      >
         {pages.map(page => (
           <li key={page.id}>
             <Link

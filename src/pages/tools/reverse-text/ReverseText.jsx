@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
-import { reverseText, reverseWords } from '../../../utils/textTransforms';
+import { reverseText, reverseWords, reverseTextInEachWord } from '../../../utils/textTransforms';
 
 const MODE_OPTIONS = [
   { value: 'characters', label: 'Reverse characters' },
-  { value: 'words', label: 'Reverse word order' },
+  { value: 'words',      label: 'Reverse word order' },
+  { value: 'each-word',  label: 'Reverse text in each word' },
 ];
 
 const HOW_TO_USE = [
@@ -20,9 +21,9 @@ export default function ReverseText({ page }) {
   const [mode, setMode] = useState('characters');
 
   const output = input
-    ? mode === 'words'
-      ? reverseWords(input)
-      : reverseText(input)
+    ? mode === 'words'     ? reverseWords(input)
+    : mode === 'each-word' ? reverseTextInEachWord(input)
+    : reverseText(input)
     : '';
 
   return (

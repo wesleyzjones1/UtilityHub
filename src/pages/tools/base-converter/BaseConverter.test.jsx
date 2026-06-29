@@ -22,11 +22,11 @@ describe('BaseConverter', () => {
     expect(screen.getByRole('group', { name: /to/i })).toBeDefined();
   });
 
-  it('converts decimal 10 to binary 1010', async () => {
+  it('converts binary 1010 to hex A', async () => {
     const user = userEvent.setup();
     renderWithRouter(<BaseConverter page={PAGE} />);
-    await user.type(screen.getByRole('textbox', { name: /input/i }), '10');
-    expect(screen.getByRole('textbox', { name: /result/i }).value).toBe('1010');
+    await user.type(screen.getByRole('textbox', { name: /input/i }), '1010');
+    expect(screen.getByRole('textbox', { name: /output/i }).value).toBe('A');
   });
 
   it('shows error for invalid binary input', async () => {
@@ -48,11 +48,11 @@ describe('BaseConverter', () => {
     await user.click(within(fromGroup).getByRole('button', { name: 'Text' }));
     await user.click(within(toGroup).getByRole('button', { name: 'Hex' }));
     await user.type(screen.getByRole('textbox', { name: /input/i }), 'A');
-    expect(screen.getByRole('textbox', { name: /result/i }).value).toBe('41');
+    expect(screen.getByRole('textbox', { name: /output/i }).value).toBe('41');
   });
 
   it('shows empty output for empty input', () => {
     renderWithRouter(<BaseConverter page={PAGE} />);
-    expect(screen.getByRole('textbox', { name: /result/i }).value).toBe('');
+    expect(screen.getByRole('textbox', { name: /output/i }).value).toBe('');
   });
 });

@@ -7,10 +7,10 @@ import styles from './ButtonGroup.module.css';
  *
  * options: array of strings or { value, label, title }.
  */
-export default function ButtonGroup({ label, options = [], value, onChange, className }) {
+export default function ButtonGroup({ label, hideLabel = false, options = [], value, onChange, className }) {
   return (
     <div className={[styles.wrapper, className].filter(Boolean).join(' ')}>
-      {label && <span className={styles.label}>{label}</span>}
+      {label && !hideLabel && <span className={styles.label}>{label}</span>}
       <div className={styles.buttons} role="group" aria-label={label}>
         {options.map(opt => {
           const v = typeof opt === 'string' ? opt : opt.value;

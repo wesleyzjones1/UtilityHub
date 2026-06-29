@@ -25,6 +25,7 @@ export default function DualPanelTemplate({
   inputPlaceholder = 'Paste or type your input here…',
   outputPlaceholder = 'Output will appear here…',
   actions,
+  hideHeaderActions = false,
 }) {
   return (
     <PageShell page={page} howToUse={howToUse}>
@@ -39,7 +40,7 @@ export default function DualPanelTemplate({
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
             <span className={styles.panelLabel}>{inputLabel}</span>
-            {input && onInputChange && (
+            {!hideHeaderActions && input && onInputChange && (
               <button
                 className={styles.clearBtn}
                 onClick={() => onInputChange('')}
@@ -74,7 +75,7 @@ export default function DualPanelTemplate({
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
             <span className={styles.panelLabel}>{outputLabel}</span>
-            {output && <CopyButton value={output} size="sm" />}
+            {!hideHeaderActions && output && <CopyButton value={output} size="sm" />}
           </div>
           {outputControls && (
             <div className={styles.panelControls}>{outputControls}</div>

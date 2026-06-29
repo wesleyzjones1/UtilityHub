@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY, PAGE_BY_ID, PAGES, searchPages } from '../../registry/pages';
 import { useLanguage } from '../../context/LanguageContext';
 import { useFavorites } from '../../context/FavoritesContext';
-import { readRecentTools } from '../../hooks/useRecentTools';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import styles from './Home.module.css';
@@ -186,7 +185,7 @@ function CategorySection({ category }) {
 function PinnedRow({ title, pages }) {
   return (
     <div className={styles.pinnedRow}>
-      <h2 className={styles.pinnedTitle}>{title}</h2>
+      <h3 className={styles.pinnedCat}>{title}</h3>
       <ul className={styles.toolGrid}>
         {pages.map(page => <ToolChip key={page.id} page={page} />)}
       </ul>
@@ -197,19 +196,23 @@ function PinnedRow({ title, pages }) {
 function PinnedSection() {
   const { favorites } = useFavorites();
   const favPages = favorites.map(id => PAGE_BY_ID[id]).filter(Boolean);
-  const recentPages = readRecentTools()
-    .map(id => PAGE_BY_ID[id])
-    .filter(Boolean)
-    .filter(p => !favorites.includes(p.id))
-    .slice(0, 8);
 
-  if (favPages.length === 0 && recentPages.length === 0) return null;
+  if (favPages.length === 0) return null;
+
+  // Group saved tools under their category ("tab"), preserving category order.
+  const groups = Object.values(CATEGORIES)
+    .map(cat => ({ cat, pages: favPages.filter(p => p.category === cat.id) }))
+    .filter(group => group.pages.length > 0);
 
   return (
-    <section className={styles.pinned} aria-label="Your tools">
+    <section className={styles.pinned} aria-label="Favorites">
       <div className={styles.catInner}>
-        {favPages.length > 0 && <PinnedRow title="Favorites" pages={favPages} />}
-        {recentPages.length > 0 && <PinnedRow title="Recently used" pages={recentPages} />}
+        <h2 className={styles.pinnedHeading}>
+          <span className={styles.pinnedStar} aria-hidden="true">★</span> Favorites
+        </h2>
+        {groups.map(({ cat, pages }) => (
+          <PinnedRow key={cat.id} title={cat.label} pages={pages} />
+        ))}
       </div>
     </section>
   );

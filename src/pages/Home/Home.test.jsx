@@ -139,4 +139,23 @@ describe('Home page', () => {
       expect(screen.getAllByText(`${count} tools`).length).toBeGreaterThan(0);
     }
   });
+
+  it('does not show a Favorites section when nothing is saved', () => {
+    render(<Wrapped />);
+    expect(screen.queryByText('Favorites')).toBeNull();
+  });
+
+  it('shows a Favorites section grouped by category when tools are saved', () => {
+    store['uh-favorites'] = JSON.stringify(['word-counter']);
+    render(<Wrapped />);
+    expect(screen.getByText('Favorites')).toBeDefined();
+    // word-counter is a Text tool → the category label heads its group
+    expect(screen.getAllByText('Text Tools').length).toBeGreaterThan(1);
+  });
+
+  it('no longer shows a Recently used section', () => {
+    store['uh-recent-tools'] = JSON.stringify(['word-counter']);
+    render(<Wrapped />);
+    expect(screen.queryByText(/recently used/i)).toBeNull();
+  });
 });

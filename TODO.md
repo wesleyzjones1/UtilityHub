@@ -31,7 +31,7 @@ Support button on the site shows whichever you configure.
 
 **Recommended for speed: Ko-fi** (no platform fee on donations, pays out via PayPal/Stripe)
 1. Go to <https://ko-fi.com> → **Sign up**.
-2. Pick your page name → your page becomes `https://ko-fi.com/YOURNAME`.
+2. Pick your page name → your page becomes `https://ko-fi.com/wesleyzjones1`.
 3. Go to **Settings → Payments** and connect **PayPal** *or* **Stripe**
    (this is the bank/payout connection — have your bank or PayPal login ready).
 4. Copy your page URL: `https://ko-fi.com/YOURNAME`.
@@ -50,19 +50,19 @@ Stripe/PayPal → your URL is `https://buymeacoffee.com/YOURNAME`.
 
 ---
 
-## 3. 🟡 Turn on the donation button  ·  ⏱ 5 min
+## 3. ✅ Turn on the donation button  ·  DONE
 
-The workflow is already wired to read these — you just add the value(s):
+Your Ko-fi page (`https://ko-fi.com/wesleyzjones1`) is now wired in as the
+built-in default, so the **♥ Support** button shows the Ko-fi option out of the box.
 
-1. Repo → **Settings → Secrets and variables → Actions → Variables** tab.
-2. Click **New repository variable** and add whichever you set up:
-   - Name `VITE_KOFI_URL`  ·  Value `https://ko-fi.com/YOURNAME`
-   - and/or `VITE_BMAC_URL` → `https://buymeacoffee.com/YOURNAME`
-   - and/or `VITE_SPONSORS_URL` → `https://github.com/sponsors/YOURNAME`
-3. Re-deploy: Actions → latest run → **Re-run all jobs** (or just push any change).
+Optional overrides (no code change needed) — add any of these as repo variables
+under **Settings → Secrets and variables → Actions → Variables**:
 
-✅ Done when the “♥ Support” button shows your donation option(s).
-(Until then it correctly shows only Share / Star-on-GitHub — no broken links.)
+- `VITE_KOFI_URL` → overrides the default Ko-fi link
+- `VITE_BMAC_URL` → `https://buymeacoffee.com/YOURNAME`
+- `VITE_SPONSORS_URL` → `https://github.com/sponsors/YOURNAME`
+
+Adding `VITE_BMAC_URL` or `VITE_SPONSORS_URL` shows those buttons alongside Ko-fi.
 
 ---
 

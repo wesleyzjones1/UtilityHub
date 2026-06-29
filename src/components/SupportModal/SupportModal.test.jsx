@@ -45,9 +45,11 @@ describe('SupportModal', () => {
     expect(screen.queryByText(/\$5\/mo/i)).toBeNull();
   });
 
-  it('offers a GitHub star link when no donation links are configured', () => {
+  it('shows the configured Ko-fi donation link', () => {
     render(<Wrapped />);
-    expect(screen.getByRole('link', { name: /star on github/i })).toBeDefined();
+    const kofi = screen.getByRole('link', { name: /ko-fi/i });
+    expect(kofi).toBeDefined();
+    expect(kofi.getAttribute('href')).toBe('https://ko-fi.com/wesleyzjones1');
   });
 
   it('does not show privacy/tracking reassurance copy', () => {

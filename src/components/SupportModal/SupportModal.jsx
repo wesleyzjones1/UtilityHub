@@ -4,7 +4,7 @@ import styles from './SupportModal.module.css';
 
 const REPO_URL = import.meta.env.VITE_REPO_URL ?? 'https://github.com/wesleyzjones1/UtilityHub';
 const SPONSORS_URL = import.meta.env.VITE_SPONSORS_URL ?? '';
-const KOFI_URL = import.meta.env.VITE_KOFI_URL ?? '';
+const KOFI_URL = import.meta.env.VITE_KOFI_URL ?? 'https://ko-fi.com/wesleyzjones1';
 const BMAC_URL = import.meta.env.VITE_BMAC_URL ?? '';
 
 // Only the donation links that are actually configured are shown.

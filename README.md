@@ -7,7 +7,7 @@ UtilityHub is a clean, easy-to-use collection of web tools for text, data, engin
 ```
 1. 
 This prompt was inturruped because of session limits, scan to see where the agent left off and continue from there,
-You are a professional software engineer working on a website. keep the code clean and maintainable and do not over engineer. use /find-skills to find necessary skills during development and skill frontmatter /vercel-react-best-practices if needed. After all tasks are complete for each full prompt, commit the changes to github.
+You are a professional software engineer working on a website. keep the code clean and maintainable and do not over engineer. use /find-skills to find necessary skills during development and skill frontmatter /vercel-react-best-practices if needed.
 
 Build all text-related tools for UtilityHub using the shared templates. Focus on simple, fast, local-first logic wherever possible.
 
@@ -236,7 +236,7 @@ Testing requirements:
 8.
 Add a color picker tool where you can click on a color on your computer and it will show you the RGB value is #FFFFFF and also copy it to clipboard and display the color picked.
 
-Add a Countdown Timer page that allows you to simply tyle in a number and it countsdown from there, this should cover the whole screen similar to https://e.ggtimer.com/5 and should be easy to control and stop with escape. the timer should also show the countdown in the taskbar next to the .ico.
+Add a Countdown Timer page that allows you to simply tyle in a number and it countsdown from there, this should cover the whole screen similar to https://e.ggtimer.com/5 and should be easy to control and stop with escape.
 
 Testing requirements:
 - Add automated tests for all major components and page logic.

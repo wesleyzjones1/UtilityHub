@@ -39,8 +39,9 @@
   top: calc(100% + 6px);
   right: 0;
   z-index: 200;
-  width: 260px;
-  max-height: 70vh;
+  max-width: 90vw;
+  width: auto;
+  max-height: 60vh;
   overflow-y: auto;
   overscroll-behavior: contain;
   background: var(--color-surface);
@@ -57,14 +58,19 @@
 }
 
 .groups {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.75rem;
+}
+
+.group {
   display: flex;
   flex-direction: column;
 }
 
 .group + .group {
-  margin-top: 0.25rem;
-  padding-top: 0.25rem;
-  border-top: 1px solid var(--color-border);
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--color-border);
 }
 
 .groupLabel {

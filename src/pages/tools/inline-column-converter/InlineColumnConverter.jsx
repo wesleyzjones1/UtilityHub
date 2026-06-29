@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
+import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
 import Select from '../../../components/ui/Select/Select';
-import Toggle from '../../../components/ui/Toggle/Toggle';
 import { columnsToInline, inlineToColumns } from '../../../utils/textTransforms';
 import styles from './InlineColumnConverter.module.css';
 
@@ -23,9 +23,10 @@ const HOW_TO_USE = [
 
 export default function InlineColumnConverter({ page }) {
   const [input, setInput] = useState('');
-  const [toInline, setToInline] = useState(true);
+  const [direction, setDirection] = useState('to-inline');
   const [separator, setSeparator] = useState(', ');
 
+  const toInline = direction === 'to-inline';
   const output = input
     ? toInline
       ? columnsToInline(input, separator)
@@ -38,10 +39,13 @@ export default function InlineColumnConverter({ page }) {
       howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.controls}>
-          <Toggle
-            checked={toInline}
-            onChange={setToInline}
-            label={toInline ? 'Column → Inline' : 'Inline → Column'}
+          <ButtonGroup
+            options={[
+              { value: 'to-inline', label: 'Column → Inline' },
+              { value: 'to-column', label: 'Inline → Column' },
+            ]}
+            value={direction}
+            onChange={setDirection}
           />
           <Select
             label="Separator"

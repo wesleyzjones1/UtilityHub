@@ -26,9 +26,10 @@ describe('InlineColumnConverter', () => {
     expect(output).toContain('c');
   });
 
-  it('renders the direction toggle', () => {
+  it('renders the direction buttons', () => {
     renderWithRouter(<InlineColumnConverter page={PAGE} />);
-    expect(screen.getByRole('switch')).toBeDefined();
+    expect(screen.getByRole('button', { name: 'Column → Inline' })).toBeDefined();
+    expect(screen.getByRole('button', { name: 'Inline → Column' })).toBeDefined();
   });
 
   it('renders the separator select', () => {

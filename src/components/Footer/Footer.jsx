@@ -19,7 +19,8 @@ export default function Footer() {
             If this tool saved you time, consider supporting the project.
           </span>
           <button className={styles.supportBtn} onClick={openSupport} aria-label="Support UtilityHub">
-            Support <span className={styles.heart} aria-hidden="true">♥</span>
+            <span className={styles.supportHeart} aria-hidden="true">♥</span>
+            <span>Support</span>
           </button>
         </div>
         <div className={styles.links}>

@@ -28,7 +28,6 @@ import VideoToGif from './pages/tools/video-to-gif/VideoToGif';
 import ArrayFormatter from './pages/tools/array-formatter/ArrayFormatter';
 import BaseConverter from './pages/tools/base-converter/BaseConverter';
 import CssMinifier from './pages/tools/css-minifier/CssMinifier';
-import DistanceConverter from './pages/tools/distance-converter/DistanceConverter';
 import EngineeringCheatSheet from './pages/tools/engineering-cheat-sheet/EngineeringCheatSheet';
 import FahrenheitCelsius from './pages/tools/fahrenheit-celsius/FahrenheitCelsius';
 import HtmlFormatter from './pages/tools/html-formatter/HtmlFormatter';
@@ -91,7 +90,6 @@ const TOOL_COMPONENTS = {
   'remove-background':      RemoveBackground,
   'svg-to-png':             SvgToPng,
   'video-to-gif':           VideoToGif,
-  'distance-converter':     DistanceConverter,
   'engineering-cheat-sheet': EngineeringCheatSheet,
   'fahrenheit-celsius':     FahrenheitCelsius,
   'html-formatter':         HtmlFormatter,

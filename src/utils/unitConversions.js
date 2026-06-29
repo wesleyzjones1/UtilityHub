@@ -18,7 +18,8 @@ export const UNIT_CATEGORIES = {
       in: { label: 'Inch (in)',       factor: 0.0254 },
       ft: { label: 'Foot (ft)',       factor: 0.3048 },
       yd: { label: 'Yard (yd)',       factor: 0.9144 },
-      mi: { label: 'Mile (mi)',       factor: 1609.344 },
+      mi:  { label: 'Mile (mi)',           factor: 1609.344 },
+      nmi: { label: 'Nautical mile (nmi)', factor: 1852 },
     },
   },
   mass: {

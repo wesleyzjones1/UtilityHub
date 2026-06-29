@@ -221,14 +221,6 @@ export const PAGES = [
     keywords: ['binary', 'hex', 'octal', 'decimal', 'base', 'text', 'ascii'],
   },
   {
-    id: 'distance-converter',
-    title: 'Distance Converter',
-    description: 'Convert between metric and imperial length units like cm, m, inches, and feet.',
-    category: 'math',
-    path: '/tools/distance-converter',
-    keywords: ['distance', 'length', 'mm', 'cm', 'm', 'km', 'inch', 'feet', 'miles', 'convert'],
-  },
-  {
     id: 'engineering-cheat-sheet',
     title: 'Engineering Cheat Sheet',
     description: 'Quick-reference tables for SI prefixes, capacitors, frequency, and more.',
@@ -295,10 +287,10 @@ export const PAGES = [
   {
     id: 'unit-converter',
     title: 'Unit Converter',
-    description: 'Convert between length, weight, temperature, volume, and other units.',
+    description: 'Convert between length, mass, temperature, volume, area, and more.',
     category: 'math',
     path: '/tools/unit-converter',
-    keywords: ['convert', 'length', 'weight', 'temperature', 'volume', 'meters', 'feet'],
+    keywords: ['convert', 'length', 'distance', 'weight', 'mass', 'temperature', 'volume', 'area', 'meters', 'feet', 'km', 'miles', 'celsius', 'fahrenheit'],
   },
 
   // ── Color Tools ─────────────────────────────────────────────────────────────

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import Flag from './Flag';
 import styles from './LanguageSelector.module.css';
 
 function ChevronIcon() {
@@ -40,7 +41,7 @@ export default function LanguageSelector() {
         aria-haspopup="listbox"
         aria-label={`${t('languageLabel')}: ${currentLanguage.label}`}
       >
-        <span className={styles.flag} aria-hidden="true">{currentLanguage.flag}</span>
+        <Flag code={currentLanguage.code} className={styles.flag} />
         <span className={styles.short}>{currentLanguage.short}</span>
         <ChevronIcon />
       </button>
@@ -53,7 +54,7 @@ export default function LanguageSelector() {
                 className={`${styles.option} ${lang.code === currentLanguage.code ? styles.optionSelected : ''}`}
                 onClick={() => { changeLanguage(lang.code); close(); }}
               >
-                <span className={styles.optionFlag} aria-hidden="true">{lang.flag}</span>
+                <Flag code={lang.code} className={styles.optionFlag} />
                 <span className={styles.optionLabel}>{lang.label}</span>
               </button>
             </li>

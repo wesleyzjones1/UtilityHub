@@ -49,6 +49,7 @@ export default function DualPanelTemplate({
             )}
           </div>
           <Textarea
+            className={styles.field}
             value={input}
             onChange={onInputChange}
             placeholder={inputPlaceholder}
@@ -71,6 +72,7 @@ export default function DualPanelTemplate({
             {output && <CopyButton value={output} size="sm" />}
           </div>
           <Textarea
+            className={styles.field}
             value={output}
             readOnly
             placeholder={outputPlaceholder}

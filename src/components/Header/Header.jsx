@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import CategoryNav from '../CategoryNav/CategoryNav';
 import SearchBar from '../SearchBar/SearchBar';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import FavoritesMenu from '../FavoritesMenu/FavoritesMenu';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import MobileMenu from './MobileMenu';
 import { useSupport } from '../../context/SupportContext';
@@ -72,6 +73,7 @@ export default function Header({ onOpenPalette }) {
                 <kbd className={styles.paletteKbd}>⌘K</kbd>
               </button>
             )}
+            <FavoritesMenu />
             <LanguageSelector />
             <button
               className={styles.supportBtn}

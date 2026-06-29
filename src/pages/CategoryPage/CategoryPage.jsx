@@ -1,6 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
-import AdBanner from '../../components/AdBanner/AdBanner';
 import styles from './CategoryPage.module.css';
 
 export default function CategoryPage() {
@@ -29,8 +28,6 @@ export default function CategoryPage() {
           </li>
         ))}
       </ul>
-
-      <AdBanner />
     </div>
   );
 }

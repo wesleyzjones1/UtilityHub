@@ -34,15 +34,6 @@ function Dropdown({ category, pages, onClose }) {
           </li>
         ))}
       </ul>
-      <div className={styles.dropdownFooter}>
-        <Link
-          to={`/tools/category/${category.id}`}
-          className={styles.dropdownFooterLink}
-          onClick={onClose}
-        >
-          View all {pages.length} tools →
-        </Link>
-      </div>
     </div>
   );
 }

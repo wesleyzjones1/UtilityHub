@@ -27,15 +27,16 @@ describe('SortWords', () => {
   it('sorts Z→A when desc selected', async () => {
     const user = userEvent.setup();
     renderWithRouter(<SortWords page={PAGE} />);
-    await user.selectOptions(screen.getByRole('combobox'), 'desc');
+    await user.click(screen.getByRole('button', { name: 'Z → A' }));
     await user.type(screen.getByRole('textbox', { name: /words/i }), 'apple banana');
     const output = screen.getByRole('textbox', { name: /sorted/i }).value;
     expect(output.split('\n')[0].toLowerCase()).toBe('banana');
   });
 
-  it('renders sort order select', () => {
+  it('renders sort order buttons', () => {
     renderWithRouter(<SortWords page={PAGE} />);
-    expect(screen.getByRole('combobox')).toBeDefined();
+    expect(screen.getByRole('button', { name: 'A → Z' })).toBeDefined();
+    expect(screen.getByRole('button', { name: 'Z → A' })).toBeDefined();
   });
 
   it('renders case sensitive toggle', () => {

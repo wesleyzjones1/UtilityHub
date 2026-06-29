@@ -23,7 +23,6 @@ function Consumer() {
     <div>
       <span data-testid="code">{language}</span>
       <span data-testid="short">{currentLanguage.short}</span>
-      <span data-testid="flag">{currentLanguage.flag}</span>
       <span data-testid="count">{languages.length}</span>
       <span data-testid="t-nav-home">{t('navHome')}</span>
       <button onClick={() => changeLanguage('es')}>switch-es</button>
@@ -57,11 +56,9 @@ describe('LanguageProvider', () => {
     expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-lang', 'es');
   });
 
-  it('each language has a flag emoji', () => {
-    render(<LanguageProvider><Consumer /></LanguageProvider>);
-    expect(screen.getByTestId('flag').textContent).toBeTruthy();
+  it('each language has a short code label', () => {
     for (const lang of LANGUAGES) {
-      expect(lang.flag).toBeTruthy();
+      expect(lang.short).toBeTruthy();
     }
   });
 

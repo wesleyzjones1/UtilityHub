@@ -20,6 +20,16 @@
   min-width: 0;
 }
 
+/* Both fields fill their panel equally so input and output match height */
+.field {
+  flex: 1;
+}
+
+.field textarea {
+  height: 100%;
+  min-height: 18rem;
+}
+
 .panelHeader {
   display: flex;
   align-items: center;

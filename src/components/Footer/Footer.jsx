@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <span className={styles.copy}>
-          &copy; {new Date().getFullYear()} UtilityHub &mdash; free tools, no sign-up required.
+          &copy; {new Date().getFullYear()} UtilityHub
         </span>
         <div className={styles.links}>
           <InstallButton />
@@ -20,9 +20,6 @@ export default function Footer() {
           <button className={styles.linkBtn} onClick={openSupport}>
             <span className={styles.heart} aria-hidden="true">♥</span> Support
           </button>
-          <a className={styles.link} href={REPO_URL} target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
         </div>
       </div>
     </footer>

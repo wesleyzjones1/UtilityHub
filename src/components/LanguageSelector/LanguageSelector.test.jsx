@@ -29,9 +29,9 @@ describe('LanguageSelector', () => {
   });
 
   it('shows current language flag', () => {
-    render(<Wrapped />);
-    const enLang = LANGUAGES.find(l => l.code === 'en');
-    expect(screen.getAllByText(enLang.flag).length).toBeGreaterThan(0);
+    const { container } = render(<Wrapped />);
+    // Flags render as inline SVGs; at least the trigger flag should be present.
+    expect(container.querySelectorAll('svg').length).toBeGreaterThan(0);
   });
 
   it('dropdown is hidden initially', () => {
@@ -57,11 +57,10 @@ describe('LanguageSelector', () => {
 
   it('shows flags for all languages when open', async () => {
     const user = userEvent.setup();
-    render(<Wrapped />);
+    const { container } = render(<Wrapped />);
     await user.click(screen.getByRole('button', { name: /language/i }));
-    for (const lang of LANGUAGES) {
-      expect(screen.getAllByText(lang.flag).length).toBeGreaterThan(0);
-    }
+    // One SVG flag per option (plus the trigger flag and chevron).
+    expect(container.querySelectorAll('svg').length).toBeGreaterThanOrEqual(LANGUAGES.length);
   });
 
   it('closes dropdown on Escape', async () => {

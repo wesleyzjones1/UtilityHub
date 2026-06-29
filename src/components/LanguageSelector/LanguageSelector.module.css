@@ -23,8 +23,8 @@
 }
 
 .flag {
-  font-size: 1rem;
-  line-height: 1;
+  box-shadow: 0 0 0 1px var(--color-border);
+  border-radius: 2px;
 }
 
 .short {
@@ -73,9 +73,9 @@
 }
 
 .optionFlag {
-  font-size: 1rem;
-  line-height: 1;
   flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--color-border);
+  border-radius: 2px;
 }
 
 .optionLabel {

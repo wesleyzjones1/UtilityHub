@@ -30,17 +30,18 @@ describe('AddPunctuation', () => {
     expect(screen.getByRole('textbox', { name: /with punctuation/i }).value).toBe('Hello.');
   });
 
-  it('selects different punctuation marks', async () => {
+  it('selects different punctuation marks via buttons', async () => {
     const user = userEvent.setup();
     renderWithRouter(<AddPunctuation page={PAGE} />);
-    const selects = screen.getAllByRole('combobox');
-    await user.selectOptions(selects[0], '!');
+    await user.click(screen.getByRole('button', { name: '!' }));
     await user.type(screen.getByRole('textbox', { name: /input/i }), 'Hello');
     expect(screen.getByRole('textbox', { name: /with punctuation/i }).value).toBe('Hello!');
   });
 
-  it('renders both control dropdowns', () => {
+  it('renders punctuation buttons and a mode dropdown', () => {
     renderWithRouter(<AddPunctuation page={PAGE} />);
-    expect(screen.getAllByRole('combobox').length).toBe(2);
+    expect(screen.getAllByRole('combobox').length).toBe(1);
+    expect(screen.getByRole('button', { name: '.' })).toBeDefined();
+    expect(screen.getByRole('button', { name: '?' })).toBeDefined();
   });
 });

@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
+import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
 import { addPunctuation } from '../../../utils/textTransforms';
 import styles from './AddPunctuation.module.css';
 
 const PUNCT_OPTIONS = [
-  { value: '.', label: 'Period (.)' },
-  { value: '!', label: 'Exclamation (!)' },
-  { value: '?', label: 'Question mark (?)' },
-  { value: ',', label: 'Comma (,)' },
-  { value: ';', label: 'Semicolon (;)' },
-  { value: ':', label: 'Colon (:)' },
+  { value: '.', label: '.', title: 'Period' },
+  { value: '!', label: '!', title: 'Exclamation mark' },
+  { value: '?', label: '?', title: 'Question mark' },
+  { value: ',', label: ',', title: 'Comma' },
+  { value: ';', label: ';', title: 'Semicolon' },
+  { value: ':', label: ':', title: 'Colon' },
 ];
 
 const MODE_OPTIONS = [
@@ -39,7 +40,7 @@ export default function AddPunctuation({ page }) {
       howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.controls}>
-          <Select
+          <ButtonGroup
             label="Punctuation"
             options={PUNCT_OPTIONS}
             value={punct}

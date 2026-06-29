@@ -103,21 +103,6 @@ export default function ColorPicker({ page }) {
                 value={`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`}
                 copyText={`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`}
               />
-              <ColorValue
-                label="R"
-                value={String(rgb.r)}
-                copyText={String(rgb.r)}
-              />
-              <ColorValue
-                label="G"
-                value={String(rgb.g)}
-                copyText={String(rgb.g)}
-              />
-              <ColorValue
-                label="B"
-                value={String(rgb.b)}
-                copyText={String(rgb.b)}
-              />
             </div>
           </div>
         )}

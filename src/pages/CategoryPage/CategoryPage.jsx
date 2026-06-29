@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import AdBanner from '../../components/AdBanner/AdBanner';
 import styles from './CategoryPage.module.css';
 
 export default function CategoryPage() {
@@ -12,11 +13,6 @@ export default function CategoryPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-          <Link to="/" className={styles.bcLink}>Home</Link>
-          <span className={styles.bcSep} aria-hidden="true">/</span>
-          <span className={styles.bcCurrent} aria-current="page">{category.label}</span>
-        </nav>
         <h1 className={styles.title}>{category.label}</h1>
         <p className={styles.subtitle}>
           {category.description} &mdash; {pages.length} tool{pages.length !== 1 ? 's' : ''}
@@ -33,6 +29,8 @@ export default function CategoryPage() {
           </li>
         ))}
       </ul>
+
+      <AdBanner />
     </div>
   );
 }

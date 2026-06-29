@@ -5,6 +5,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
+import AdBanner from '../../components/AdBanner/AdBanner';
 import styles from './Home.module.css';
 
 function SearchIcon() {
@@ -247,6 +248,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <AdBanner />
     </div>
   );
 }

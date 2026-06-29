@@ -6,6 +6,9 @@ import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '../../context/ThemeContext';
 import { LanguageProvider } from '../../context/LanguageContext';
+import { AdPreferenceProvider } from '../../context/AdPreferenceContext';
+import { FavoritesProvider } from '../../context/FavoritesContext';
+import { SupportProvider } from '../../context/SupportContext';
 import { render } from '@testing-library/react';
 
 function renderCategory(categoryId) {
@@ -13,10 +16,16 @@ function renderCategory(categoryId) {
     <MemoryRouter initialEntries={[`/tools/category/${categoryId}`]}>
       <ThemeProvider>
         <LanguageProvider>
-          <Routes>
-            <Route path="/tools/category/:categoryId" element={<CategoryPage />} />
-            <Route path="/" element={<div>home</div>} />
-          </Routes>
+          <AdPreferenceProvider>
+            <FavoritesProvider>
+              <SupportProvider>
+                <Routes>
+                  <Route path="/tools/category/:categoryId" element={<CategoryPage />} />
+                  <Route path="/" element={<div>home</div>} />
+                </Routes>
+              </SupportProvider>
+            </FavoritesProvider>
+          </AdPreferenceProvider>
         </LanguageProvider>
       </ThemeProvider>
     </MemoryRouter>,
@@ -36,11 +45,6 @@ describe('CategoryPage', () => {
     for (const page of pages) {
       expect(screen.getByText(page.title)).toBeDefined();
     }
-  });
-
-  it('renders a breadcrumb with Home link', () => {
-    renderCategory('math');
-    expect(screen.getByRole('link', { name: /home/i })).toBeDefined();
   });
 
   it('shows the tool count', () => {

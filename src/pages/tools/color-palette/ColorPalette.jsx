@@ -15,13 +15,14 @@ function rotateHue(h, degrees) {
 }
 
 function hslToHex(h, s, l) {
-  const a = s * Math.min(l, 1 - l) / 100;
+  const sn = s / 100;
+  const ln = l / 100;
+  const a = sn * Math.min(ln, 1 - ln);
   const f = n => {
     const k = (n + h / 30) % 12;
-    const color = l / 100 - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-    return Math.round(255 * color);
+    return ln - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
   };
-  return rgbToHex(f(0), f(8), f(4));
+  return rgbToHex(Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255));
 }
 
 function generatePalette(baseHex, scheme) {

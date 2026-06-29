@@ -40,12 +40,32 @@
 /* ── Arrow divider ── */
 .divider {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 0 0.875rem;
-  padding-top: calc(28px + 0.5rem + 0.875rem); /* align with middle of textarea */
+  padding: 0 0.5rem;
   color: var(--color-text-muted);
   flex-shrink: 0;
+}
+
+.clearBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.clearBtn:hover {
+  color: var(--color-text);
+  background: var(--color-surface-2);
 }
 
 /* ── Actions ── */

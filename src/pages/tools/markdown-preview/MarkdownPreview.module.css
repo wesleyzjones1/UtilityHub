@@ -74,7 +74,10 @@
   background: var(--color-code-bg, #f3f4f6);
   padding: 1rem;
   border-radius: 0.5rem;
+  max-width: 100%;
   overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .preview pre code {

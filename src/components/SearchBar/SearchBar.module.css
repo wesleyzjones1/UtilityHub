@@ -24,6 +24,7 @@
 .inputWrapOpen {
   border-radius: var(--radius-md) var(--radius-md) 0 0;
   border-bottom-color: transparent;
+  box-shadow: none;
 }
 
 .icon {
@@ -90,6 +91,7 @@
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
+  outline: none;
   transition: background-color var(--transition-fast);
 }
 

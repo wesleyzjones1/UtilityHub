@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import SupportCard from '../../components/SupportCard/SupportCard';
+import AdBanner from '../../components/AdBanner/AdBanner';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import { recordRecentTool } from '../../hooks/useRecentTools';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
@@ -21,11 +22,11 @@ export default function PageShell({ page, children, howToUse = [] }) {
     <article className={styles.shell}>
       {/* ── Page header ── */}
       <header className={styles.header}>
-        <h1 className={styles.title}>{page.title}</h1>
-        <p className={styles.description}>{page.description}</p>
-        <div className={styles.favRow}>
-          <FavoriteButton pageId={page.id} title={page.title} showLabel />
+        <div className={styles.titleRow}>
+          <h1 className={styles.title}>{page.title}</h1>
+          <FavoriteButton pageId={page.id} title={page.title} />
         </div>
+        <p className={styles.description}>{page.description}</p>
       </header>
 
       {/* ── Tool interface ── */}
@@ -49,6 +50,7 @@ export default function PageShell({ page, children, howToUse = [] }) {
       )}
 
       <SupportCard />
+      <AdBanner />
     </article>
   );
 }

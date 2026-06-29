@@ -37,6 +37,16 @@ export default function DualPanelTemplate({
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
             <span className={styles.panelLabel}>{inputLabel}</span>
+            {input && onInputChange && (
+              <button
+                className={styles.clearBtn}
+                onClick={() => onInputChange('')}
+                aria-label="Clear input"
+                title="Clear input"
+              >
+                ✕
+              </button>
+            )}
           </div>
           <Textarea
             value={input}

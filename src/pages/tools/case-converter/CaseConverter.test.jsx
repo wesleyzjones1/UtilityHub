@@ -36,7 +36,7 @@ describe('CaseConverter', () => {
   it('converts to lowercase when selected', async () => {
     const user = userEvent.setup();
     render();
-    await user.selectOptions(screen.getByRole('combobox'), 'lower');
+    await user.click(screen.getByRole('button', { name: /lower case/i }));
     await user.type(screen.getByRole('textbox', { name: /input/i }), 'HELLO');
     expect(screen.getByRole('textbox', { name: /converted/i }).value).toBe('hello');
   });
@@ -44,7 +44,7 @@ describe('CaseConverter', () => {
   it('converts to title case', async () => {
     const user = userEvent.setup();
     render();
-    await user.selectOptions(screen.getByRole('combobox'), 'title');
+    await user.click(screen.getByRole('button', { name: /title case/i }));
     await user.type(screen.getByRole('textbox', { name: /input/i }), 'hello world');
     expect(screen.getByRole('textbox', { name: /converted/i }).value).toBe('Hello World');
   });

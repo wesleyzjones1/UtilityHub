@@ -5,6 +5,8 @@ import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from '../../context/ThemeContext';
 import { LanguageProvider } from '../../context/LanguageContext';
 import { FavoritesProvider } from '../../context/FavoritesContext';
+import { AdPreferenceProvider } from '../../context/AdPreferenceContext';
+import { SupportProvider } from '../../context/SupportContext';
 import Home from './Home';
 import { CATEGORIES, PAGES } from '../../registry/pages';
 
@@ -27,9 +29,13 @@ function Wrapped() {
     <MemoryRouter>
       <ThemeProvider>
         <LanguageProvider>
-          <FavoritesProvider>
-            <Home />
-          </FavoritesProvider>
+          <AdPreferenceProvider>
+            <FavoritesProvider>
+              <SupportProvider>
+                <Home />
+              </SupportProvider>
+            </FavoritesProvider>
+          </AdPreferenceProvider>
         </LanguageProvider>
       </ThemeProvider>
     </MemoryRouter>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
 import styles from './CategoryNav.module.css';
 
@@ -25,7 +25,6 @@ function Dropdown({ category, pages, onClose }) {
               onClick={onClose}
             >
               <span className={styles.dropdownItemTitle}>{page.title}</span>
-              <span className={styles.dropdownItemDesc}>{page.description}</span>
             </Link>
           </li>
         ))}
@@ -46,6 +45,7 @@ function Dropdown({ category, pages, onClose }) {
 export default function CategoryNav() {
   const [openCategory, setOpenCategory] = useState(null);
   const navRef = useRef(null);
+  const navigate = useNavigate();
 
   const close = useCallback(() => setOpenCategory(null), []);
 
@@ -82,7 +82,7 @@ export default function CategoryNav() {
           >
             <button
               className={`${styles.navButton} ${isOpen ? styles.navButtonActive : ''}`}
-              onClick={() => setOpenCategory(cat.id)}
+              onClick={() => navigate(`/tools/category/${cat.id}`)}
               aria-expanded={isOpen}
               aria-haspopup="menu"
             >

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
-import Select from '../../../components/ui/Select/Select';
 import { convertCase } from '../../../utils/textTransforms';
+import styles from './CaseConverter.module.css';
 
 const CASE_OPTIONS = [
   { value: 'upper',    label: 'UPPER CASE' },
@@ -17,7 +17,7 @@ const CASE_OPTIONS = [
 
 const HOW_TO_USE = [
   'Paste or type your text in the input panel.',
-  'Choose a case format from the dropdown above the panels.',
+  'Click a case format button to convert.',
   'The converted text appears instantly — click "Copy" to copy it.',
 ];
 
@@ -32,12 +32,18 @@ export default function CaseConverter({ page }) {
       page={page}
       howToUse={HOW_TO_USE}
       topControls={
-        <Select
-          label="Case format"
-          options={CASE_OPTIONS}
-          value={caseType}
-          onChange={setCaseType}
-        />
+        <div className={styles.buttons}>
+          {CASE_OPTIONS.map(opt => (
+            <button
+              key={opt.value}
+              className={`${styles.btn} ${caseType === opt.value ? styles.btnActive : ''}`}
+              onClick={() => setCaseType(opt.value)}
+              aria-pressed={caseType === opt.value}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
       }
       input={input}
       onInputChange={setInput}

@@ -8,32 +8,6 @@
   margin-bottom: 2rem;
 }
 
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
-}
-
-.bcLink {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.bcLink:hover {
-  text-decoration: underline;
-}
-
-.bcSep {
-  color: var(--color-border);
-}
-
-.bcCurrent {
-  color: var(--color-text);
-}
-
 .title {
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 800;

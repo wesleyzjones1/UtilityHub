@@ -6,7 +6,6 @@ import { useFavorites } from '../../context/FavoritesContext';
 import { readRecentTools } from '../../hooks/useRecentTools';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
-import PrivacyBadge from '../../components/PrivacyBadge/PrivacyBadge';
 import styles from './Home.module.css';
 
 function SearchIcon() {
@@ -231,9 +230,6 @@ export default function Home() {
           {PAGES.length} tools across {Object.keys(CATEGORIES).length} categories — no sign-up required.
         </p>
         <HeroSearch />
-        <div className={styles.heroBadge}>
-          <PrivacyBadge />
-        </div>
       </section>
 
       {/* Favorites + recently used (only when present) */}

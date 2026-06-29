@@ -11,18 +11,8 @@ export default function ToolPage({ page }) {
   return (
     <div className={styles.page}>
       <div className={styles.inner}>
-        {/* Breadcrumb */}
-        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-          <Link to="/" className={styles.breadcrumbLink}>Home</Link>
-          <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
-          <span className={styles.breadcrumbCurrent}>{category?.label}</span>
-          <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
-          <span className={styles.breadcrumbCurrent}>{page.title}</span>
-        </nav>
-
         {/* Header */}
         <div className={styles.header}>
-          <span className={styles.badge}>{category?.label}</span>
           <h1 className={styles.title}>{page.title}</h1>
           <p className={styles.description}>{page.description}</p>
         </div>

@@ -126,6 +126,20 @@
   font-size: 1.125rem;
 }
 
+/* Deliberately low-key: a small text link, not a button. */
+.alreadyPaid {
+  display: block;
+  margin: 1.5rem auto 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.alreadyPaid:hover {
+  color: var(--color-text);
+}
+
 .shareRow {
   display: flex;
   flex-wrap: wrap;

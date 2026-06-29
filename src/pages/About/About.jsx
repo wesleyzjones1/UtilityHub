@@ -34,7 +34,7 @@ const CHANGELOG = [
 export default function About() {
   useDocumentMeta({
     title: 'About',
-    description: 'About UtilityHub — free, private, open tools that run entirely in your browser.',
+    description: 'About UtilityHub — free, open-source online tools.',
   });
   const { openSupport } = useSupport();
 
@@ -52,15 +52,6 @@ export default function About() {
           {PAGES.length} free tools across {Object.keys(CATEGORIES).length} categories — for text,
           numbers, colors, images, code, and time.
         </p>
-
-        <section className={styles.section}>
-          <h2 className={styles.h2}>Private by design</h2>
-          <p className={styles.body}>
-            Every tool runs entirely in your browser. Your input never leaves your device — there's
-            no server processing, no account, and no tracking. That's also why it works offline once
-            you've visited.
-          </p>
-        </section>
 
         <section className={styles.section}>
           <h2 className={styles.h2}>Free, and how to help</h2>

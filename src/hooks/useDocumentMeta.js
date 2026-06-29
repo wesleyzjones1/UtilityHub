@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const SITE_NAME = 'UtilityHub';
 const DEFAULT_DESCRIPTION =
-  'Free online tools for text, math, colors, web development, and more — all running entirely in your browser.';
+  'Free online tools for text, math, colors, images, web development, and time. No sign-up required.';
 
 function upsertMeta(keyName, key, content) {
   let el = document.head.querySelector(`meta[${keyName}="${key}"]`);

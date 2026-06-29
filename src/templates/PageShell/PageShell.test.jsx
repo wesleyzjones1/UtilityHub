@@ -31,22 +31,10 @@ describe('PageShell', () => {
     expect(screen.getByText('Convert text between cases.')).toBeInTheDocument();
   });
 
-  it('renders category badge', () => {
+  it('does not show the category badge or breadcrumb', () => {
     renderShell();
-    // label appears in both breadcrumb and badge — use getAllByText
-    const matches = screen.getAllByText('Text Tools');
-    expect(matches.length).toBeGreaterThanOrEqual(2);
-  });
-
-  it('renders breadcrumb with Home link', () => {
-    renderShell();
-    expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/');
-  });
-
-  it('renders breadcrumb with current page name as aria-current', () => {
-    renderShell();
-    const current = screen.getAllByText('Case Converter').find(el => el.getAttribute('aria-current') === 'page');
-    expect(current).toBeInTheDocument();
+    expect(screen.queryByText('Text Tools')).not.toBeInTheDocument();
+    expect(screen.queryByRole('navigation', { name: 'Breadcrumb' })).not.toBeInTheDocument();
   });
 
   it('renders children slot', () => {

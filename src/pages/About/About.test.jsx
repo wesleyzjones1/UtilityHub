@@ -9,11 +9,6 @@ describe('About', () => {
     expect(screen.getByRole('heading', { level: 1, name: /about utilityhub/i })).toBeDefined();
   });
 
-  it('states the privacy-first promise', () => {
-    renderWithRouter(<About />);
-    expect(screen.getByText(/never leaves your device/i)).toBeDefined();
-  });
-
   it('links to the source repository', () => {
     renderWithRouter(<About />);
     const link = screen.getByRole('link', { name: 'GitHub' });

@@ -12,10 +12,10 @@ function Wrapped() {
 }
 
 describe('SupportCard', () => {
-  it('states that the tool is free and private', () => {
+  it('states that the tool is free to use', () => {
     render(<Wrapped />);
-    expect(screen.getByText(/free & private/i)).toBeDefined();
-    expect(screen.getByText(/runs entirely in your browser/i)).toBeDefined();
+    expect(screen.getByText(/free to use/i)).toBeDefined();
+    expect(screen.queryByText(/runs entirely in your browser/i)).toBeNull();
   });
 
   it('exposes a Support action', () => {

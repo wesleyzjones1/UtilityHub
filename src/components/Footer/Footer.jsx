@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <span className={styles.copy}>
-          &copy; {new Date().getFullYear()} UtilityHub &mdash; free tools that run entirely in your browser.
+          &copy; {new Date().getFullYear()} UtilityHub &mdash; free tools, no sign-up required.
         </span>
         <div className={styles.links}>
           <InstallButton />

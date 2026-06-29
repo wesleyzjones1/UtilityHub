@@ -45,21 +45,27 @@ describe('SupportModal', () => {
     expect(screen.queryByText(/\$5\/mo/i)).toBeNull();
   });
 
-  it('offers share actions including a GitHub star link', () => {
+  it('offers a GitHub star link when no donation links are configured', () => {
     render(<Wrapped />);
     expect(screen.getByRole('link', { name: /star on github/i })).toBeDefined();
-    expect(screen.getByRole('button', { name: /copy link/i })).toBeDefined();
   });
 
-  it('shows a free "Hide ads" option when ads are visible', () => {
+  it('does not show privacy/tracking reassurance copy', () => {
     render(<Wrapped />);
-    expect(screen.getByRole('button', { name: /hide ads/i })).toBeDefined();
+    expect(screen.queryByText(/no tracking/i)).toBeNull();
+    expect(screen.queryByText(/nothing is uploaded/i)).toBeNull();
+    expect(screen.queryByText(/no account/i)).toBeNull();
   });
 
-  it('hiding ads persists the honest preference', async () => {
+  it('offers a subtle "Already paid? Remove ads" option when ads are visible', () => {
+    render(<Wrapped />);
+    expect(screen.getByRole('button', { name: /already paid\? remove ads/i })).toBeDefined();
+  });
+
+  it('removing ads persists the preference', async () => {
     const user = userEvent.setup();
     render(<Wrapped />);
-    await user.click(screen.getByRole('button', { name: /hide ads/i }));
+    await user.click(screen.getByRole('button', { name: /already paid\? remove ads/i }));
     expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-hide-ads', 'true');
   });
 

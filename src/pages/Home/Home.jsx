@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CATEGORIES, PAGE_BY_CATEGORY, PAGE_BY_ID, PAGES, searchPages } from '../../registry/pages';
+import { CATEGORIES, PAGE_BY_CATEGORY, PAGES, searchPages } from '../../registry/pages';
 import { useLanguage } from '../../context/LanguageContext';
-import { useFavorites } from '../../context/FavoritesContext';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import styles from './Home.module.css';
@@ -182,42 +181,6 @@ function CategorySection({ category }) {
   );
 }
 
-function PinnedRow({ title, pages }) {
-  return (
-    <div className={styles.pinnedRow}>
-      <h3 className={styles.pinnedCat}>{title}</h3>
-      <ul className={styles.toolGrid}>
-        {pages.map(page => <ToolChip key={page.id} page={page} />)}
-      </ul>
-    </div>
-  );
-}
-
-function PinnedSection() {
-  const { favorites } = useFavorites();
-  const favPages = favorites.map(id => PAGE_BY_ID[id]).filter(Boolean);
-
-  if (favPages.length === 0) return null;
-
-  // Group saved tools under their category ("tab"), preserving category order.
-  const groups = Object.values(CATEGORIES)
-    .map(cat => ({ cat, pages: favPages.filter(p => p.category === cat.id) }))
-    .filter(group => group.pages.length > 0);
-
-  return (
-    <section className={styles.pinned} aria-label="Favorites">
-      <div className={styles.catInner}>
-        <h2 className={styles.pinnedHeading}>
-          <span className={styles.pinnedStar} aria-hidden="true">★</span> Favorites
-        </h2>
-        {groups.map(({ cat, pages }) => (
-          <PinnedRow key={cat.id} title={cat.label} pages={pages} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
   const { t } = useLanguage();
   useDocumentMeta();
@@ -234,9 +197,6 @@ export default function Home() {
         </p>
         <HeroSearch />
       </section>
-
-      {/* Favorites + recently used (only when present) */}
-      <PinnedSection />
 
       {/* All categories with every tool */}
       <section className={styles.categories} aria-labelledby="categories-heading">

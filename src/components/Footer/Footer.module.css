@@ -17,15 +17,43 @@
 .copy {
   font-size: 0.8125rem;
   color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.support {
+  flex: 1;
+  min-width: 240px;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.support:hover {
+  color: var(--color-text);
+}
+
+.support .lead {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.support .heart {
+  color: var(--color-primary);
 }
 
 .links {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
-.linkBtn,
 .link {
   display: inline-flex;
   align-items: center;
@@ -37,12 +65,7 @@
   transition: color var(--transition-fast);
 }
 
-.linkBtn:hover,
 .link:hover {
   color: var(--color-primary);
   text-decoration: none;
-}
-
-.heart {
-  color: var(--color-primary);
 }

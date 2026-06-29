@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import SupportCard from '../../components/SupportCard/SupportCard';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import { recordRecentTool } from '../../hooks/useRecentTools';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
@@ -47,8 +46,6 @@ export default function PageShell({ page, children, howToUse = [] }) {
           </ol>
         </section>
       )}
-
-      <SupportCard />
     </article>
   );
 }

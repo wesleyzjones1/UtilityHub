@@ -146,17 +146,10 @@ describe('Home page', () => {
     }
   });
 
-  it('does not show a Favorites section when nothing is saved', () => {
-    render(<Wrapped />);
-    expect(screen.queryByText('Favorites')).toBeNull();
-  });
-
-  it('shows a Favorites section grouped by category when tools are saved', () => {
+  it('does not render a Favorites section on the home page (moved to the header menu)', () => {
     store['uh-favorites'] = JSON.stringify(['word-counter']);
     render(<Wrapped />);
-    expect(screen.getByText('Favorites')).toBeDefined();
-    // word-counter is a Text tool → the category label heads its group
-    expect(screen.getAllByText('Text Tools').length).toBeGreaterThan(1);
+    expect(screen.queryByText('Favorites')).toBeNull();
   });
 
   it('no longer shows a Recently used section', () => {

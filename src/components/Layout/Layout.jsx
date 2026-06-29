@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import AdBlockerBanner from '../AdBlockerBanner/AdBlockerBanner';
+import FavBar from '../FavBar/FavBar';
 import SupportModal from '../SupportModal/SupportModal';
 import CommandPalette from '../CommandPalette/CommandPalette';
 import { useSupport } from '../../context/SupportContext';
@@ -34,6 +35,7 @@ export default function Layout() {
       <a href="#main-content" className={styles.skipLink}>Skip to main content</a>
       <Header onOpenPalette={() => setPaletteOpen(true)} />
       <AdBlockerBanner />
+      <FavBar />
       <main id="main-content" className={styles.main}>
         <Outlet />
       </main>

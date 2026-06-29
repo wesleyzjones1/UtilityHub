@@ -238,7 +238,7 @@
 
 .toolItem {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -274,18 +274,15 @@
 /* Star sits on the right edge inside the card, hidden until hovered/active */
 .toolItem button {
   flex-shrink: 0;
-  align-self: stretch;
   border-radius: 0;
-  border-left: 1px solid transparent;
   opacity: 0;
-  transition: opacity var(--transition-fast), border-color var(--transition-fast);
+  transition: opacity var(--transition-fast);
 }
 
 .toolItem:hover button,
 .toolItem:focus-within button,
 .toolItem button[aria-pressed='true'] {
   opacity: 1;
-  border-left-color: var(--color-border);
 }
 
 /* Pinned (favorites / recent) section */
@@ -324,7 +321,6 @@
 @media (max-width: 640px) {
   .toolItem button {
     opacity: 1;
-    border-left-color: var(--color-border);
   }
 }
 

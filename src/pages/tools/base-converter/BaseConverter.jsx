@@ -13,8 +13,8 @@ const BASE_OPTIONS = [
 ];
 
 const HOW_TO_USE = [
-  'Pick the "From" base using the first row of buttons.',
-  'Pick the "To" base using the second row of buttons.',
+  'Pick the "From" base using the buttons above the input.',
+  'Pick the "To" base using the buttons above the result.',
   'Enter your value in the input panel — the result appears instantly.',
   'For Text conversions, each character is space-separated in the output.',
 ];
@@ -30,14 +30,16 @@ export default function BaseConverter({ page }) {
     <DualPanelTemplate
       page={page}
       howToUse={HOW_TO_USE}
-      topControls={
-        <div className={styles.controls}>
-          <ButtonGroup
-            label="From"
-            options={BASE_OPTIONS}
-            value={from}
-            onChange={setFrom}
-          />
+      inputControls={
+        <ButtonGroup
+          label="From"
+          options={BASE_OPTIONS}
+          value={from}
+          onChange={setFrom}
+        />
+      }
+      outputControls={
+        <div className={styles.outputControls}>
           <ButtonGroup
             label="To"
             options={BASE_OPTIONS}

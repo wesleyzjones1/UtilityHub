@@ -47,6 +47,11 @@
   color: var(--color-text-muted);
 }
 
+/* Per-panel controls (e.g. From/To button groups) sit above each field */
+.panelControls {
+  flex-shrink: 0;
+}
+
 /* ── Arrow divider ── */
 .divider {
   display: flex;

@@ -11,6 +11,8 @@ export default function DualPanelTemplate({
   page,
   howToUse = [],
   topControls,
+  inputControls,
+  outputControls,
   inputLabel = 'Input',
   outputLabel = 'Output',
   input = '',
@@ -48,6 +50,9 @@ export default function DualPanelTemplate({
               </button>
             )}
           </div>
+          {inputControls && (
+            <div className={styles.panelControls}>{inputControls}</div>
+          )}
           <Textarea
             className={styles.field}
             value={input}
@@ -71,6 +76,9 @@ export default function DualPanelTemplate({
             <span className={styles.panelLabel}>{outputLabel}</span>
             {output && <CopyButton value={output} size="sm" />}
           </div>
+          {outputControls && (
+            <div className={styles.panelControls}>{outputControls}</div>
+          )}
           <Textarea
             className={styles.field}
             value={output}

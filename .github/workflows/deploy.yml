@@ -34,6 +34,14 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Optional: set these as repository Variables (Settings → Secrets and
+          # variables → Actions → Variables) to activate the Support modal links.
+          # Unset variables are simply hidden in the UI.
+          VITE_SPONSORS_URL: ${{ vars.VITE_SPONSORS_URL }}
+          VITE_KOFI_URL: ${{ vars.VITE_KOFI_URL }}
+          VITE_BMAC_URL: ${{ vars.VITE_BMAC_URL }}
+          VITE_REPO_URL: ${{ vars.VITE_REPO_URL }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

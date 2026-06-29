@@ -51,7 +51,6 @@
 }
 
 .textarea[readonly] {
-  background: var(--color-surface-2);
   cursor: default;
 }
 

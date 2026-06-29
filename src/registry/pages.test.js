@@ -86,7 +86,7 @@ describe('searchPages()', () => {
   });
 
   it('matches by description', () => {
-    const results = searchPages('placeholder dummy text');
+    const results = searchPages('placeholder lorem ipsum text');
     expect(results.some(r => r.id === 'lorem-ipsum')).toBe(true);
   });
 

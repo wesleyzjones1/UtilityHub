@@ -9,7 +9,7 @@
  * Fields:
  *   id          — unique slug, used as the route key
  *   title       — display name (alphabetically sorted within category)
- *   description — short description (≤ 80 chars), shown in search results and listings
+ *   description — short, simple description (≤ 120 chars), shown in search results and listings
  *   category    — must match a key in CATEGORIES
  *   path        — URL path (must be unique)
  *   keywords    — array of search terms beyond title/description
@@ -61,7 +61,7 @@ export const PAGES = [
   {
     id: 'bold-text',
     title: 'Bold Text Generator',
-    description: 'Convert text to Unicode bold characters that work anywhere.',
+    description: 'Convert plain text into bold Unicode letters you can paste into social media, chats, and more.',
     category: 'text',
     path: '/tools/bold-text',
     keywords: ['bold', 'unicode', 'facebook', 'twitter', 'social media', 'mathematical bold'],
@@ -77,7 +77,7 @@ export const PAGES = [
   {
     id: 'inline-column-converter',
     title: 'Inline / Column Converter',
-    description: 'Convert list of items between one-per-line (column) and inline formats.',
+    description: 'Switch a list between one item per line (column) and comma-separated (inline) formats.',
     category: 'text',
     path: '/tools/inline-column-converter',
     keywords: ['column', 'inline', 'list', 'comma separated', 'convert', 'one per line'],
@@ -85,7 +85,7 @@ export const PAGES = [
   {
     id: 'italic-text',
     title: 'Italic Text Generator',
-    description: 'Convert text to Unicode italic characters for social media and chat apps.',
+    description: 'Convert plain text into italic Unicode letters you can paste into social media, chats, and more.',
     category: 'text',
     path: '/tools/italic-text',
     keywords: ['italic', 'unicode', 'slanted', 'social media', 'mathematical italic'],
@@ -101,7 +101,7 @@ export const PAGES = [
   {
     id: 'lorem-ipsum',
     title: 'Lorem Ipsum Generator',
-    description: 'Generate placeholder dummy text in various lengths.',
+    description: 'Generate placeholder Lorem Ipsum text by word, sentence, or paragraph count.',
     category: 'text',
     path: '/tools/lorem-ipsum',
     keywords: ['placeholder', 'dummy text', 'filler', 'paragraphs'],
@@ -117,7 +117,7 @@ export const PAGES = [
   {
     id: 'remove-all-whitespace',
     title: 'Remove All Whitespace',
-    description: 'Strip all spaces, tabs, and other whitespace characters from your text.',
+    description: 'Remove every space, tab, and line break from your text.',
     category: 'text',
     path: '/tools/remove-all-whitespace',
     keywords: ['whitespace', 'spaces', 'tabs', 'strip', 'clean'],
@@ -133,7 +133,7 @@ export const PAGES = [
   {
     id: 'remove-line-breaks',
     title: 'Remove Line Breaks',
-    description: 'Remove all line breaks from text and join lines into a single block.',
+    description: 'Remove line breaks to join all lines into a single continuous block of text.',
     category: 'text',
     path: '/tools/remove-line-breaks',
     keywords: ['line breaks', 'newline', 'carriage return', 'join', 'single line'],
@@ -157,7 +157,7 @@ export const PAGES = [
   {
     id: 'reverse-text',
     title: 'Reverse Text',
-    description: 'Reverse the entire text character by character.',
+    description: 'Reverse your entire text so it reads backward, character by character.',
     category: 'text',
     path: '/tools/reverse-text',
     keywords: ['reverse', 'mirror', 'backwards', 'flip'],
@@ -189,7 +189,7 @@ export const PAGES = [
   {
     id: 'strikethrough-text',
     title: 'Strikethrough Text Generator',
-    description: 'Add a strikethrough effect to text using Unicode combining characters.',
+    description: 'Add a strikethrough line through text using Unicode, ready to paste anywhere.',
     category: 'text',
     path: '/tools/strikethrough-text',
     keywords: ['strikethrough', 'strike', 'cross out', 'unicode', 'social media'],
@@ -221,7 +221,7 @@ export const PAGES = [
   {
     id: 'word-frequency',
     title: 'Word Frequency Analyzer',
-    description: 'Analyze how often each word appears in a block of text.',
+    description: 'Count how often each word appears and rank them by frequency.',
     category: 'text',
     path: '/tools/word-frequency',
     keywords: ['frequency', 'analyze', 'statistics', 'count words'],
@@ -337,7 +337,7 @@ export const PAGES = [
   {
     id: 'color-palette',
     title: 'Color Palette Generator',
-    description: 'Generate harmonious color palettes from a base color.',
+    description: 'Generate matching color palettes from a single base color.',
     category: 'color',
     path: '/tools/color-palette',
     keywords: ['palette', 'scheme', 'complementary', 'analogous', 'triadic'],
@@ -345,7 +345,7 @@ export const PAGES = [
   {
     id: 'contrast-checker',
     title: 'Contrast Checker',
-    description: 'Check foreground/background contrast ratios against WCAG standards.',
+    description: 'Check text and background color contrast against WCAG accessibility standards.',
     category: 'color',
     path: '/tools/contrast-checker',
     keywords: ['accessibility', 'wcag', 'a11y', 'contrast', 'ratio'],
@@ -353,7 +353,7 @@ export const PAGES = [
   {
     id: 'gradient-generator',
     title: 'Gradient Generator',
-    description: 'Create and copy CSS gradient strings visually.',
+    description: 'Design CSS gradients visually and copy the generated code.',
     category: 'color',
     path: '/tools/gradient-generator',
     keywords: ['gradient', 'css', 'linear', 'radial', 'conic'],
@@ -445,7 +445,7 @@ export const PAGES = [
   {
     id: 'css-minifier',
     title: 'CSS Formatter / Minifier',
-    description: 'Format and minify CSS with Prettier-powered beautification.',
+    description: 'Beautify or minify CSS code with Prettier.',
     category: 'web',
     path: '/tools/css-minifier',
     keywords: ['minify', 'compress', 'css', 'optimize', 'format', 'beautify', 'prettier'],
@@ -453,7 +453,7 @@ export const PAGES = [
   {
     id: 'html-formatter',
     title: 'HTML Formatter / Minifier',
-    description: 'Prettify and minify HTML code with proper indentation.',
+    description: 'Beautify or minify HTML with clean, consistent indentation.',
     category: 'web',
     path: '/tools/html-formatter',
     keywords: ['format', 'beautify', 'html', 'prettify', 'indent', 'minify', 'compress'],
@@ -461,7 +461,7 @@ export const PAGES = [
   {
     id: 'js-formatter',
     title: 'JavaScript Formatter / Minifier',
-    description: 'Format and minify JavaScript with Prettier.',
+    description: 'Beautify or minify JavaScript code with Prettier.',
     category: 'web',
     path: '/tools/js-formatter',
     keywords: ['javascript', 'js', 'format', 'beautify', 'minify', 'prettier', 'babel'],
@@ -469,7 +469,7 @@ export const PAGES = [
   {
     id: 'json-formatter',
     title: 'JSON Formatter / Minifier',
-    description: 'Format, validate, and minify JSON data.',
+    description: 'Beautify, validate, and minify JSON data.',
     category: 'web',
     path: '/tools/json-formatter',
     keywords: ['json', 'format', 'validate', 'prettify', 'minify'],
@@ -485,7 +485,7 @@ export const PAGES = [
   {
     id: 'typescript-formatter',
     title: 'TypeScript Formatter / Minifier',
-    description: 'Format and minify TypeScript with Prettier.',
+    description: 'Beautify or minify TypeScript code with Prettier.',
     category: 'web',
     path: '/tools/typescript-formatter',
     keywords: ['typescript', 'ts', 'format', 'beautify', 'minify', 'prettier'],
@@ -493,7 +493,7 @@ export const PAGES = [
   {
     id: 'xml-formatter',
     title: 'XML Formatter / Minifier',
-    description: 'Format and minify XML with proper indentation.',
+    description: 'Beautify or minify XML with clean, consistent indentation.',
     category: 'web',
     path: '/tools/xml-formatter',
     keywords: ['xml', 'format', 'beautify', 'minify', 'indent', 'prettify'],
@@ -527,7 +527,7 @@ export const PAGES = [
   {
     id: 'countdown-timer',
     title: 'Countdown Timer',
-    description: 'Set a countdown to any future date or duration.',
+    description: 'Set a full-screen countdown timer for any duration.',
     category: 'time',
     path: '/tools/countdown-timer',
     keywords: ['countdown', 'timer', 'event', 'deadline'],

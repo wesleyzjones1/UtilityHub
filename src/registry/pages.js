@@ -9,7 +9,7 @@
  * Fields:
  *   id          — unique slug, used as the route key
  *   title       — display name (alphabetically sorted within category)
- *   description — one-line description, shown in search results and listings
+ *   description — short description (≤ 80 chars), shown in search results and listings
  *   category    — must match a key in CATEGORIES
  *   path        — URL path (must be unique)
  *   keywords    — array of search terms beyond title/description
@@ -77,7 +77,7 @@ export const PAGES = [
   {
     id: 'inline-column-converter',
     title: 'Inline / Column Converter',
-    description: 'Convert a list of items between one-per-line (column) and inline (comma-separated) formats.',
+    description: 'Convert list of items between one-per-line (column) and inline formats.',
     category: 'text',
     path: '/tools/inline-column-converter',
     keywords: ['column', 'inline', 'list', 'comma separated', 'convert', 'one per line'],
@@ -85,7 +85,7 @@ export const PAGES = [
   {
     id: 'italic-text',
     title: 'Italic Text Generator',
-    description: 'Convert text to Unicode italic characters that work in social media and chat apps.',
+    description: 'Convert text to Unicode italic characters for social media and chat apps.',
     category: 'text',
     path: '/tools/italic-text',
     keywords: ['italic', 'unicode', 'slanted', 'social media', 'mathematical italic'],
@@ -239,7 +239,7 @@ export const PAGES = [
   {
     id: 'distance-converter',
     title: 'Distance Converter',
-    description: 'Convert between millimetres, centimetres, metres, kilometres, inches, feet, miles, and more.',
+    description: 'Convert between metric and imperial length units like cm, m, inches, and feet.',
     category: 'math',
     path: '/tools/distance-converter',
     keywords: ['distance', 'length', 'mm', 'cm', 'm', 'km', 'inch', 'feet', 'miles', 'convert'],
@@ -247,7 +247,7 @@ export const PAGES = [
   {
     id: 'engineering-cheat-sheet',
     title: 'Engineering Cheat Sheet',
-    description: 'Quick-reference tables for SI prefixes, capacitors, frequency, time, mass, and common engineering shorthand.',
+    description: 'Quick-reference tables for SI prefixes, capacitors, frequency, and more.',
     category: 'math',
     path: '/tools/engineering-cheat-sheet',
     keywords: ['si prefix', 'capacitor', 'frequency', 'time', 'mass', 'engineering', 'reference', 'units'],
@@ -263,7 +263,7 @@ export const PAGES = [
   {
     id: 'number-sorter',
     title: 'Number Sorter',
-    description: 'Sort a list of numbers numerically, ascending or descending, with optional duplicate removal.',
+    description: 'Sort numbers ascending or descending, with optional duplicate removal.',
     category: 'math',
     path: '/tools/number-sorter',
     keywords: ['sort', 'numbers', 'ascending', 'descending', 'order', 'list'],

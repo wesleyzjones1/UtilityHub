@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from '../../context/ThemeContext';
 import { LanguageProvider } from '../../context/LanguageContext';
+import { FavoritesProvider } from '../../context/FavoritesContext';
 import Home from './Home';
 import { CATEGORIES, PAGES } from '../../registry/pages';
 
@@ -26,7 +27,9 @@ function Wrapped() {
     <MemoryRouter>
       <ThemeProvider>
         <LanguageProvider>
-          <Home />
+          <FavoritesProvider>
+            <Home />
+          </FavoritesProvider>
         </LanguageProvider>
       </ThemeProvider>
     </MemoryRouter>
@@ -60,7 +63,7 @@ describe('Home page', () => {
     const user = userEvent.setup();
     render(<Wrapped />);
     await user.type(screen.getByLabelText('Search all tools'), 'json');
-    expect(screen.getAllByText('JSON Formatter')[0]).toBeDefined();
+    expect(screen.getAllByText('JSON Formatter / Minifier')[0]).toBeDefined();
   });
 
   it('search shows empty state for no match', async () => {
@@ -83,5 +86,76 @@ describe('Home page', () => {
     render(<Wrapped />);
     const links = screen.getAllByRole('link');
     expect(links.some(l => l.getAttribute('href')?.startsWith('/tools/'))).toBe(true);
+  });
+
+  it('ArrowDown moves active result to the first item', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    const input = screen.getByLabelText('Search all tools');
+    await user.type(input, 'json');
+    await user.keyboard('{ArrowDown}');
+    const options = screen.getAllByRole('option');
+    expect(options[0].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('ArrowDown then ArrowUp returns to no active item', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    const input = screen.getByLabelText('Search all tools');
+    await user.type(input, 'json');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{ArrowUp}');
+    const options = screen.getAllByRole('option');
+    expect(options.every(o => o.getAttribute('aria-selected') === 'false')).toBe(true);
+  });
+
+  it('Escape clears the search query', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    const input = screen.getByLabelText('Search all tools');
+    await user.type(input, 'json');
+    await user.keyboard('{Escape}');
+    expect(input.value).toBe('');
+  });
+
+  it('renders a link for every tool in the registry', () => {
+    render(<Wrapped />);
+    const links = screen.getAllByRole('link');
+    const hrefs = new Set(links.map(l => l.getAttribute('href')));
+    for (const page of PAGES) {
+      expect(hrefs.has(page.path)).toBe(true);
+    }
+  });
+
+  it('does not show truncating "View all" links', () => {
+    render(<Wrapped />);
+    expect(screen.queryByText(/view all \d+ tools/i)).toBeNull();
+  });
+
+  it('shows a tool count badge for each category', () => {
+    render(<Wrapped />);
+    for (const cat of Object.values(CATEGORIES)) {
+      const count = PAGES.filter(p => p.category === cat.id).length;
+      expect(screen.getAllByText(`${count} tools`).length).toBeGreaterThan(0);
+    }
+  });
+
+  it('does not show a Favorites section when nothing is saved', () => {
+    render(<Wrapped />);
+    expect(screen.queryByText('Favorites')).toBeNull();
+  });
+
+  it('shows a Favorites section grouped by category when tools are saved', () => {
+    store['uh-favorites'] = JSON.stringify(['word-counter']);
+    render(<Wrapped />);
+    expect(screen.getByText('Favorites')).toBeDefined();
+    // word-counter is a Text tool → the category label heads its group
+    expect(screen.getAllByText('Text Tools').length).toBeGreaterThan(1);
+  });
+
+  it('no longer shows a Recently used section', () => {
+    store['uh-recent-tools'] = JSON.stringify(['word-counter']);
+    render(<Wrapped />);
+    expect(screen.queryByText(/recently used/i)).toBeNull();
   });
 });

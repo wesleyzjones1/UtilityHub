@@ -1,0 +1,90 @@
+.page {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 2rem var(--container-pad) 4rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.bcLink {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.bcLink:hover {
+  text-decoration: underline;
+}
+
+.bcSep {
+  color: var(--color-border);
+}
+
+.bcCurrent {
+  color: var(--color-text);
+}
+
+.title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.375rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: box-shadow var(--transition-base), border-color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-primary-subtle-border);
+  box-shadow: var(--color-shadow);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.cardTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.cardDesc {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wesleyzjones1.github.io/UtilityHub/sitemap.xml

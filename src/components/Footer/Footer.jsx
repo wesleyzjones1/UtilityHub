@@ -1,27 +1,29 @@
 import { Link } from 'react-router-dom';
+import { useSupport } from '../../context/SupportContext';
+import InstallButton from '../InstallButton/InstallButton';
 import styles from './Footer.module.css';
 
-const FOOTER_LINKS = [
-  { label: 'About', href: '/about' },
-  { label: 'Privacy', href: '/privacy' },
-  { label: 'Terms', href: '/terms' },
-  { label: 'Contact', href: '/contact' },
-];
+const REPO_URL = import.meta.env.VITE_REPO_URL ?? 'https://github.com/wesleyzjones1/UtilityHub';
 
 export default function Footer() {
+  const { openSupport } = useSupport();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <span className={styles.copy}>
-          &copy; {new Date().getFullYear()} UtilityHub
+          &copy; {new Date().getFullYear()} UtilityHub &mdash; free tools, no sign-up required.
         </span>
-        <nav className={styles.links} aria-label="Footer navigation">
-          {FOOTER_LINKS.map(link => (
-            <Link key={link.href} to={link.href} className={styles.link}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className={styles.links}>
+          <InstallButton />
+          <Link className={styles.link} to="/about">About</Link>
+          <button className={styles.linkBtn} onClick={openSupport}>
+            <span className={styles.heart} aria-hidden="true">♥</span> Support
+          </button>
+          <a className={styles.link} href={REPO_URL} target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </div>
       </div>
     </footer>
   );

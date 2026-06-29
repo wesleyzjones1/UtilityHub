@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouter } from '../../../test-utils';
 import TextCompare from './TextCompare';
@@ -44,8 +44,7 @@ describe('TextCompare', () => {
     render();
     await user.type(screen.getByRole('textbox', { name: /original/i }), 'hello');
     await user.type(screen.getByRole('textbox', { name: /modified/i }), 'world');
-    expect(screen.getByRole('region', { name: /diff output/i }) ??
-      screen.getByLabelText(/diff output/i)).toBeDefined();
+    expect(screen.getByRole('region', { name: /diff output/i })).toBeDefined();
   });
 
   it('shows stats bar for different texts', async () => {
@@ -53,8 +52,9 @@ describe('TextCompare', () => {
     render();
     await user.type(screen.getByRole('textbox', { name: /original/i }), 'hello');
     await user.type(screen.getByRole('textbox', { name: /modified/i }), 'world');
-    expect(screen.getByText(/removed/i)).toBeDefined();
-    expect(screen.getByText(/added/i)).toBeDefined();
+    const statsBar = screen.getByRole('status');
+    expect(within(statsBar).getByText(/removed/i)).toBeDefined();
+    expect(within(statsBar).getByText(/added/i)).toBeDefined();
   });
 
   it('detects case-only differences', async () => {

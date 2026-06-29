@@ -16,7 +16,8 @@ beforeEach(() => {
     configurable: true,
   });
   document.documentElement.removeAttribute('data-theme');
-  window.history.pushState({}, '', '/');
+  // App uses a hash router, so navigation is driven by location.hash.
+  window.location.hash = '';
 });
 
 describe('App routing', () => {
@@ -36,14 +37,14 @@ describe('App routing', () => {
   });
 
   it('renders NotFound for an unknown route', () => {
-    window.history.pushState({}, '', '/this-route-does-not-exist');
+    window.location.hash = '#/this-route-does-not-exist';
     render(<App />);
     expect(screen.getByText(/page not found/i)).toBeDefined();
   });
 
   it('renders a tool placeholder for a registry route', () => {
     const page = PAGES[0];
-    window.history.pushState({}, '', page.path);
+    window.location.hash = '#' + page.path;
     render(<App />);
     expect(screen.getByRole('heading', { level: 1, name: page.title })).toBeDefined();
   });
@@ -51,7 +52,7 @@ describe('App routing', () => {
   it('renders placeholder pages for a sample of routes', () => {
     const sample = [PAGES[0], PAGES[Math.floor(PAGES.length / 2)], PAGES[PAGES.length - 1]];
     for (const page of sample) {
-      window.history.pushState({}, '', page.path);
+      window.location.hash = '#' + page.path;
       const { unmount } = render(<App />);
       expect(screen.getByRole('heading', { level: 1, name: page.title })).toBeDefined();
       unmount();

@@ -4,6 +4,25 @@
   min-height: 100vh;
 }
 
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skipLink:focus {
+  top: 1rem;
+}
+
 .main {
   flex: 1;
   padding-top: var(--header-height);

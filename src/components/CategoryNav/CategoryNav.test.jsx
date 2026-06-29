@@ -55,7 +55,7 @@ describe('CategoryNav', () => {
     await user.hover(screen.getByRole('button', { name: new RegExp(firstCat.label, 'i') }));
     const pages = PAGE_BY_CATEGORY[firstCatId];
     for (const page of pages) {
-      expect(screen.getByRole('menuitem', { name: new RegExp(page.title, 'i') })).toBeDefined();
+      expect(screen.getByRole('menuitem', { name: page.title })).toBeDefined();
     }
   });
 
@@ -77,5 +77,15 @@ describe('CategoryNav', () => {
     await user.hover(btn1);
     await user.hover(btn2);
     expect(screen.getAllByRole('menu').length).toBe(1);
+  });
+
+  it('dropdown shows "View all" link to category page', async () => {
+    const user = userEvent.setup();
+    render(<Wrapped />);
+    await user.hover(screen.getByRole('button', { name: new RegExp(firstCat.label, 'i') }));
+    const pages = PAGE_BY_CATEGORY[firstCatId];
+    const viewAllLink = screen.getByRole('link', { name: new RegExp(`view all ${pages.length} tools`, 'i') });
+    expect(viewAllLink).toBeDefined();
+    expect(viewAllLink.getAttribute('href')).toBe(`/tools/category/${firstCatId}`);
   });
 });

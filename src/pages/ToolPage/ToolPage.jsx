@@ -1,25 +1,18 @@
 import { Link } from 'react-router-dom';
-import { CATEGORIES } from '../../registry/pages';
+import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
 import styles from './ToolPage.module.css';
 
 export default function ToolPage({ page }) {
   const category = CATEGORIES[page.category];
+  const siblings = (PAGE_BY_CATEGORY[page.category] ?? [])
+    .filter(p => p.id !== page.id)
+    .slice(0, 3);
 
   return (
     <div className={styles.page}>
       <div className={styles.inner}>
-        {/* Breadcrumb */}
-        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-          <Link to="/" className={styles.breadcrumbLink}>Home</Link>
-          <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
-          <span className={styles.breadcrumbCurrent}>{category?.label}</span>
-          <span className={styles.breadcrumbSep} aria-hidden="true">/</span>
-          <span className={styles.breadcrumbCurrent}>{page.title}</span>
-        </nav>
-
         {/* Header */}
         <div className={styles.header}>
-          <span className={styles.badge}>{category?.label}</span>
           <h1 className={styles.title}>{page.title}</h1>
           <p className={styles.description}>{page.description}</p>
         </div>
@@ -37,6 +30,20 @@ export default function ToolPage({ page }) {
             ← Back to all tools
           </Link>
         </div>
+
+        {/* Related tools in same category */}
+        {siblings.length > 0 && (
+          <div className={styles.related}>
+            <p className={styles.relatedTitle}>Other {category?.label}:</p>
+            <ul className={styles.relatedList}>
+              {siblings.map(p => (
+                <li key={p.id}>
+                  <Link to={p.path} className={styles.relatedLink}>{p.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

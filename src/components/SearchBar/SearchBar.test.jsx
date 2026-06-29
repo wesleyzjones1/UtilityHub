@@ -24,7 +24,7 @@ describe('SearchBar', () => {
     render(<Wrapped />);
     await user.type(screen.getByRole('searchbox'), 'json');
     expect(screen.getByRole('listbox')).toBeDefined();
-    expect(screen.getByText('JSON Formatter')).toBeDefined();
+    expect(screen.getByText('JSON Formatter / Minifier')).toBeDefined();
   });
 
   it('shows empty state for no match', async () => {

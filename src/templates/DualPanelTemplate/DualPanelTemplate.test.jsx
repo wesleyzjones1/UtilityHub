@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
+import { renderWithRouter } from '../../test-utils';
 import DualPanelTemplate from './DualPanelTemplate';
 
 const mockPage = {
@@ -14,11 +14,7 @@ const mockPage = {
 };
 
 function renderTemplate(props = {}) {
-  return render(
-    <MemoryRouter>
-      <DualPanelTemplate page={mockPage} {...props} />
-    </MemoryRouter>
-  );
+  return renderWithRouter(<DualPanelTemplate page={mockPage} {...props} />);
 }
 
 describe('DualPanelTemplate', () => {

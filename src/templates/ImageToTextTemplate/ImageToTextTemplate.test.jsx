@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderWithRouter } from '../../test-utils';
 import ImageToTextTemplate from './ImageToTextTemplate';
 
 const mockPage = {
@@ -13,11 +13,7 @@ const mockPage = {
 };
 
 function renderTemplate(props = {}) {
-  return render(
-    <MemoryRouter>
-      <ImageToTextTemplate page={mockPage} {...props} />
-    </MemoryRouter>
-  );
+  return renderWithRouter(<ImageToTextTemplate page={mockPage} {...props} />);
 }
 
 describe('ImageToTextTemplate', () => {
@@ -28,7 +24,7 @@ describe('ImageToTextTemplate', () => {
 
   it('renders the image drop zone', () => {
     renderTemplate();
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /drop an image/i })).toBeInTheDocument();
   });
 
   it('renders output textarea', () => {
@@ -52,7 +48,7 @@ describe('ImageToTextTemplate', () => {
     const onFile = vi.fn();
     URL.createObjectURL.mockReturnValue('blob:mock');
     renderTemplate({ onFile });
-    const zone = screen.getByRole('button');
+    const zone = screen.getByRole('button', { name: /drop an image/i });
     const file = new File(['img'], 'test.png', { type: 'image/png' });
     fireEvent.drop(zone, { dataTransfer: { files: [file] } });
     expect(onFile).toHaveBeenCalledWith(file);

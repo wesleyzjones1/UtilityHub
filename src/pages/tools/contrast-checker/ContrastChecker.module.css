@@ -1,0 +1,160 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fieldInputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.colorInput {
+  width: 44px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.hexInput {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast);
+}
+
+.hexInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.previewLarge {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.previewNormal {
+  font-size: 0.9375rem;
+}
+
+.ratio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ratioValue {
+  font-size: 2.25rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--color-text);
+}
+
+.ratioLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.grades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.gradeGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gradeTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.badges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.badge {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+}
+
+.badgeName {
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+
+.badgeState {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pass {
+  background: var(--color-success-subtle);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.fail {
+  background: var(--color-danger-subtle);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}

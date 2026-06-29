@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import MobileMenu from './MobileMenu';
+import { useSupport } from '../../context/SupportContext';
 import styles from './Header.module.css';
 
 function HamburgerIcon({ open }) {
@@ -23,17 +24,8 @@ function HamburgerIcon({ open }) {
   );
 }
 
-function SupportIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M6 6a2 2 0 1 1 2.5 1.937V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="8.5" cy="11.5" r="0.75" fill="currentColor" />
-    </svg>
-  );
-}
-
-export default function Header() {
+export default function Header({ onOpenPalette }) {
+  const { openSupport } = useSupport();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const headerRef = useRef(null);
@@ -69,15 +61,26 @@ export default function Header() {
             <div className={styles.searchWrap}>
               <SearchBar onClose={closeMobile} />
             </div>
+            {onOpenPalette && (
+              <button
+                className={styles.paletteBtn}
+                onClick={onOpenPalette}
+                aria-label="Open command palette (Ctrl+K)"
+                title="Search tools (Ctrl+K)"
+              >
+                <SearchGlyph />
+                <kbd className={styles.paletteKbd}>⌘K</kbd>
+              </button>
+            )}
             <LanguageSelector />
-            <Link
-              to="/support"
+            <button
               className={styles.supportBtn}
-              aria-label="Help and support"
-              title="Help & Support"
+              onClick={openSupport}
+              aria-label="Support UtilityHub"
             >
-              <SupportIcon />
-            </Link>
+              <span className={styles.supportHeart} aria-hidden="true">♥</span>
+              <span className={styles.supportLabel}>Support</span>
+            </button>
             <ThemeToggle />
             <button
               className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerActive : ''}`}
@@ -94,6 +97,15 @@ export default function Header() {
 
       <MobileMenu id="mobile-menu" open={mobileOpen} onClose={closeMobile} />
     </>
+  );
+}
+
+function SearchGlyph() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M13 13l4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+    </svg>
   );
 }
 

@@ -1,0 +1,46 @@
+import { describe, it, expect } from 'vitest';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { renderWithRouter } from '../../../test-utils';
+import PercentageCalc from './PercentageCalc';
+
+const PAGE = {
+  id: 'percentage-calc', title: 'Percentage Calculator',
+  description: 'Calculate percentages.', category: 'math', path: '/tools/percentage-calc',
+};
+
+describe('PercentageCalc', () => {
+  it('renders the title', () => {
+    renderWithRouter(<PercentageCalc page={PAGE} />);
+    expect(screen.getAllByText('Percentage Calculator').length).toBeGreaterThan(0);
+  });
+
+  it('computes X% of Y', async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<PercentageCalc page={PAGE} />);
+    await user.type(screen.getByLabelText('Percent'), '10');
+    await user.type(screen.getByLabelText('Value'), '200');
+    expect(screen.getByText('20')).toBeDefined();
+  });
+
+  it('computes what percent X is of Y', async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<PercentageCalc page={PAGE} />);
+    await user.type(screen.getByLabelText('Part'), '20');
+    await user.type(screen.getByLabelText('Whole'), '200');
+    expect(screen.getByText('10%')).toBeDefined();
+  });
+
+  it('computes percent change', async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<PercentageCalc page={PAGE} />);
+    await user.type(screen.getByLabelText('From'), '100');
+    await user.type(screen.getByLabelText('To'), '150');
+    expect(screen.getByText('50%')).toBeDefined();
+  });
+
+  it('shows a placeholder dash before input', () => {
+    renderWithRouter(<PercentageCalc page={PAGE} />);
+    expect(screen.getAllByText('—').length).toBe(3);
+  });
+});

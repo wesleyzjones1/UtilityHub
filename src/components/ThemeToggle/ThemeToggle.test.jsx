@@ -28,30 +28,30 @@ describe('ThemeToggle', () => {
     expect(screen.getByRole('button')).toBeDefined();
   });
 
-  it('has correct aria-label in light mode', () => {
-    render(<Wrapped />);
-    expect(screen.getByRole('button').getAttribute('aria-label')).toBe('Switch to dark mode');
-  });
-
-  it('has correct aria-label in dark mode', () => {
-    store['uh-theme'] = 'dark';
+  it('has correct aria-label in dark mode (default)', () => {
     render(<Wrapped />);
     expect(screen.getByRole('button').getAttribute('aria-label')).toBe('Switch to light mode');
   });
 
-  it('toggles theme on click', async () => {
+  it('has correct aria-label in light mode', () => {
+    store['uh-theme'] = 'light';
+    render(<Wrapped />);
+    expect(screen.getByRole('button').getAttribute('aria-label')).toBe('Switch to dark mode');
+  });
+
+  it('toggles theme on click (dark → light)', async () => {
     const user = userEvent.setup();
     render(<Wrapped />);
     const btn = screen.getByRole('button');
-    expect(btn.getAttribute('aria-label')).toBe('Switch to dark mode');
-    await user.click(btn);
     expect(btn.getAttribute('aria-label')).toBe('Switch to light mode');
+    await user.click(btn);
+    expect(btn.getAttribute('aria-label')).toBe('Switch to dark mode');
   });
 
   it('persists toggled theme', async () => {
     const user = userEvent.setup();
     render(<Wrapped />);
     await user.click(screen.getByRole('button'));
-    expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-theme', 'dark');
+    expect(window.localStorage.setItem).toHaveBeenCalledWith('uh-theme', 'light');
   });
 });

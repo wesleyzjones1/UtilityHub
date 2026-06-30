@@ -21,7 +21,8 @@ export default function RemoveTextFormatting({ page }) {
       output={output}
       inputLabel="Formatted Input"
       outputLabel="Plain Text"
-      inputPlaceholder="Paste Markdown, HTML, or formatted text here…"
+      inputPlaceholder={"**bold** and _italic_ text"}
+      outputPlaceholder="bold and italic text"
     />
   );
 }

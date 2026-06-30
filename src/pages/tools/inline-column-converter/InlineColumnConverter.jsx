@@ -60,6 +60,8 @@ export default function InlineColumnConverter({ page }) {
       output={output}
       inputLabel={toInline ? 'Column (one per line)' : 'Inline (separated)'}
       outputLabel={toInline ? 'Inline' : 'Column (one per line)'}
+      inputPlaceholder={"apple\nbanana\ncherry"}
+      outputPlaceholder="apple, banana, cherry"
       inputMono
       outputMono
     />

@@ -21,6 +21,8 @@ export default function ItalicText({ page }) {
       output={output}
       inputLabel="Input"
       outputLabel="Italic Output"
+      inputPlaceholder="Hello world"
+      outputPlaceholder="𝘏𝘦𝘭𝘭𝘰 𝘸𝘰𝘳𝘭𝘥"
     />
   );
 }

@@ -52,6 +52,8 @@ export default function SortWords({ page }) {
       outputLabel="Sorted"
       inputMono
       outputMono
+      inputPlaceholder={"banana\napple\ncherry"}
+      outputPlaceholder={"apple\nbanana\ncherry"}
     />
   );
 }

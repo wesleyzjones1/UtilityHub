@@ -41,6 +41,8 @@ export default function RemoveAllWhitespace({ page }) {
       outputLabel="Cleaned"
       inputMono
       outputMono
+      inputPlaceholder="hello   world"
+      outputPlaceholder="helloworld"
     />
   );
 }

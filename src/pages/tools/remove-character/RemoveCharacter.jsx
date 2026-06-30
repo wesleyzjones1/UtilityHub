@@ -52,6 +52,8 @@ export default function RemoveCharacter({ page }) {
       outputLabel="Cleaned"
       inputMono
       outputMono
+      inputPlaceholder="he##llo wor##ld"
+      outputPlaceholder="hello world"
     />
   );
 }

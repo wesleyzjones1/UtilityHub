@@ -69,8 +69,8 @@ export default function JsFormatter({ page }) {
       outputLabel="JavaScript Output"
       inputMono
       outputMono
-      inputPlaceholder="Paste JavaScript here…"
-      outputPlaceholder="Output appears here…"
+      inputPlaceholder="function add(a,b){return a+b;}"
+      outputPlaceholder={"function add(a, b) {\n  return a + b;\n}"}
     />
   );
 }

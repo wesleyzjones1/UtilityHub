@@ -65,8 +65,8 @@ export default function CssMinifier({ page }) {
       outputLabel="CSS Output"
       inputMono
       outputMono
-      inputPlaceholder="Paste CSS here…"
-      outputPlaceholder="Output appears here…"
+      inputPlaceholder={".btn {\n  color: red;\n  padding: 8px;\n}"}
+      outputPlaceholder=".btn{color:red;padding:8px;}"
     />
   );
 }

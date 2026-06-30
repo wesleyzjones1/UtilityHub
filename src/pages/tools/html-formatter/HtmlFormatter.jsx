@@ -65,8 +65,8 @@ export default function HtmlFormatter({ page }) {
       outputLabel="HTML Output"
       inputMono
       outputMono
-      inputPlaceholder="Paste HTML here…"
-      outputPlaceholder="Output appears here…"
+      inputPlaceholder="<div><p>Hello world</p></div>"
+      outputPlaceholder={"<div>\n  <p>Hello world</p>\n</div>"}
     />
   );
 }

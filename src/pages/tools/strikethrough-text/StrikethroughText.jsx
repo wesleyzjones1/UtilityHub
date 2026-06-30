@@ -21,6 +21,8 @@ export default function StrikethroughText({ page }) {
       output={output}
       inputLabel="Input"
       outputLabel="Strikethrough Output"
+      inputPlaceholder="Hello world"
+      outputPlaceholder="H̶e̶l̶l̶o̶ ̶w̶o̶r̶l̶d̶"
     />
   );
 }

@@ -40,6 +40,8 @@ export default function RemoveLineBreaks({ page }) {
       output={output}
       inputLabel="Multi-line Input"
       outputLabel="Single Line"
+      inputPlaceholder={"Line one\nLine two\nLine three"}
+      outputPlaceholder="Line one Line two Line three"
     />
   );
 }

@@ -163,14 +163,6 @@ export const PAGES = [
     keywords: ['reverse', 'mirror', 'backwards', 'flip', 'words', 'word order', 'sentence'],
   },
   {
-    id: 'reverse-text-in-word',
-    title: 'Reverse Text in Each Word',
-    description: 'Reverse the characters inside each word while keeping word order.',
-    category: 'text',
-    path: '/tools/reverse-text-in-word',
-    keywords: ['reverse', 'word', 'characters', 'scramble'],
-  },
-  {
     id: 'sort-words',
     title: 'Sort Words',
     description: 'Sort words alphabetically, by length, or shuffle them randomly.',

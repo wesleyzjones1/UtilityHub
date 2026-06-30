@@ -59,7 +59,8 @@ export default function AddPunctuation({ page }) {
       output={output}
       inputLabel="Input"
       outputLabel="With Punctuation"
-      inputPlaceholder="Paste lines of text here…"
+      inputPlaceholder={"First line\nSecond line\nThird line"}
+      outputPlaceholder={"First line.\nSecond line.\nThird line."}
     />
   );
 }

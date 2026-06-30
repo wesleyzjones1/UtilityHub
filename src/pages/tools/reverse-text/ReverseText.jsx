@@ -45,6 +45,8 @@ export default function ReverseText({ page }) {
       outputLabel="Reversed"
       inputMono
       outputMono
+      inputPlaceholder="hello world"
+      outputPlaceholder="dlrow olleh"
     />
   );
 }

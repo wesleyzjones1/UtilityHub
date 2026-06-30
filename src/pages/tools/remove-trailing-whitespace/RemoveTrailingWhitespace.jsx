@@ -23,7 +23,8 @@ export default function RemoveTrailingWhitespace({ page }) {
       outputLabel="Cleaned"
       inputMono
       outputMono
-      inputPlaceholder="Paste text with trailing spaces here…"
+      inputPlaceholder={"hello   \nworld  "}
+      outputPlaceholder={"hello\nworld"}
     />
   );
 }

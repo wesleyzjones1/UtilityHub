@@ -21,6 +21,8 @@ export default function BoldText({ page }) {
       output={output}
       inputLabel="Input"
       outputLabel="Bold Output"
+      inputPlaceholder="Hello world"
+      outputPlaceholder="𝗛𝗲𝗹𝗹𝗼 𝘄𝗼𝗿𝗹𝗱"
     />
   );
 }

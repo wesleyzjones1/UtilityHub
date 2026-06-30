@@ -10,9 +10,6 @@
   gap: 2rem;
 }
 
-.overlayDone {
-  background: var(--color-primary);
-}
 
 .timerBtn {
   position: relative;
@@ -22,9 +19,9 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  width: min(580px, 86vmin);
-  height: min(580px, 86vmin);
+  padding: 2rem;
+  width: min(640px, 90vmin);
+  height: min(640px, 90vmin);
 }
 
 .timerBtn:disabled {
@@ -54,9 +51,7 @@
   filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.65));
 }
 
-.overlayDone .ringProgress {
-  stroke: #fff;
-}
+
 
 .timeDisplay {
   position: relative;
@@ -89,7 +84,7 @@
 .doneText {
   font-size: clamp(2.5rem, 10vw, 6rem);
   font-weight: 800;
-  color: #fff;
+  color: var(--color-primary);
   line-height: 1;
 }
 
@@ -109,46 +104,20 @@
   transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.pauseControl {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-}
-
-.pauseControl:hover {
-  background: var(--color-surface-2);
-  transform: translateY(-1px);
-}
-
-.restartBtn {
-  background: #fff;
-  border: 2px solid #fff;
-  color: var(--color-primary);
-}
-
-.restartBtn:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
-}
-
+.pauseControl,
+.restartBtn,
 .stopBtn {
-  background: transparent;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
 }
 
-.overlayDone .stopBtn {
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
-}
-
+.pauseControl:hover,
+.restartBtn:hover,
 .stopBtn:hover {
-  background: var(--color-surface);
+  background: var(--color-surface-2);
+  color: var(--color-text);
   transform: translateY(-1px);
-}
-
-.overlayDone .stopBtn:hover {
-  background: rgba(255, 255, 255, 0.15);
 }
 
 .escHint {
@@ -157,9 +126,6 @@
   letter-spacing: 0.03em;
 }
 
-.overlayDone .escHint {
-  color: rgba(255, 255, 255, 0.7);
-}
 
 /* Setup screen */
 .setup {
@@ -206,6 +172,11 @@
 .input:focus {
   outline: none;
   border-color: var(--color-primary);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
 }
 
 .startBtn {

@@ -127,7 +127,7 @@ export default function CountdownTimer({ page }) {
           >
             {/* Progress ring */}
             {!isDone && (
-              <svg className={styles.ring} viewBox="0 0 280 280" aria-hidden="true">
+              <svg className={styles.ring} viewBox="0 0 280 280" overflow="visible" aria-hidden="true">
                 <circle cx="140" cy="140" r={R} className={styles.ringTrack} />
                 <circle
                   cx="140"
@@ -194,7 +194,7 @@ export default function CountdownTimer({ page }) {
                 className={styles.input}
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                placeholder="5"
+                placeholder="e.g. 5"
                 aria-label="Timer duration in minutes"
                 autoComplete="off"
                 inputMode="decimal"

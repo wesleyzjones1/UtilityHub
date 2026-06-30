@@ -50,6 +50,8 @@ export default function CaseConverter({ page }) {
       output={output}
       inputLabel="Input"
       outputLabel="Converted"
+      inputPlaceholder="the quick brown fox"
+      outputPlaceholder="THE QUICK BROWN FOX"
     />
   );
 }

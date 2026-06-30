@@ -60,6 +60,8 @@ export default function ArrayFormatter({ page }) {
       outputLabel="Formatted"
       inputMono
       outputMono
+      inputPlaceholder={"apple\nbanana\ncherry"}
+      outputPlaceholder="['apple', 'banana', 'cherry']"
     />
   );
 }

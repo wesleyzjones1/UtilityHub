@@ -60,11 +60,11 @@ export const PAGES = [
   },
   {
     id: 'bold-text',
-    title: 'Bold Text Generator',
-    description: 'Convert plain text into bold Unicode letters you can paste into social media, chats, and more.',
+    title: 'Text Style Generator',
+    description: 'Apply bold, italic, or strikethrough using Unicode characters — paste anywhere Unicode is supported.',
     category: 'text',
     path: '/tools/bold-text',
-    keywords: ['bold', 'unicode', 'facebook', 'twitter', 'social media', 'mathematical bold'],
+    keywords: ['bold', 'italic', 'strikethrough', 'strike', 'unicode', 'social media', 'mathematical bold', 'cross out'],
   },
   {
     id: 'case-converter',
@@ -77,18 +77,10 @@ export const PAGES = [
   {
     id: 'inline-column-converter',
     title: 'Inline / Column Converter',
-    description: 'Switch a list between one item per line (column) and comma-separated (inline) formats.',
+    description: 'Convert between one-per-line column and separator-joined inline formats. Also removes line breaks.',
     category: 'text',
     path: '/tools/inline-column-converter',
-    keywords: ['column', 'inline', 'list', 'comma separated', 'convert', 'one per line'],
-  },
-  {
-    id: 'italic-text',
-    title: 'Italic Text Generator',
-    description: 'Convert plain text into italic Unicode letters you can paste into social media, chats, and more.',
-    category: 'text',
-    path: '/tools/italic-text',
-    keywords: ['italic', 'unicode', 'slanted', 'social media', 'mathematical italic'],
+    keywords: ['column', 'inline', 'list', 'comma separated', 'convert', 'one per line', 'remove line breaks', 'join lines', 'newline'],
   },
   {
     id: 'markdown-table',
@@ -131,14 +123,6 @@ export const PAGES = [
     keywords: ['remove', 'delete', 'character', 'strip', 'filter'],
   },
   {
-    id: 'remove-line-breaks',
-    title: 'Remove Line Breaks',
-    description: 'Remove line breaks to join all lines into a single continuous block of text.',
-    category: 'text',
-    path: '/tools/remove-line-breaks',
-    keywords: ['line breaks', 'newline', 'carriage return', 'join', 'single line'],
-  },
-  {
     id: 'remove-text-formatting',
     title: 'Remove Text Formatting',
     description: 'Strip Markdown, HTML tags, and other formatting to get plain text.',
@@ -169,14 +153,6 @@ export const PAGES = [
     category: 'text',
     path: '/tools/sort-words',
     keywords: ['sort', 'alphabetical', 'order', 'words', 'shuffle'],
-  },
-  {
-    id: 'strikethrough-text',
-    title: 'Strikethrough Text Generator',
-    description: 'Add a strikethrough line through text using Unicode, ready to paste anywhere.',
-    category: 'text',
-    path: '/tools/strikethrough-text',
-    keywords: ['strikethrough', 'strike', 'cross out', 'unicode', 'social media'],
   },
   {
     id: 'text-compare',

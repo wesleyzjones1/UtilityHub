@@ -22,7 +22,7 @@ export default function StrikethroughText({ page }) {
       inputLabel="Input"
       outputLabel="Strikethrough Output"
       inputPlaceholder="Hello world"
-      outputPlaceholder="H̶e̶l̶l̶o̶ ̶w̶o̶r̶l̶d̶"
+      outputPlaceholder="H̶e̶l̶l̶o̶ ̶w̶o̶r̶l̶d"
     />
   );
 }

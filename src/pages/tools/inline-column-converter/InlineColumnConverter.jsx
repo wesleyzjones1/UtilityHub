@@ -6,18 +6,22 @@ import { columnsToInline, inlineToColumns } from '../../../utils/textTransforms'
 import styles from './InlineColumnConverter.module.css';
 
 const SEPARATOR_OPTIONS = [
-  { value: ',',  label: 'Comma (,)' },
   { value: ', ', label: 'Comma + space (, )' },
+  { value: ',',  label: 'Comma (,)' },
   { value: ';',  label: 'Semicolon (;)' },
   { value: '|',  label: 'Pipe (|)' },
   { value: '\t', label: 'Tab' },
   { value: ' ',  label: 'Space' },
+  { value: '',   label: 'Nothing (join)' },
 ];
+
+const SEPARATOR_OPTIONS_TO_COLUMN = SEPARATOR_OPTIONS.filter(o => o.value !== '');
 
 const HOW_TO_USE = [
   'Paste your text in the input panel.',
   'Toggle between "Column → Inline" and "Inline → Column" conversion.',
   'Choose the separator that matches your data.',
+  'Use "Nothing (join)" to merge all lines into one — equivalent to removing line breaks.',
   'Click "Copy" to copy the result.',
 ];
 
@@ -27,6 +31,12 @@ export default function InlineColumnConverter({ page }) {
   const [separator, setSeparator] = useState(', ');
 
   const toInline = direction === 'to-inline';
+
+  function handleDirectionChange(val) {
+    if (val === 'to-column' && separator === '') setSeparator(', ');
+    setDirection(val);
+  }
+
   const output = input
     ? toInline
       ? columnsToInline(input, separator)
@@ -34,7 +44,7 @@ export default function InlineColumnConverter({ page }) {
     : '';
 
   const ITEMS = ['apple', 'banana', 'cherry'];
-  const inputExample  = toInline ? ITEMS.join('\n') : ITEMS.join(separator);
+  const inputExample = toInline ? ITEMS.join('\n') : ITEMS.join(separator || ', ');
   const outputPlaceholder = toInline
     ? columnsToInline(ITEMS.join('\n'), separator)
     : inlineToColumns(ITEMS.join(separator), separator);
@@ -51,11 +61,11 @@ export default function InlineColumnConverter({ page }) {
               { value: 'to-column', label: 'Inline → Column' },
             ]}
             value={direction}
-            onChange={setDirection}
+            onChange={handleDirectionChange}
           />
           <Select
             label="Separator"
-            options={SEPARATOR_OPTIONS}
+            options={toInline ? SEPARATOR_OPTIONS : SEPARATOR_OPTIONS_TO_COLUMN}
             value={separator}
             onChange={setSeparator}
           />

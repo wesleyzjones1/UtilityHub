@@ -43,16 +43,13 @@ import XmlFormatter from './pages/tools/xml-formatter/XmlFormatter';
 import BoldText from './pages/tools/bold-text/BoldText';
 import CaseConverter from './pages/tools/case-converter/CaseConverter';
 import InlineColumnConverter from './pages/tools/inline-column-converter/InlineColumnConverter';
-import ItalicText from './pages/tools/italic-text/ItalicText';
 import RemoveAllWhitespace from './pages/tools/remove-all-whitespace/RemoveAllWhitespace';
 import RemoveCharacter from './pages/tools/remove-character/RemoveCharacter';
-import RemoveLineBreaks from './pages/tools/remove-line-breaks/RemoveLineBreaks';
 import RemoveTextFormatting from './pages/tools/remove-text-formatting/RemoveTextFormatting';
 import RemoveTrailingWhitespace from './pages/tools/remove-trailing-whitespace/RemoveTrailingWhitespace';
 import ReverseText from './pages/tools/reverse-text/ReverseText';
 import ReverseTextInWord from './pages/tools/reverse-text-in-word/ReverseTextInWord';
 import SortWords from './pages/tools/sort-words/SortWords';
-import StrikethroughText from './pages/tools/strikethrough-text/StrikethroughText';
 import TextCompare from './pages/tools/text-compare/TextCompare';
 import WordCounter from './pages/tools/word-counter/WordCounter';
 import WordFrequency from './pages/tools/word-frequency/WordFrequency';
@@ -105,16 +102,13 @@ const TOOL_COMPONENTS = {
   'bold-text':              BoldText,
   'case-converter':         CaseConverter,
   'inline-column-converter': InlineColumnConverter,
-  'italic-text':            ItalicText,
   'remove-all-whitespace':  RemoveAllWhitespace,
   'remove-character':       RemoveCharacter,
-  'remove-line-breaks':     RemoveLineBreaks,
   'remove-text-formatting': RemoveTextFormatting,
   'remove-trailing-whitespace': RemoveTrailingWhitespace,
   'reverse-text':           ReverseText,
   'reverse-text-in-word':   ReverseTextInWord,
   'sort-words':             SortWords,
-  'strikethrough-text':     StrikethroughText,
   'text-compare':           TextCompare,
   'word-counter':           WordCounter,
   'word-frequency':         WordFrequency,

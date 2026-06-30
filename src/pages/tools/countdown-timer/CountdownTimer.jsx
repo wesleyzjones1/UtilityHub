@@ -119,43 +119,45 @@ export default function CountdownTimer({ page }) {
           aria-label="Countdown timer"
           aria-live="polite"
         >
-          <button
-            className={styles.timerBtn}
-            onClick={isDone ? undefined : togglePause}
-            aria-label={phase === 'running' ? 'Pause timer' : phase === 'paused' ? 'Resume timer' : undefined}
-            disabled={isDone}
-          >
-            {/* Progress ring */}
-            {!isDone && (
-              <svg className={styles.ring} viewBox="0 0 280 280" overflow="visible" aria-hidden="true">
-                <circle cx="140" cy="140" r={R} className={styles.ringTrack} />
-                <circle
-                  cx="140"
-                  cy="140"
-                  r={R}
-                  className={styles.ringProgress}
-                  style={{
-                    strokeDasharray: `${dash} ${C}`,
-                    transform: 'rotate(-90deg)',
-                    transformOrigin: '50% 50%',
-                  }}
-                />
-              </svg>
-            )}
-
-            <div className={styles.timeDisplay}>
-              {isDone ? (
-                <span className={styles.doneText}>Time's up!</span>
-              ) : (
-                <>
-                  <span className={styles.time}>{formatTime(secondsLeft)}</span>
-                  {phase === 'paused' && (
-                    <span className={styles.pausedLabel}>Paused</span>
-                  )}
-                </>
+          <div className={styles.overlayCenter}>
+            <button
+              className={styles.timerBtn}
+              onClick={isDone ? undefined : togglePause}
+              aria-label={phase === 'running' ? 'Pause timer' : phase === 'paused' ? 'Resume timer' : undefined}
+              disabled={isDone}
+            >
+              {/* Progress ring */}
+              {!isDone && (
+                <svg className={styles.ring} viewBox="0 0 280 280" overflow="visible" aria-hidden="true">
+                  <circle cx="140" cy="140" r={R} className={styles.ringTrack} />
+                  <circle
+                    cx="140"
+                    cy="140"
+                    r={R}
+                    className={styles.ringProgress}
+                    style={{
+                      strokeDasharray: `${dash} ${C}`,
+                      transform: 'rotate(-90deg)',
+                      transformOrigin: '50% 50%',
+                    }}
+                  />
+                </svg>
               )}
-            </div>
-          </button>
+
+              <div className={styles.timeDisplay}>
+                {isDone ? (
+                  <span className={styles.doneText}>Time's up!</span>
+                ) : (
+                  <>
+                    <span className={styles.time}>{formatTime(secondsLeft)}</span>
+                    {phase === 'paused' && (
+                      <span className={styles.pausedLabel}>Paused</span>
+                    )}
+                  </>
+                )}
+              </div>
+            </button>
+          </div>
 
           <div className={styles.overlayControls}>
             {isDone ? (
@@ -175,7 +177,6 @@ export default function CountdownTimer({ page }) {
             </button>
           </div>
 
-          <p className={styles.escHint}>Press Esc to stop · Space to pause</p>
         </div>
       )}
 

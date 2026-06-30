@@ -26,6 +26,9 @@ export default function SortWords({ page }) {
 
   const output = input ? sortWords(input, order, caseSensitive) : '';
 
+  const EXAMPLE = 'banana\napple\ncherry';
+  const outputPlaceholder = sortWords(EXAMPLE, order, caseSensitive);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -52,8 +55,8 @@ export default function SortWords({ page }) {
       outputLabel="Sorted"
       inputMono
       outputMono
-      inputPlaceholder={"banana\napple\ncherry"}
-      outputPlaceholder={"apple\nbanana\ncherry"}
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

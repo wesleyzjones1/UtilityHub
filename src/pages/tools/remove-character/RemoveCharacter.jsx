@@ -18,6 +18,11 @@ export default function RemoveCharacter({ page }) {
 
   const output = input && chars ? removeCharacter(input, chars, caseSensitive) : input;
 
+  const EXAMPLE = 'he##llo wor##ld';
+  const outputPlaceholder = chars
+    ? removeCharacter(EXAMPLE, chars, caseSensitive)
+    : EXAMPLE;
+
   return (
     <DualPanelTemplate
       page={page}
@@ -52,8 +57,8 @@ export default function RemoveCharacter({ page }) {
       outputLabel="Cleaned"
       inputMono
       outputMono
-      inputPlaceholder="he##llo wor##ld"
-      outputPlaceholder="hello world"
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

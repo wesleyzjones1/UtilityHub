@@ -33,6 +33,12 @@ export default function InlineColumnConverter({ page }) {
       : inlineToColumns(input, separator)
     : '';
 
+  const ITEMS = ['apple', 'banana', 'cherry'];
+  const inputExample  = toInline ? ITEMS.join('\n') : ITEMS.join(separator);
+  const outputPlaceholder = toInline
+    ? columnsToInline(ITEMS.join('\n'), separator)
+    : inlineToColumns(ITEMS.join(separator), separator);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -60,8 +66,8 @@ export default function InlineColumnConverter({ page }) {
       output={output}
       inputLabel={toInline ? 'Column (one per line)' : 'Inline (separated)'}
       outputLabel={toInline ? 'Inline' : 'Column (one per line)'}
-      inputPlaceholder={"apple\nbanana\ncherry"}
-      outputPlaceholder="apple, banana, cherry"
+      inputPlaceholder={inputExample}
+      outputPlaceholder={outputPlaceholder}
       inputMono
       outputMono
     />

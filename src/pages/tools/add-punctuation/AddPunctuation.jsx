@@ -34,6 +34,9 @@ export default function AddPunctuation({ page }) {
 
   const output = input ? addPunctuation(input, punct, mode) : '';
 
+  const EXAMPLE = 'First line\nSecond line\nThird line';
+  const outputPlaceholder = addPunctuation(EXAMPLE, punct, mode);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -59,8 +62,8 @@ export default function AddPunctuation({ page }) {
       output={output}
       inputLabel="Input"
       outputLabel="With Punctuation"
-      inputPlaceholder={"First line\nSecond line\nThird line"}
-      outputPlaceholder={"First line.\nSecond line.\nThird line."}
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

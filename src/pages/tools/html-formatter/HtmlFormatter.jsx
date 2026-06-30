@@ -65,8 +65,8 @@ export default function HtmlFormatter({ page }) {
       outputLabel="HTML Output"
       inputMono
       outputMono
-      inputPlaceholder="<div><p>Hello world</p></div>"
-      outputPlaceholder={"<div>\n  <p>Hello world</p>\n</div>"}
+      inputPlaceholder={mode === 'minify' ? "<div>\n  <p>Hello world</p>\n</div>" : "<div><p>Hello world</p></div>"}
+      outputPlaceholder={mode === 'minify' ? "<div><p>Hello world</p></div>" : "<div>\n  <p>Hello world</p>\n</div>"}
     />
   );
 }

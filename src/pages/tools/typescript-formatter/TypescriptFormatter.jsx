@@ -69,8 +69,8 @@ export default function TypescriptFormatter({ page }) {
       outputLabel="TypeScript Output"
       inputMono
       outputMono
-      inputPlaceholder="function greet(name:string){return 'Hi '+name;}"
-      outputPlaceholder={"function greet(name: string) {\n  return 'Hi ' + name;\n}"}
+      inputPlaceholder={mode === 'minify' ? "function greet(name: string) {\n  return 'Hi ' + name;\n}" : "function greet(name:string){return 'Hi '+name;}"}
+      outputPlaceholder={mode === 'minify' ? "function greet(name:string){return 'Hi '+name;}" : "function greet(name: string) {\n  return 'Hi ' + name;\n}"}
     />
   );
 }

@@ -23,6 +23,9 @@ export default function NumberSorter({ page }) {
 
   const output = input ? sortNumbers(input, order, removeDuplicates) : '';
 
+  const EXAMPLE = '3\n1\n4\n1\n2';
+  const outputPlaceholder = sortNumbers(EXAMPLE, order, removeDuplicates);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -49,7 +52,8 @@ export default function NumberSorter({ page }) {
       outputLabel="Sorted"
       inputMono
       outputMono
-      inputPlaceholder="3&#10;1&#10;2&#10;or: 3, 1, 2"
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

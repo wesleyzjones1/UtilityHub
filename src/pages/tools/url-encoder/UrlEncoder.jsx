@@ -29,6 +29,11 @@ export default function UrlEncoder({ page }) {
     ? mode === 'encode' ? encode(input) : decode(input)
     : '';
 
+  const ENCODE_EXAMPLE = 'hello world & more';
+  const DECODE_EXAMPLE = 'hello%20world%20%26%20more';
+  const inputExample  = mode === 'encode' ? ENCODE_EXAMPLE : DECODE_EXAMPLE;
+  const outputExample = mode === 'encode' ? encode(ENCODE_EXAMPLE) : decode(DECODE_EXAMPLE);
+
   const modeSelector = (
     <div className={styles.controls}>
       <label htmlFor="url-encoder-mode" className={styles.controlLabel}>Mode</label>
@@ -57,8 +62,8 @@ export default function UrlEncoder({ page }) {
       outputLabel="Output"
       inputMono
       outputMono
-      inputPlaceholder={mode === 'encode' ? 'Enter text to encode…' : 'Enter encoded URL to decode…'}
-      outputPlaceholder="Result will appear here…"
+      inputPlaceholder={inputExample}
+      outputPlaceholder={outputExample}
     />
   );
 }

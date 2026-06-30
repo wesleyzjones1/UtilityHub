@@ -69,8 +69,8 @@ export default function JsFormatter({ page }) {
       outputLabel="JavaScript Output"
       inputMono
       outputMono
-      inputPlaceholder="function add(a,b){return a+b;}"
-      outputPlaceholder={"function add(a, b) {\n  return a + b;\n}"}
+      inputPlaceholder={mode === 'minify' ? "function add(a, b) {\n  return a + b;\n}" : "function add(a,b){return a+b;}"}
+      outputPlaceholder={mode === 'minify' ? "function add(a,b){return a+b;}" : "function add(a, b) {\n  return a + b;\n}"}
     />
   );
 }

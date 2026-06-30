@@ -33,6 +33,9 @@ export default function ArrayFormatter({ page }) {
 
   const output = input ? formatArray(input, format, quote) : '';
 
+  const EXAMPLE = 'apple\nbanana\ncherry';
+  const outputPlaceholder = formatArray(EXAMPLE, format, quote);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -60,8 +63,8 @@ export default function ArrayFormatter({ page }) {
       outputLabel="Formatted"
       inputMono
       outputMono
-      inputPlaceholder={"apple\nbanana\ncherry"}
-      outputPlaceholder="['apple', 'banana', 'cherry']"
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

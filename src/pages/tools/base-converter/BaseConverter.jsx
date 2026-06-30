@@ -27,6 +27,10 @@ export default function BaseConverter({ page }) {
 
   const { output, error } = convertBase(input, from, to);
 
+  const BASE_SAMPLES = { binary: '1010', hexadecimal: 'FF', decimal: '42', octal: '52', text: 'Hi' };
+  const inputExample = BASE_SAMPLES[from] ?? '42';
+  const { output: outputExample } = convertBase(inputExample, from, to);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -73,8 +77,8 @@ export default function BaseConverter({ page }) {
       actions={error && <span className={styles.error} role="alert">{error}</span>}
       inputMono
       outputMono
-      inputPlaceholder={from === 'text' ? 'Enter text…' : `Enter ${from} value…`}
-      outputPlaceholder="Result appears here…"
+      inputPlaceholder={inputExample}
+      outputPlaceholder={outputExample || '…'}
     />
   );
 }

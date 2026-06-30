@@ -27,6 +27,9 @@ export default function CaseConverter({ page }) {
 
   const output = input ? convertCase(input, caseType) : '';
 
+  const EXAMPLE = 'the quick brown fox';
+  const outputPlaceholder = convertCase(EXAMPLE, caseType);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -50,8 +53,8 @@ export default function CaseConverter({ page }) {
       output={output}
       inputLabel="Input"
       outputLabel="Converted"
-      inputPlaceholder="the quick brown fox"
-      outputPlaceholder="THE QUICK BROWN FOX"
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

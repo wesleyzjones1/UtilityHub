@@ -22,6 +22,9 @@ export default function RemoveAllWhitespace({ page }) {
 
   const output = input ? removeAllWhitespace(input, mode) : '';
 
+  const EXAMPLE = 'hello   world';
+  const outputPlaceholder = removeAllWhitespace(EXAMPLE, mode);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -41,8 +44,8 @@ export default function RemoveAllWhitespace({ page }) {
       outputLabel="Cleaned"
       inputMono
       outputMono
-      inputPlaceholder="hello   world"
-      outputPlaceholder="helloworld"
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

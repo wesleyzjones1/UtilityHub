@@ -26,6 +26,12 @@ export default function ReverseText({ page }) {
     : reverseText(input)
     : '';
 
+  const EXAMPLE = 'hello world';
+  const outputPlaceholder =
+    mode === 'words'     ? reverseWords(EXAMPLE) :
+    mode === 'each-word' ? reverseTextInEachWord(EXAMPLE) :
+    reverseText(EXAMPLE);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -45,8 +51,8 @@ export default function ReverseText({ page }) {
       outputLabel="Reversed"
       inputMono
       outputMono
-      inputPlaceholder="hello world"
-      outputPlaceholder="dlrow olleh"
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

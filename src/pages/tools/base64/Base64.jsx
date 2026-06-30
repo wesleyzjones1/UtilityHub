@@ -31,6 +31,11 @@ export default function Base64({ page }) {
     ? mode === 'encode' ? encode(input) : decode(input)
     : '';
 
+  const ENCODE_EXAMPLE = 'Hello, world!';
+  const DECODE_EXAMPLE = 'SGVsbG8sIHdvcmxkIQ==';
+  const inputExample  = mode === 'encode' ? ENCODE_EXAMPLE : DECODE_EXAMPLE;
+  const outputExample = mode === 'encode' ? encode(ENCODE_EXAMPLE) : decode(DECODE_EXAMPLE);
+
   const modeSelector = (
     <div className={styles.controls}>
       <label htmlFor="base64-mode" className={styles.controlLabel}>Mode</label>
@@ -59,8 +64,8 @@ export default function Base64({ page }) {
       outputLabel="Output"
       inputMono
       outputMono
-      inputPlaceholder={mode === 'encode' ? 'Enter text to encode…' : 'Enter Base64 to decode…'}
-      outputPlaceholder="Result will appear here…"
+      inputPlaceholder={inputExample}
+      outputPlaceholder={outputExample}
       actions={<CopyButton value={typeof window !== 'undefined' ? window.location.href : ''} label="Copy link" />}
     />
   );

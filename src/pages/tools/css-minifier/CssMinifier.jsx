@@ -65,8 +65,8 @@ export default function CssMinifier({ page }) {
       outputLabel="CSS Output"
       inputMono
       outputMono
-      inputPlaceholder={".btn {\n  color: red;\n  padding: 8px;\n}"}
-      outputPlaceholder=".btn{color:red;padding:8px;}"
+      inputPlaceholder={mode === 'minify' ? ".btn { color: red; padding: 8px; }" : ".btn {\n  color: red;\n  padding: 8px;\n}"}
+      outputPlaceholder={mode === 'minify' ? ".btn{color:red;padding:8px;}" : ".btn {\n  color: red;\n  padding: 8px;\n}"}
     />
   );
 }

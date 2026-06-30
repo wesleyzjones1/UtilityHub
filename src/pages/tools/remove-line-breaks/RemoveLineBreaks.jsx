@@ -23,6 +23,9 @@ export default function RemoveLineBreaks({ page }) {
 
   const output = input ? removeLineBreaks(input, replacement) : '';
 
+  const EXAMPLE = 'Line one\nLine two\nLine three';
+  const outputPlaceholder = removeLineBreaks(EXAMPLE, replacement);
+
   return (
     <DualPanelTemplate
       page={page}
@@ -40,8 +43,8 @@ export default function RemoveLineBreaks({ page }) {
       output={output}
       inputLabel="Multi-line Input"
       outputLabel="Single Line"
-      inputPlaceholder={"Line one\nLine two\nLine three"}
-      outputPlaceholder="Line one Line two Line three"
+      inputPlaceholder={EXAMPLE}
+      outputPlaceholder={outputPlaceholder}
     />
   );
 }

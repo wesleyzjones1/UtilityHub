@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../context/FavoritesContext';
 import { CATEGORIES, PAGES } from '../../registry/pages';
+import { useToolPreview } from '../ToolPreview/useToolPreview';
 import styles from './FavoritesMenu.module.css';
 
 function StarIcon({ filled }) {
@@ -21,6 +22,7 @@ export default function FavoritesMenu() {
   const { favorites } = useFavorites();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const { getItemProps, preview } = useToolPreview();
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -80,6 +82,7 @@ export default function FavoritesMenu() {
                           className={styles.link}
                           role="menuitem"
                           onClick={close}
+                          {...getItemProps(page)}
                         >
                           {page.title}
                         </Link>
@@ -90,6 +93,7 @@ export default function FavoritesMenu() {
               ))}
             </div>
           )}
+          {preview}
         </div>
       )}
     </div>

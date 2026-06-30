@@ -84,6 +84,11 @@
   margin-bottom: 2.5rem;
 }
 
+/* Preview mode (navbar hover snapshot): just the tool's interactive content. */
+.previewContent {
+  padding: 1.25rem;
+}
+
 /* ── How to use ── */
 .howTo {
   border-left: 3px solid var(--color-primary-subtle-border);

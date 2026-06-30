@@ -63,6 +63,13 @@ export default function PiAttenuator({ page }) {
     }
   }
 
+  // Live values to label the schematic. In forward mode they come from the
+  // calculated result; in reverse mode they echo the resistors the user typed.
+  const shuntVal = mode === 'forward' ? (result ? result.rShunt : NaN) : parseFloat(rShunt);
+  const seriesVal = mode === 'forward' ? (result ? result.rSeries : NaN) : parseFloat(rSeries);
+  const r1Label = Number.isFinite(shuntVal) ? fmt(shuntVal) : '—';
+  const r2Label = Number.isFinite(seriesVal) ? fmt(seriesVal) : '—';
+
   return (
     <PageShell page={page} howToUse={HOW_TO_USE}>
       <div className={styles.controls}>
@@ -211,8 +218,10 @@ export default function PiAttenuator({ page }) {
               {/* Labels */}
               <text x="5" y="56" fontSize="9" fill="currentColor">IN</text>
               <text x="268" y="56" fontSize="9" fill="currentColor">OUT</text>
-              <text x="62" y="90" fontSize="8" fill="currentColor">R1=R3 (shunt)</text>
-              <text x="62" y="105" fontSize="8" fill="currentColor">R2 (series)</text>
+              {/* Live resistor values (R1 = R3 shunt, R2 series) */}
+              <text x="60" y="90" textAnchor="middle" fontSize="9" fontWeight="700" fill="currentColor">{r1Label}</text>
+              <text x="150" y="105" textAnchor="middle" fontSize="9" fontWeight="700" fill="currentColor">{r2Label}</text>
+              <text x="240" y="90" textAnchor="middle" fontSize="9" fontWeight="700" fill="currentColor">{r1Label}</text>
             </svg>
           </div>
         </section>

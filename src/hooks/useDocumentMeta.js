@@ -31,8 +31,9 @@ function upsertCanonical(href) {
  * tags help share/bookmark UX but not deep crawler indexing — the static tags in
  * index.html cover the site root, which is what most scrapers fetch.)
  */
-export function useDocumentMeta({ title, description } = {}) {
+export function useDocumentMeta({ title, description, enabled = true } = {}) {
   useEffect(() => {
+    if (!enabled) return;
     const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — free online tools`;
     const desc = description || DEFAULT_DESCRIPTION;
 
@@ -44,5 +45,5 @@ export function useDocumentMeta({ title, description } = {}) {
     upsertMeta('name', 'twitter:title', fullTitle);
     upsertMeta('name', 'twitter:description', desc);
     upsertCanonical(window.location.href);
-  }, [title, description]);
+  }, [title, description, enabled]);
 }

@@ -3,22 +3,33 @@ import { Link } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import { recordRecentTool } from '../../hooks/useRecentTools';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
+import { useIsPreview } from '../../context/PreviewContext';
 import { getRelatedPages } from '../../registry/pages';
 import styles from './PageShell.module.css';
 
 /**
  * Shared wrapper for every tool page.
  * Renders: title/description → children → how-to-use → related tools.
+ *
+ * In preview mode (navbar hover snapshot) only the interactive content is
+ * rendered — no header, how-to, related tools, or side effects.
  */
 export default function PageShell({ page, children, howToUse = [] }) {
-  useDocumentMeta({ title: page.title, description: page.description });
+  const isPreview = useIsPreview();
 
-  const related = getRelatedPages(page.id, 4);
+  useDocumentMeta({ title: page.title, description: page.description, enabled: !isPreview });
+
+  const related = isPreview ? [] : getRelatedPages(page.id, 4);
 
   // Record this tool as recently used so it can be surfaced on the home page.
   useEffect(() => {
+    if (isPreview) return;
     recordRecentTool(page.id);
-  }, [page.id]);
+  }, [page.id, isPreview]);
+
+  if (isPreview) {
+    return <div className={styles.previewContent}>{children}</div>;
+  }
 
   return (
     <article className={styles.shell}>

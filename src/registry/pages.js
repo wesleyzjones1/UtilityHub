@@ -279,14 +279,6 @@ export const PAGES = [
     keywords: ['hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'convert'],
   },
   {
-    id: 'color-palette',
-    title: 'Color Palette Generator',
-    description: 'Generate matching color palettes from a single base color.',
-    category: 'color',
-    path: '/tools/color-palette',
-    keywords: ['palette', 'scheme', 'complementary', 'analogous', 'triadic'],
-  },
-  {
     id: 'contrast-checker',
     title: 'Contrast Checker',
     description: 'Check text and background color contrast against WCAG accessibility standards.',
@@ -296,11 +288,11 @@ export const PAGES = [
   },
   {
     id: 'gradient-generator',
-    title: 'Gradient Generator',
-    description: 'Design CSS gradients visually and copy the generated code.',
+    title: 'Gradient & Palette Generator',
+    description: 'Blend colors into a CSS gradient and copy an evenly-spaced color palette.',
     category: 'color',
     path: '/tools/gradient-generator',
-    keywords: ['gradient', 'css', 'linear', 'radial', 'conic'],
+    keywords: ['gradient', 'css', 'linear', 'radial', 'conic', 'palette', 'scheme', 'colors', 'interpolate', 'blend'],
   },
 
   // ── Image Tools ────────────────────────────────────────────────────────────
@@ -491,6 +483,14 @@ export const PAGES = [
     category: 'time',
     path: '/tools/date-calculator',
     keywords: ['date', 'days', 'difference', 'between', 'calendar'],
+  },
+  {
+    id: 'task-list',
+    title: 'Task List',
+    description: 'Write a quick to-do list and check off tasks as you finish them. Saved in your browser.',
+    category: 'time',
+    path: '/tools/task-list',
+    keywords: ['todo', 'to-do', 'task', 'checklist', 'list', 'reminder', 'done', 'tasks'],
   },
   {
     id: 'timezone-converter',

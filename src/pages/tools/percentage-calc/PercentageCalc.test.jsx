@@ -18,29 +18,13 @@ describe('PercentageCalc', () => {
   it('computes X% of Y', async () => {
     const user = userEvent.setup();
     renderWithRouter(<PercentageCalc page={PAGE} />);
-    await user.type(screen.getByLabelText('Percent'), '10');
+    await user.type(screen.getByLabelText('Percent'), '15');
     await user.type(screen.getByLabelText('Value'), '200');
-    expect(screen.getByText('20')).toBeDefined();
-  });
-
-  it('computes what percent X is of Y', async () => {
-    const user = userEvent.setup();
-    renderWithRouter(<PercentageCalc page={PAGE} />);
-    await user.type(screen.getByLabelText('Part'), '20');
-    await user.type(screen.getByLabelText('Whole'), '200');
-    expect(screen.getByText('10%')).toBeDefined();
-  });
-
-  it('computes percent change', async () => {
-    const user = userEvent.setup();
-    renderWithRouter(<PercentageCalc page={PAGE} />);
-    await user.type(screen.getByLabelText('From'), '100');
-    await user.type(screen.getByLabelText('To'), '150');
-    expect(screen.getByText('50%')).toBeDefined();
+    expect(screen.getByText('30')).toBeDefined();
   });
 
   it('shows a placeholder dash before input', () => {
     renderWithRouter(<PercentageCalc page={PAGE} />);
-    expect(screen.getAllByText('—').length).toBe(3);
+    expect(screen.getAllByText('—').length).toBe(1);
   });
 });

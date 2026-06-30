@@ -48,34 +48,89 @@
   border-color: var(--color-primary, #3b82f6);
 }
 
-.clearBtn {
-  margin-bottom: 2px;
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.imgContainer {
+.zoomLabel {
+  min-width: 48px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-family: var(--font-mono, monospace);
+  color: var(--color-text-muted, #6b7280);
+}
+
+.viewport {
+  width: 100%;
+  max-width: 720px;
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 10px;
+  background:
+    repeating-conic-gradient(var(--color-surface-2, #f3f4f6) 0% 25%, var(--color-surface, #fff) 0% 50%)
+    0 / 24px 24px;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 0.5rem;
+}
+
+.stage {
   position: relative;
-  display: inline-block;
-  cursor: crosshair;
+  flex-shrink: 0;
+  -webkit-user-select: none;
   user-select: none;
-  max-width: 100%;
+  cursor: crosshair;
 }
 
 .sourceImg {
   display: block;
-  max-width: 100%;
-  max-height: 420px;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-border, #e5e7eb);
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .cropOverlay {
   position: absolute;
-  border: 2px solid var(--color-primary, #3b82f6);
-  background: rgba(59, 130, 246, 0.15);
-  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
   box-sizing: border-box;
 }
+
+.cropMove {
+  position: absolute;
+  inset: 0;
+  cursor: move;
+  outline: 1px dashed var(--color-primary, #3b82f6);
+  outline-offset: -1px;
+}
+
+.handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary, #3b82f6);
+  border: 2px solid #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.handle_nw { top: -6px; left: -6px; cursor: nwse-resize; }
+.handle_n  { top: -6px; left: 50%; margin-left: -6px; cursor: ns-resize; }
+.handle_ne { top: -6px; right: -6px; cursor: nesw-resize; }
+.handle_e  { top: 50%; right: -6px; margin-top: -6px; cursor: ew-resize; }
+.handle_se { bottom: -6px; right: -6px; cursor: nwse-resize; }
+.handle_s  { bottom: -6px; left: 50%; margin-left: -6px; cursor: ns-resize; }
+.handle_sw { bottom: -6px; left: -6px; cursor: nesw-resize; }
+.handle_w  { top: 50%; left: -6px; margin-top: -6px; cursor: ew-resize; }
 
 .error {
   color: var(--color-error, #ef4444);

@@ -159,7 +159,9 @@ export default function ImageResizer({ page }) {
             <span>Original: {origImg?.naturalWidth} × {origImg?.naturalHeight} px · {formatBytes(file.size)}</span>
             <span aria-label="Output size">Output: {width} × {height} px · {formatBytes(outputBlob.size)}</span>
           </div>
-          <img src={preview} alt="Resized preview" className={styles.img} />
+          <div className={styles.canvas}>
+            <img src={preview} alt="Resized preview" className={styles.img} />
+          </div>
         </div>
       )}
     </ImageDropTemplate>

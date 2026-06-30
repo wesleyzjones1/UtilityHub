@@ -21,6 +21,6 @@ describe('ImageCropper', () => {
 
   it('renders how-to steps', () => {
     renderWithRouter(<ImageCropper page={PAGE} />);
-    expect(screen.getByText(/drag on the image/i)).toBeDefined();
+    expect(screen.getByText(/drag the box/i)).toBeDefined();
   });
 });

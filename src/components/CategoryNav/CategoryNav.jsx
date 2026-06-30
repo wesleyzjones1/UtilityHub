@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import { useToolPreview } from '../ToolPreview/useToolPreview';
 import styles from './CategoryNav.module.css';
 
 function ChevronIcon() {
@@ -12,6 +13,7 @@ function ChevronIcon() {
 }
 
 function Dropdown({ category, pages, onClose }) {
+  const { getItemProps, preview } = useToolPreview();
   const isWide = pages.length > 8;
   // For the 2-column layout, fill column-major (down the first column, then the
   // second) by laying the items out in a fixed number of rows.
@@ -36,12 +38,14 @@ function Dropdown({ category, pages, onClose }) {
               role="menuitem"
               aria-label={page.title}
               onClick={onClose}
+              {...getItemProps(page)}
             >
               <span className={styles.dropdownItemTitle}>{page.title}</span>
             </Link>
           </li>
         ))}
       </ul>
+      {preview}
     </div>
   );
 }

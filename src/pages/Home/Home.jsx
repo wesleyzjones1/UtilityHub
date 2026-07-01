@@ -153,9 +153,6 @@ export default function Home() {
         <h1 id="hero-heading" className={styles.heroTitle}>
           {t('heroTitle')}
         </h1>
-        <p className={styles.heroSub}>
-          {PAGES.length} {t('heroSubStart')} {Object.keys(CATEGORIES).length} {t('heroSubEnd')}
-        </p>
         <HeroSearch />
       </section>
 

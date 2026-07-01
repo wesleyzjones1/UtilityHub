@@ -64,7 +64,8 @@
   background: transparent;
   font-size: 1rem;
   color: var(--color-text);
-  outline: none;
+  outline: 0;
+  outline-offset: 0;
   min-width: 0;
 }
 

@@ -2,7 +2,7 @@
 .hero {
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
-  padding: 4rem var(--container-pad) 3.5rem;
+  padding: 3.5rem var(--container-pad);
   text-align: center;
 }
 
@@ -12,7 +12,7 @@
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-text);
-  margin-bottom: 0.875rem;
+  margin-bottom: 2.25rem;
 }
 
 /* Hero search */

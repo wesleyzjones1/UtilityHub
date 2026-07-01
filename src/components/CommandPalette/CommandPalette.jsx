@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { searchPages, PAGE_BY_ID, CATEGORIES } from '../../registry/pages';
 import { readRecentTools } from '../../hooks/useRecentTools';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './CommandPalette.module.css';
 
 export default function CommandPalette({ open, onClose }) {
@@ -9,6 +10,7 @@ export default function CommandPalette({ open, onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef(null);
   const navigate = useNavigate();
+  const { t, tt } = useLanguage();
 
   const results = useMemo(() => {
     if (query.trim()) return searchPages(query);
@@ -20,8 +22,8 @@ export default function CommandPalette({ open, onClose }) {
     if (!open) return;
     setQuery('');
     setActiveIndex(0);
-    const t = setTimeout(() => inputRef.current?.focus(), 0);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => inputRef.current?.focus(), 0);
+    return () => clearTimeout(timer);
   }, [open]);
 
   useEffect(() => { setActiveIndex(0); }, [query]);
@@ -50,20 +52,20 @@ export default function CommandPalette({ open, onClose }) {
     }
   }
 
-  const heading = query.trim() ? 'Results' : 'Recent';
+  const heading = query.trim() ? t('cmdResults') : t('cmdRecent');
 
   return (
-    <div className={styles.backdrop} onClick={onClose} role="dialog" aria-modal="true" aria-label="Command palette">
+    <div className={styles.backdrop} onClick={onClose} role="dialog" aria-modal="true" aria-label={t('cmdPaletteLabel')}>
       <div className={styles.panel} onClick={e => e.stopPropagation()}>
         <input
           ref={inputRef}
           className={styles.input}
           type="text"
-          placeholder="Search tools…"
+          placeholder={t('cmdSearchPlaceholder')}
           value={query}
           onChange={e => setQuery(e.target.value)}
           onKeyDown={onKeyDown}
-          aria-label="Search tools"
+          aria-label={t('cmdSearchLabel')}
           aria-activedescendant={results[activeIndex] ? `cmd-${results[activeIndex].id}` : undefined}
           autoComplete="off"
           spellCheck={false}
@@ -80,7 +82,7 @@ export default function CommandPalette({ open, onClose }) {
                     onMouseEnter={() => setActiveIndex(i)}
                     onClick={() => go(page)}
                   >
-                    <span className={styles.itemTitle}>{page.title}</span>
+                    <span className={styles.itemTitle}>{tt(page)}</span>
                     <span className={styles.itemCat}>{CATEGORIES[page.category]?.label}</span>
                   </button>
                 </li>
@@ -88,13 +90,13 @@ export default function CommandPalette({ open, onClose }) {
             </ul>
           </>
         ) : (
-          <p className={styles.empty}>{query.trim() ? 'No tools found' : 'Type to search all tools'}</p>
+          <p className={styles.empty}>{query.trim() ? t('cmdNoResults') : t('cmdTypeToSearch')}</p>
         )}
 
         <div className={styles.footer}>
-          <span><kbd className={styles.kbd}>↑</kbd><kbd className={styles.kbd}>↓</kbd> navigate</span>
-          <span><kbd className={styles.kbd}>↵</kbd> open</span>
-          <span><kbd className={styles.kbd}>esc</kbd> close</span>
+          <span><kbd className={styles.kbd}>↑</kbd><kbd className={styles.kbd}>↓</kbd> {t('cmdNavigate')}</span>
+          <span><kbd className={styles.kbd}>↵</kbd> {t('cmdOpenHint')}</span>
+          <span><kbd className={styles.kbd}>esc</kbd> {t('cmdCloseHint')}</span>
         </div>
       </div>
     </div>

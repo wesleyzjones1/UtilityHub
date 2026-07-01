@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { CATEGORIES, PAGES } from '../../registry/pages';
 import { useToolPreview } from '../ToolPreview/useToolPreview';
 import styles from './FavoritesMenu.module.css';
@@ -23,6 +24,7 @@ export default function FavoritesMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   const { getItemProps, preview } = useToolPreview();
+  const { t, tt } = useLanguage();
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -54,26 +56,26 @@ export default function FavoritesMenu() {
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
         aria-haspopup="menu"
-        aria-label={`Favorites (${count})`}
-        title="Favorites"
+        aria-label={`${t('favoritesLabel')} (${count})`}
+        title={t('favoritesLabel')}
       >
         <StarIcon filled={count > 0} />
         {count > 0 && <span className={styles.badge}>{count}</span>}
       </button>
 
       {open && (
-        <div className={styles.dropdown} role="menu" aria-label="Favorites">
+        <div className={styles.dropdown} role="menu" aria-label={t('favoritesLabel')}>
           {groups.length === 0 ? (
             <div className={styles.empty}>
               <StarIcon filled={false} />
-              <p>No favorites yet</p>
-              <span>Tap the star on any tool to save it here.</span>
+              <p>{t('favoritesEmpty')}</p>
+              <span>{t('favoritesEmptyHint')}</span>
             </div>
           ) : (
             <div className={styles.groups}>
               {groups.map(({ cat, pages }) => (
                 <div key={cat.id} className={styles.group}>
-                  <div className={styles.groupLabel}>{cat.label}</div>
+                  <div className={styles.groupLabel}>{t(`cat${cat.id.charAt(0).toUpperCase() + cat.id.slice(1)}`)}</div>
                   <ul className={styles.list}>
                     {pages.map(page => (
                       <li key={page.id}>
@@ -84,7 +86,7 @@ export default function FavoritesMenu() {
                           onClick={close}
                           {...getItemProps(page)}
                         >
-                          {page.title}
+                          {tt(page)}
                         </Link>
                       </li>
                     ))}

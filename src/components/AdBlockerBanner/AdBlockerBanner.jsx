@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { useAdPreference } from '../../context/AdPreferenceContext';
 import { useSupport } from '../../context/SupportContext';
 import { useAdBlocker } from '../../hooks/useAdBlocker';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './AdBlockerBanner.module.css';
 
 export default function AdBlockerBanner() {
   const { adsHidden } = useAdPreference();
   const { openSupport } = useSupport();
   const adBlockerDetected = useAdBlocker();
+  const { t } = useLanguage();
   const [dismissed, setDismissed] = useState(
     () => localStorage.getItem('uh-adb-dismissed') === 'true'
   );
@@ -22,14 +24,13 @@ export default function AdBlockerBanner() {
   return (
     <div className={styles.banner} role="alert" aria-live="polite">
       <p className={styles.text}>
-        Looks like you're using an ad blocker — that's completely fine. If these tools are useful,
-        consider{' '}
+        {t('adBlockerText')}{' '}
         <button className={styles.upgradeBtn} onClick={openSupport}>
-          supporting UtilityHub
+          {t('adBlockerLinkText')}
         </button>
-        {' '}instead.
+        {' '}{t('adBlockerSuffix')}
       </p>
-      <button className={styles.dismiss} onClick={dismiss} aria-label="Dismiss ad blocker notice">
+      <button className={styles.dismiss} onClick={dismiss} aria-label={t('dismissAdBlockerNotice')}>
         ✕
       </button>
     </div>

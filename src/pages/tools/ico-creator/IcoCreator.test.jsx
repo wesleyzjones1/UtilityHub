@@ -19,8 +19,4 @@ describe('IcoCreator', () => {
     expect(screen.getByText(/drop an image here/i)).toBeDefined();
   });
 
-  it('renders how-to steps', () => {
-    renderWithRouter(<IcoCreator page={PAGE} />);
-    expect(screen.getByText(/drop any image/i)).toBeDefined();
-  });
 });

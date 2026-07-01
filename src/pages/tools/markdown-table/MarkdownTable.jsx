@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
+import { useLanguage } from '../../../context/LanguageContext';
 import { generateMarkdownTable } from '../../../utils/converters';
 
 const SEP_OPTIONS = [
@@ -11,13 +12,6 @@ const SEP_OPTIONS = [
   { value: '|',     label: 'Pipe' },
 ];
 
-const HOW_TO_USE = [
-  'Paste comma-separated, tab-separated, or pipe-separated data in the input panel.',
-  'The first row is treated as the header row.',
-  'Choose the separator or leave it on Auto-detect.',
-  'Copy the output and paste it directly into any Markdown editor.',
-];
-
 const EXAMPLE = `Name,Age,City
 Alice,30,New York
 Bob,25,Los Angeles
@@ -26,16 +20,16 @@ Carol,35,Chicago`;
 export default function MarkdownTable({ page }) {
   const [input, setInput]     = useState('');
   const [separator, setSep]   = useState('auto');
+  const { t } = useLanguage();
 
   const output = input ? generateMarkdownTable(input, separator) : '';
 
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <Select
-          label="Separator"
+          label={t('separator')}
           options={SEP_OPTIONS}
           value={separator}
           onChange={setSep}
@@ -44,8 +38,8 @@ export default function MarkdownTable({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Delimited Data"
-      outputLabel="Markdown Table"
+      inputLabel={t('mdtDelimitedData')}
+      outputLabel={t('mdtMarkdownTable')}
       inputMono
       outputMono
       inputPlaceholder={EXAMPLE}

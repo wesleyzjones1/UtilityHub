@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import { useLanguage } from '../../context/LanguageContext';
 import { useToolPreview } from '../ToolPreview/useToolPreview';
 import styles from './CategoryNav.module.css';
 
@@ -12,8 +13,9 @@ function ChevronIcon() {
   );
 }
 
-function Dropdown({ category, pages, onClose }) {
+function Dropdown({ label, pages, onClose }) {
   const { getItemProps, preview } = useToolPreview();
+  const { tt } = useLanguage();
   const isWide = pages.length > 8;
   // For the 2-column layout, fill column-major (down the first column, then the
   // second) by laying the items out in a fixed number of rows.
@@ -24,7 +26,7 @@ function Dropdown({ category, pages, onClose }) {
     <div
       className={`${styles.dropdown} ${isWide ? styles.dropdownWide : ''}`}
       role="menu"
-      aria-label={`${category.label} tools`}
+      aria-label={`${label} tools`}
     >
       <ul
         className={`${styles.dropdownList} ${isWide ? styles.dropdownListWide : ''}`}
@@ -36,11 +38,11 @@ function Dropdown({ category, pages, onClose }) {
               to={page.path}
               className={styles.dropdownItem}
               role="menuitem"
-              aria-label={page.title}
+              aria-label={tt(page)}
               onClick={onClose}
               {...getItemProps(page)}
             >
-              <span className={styles.dropdownItemTitle}>{page.title}</span>
+              <span className={styles.dropdownItemTitle}>{tt(page)}</span>
             </Link>
           </li>
         ))}
@@ -54,6 +56,7 @@ export default function CategoryNav() {
   const [openCategory, setOpenCategory] = useState(null);
   const navRef = useRef(null);
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const close = useCallback(() => setOpenCategory(null), []);
 
@@ -73,10 +76,11 @@ export default function CategoryNav() {
   }, [openCategory, close]);
 
   return (
-    <nav className={styles.nav} ref={navRef} aria-label="Category navigation">
+    <nav className={styles.nav} ref={navRef} aria-label={t('categoryNavigationLabel')}>
       {Object.values(CATEGORIES).map(cat => {
         const isOpen = openCategory === cat.id;
         const pages = PAGE_BY_CATEGORY[cat.id] ?? [];
+        const label = t(`cat${cat.id.charAt(0).toUpperCase() + cat.id.slice(1)}`);
         return (
           <div
             key={cat.id}
@@ -90,11 +94,11 @@ export default function CategoryNav() {
               aria-expanded={isOpen}
               aria-haspopup="menu"
             >
-              {cat.label}
+              {label}
               <ChevronIcon />
             </button>
             {isOpen && (
-              <Dropdown category={cat} pages={pages} onClose={close} />
+              <Dropdown label={label} pages={pages} onClose={close} />
             )}
           </div>
         );

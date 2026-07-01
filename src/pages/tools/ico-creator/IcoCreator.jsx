@@ -7,12 +7,6 @@ import styles from './IcoCreator.module.css';
 const ALL_SIZES = [16, 32, 48, 64, 128, 256];
 const DEFAULT_SIZES = [16, 32, 48];
 
-const HOW_TO_USE = [
-  'Drop any image — square images work best for icons.',
-  'Select which icon sizes to include in the .ico file.',
-  'Click Create ICO, then Download to save your favicon.',
-];
-
 export default function IcoCreator({ page }) {
   const [file, setFile] = useState(null);
   const [origImg, setOrigImg] = useState(null);
@@ -77,7 +71,6 @@ export default function IcoCreator({ page }) {
   return (
     <ImageDropTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       file={file}
       onFile={handleFile}
       onClear={handleClear}

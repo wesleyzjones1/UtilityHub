@@ -20,7 +20,7 @@ describe('ArrayFormatter', () => {
     const user = userEvent.setup();
     renderWithRouter(<ArrayFormatter page={PAGE} />);
     await user.type(screen.getByRole('textbox', { name: /items/i }), 'a{Enter}b{Enter}c');
-    expect(screen.getByRole('textbox', { name: /formatted/i }).value).toBe("['a', 'b', 'c']");
+    expect(screen.getByRole('textbox', { name: /converted/i }).value).toBe("['a', 'b', 'c']");
   });
 
   it('formats as JSON when selected', async () => {
@@ -28,7 +28,7 @@ describe('ArrayFormatter', () => {
     renderWithRouter(<ArrayFormatter page={PAGE} />);
     await user.selectOptions(screen.getByRole('combobox', { name: /format/i }), 'json');
     await user.type(screen.getByRole('textbox', { name: /items/i }), 'x{Enter}y');
-    expect(screen.getByRole('textbox', { name: /formatted/i }).value).toBe('["x","y"]');
+    expect(screen.getByRole('textbox', { name: /converted/i }).value).toBe('["x","y"]');
   });
 
   it('uses double quotes when selected', async () => {
@@ -36,11 +36,11 @@ describe('ArrayFormatter', () => {
     renderWithRouter(<ArrayFormatter page={PAGE} />);
     await user.selectOptions(screen.getByRole('combobox', { name: /quote style/i }), 'double');
     await user.type(screen.getByRole('textbox', { name: /items/i }), 'a{Enter}b');
-    expect(screen.getByRole('textbox', { name: /formatted/i }).value).toBe('["a", "b"]');
+    expect(screen.getByRole('textbox', { name: /converted/i }).value).toBe('["a", "b"]');
   });
 
   it('shows empty output for empty input', () => {
     renderWithRouter(<ArrayFormatter page={PAGE} />);
-    expect(screen.getByRole('textbox', { name: /formatted/i }).value).toBe('');
+    expect(screen.getByRole('textbox', { name: /converted/i }).value).toBe('');
   });
 });

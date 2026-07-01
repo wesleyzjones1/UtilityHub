@@ -2,13 +2,8 @@ import { useRef, useState, useEffect } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import Textarea from '../../../components/ui/Textarea/Textarea';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './LoremIpsum.module.css';
-
-const HOW_TO_USE = [
-  'Choose the output type: paragraphs, sentences, or words.',
-  'Set the count and click Generate.',
-  'Copy the result with the Copy button.',
-];
 
 const LOREM_WORDS = [
   'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do',
@@ -64,6 +59,7 @@ export default function LoremIpsum({ page }) {
   const typeRef = useRef(null);
   const countRef = useRef(null);
   const [output, setOutput] = useState('');
+  const { t } = useLanguage();
 
   function generate() {
     const type = typeRef.current?.value || 'paragraphs';
@@ -76,24 +72,24 @@ export default function LoremIpsum({ page }) {
   }, []);
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         <div className={styles.controls}>
           <label className={styles.fieldLabel}>
-            <span>Type</span>
-            <select ref={typeRef} className={styles.select} aria-label="Output type">
-              <option value="paragraphs">Paragraphs</option>
-              <option value="sentences">Sentences</option>
-              <option value="words">Words</option>
+            <span>{t('type')}</span>
+            <select ref={typeRef} className={styles.select} aria-label={t('type')}>
+              <option value="paragraphs">{t('loremParagraphs')}</option>
+              <option value="sentences">{t('loremSentences')}</option>
+              <option value="words">{t('loremWords')}</option>
             </select>
           </label>
           <label className={styles.fieldLabel}>
-            <span>Count</span>
+            <span>{t('count')}</span>
             <input
               ref={countRef}
               type="number"
               className={styles.input}
-              aria-label="Count"
+              aria-label={t('count')}
               min="1"
               max="50"
               defaultValue="3"
@@ -102,16 +98,16 @@ export default function LoremIpsum({ page }) {
           <button
             type="button"
             className={styles.generateBtn}
-            aria-label="Generate text"
+            aria-label={t('generate')}
             onClick={generate}
           >
-            Generate
+            {t('generate')}
           </button>
         </div>
 
         <div className={styles.outputPanel}>
           <div className={styles.outputHeader}>
-            <span className={styles.outputLabel}>Output</span>
+            <span className={styles.outputLabel}>{t('loremOutput')}</span>
             {output && <CopyButton value={output} size="sm" />}
           </div>
           <Textarea
@@ -119,7 +115,7 @@ export default function LoremIpsum({ page }) {
             readOnly
             rows={10}
             aria-label="Generated text"
-            placeholder="Generated text will appear here…"
+            placeholder={t('loremGenerated')}
           />
         </div>
       </div>

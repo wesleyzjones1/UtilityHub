@@ -1,20 +1,15 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Toggle from '../../../components/ui/Toggle/Toggle';
+import { useLanguage } from '../../../context/LanguageContext';
 import { removeCharacter } from '../../../utils/textTransforms';
 import styles from './RemoveCharacter.module.css';
-
-const HOW_TO_USE = [
-  'Paste or type your text in the input panel.',
-  'Type the character(s) you want to remove in the "Characters to remove" field.',
-  'Toggle case sensitivity if needed.',
-  'Click "Copy" to copy the result.',
-];
 
 export default function RemoveCharacter({ page }) {
   const [input, setInput] = useState('');
   const [chars, setChars] = useState('');
   const [caseSensitive, setCaseSensitive] = useState(true);
+  const { t } = useLanguage();
 
   const output = input && chars ? removeCharacter(input, chars, caseSensitive) : input;
 
@@ -26,7 +21,6 @@ export default function RemoveCharacter({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.controls}>
           <div className={styles.charInputWrap}>
@@ -46,15 +40,14 @@ export default function RemoveCharacter({ page }) {
           <Toggle
             checked={caseSensitive}
             onChange={setCaseSensitive}
-            label="Case sensitive"
+            label={t('freqCaseSensitive')}
           />
         </div>
       }
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Input"
-      outputLabel="Cleaned"
+      outputLabel={t('cleaned')}
       inputMono
       outputMono
       inputPlaceholder={EXAMPLE}

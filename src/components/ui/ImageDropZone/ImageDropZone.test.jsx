@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { renderWithProviders as render } from '../../../test-utils';
 import ImageDropZone from './ImageDropZone';
 
 function makeFile(name = 'photo.png', type = 'image/png', size = 1024) {

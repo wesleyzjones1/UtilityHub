@@ -35,21 +35,21 @@ describe('CountdownTimer — setup screen', () => {
 
   it('Start button is disabled when input is empty', () => {
     renderWithRouter(<CountdownTimer page={PAGE} />);
-    expect(screen.getByRole('button', { name: /start countdown/i }).disabled).toBe(true);
+    expect(screen.getByRole('button', { name: /^start$/i }).disabled).toBe(true);
   });
 
   it('Start button is disabled for invalid input', async () => {
     const user = userEvent.setup();
     renderWithRouter(<CountdownTimer page={PAGE} />);
     await user.type(screen.getByRole('textbox', { name: /timer duration/i }), 'abc');
-    expect(screen.getByRole('button', { name: /start countdown/i }).disabled).toBe(true);
+    expect(screen.getByRole('button', { name: /^start$/i }).disabled).toBe(true);
   });
 
   it('Start button is enabled for valid numeric input', async () => {
     const user = userEvent.setup();
     renderWithRouter(<CountdownTimer page={PAGE} />);
     await user.type(screen.getByRole('textbox', { name: /timer duration/i }), '5');
-    expect(screen.getByRole('button', { name: /start countdown/i }).disabled).toBe(false);
+    expect(screen.getByRole('button', { name: /^start$/i }).disabled).toBe(false);
   });
 
   it('1 min example button fills the input', async () => {
@@ -112,8 +112,9 @@ describe('CountdownTimer — overlay', () => {
   it('Pause button toggles to Resume', () => {
     renderWithRouter(<CountdownTimer page={PAGE} />);
     startTimer('5');
-    fireEvent.click(screen.getByRole('button', { name: /^pause$/i }));
-    expect(screen.getByRole('button', { name: /^resume$/i })).toBeDefined();
+    // Both the large timer face and the control bar expose a "Pause" button.
+    fireEvent.click(screen.getAllByRole('button', { name: /^pause$/i })[0]);
+    expect(screen.getAllByRole('button', { name: /^resume$/i }).length).toBeGreaterThan(0);
   });
 
   it('Space key pauses and resumes', () => {

@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 1.25rem;
-  margin: 1rem 0;
+  margin: 0 0 1rem;
 }
 
 .resultCount {

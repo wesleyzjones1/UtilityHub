@@ -1,7 +1,11 @@
 .shell {
+  width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 1.5rem var(--container-pad) 0rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* ── Breadcrumb ── */
@@ -82,6 +86,7 @@
 /* ── Tool content ── */
 .content {
   margin-bottom: 2.5rem;
+  flex: 1;
 }
 
 /* Preview mode (navbar hover snapshot): just the tool's interactive content. */
@@ -89,59 +94,9 @@
   padding: 1.25rem;
 }
 
-/* ── How to use ── */
-.howTo {
-  border-left: 3px solid var(--color-primary-subtle-border);
-  padding-left: 1.25rem;
-  max-width: 560px;
-  margin: 0;
-}
-
-.howToTitle {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
-  margin-bottom: 0.75rem;
-}
-
-.howToList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-
-.howToStep {
-  display: flex;
-  align-items: baseline;
-  gap: 0.625rem;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  line-height: 1.5;
-}
-
-.howToNum {
-  flex-shrink: 0;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  color: var(--color-primary);
-  background: var(--color-primary-subtle);
-  border: 1px solid var(--color-primary-subtle-border);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: 1;
-}
-
 /* ── Related tools ── */
 .related {
-  margin-top: 3rem;
+  margin-top: auto;
   padding-top: 2rem;
   border-top: 1px solid var(--color-border);
 }

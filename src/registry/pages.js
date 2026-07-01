@@ -205,6 +205,14 @@ export const PAGES = [
     keywords: ['temperature', 'fahrenheit', 'celsius', 'kelvin', 'convert', '°F', '°C'],
   },
   {
+    id: 'graph-calculator',
+    title: 'Graph Calculator',
+    description: 'Plot a function of x and read off its results, roots (x-intercepts), and y-intercept.',
+    category: 'math',
+    path: '/tools/graph-calculator',
+    keywords: ['graph', 'plot', 'function', 'chart', 'equation', 'roots', 'x-intercept', 'y-intercept', 'graphing calculator', 'curve'],
+  },
+  {
     id: 'number-sorter',
     title: 'Number Sorter',
     description: 'Sort numbers ascending or descending, with optional duplicate removal.',
@@ -305,6 +313,14 @@ export const PAGES = [
     keywords: ['ico', 'favicon', 'icon', 'convert', 'png', 'website'],
   },
   {
+    id: 'image-converter',
+    title: 'Image Converter',
+    description: 'Convert images between PNG, JPG, and WEBP — with quality and output-size options.',
+    category: 'image',
+    path: '/tools/image-converter',
+    keywords: ['convert', 'image', 'png', 'jpg', 'jpeg', 'webp', 'svg', 'format', 'quality', 'compress', 'lossless'],
+  },
+  {
     id: 'image-cropper',
     title: 'Image Cropper',
     description: 'Crop an image to a custom region entirely in your browser.',
@@ -321,14 +337,6 @@ export const PAGES = [
     keywords: ['resize', 'scale', 'image', 'width', 'height', 'dimensions', 'png', 'jpg'],
   },
   {
-    id: 'jpg-to-png',
-    title: 'JPG to PNG',
-    description: 'Convert JPEG images to lossless PNG format in your browser.',
-    category: 'image',
-    path: '/tools/jpg-to-png',
-    keywords: ['jpg', 'jpeg', 'png', 'convert', 'lossless', 'image'],
-  },
-  {
     id: 'png-minifier',
     title: 'PNG Minifier',
     description: 'Reduce PNG file size by scaling or re-encoding without leaving your browser.',
@@ -343,22 +351,6 @@ export const PAGES = [
     category: 'image',
     path: '/tools/remove-background',
     keywords: ['remove', 'background', 'transparent', 'white', 'black', 'png', 'cutout', 'erase'],
-  },
-  {
-    id: 'png-to-jpg',
-    title: 'PNG to JPG',
-    description: 'Convert PNG images to JPEG with a custom quality setting.',
-    category: 'image',
-    path: '/tools/png-to-jpg',
-    keywords: ['png', 'jpg', 'jpeg', 'convert', 'compress', 'quality', 'image'],
-  },
-  {
-    id: 'svg-to-png',
-    title: 'SVG to PNG',
-    description: 'Convert SVG vector graphics to PNG at any resolution.',
-    category: 'image',
-    path: '/tools/svg-to-png',
-    keywords: ['svg', 'png', 'convert', 'vector', 'raster', 'export', 'image'],
   },
   {
     id: 'video-to-gif',

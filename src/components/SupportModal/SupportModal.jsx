@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useAdPreference } from '../../context/AdPreferenceContext';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './SupportModal.module.css';
 
 const REPO_URL = import.meta.env.VITE_REPO_URL ?? 'https://github.com/wesleyzjones1/UtilityHub';
@@ -16,6 +17,7 @@ const DONATIONS = [
 
 export default function SupportModal({ open, onClose }) {
   const { adsHidden, hideAds } = useAdPreference();
+  const { t } = useLanguage();
   const dialogRef = useRef(null);
 
   const close = useCallback(() => onClose(), [onClose]);
@@ -41,14 +43,14 @@ export default function SupportModal({ open, onClose }) {
   const hasDonations = DONATIONS.length > 0;
 
   return (
-    <div className={styles.backdrop} onClick={close} role="dialog" aria-modal="true" aria-label="Support UtilityHub">
+    <div className={styles.backdrop} onClick={close} role="dialog" aria-modal="true" aria-label={t('supportUtilityHub')}>
       <div className={styles.dialog} onClick={e => e.stopPropagation()} ref={dialogRef} tabIndex={-1}>
-        <button className={styles.closeX} onClick={close} aria-label="Close">✕</button>
+        <button className={styles.closeX} onClick={close} aria-label={t('close')}>✕</button>
 
         <div className={styles.header}>
           <span className={styles.emoji}>♥</span>
-          <h2 className={styles.title}>Support UtilityHub</h2>
-          <p className={styles.subtitle}>These tools are free. If they save you time, here's how you can help.</p>
+          <h2 className={styles.title}>{t('supportUtilityHub')}</h2>
+          <p className={styles.subtitle}>{t('supportModalSubtitle')}</p>
         </div>
 
         <div className={styles.donations}>
@@ -68,14 +70,14 @@ export default function SupportModal({ open, onClose }) {
             : (
                 <a className={styles.donateBtn} href={REPO_URL} target="_blank" rel="noopener noreferrer">
                   <span className={styles.donateEmoji} aria-hidden="true">⭐</span>
-                  Star on GitHub
+                  {t('starOnGithub')}
                 </a>
               )}
         </div>
 
         {!adsHidden && (
           <button className={styles.alreadyPaid} onClick={hideAds}>
-            Already paid? Remove ads
+            {t('alreadyPaidRemoveAds')}
           </button>
         )}
       </div>

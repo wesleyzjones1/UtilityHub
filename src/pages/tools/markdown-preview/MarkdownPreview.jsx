@@ -4,24 +4,15 @@ import PageShell from '../../../templates/PageShell/PageShell';
 import Textarea from '../../../components/ui/Textarea/Textarea';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
 import Select from '../../../components/ui/Select/Select';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './MarkdownPreview.module.css';
-
-const MODE_OPTIONS = [
-  { value: 'preview', label: 'Preview' },
-  { value: 'format', label: 'Format' },
-];
-
-const HOW_TO_USE = [
-  'Type or paste Markdown in the left panel.',
-  'Switch to Preview to see rendered HTML, or Format to run Prettier on your Markdown.',
-  'Copy the formatted Markdown from the output panel.',
-];
 
 export default function MarkdownPreview({ page }) {
   const [mode, setMode] = useState('preview');
   const [input, setInput] = useState('');
   const [formatted, setFormatted] = useState('');
   const [formatError, setFormatError] = useState(null);
+  const { t } = useLanguage();
 
   const html = input ? marked.parse(input) : '';
 
@@ -50,11 +41,11 @@ export default function MarkdownPreview({ page }) {
   }, [input, mode]);
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.topBar}>
         <Select
-          label="Right panel"
-          options={MODE_OPTIONS}
+          label={t('mdRightPanel')}
+          options={[{ value: 'preview', label: t('preview') }, { value: 'format', label: t('format') }]}
           value={mode}
           onChange={setMode}
         />
@@ -62,7 +53,7 @@ export default function MarkdownPreview({ page }) {
       <div className={styles.panels}>
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
-            <span className={styles.panelLabel}>Markdown Input</span>
+            <span className={styles.panelLabel}>{t('mdMarkdownInput')}</span>
           </div>
           <Textarea
             value={input}
@@ -78,7 +69,7 @@ export default function MarkdownPreview({ page }) {
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
             <span className={styles.panelLabel}>
-              {mode === 'preview' ? 'HTML Preview' : 'Formatted Markdown'}
+              {mode === 'preview' ? t('mdHtmlPreview') : t('mdFormattedMarkdown')}
             </span>
             {mode === 'format' && formatted && <CopyButton value={formatted} size="sm" />}
           </div>

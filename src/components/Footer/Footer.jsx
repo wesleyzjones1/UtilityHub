@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { useSupport } from '../../context/SupportContext';
+import { useLanguage } from '../../context/LanguageContext';
 import InstallButton from '../InstallButton/InstallButton';
 import styles from './Footer.module.css';
 
@@ -7,6 +7,7 @@ const REPO_URL = import.meta.env.VITE_REPO_URL ?? 'https://github.com/wesleyzjon
 
 export default function Footer() {
   const { openSupport } = useSupport();
+  const { t } = useLanguage();
 
   return (
     <footer className={styles.footer}>
@@ -16,16 +17,15 @@ export default function Footer() {
         </span>
         <div className={styles.supportGroup}>
           <span className={styles.supportText}>
-            If this tool saved you time, consider supporting the project.
+            {t('footerSupportText')}
           </span>
-          <button className={styles.supportBtn} onClick={openSupport} aria-label="Support UtilityHub">
+          <button className={styles.supportBtn} onClick={openSupport} aria-label={t('supportUtilityHub')}>
             <span className={styles.supportHeart} aria-hidden="true">♥</span>
-            <span>Support</span>
+            <span>{t('support')}</span>
           </button>
         </div>
         <div className={styles.links}>
           <InstallButton />
-          <Link className={styles.link} to="/about">About</Link>
         </div>
       </div>
     </footer>

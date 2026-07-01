@@ -1,13 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
+import { useLanguage } from '../../../context/LanguageContext';
+import { useCountdown } from '../../../context/CountdownContext';
 import styles from './CountdownTimer.module.css';
-
-const HOW_TO_USE = [
-  'Type a number of minutes (e.g. 5 for five minutes, or 0.5 for 30 seconds).',
-  'Press Enter or click Start to begin the full-screen countdown.',
-  'Press Space or click the timer to pause and resume.',
-  'Press Escape at any time to stop and return to the input.',
-];
 
 /** Parse input string → total seconds, or null if invalid. */
 function parseInput(raw) {
@@ -44,6 +39,8 @@ export default function CountdownTimer({ page }) {
   // 'idle' | 'running' | 'paused' | 'done'
   const [phase, setPhase] = useState('idle');
   const inputRef = useRef(null);
+  const { t } = useLanguage();
+  const { publishTimer, clearTimer } = useCountdown();
 
   // Tick
   useEffect(() => {
@@ -57,6 +54,18 @@ export default function CountdownTimer({ page }) {
     }, 1000);
     return () => clearInterval(id);
   }, [phase, secondsLeft]);
+
+  // Publish timer state to the header badge
+  useEffect(() => {
+    if (phase === 'idle') {
+      clearTimer();
+    } else {
+      publishTimer({ phase, secondsLeft });
+    }
+  }, [phase, secondsLeft, publishTimer, clearTimer]);
+
+  // Clean up when unmounting mid-count
+  useEffect(() => () => clearTimer(), [clearTimer]);
 
   const stop = useCallback(() => {
     setPhase('idle');
@@ -123,7 +132,7 @@ export default function CountdownTimer({ page }) {
             <button
               className={styles.timerBtn}
               onClick={isDone ? undefined : togglePause}
-              aria-label={phase === 'running' ? 'Pause timer' : phase === 'paused' ? 'Resume timer' : undefined}
+              aria-label={phase === 'running' ? t('timerPause') : phase === 'paused' ? t('timerResume') : undefined}
               disabled={isDone}
             >
               {/* Progress ring */}
@@ -146,12 +155,12 @@ export default function CountdownTimer({ page }) {
 
               <div className={styles.timeDisplay}>
                 {isDone ? (
-                  <span className={styles.doneText}>Time's up!</span>
+                  <span className={styles.doneText}>{t('timerDone')}</span>
                 ) : (
                   <>
                     <span className={styles.time}>{formatTime(secondsLeft)}</span>
                     {phase === 'paused' && (
-                      <span className={styles.pausedLabel}>Paused</span>
+                      <span className={styles.pausedLabel}>{t('timerPaused')}</span>
                     )}
                   </>
                 )}
@@ -165,15 +174,15 @@ export default function CountdownTimer({ page }) {
                 setSecondsLeft(totalSeconds);
                 setPhase('running');
               }}>
-                Restart
+                {t('timerRestart')}
               </button>
             ) : (
               <button className={styles.pauseControl} onClick={togglePause}>
-                {phase === 'running' ? 'Pause' : 'Resume'}
+                {phase === 'running' ? t('timerPause') : t('timerResume')}
               </button>
             )}
             <button className={styles.stopBtn} onClick={stop}>
-              Stop
+              {t('timerStop')}
             </button>
           </div>
 
@@ -181,11 +190,11 @@ export default function CountdownTimer({ page }) {
       )}
 
       {/* Setup screen (always rendered, hidden behind overlay) */}
-      <PageShell page={page} howToUse={HOW_TO_USE}>
+      <PageShell page={page}>
         <div className={styles.setup}>
           <form onSubmit={handleSubmit} className={styles.form}>
             <label htmlFor="timer-input" className={styles.inputLabel}>
-              Enter time in minutes
+              {t('timerEnterTime')}
             </label>
             <div className={styles.inputRow}>
               <input
@@ -204,9 +213,9 @@ export default function CountdownTimer({ page }) {
                 type="submit"
                 className={styles.startBtn}
                 disabled={!parseInput(input)}
-                aria-label="Start countdown"
+                aria-label={t('timerStart')}
               >
-                Start
+                {t('timerStart')}
               </button>
             </div>
             <p className={styles.hint}>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import Select from '../../../components/ui/Select/Select';
-import { calculatePiAttenuator, reversePiAttenuator } from '../../../utils/formatters';
+import { matchedPiAttenuator, piAttenuationDb } from '../../../utils/formatters';
 import styles from './PiAttenuator.module.css';
 
 const IMPEDANCE_OPTIONS = [
@@ -10,70 +10,59 @@ const IMPEDANCE_OPTIONS = [
   { value: 'custom', label: 'Custom' },
 ];
 
-const MODE_OPTIONS = [
-  { value: 'forward', label: 'dB → Resistors' },
-  { value: 'reverse', label: 'Resistors → dB' },
-];
-
-const HOW_TO_USE = [
-  'Choose the direction: calculate resistors from dB, or find dB from known resistors.',
-  'Select the system impedance (50 Ω for RF, 75 Ω for cable/video).',
-  'Enter your known values — results update instantly.',
-];
-
-function fmt(n) {
-  return n < 0.01
-    ? n.toExponential(3)
-    : n >= 1000
-    ? `${(n / 1000).toFixed(3)} kΩ`
-    : `${n.toFixed(2)} Ω`;
+// Short, readable value for the schematic (values can span a wide range).
+function diagramFmt(str) {
+  if (!str) return '—';
+  const n = parseFloat(str);
+  if (!isFinite(n)) return '—';
+  if (n >= 1000) return `${(n / 1000).toFixed(1)} kΩ`;
+  return `${n.toFixed(1)} Ω`;
 }
 
 export default function PiAttenuator({ page }) {
-  const [mode, setMode] = useState('forward');
   const [impedancePreset, setImpedancePreset] = useState('50');
   const [customZ, setCustomZ] = useState('');
-  const [dB, setDB] = useState('');
-  const [rShunt, setRShunt] = useState('');
-  const [rSeries, setRSeries] = useState('');
+  // Shunt and series are the two independent inputs (source of truth).
+  const [shunt, setShunt] = useState('');
+  const [series, setSeries] = useState('');
+  // When non-null, the user is entering a target attenuation ("design mode"):
+  // the resistors are derived (matched) from it rather than typed directly.
+  const [dbTarget, setDbTarget] = useState('');
 
   const Z = impedancePreset === 'custom' ? parseFloat(customZ) : parseFloat(impedancePreset);
+  const designMode = dbTarget != null;
 
-  let result = null;
-  let error = null;
-
-  if (mode === 'forward') {
-    const atten = parseFloat(dB);
-    if (dB.trim() && !isNaN(atten) && !isNaN(Z) && Z > 0) {
-      try {
-        result = calculatePiAttenuator(atten, Z);
-      } catch (e) {
-        error = e.message;
-      }
-    }
+  // Resolve what each field shows and any error, from the current mode.
+  let dbDisplay, shuntDisplay, seriesDisplay, error;
+  if (designMode) {
+    const m = matchedPiAttenuator(dbTarget, Z);
+    dbDisplay = dbTarget;
+    shuntDisplay = m.rShunt;
+    seriesDisplay = m.rSeries;
+    error = m.error;
   } else {
-    const rs = parseFloat(rShunt);
-    const rse = parseFloat(rSeries);
-    if (rShunt.trim() && rSeries.trim() && !isNaN(rs) && !isNaN(rse) && !isNaN(Z) && Z > 0) {
-      try {
-        result = reversePiAttenuator(rs, rse, Z);
-      } catch (e) {
-        error = e.message;
-      }
-    }
+    const g = piAttenuationDb(shunt, series, Z);
+    dbDisplay = g.db;
+    shuntDisplay = shunt;
+    seriesDisplay = series;
+    error = g.error;
   }
 
-  // Live values to label the schematic. In forward mode they come from the
-  // calculated result; in reverse mode they echo the resistors the user typed.
-  const shuntVal = mode === 'forward' ? (result ? result.rShunt : NaN) : parseFloat(rShunt);
-  const seriesVal = mode === 'forward' ? (result ? result.rSeries : NaN) : parseFloat(rSeries);
-  const r1Label = Number.isFinite(shuntVal) ? fmt(shuntVal) : '—';
-  const r2Label = Number.isFinite(seriesVal) ? fmt(seriesVal) : '—';
+  // Editing a resistor leaves design mode. Seed both resistors from the values
+  // currently on screen so the one the user didn't touch is preserved.
+  function editResistor(setter, value) {
+    if (designMode) {
+      const m = matchedPiAttenuator(dbTarget, Z);
+      setShunt(m.rShunt || '');
+      setSeries(m.rSeries || '');
+      setDbTarget(null);
+    }
+    setter(value);
+  }
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.controls}>
-        <Select label="Direction" options={MODE_OPTIONS} value={mode} onChange={setMode} />
         <Select
           label="Impedance"
           options={IMPEDANCE_OPTIONS}
@@ -81,151 +70,129 @@ export default function PiAttenuator({ page }) {
           onChange={setImpedancePreset}
         />
         {impedancePreset === 'custom' && (
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="custom-z">Custom Ω</label>
-            <input
-              id="custom-z"
-              type="number"
-              min="1"
-              className={styles.input}
-              value={customZ}
-              onChange={e => setCustomZ(e.target.value)}
-              placeholder="e.g. 600"
-              aria-label="Custom impedance"
-            />
-          </div>
+          <RcField
+            label="Custom Ω"
+            unit="Ω"
+            value={customZ}
+            onChange={setCustomZ}
+            placeholder="600"
+            ariaLabel="Custom impedance"
+            min="1"
+          />
         )}
       </div>
 
-      <div className={styles.grid}>
-        {/* Inputs */}
-        <section className={styles.card} aria-label="Inputs">
-          <h2 className={styles.cardTitle}>Inputs</h2>
-          {mode === 'forward' ? (
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="pi-db">Attenuation (dB)</label>
-              <input
-                id="pi-db"
-                type="number"
-                min="0.1"
-                step="0.1"
-                className={styles.input}
-                value={dB}
-                onChange={e => setDB(e.target.value)}
-                placeholder="e.g. 6"
-                aria-label="Attenuation dB"
-              />
-            </div>
-          ) : (
-            <>
-              <div className={styles.field}>
-                <label className={styles.label} htmlFor="pi-rshunt">R Shunt (Ω)</label>
-                <input
-                  id="pi-rshunt"
-                  type="number"
-                  min="0.01"
-                  step="0.01"
-                  className={styles.input}
-                  value={rShunt}
-                  onChange={e => setRShunt(e.target.value)}
-                  placeholder="e.g. 150.48"
-                  aria-label="R Shunt"
-                />
-              </div>
-              <div className={styles.field}>
-                <label className={styles.label} htmlFor="pi-rseries">R Series (Ω)</label>
-                <input
-                  id="pi-rseries"
-                  type="number"
-                  min="0.01"
-                  step="0.01"
-                  className={styles.input}
-                  value={rSeries}
-                  onChange={e => setRSeries(e.target.value)}
-                  placeholder="e.g. 16.61"
-                  aria-label="R Series"
-                />
-              </div>
-            </>
-          )}
-        </section>
+      <section className={styles.fields} aria-label="Pi attenuator values">
+        <RcField
+          label="Shunt R"
+          unit="Ω"
+          value={shuntDisplay}
+          onChange={v => editResistor(setShunt, v)}
+          placeholder="150.5"
+          ariaLabel="R Shunt"
+        />
+        <RcField
+          label="Series R"
+          unit="Ω"
+          value={seriesDisplay}
+          onChange={v => editResistor(setSeries, v)}
+          placeholder="37.4"
+          ariaLabel="R Series"
+        />
+        <RcField
+          label="Attenuation"
+          unit="dB"
+          value={dbDisplay}
+          onChange={setDbTarget}
+          placeholder="6"
+          ariaLabel="Attenuation dB"
+        />
+      </section>
 
-        {/* Results */}
-        <section className={styles.card} aria-label="Results">
-          <h2 className={styles.cardTitle}>Results</h2>
-          {error && <p className={styles.error} role="alert">{error}</p>}
-          {result && !error && (
-            <dl className={styles.results}>
-              {mode === 'forward' ? (
-                <>
-                  <div className={styles.resultRow}>
-                    <dt className={styles.resultLabel}>R Shunt (×2)</dt>
-                    <dd className={styles.resultValue}>{fmt(result.rShunt)}</dd>
-                  </div>
-                  <div className={styles.resultRow}>
-                    <dt className={styles.resultLabel}>R Series</dt>
-                    <dd className={styles.resultValue}>{fmt(result.rSeries)}</dd>
-                  </div>
-                </>
-              ) : (
-                <div className={styles.resultRow}>
-                  <dt className={styles.resultLabel}>Attenuation</dt>
-                  <dd className={styles.resultValue}>{result.dB.toFixed(2)} dB</dd>
-                </div>
-              )}
-              <div className={styles.resultRow}>
-                <dt className={styles.resultLabel}>Impedance</dt>
-                <dd className={styles.resultValue}>{Z} Ω</dd>
-              </div>
-            </dl>
-          )}
-          {!result && !error && (
-            <p className={styles.placeholder}>Enter values above to see results.</p>
-          )}
-        </section>
+      {error && (
+        <p className={styles.error} role="alert">{error}</p>
+      )}
 
-        {/* Diagram */}
-        <section className={styles.card} aria-label="Pi Attenuator Diagram">
-          <h2 className={styles.cardTitle}>π Network</h2>
-          <div className={styles.diagram} aria-hidden="true">
-            <svg viewBox="0 0 300 120" className={styles.svg}>
-              {/* Input line */}
-              <line x1="0" y1="60" x2="60" y2="60" stroke="currentColor" strokeWidth="2" />
-              {/* Shunt R1 */}
-              <rect x="45" y="35" width="30" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-              <line x1="60" y1="35" x2="60" y2="10" stroke="currentColor" strokeWidth="2" />
-              <line x1="60" y1="49" x2="60" y2="60" stroke="currentColor" strokeWidth="2" />
-              <line x1="45" y1="10" x2="75" y2="10" stroke="currentColor" strokeWidth="2" />
-              <text x="60" y="8" textAnchor="middle" fontSize="9" fill="currentColor">R1</text>
-              {/* Series R */}
-              <rect x="105" y="54" width="90" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-              <line x1="60" y1="60" x2="105" y2="60" stroke="currentColor" strokeWidth="2" />
-              <line x1="195" y1="60" x2="240" y2="60" stroke="currentColor" strokeWidth="2" />
-              <text x="150" y="52" textAnchor="middle" fontSize="9" fill="currentColor">R2</text>
-              {/* Shunt R3 */}
-              <rect x="225" y="35" width="30" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-              <line x1="240" y1="35" x2="240" y2="10" stroke="currentColor" strokeWidth="2" />
-              <line x1="240" y1="49" x2="240" y2="60" stroke="currentColor" strokeWidth="2" />
-              <line x1="225" y1="10" x2="255" y2="10" stroke="currentColor" strokeWidth="2" />
-              <text x="240" y="8" textAnchor="middle" fontSize="9" fill="currentColor">R3</text>
-              {/* Output line */}
-              <line x1="240" y1="60" x2="300" y2="60" stroke="currentColor" strokeWidth="2" />
-              {/* GND lines */}
-              <line x1="60" y1="10" x2="60" y2="5" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="40" y1="5" x2="80" y2="5" stroke="currentColor" strokeWidth="2" />
-              <line x1="240" y1="10" x2="240" y2="5" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="220" y1="5" x2="260" y2="5" stroke="currentColor" strokeWidth="2" />
-              {/* Labels */}
-              <text x="5" y="56" fontSize="9" fill="currentColor">IN</text>
-              <text x="268" y="56" fontSize="9" fill="currentColor">OUT</text>
-              {/* Live resistor values (R1 = R3 shunt, R2 series) */}
-              <text x="60" y="90" textAnchor="middle" fontSize="9" fontWeight="700" fill="currentColor">{r1Label}</text>
-              <text x="150" y="105" textAnchor="middle" fontSize="9" fontWeight="700" fill="currentColor">{r2Label}</text>
-              <text x="240" y="90" textAnchor="middle" fontSize="9" fontWeight="700" fill="currentColor">{r1Label}</text>
-            </svg>
-          </div>
-        </section>
-      </div>
+      <section className={styles.diagramCard} aria-label="Pi attenuator diagram">
+        <PiSchematic
+          shunt={diagramFmt(shuntDisplay)}
+          series={diagramFmt(seriesDisplay)}
+          impedance={Number.isFinite(Z) ? `${Z} Ω` : '—'}
+        />
+      </section>
     </PageShell>
+  );
+}
+
+function RcField({ label, unit, value, onChange, placeholder, ariaLabel, min }) {
+  return (
+    <div className={styles.field}>
+      <label className={styles.label}>{label}</label>
+      <div className={styles.inputWrap}>
+        <input
+          className={styles.input}
+          type="number"
+          step="any"
+          min={min}
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          placeholder={placeholder}
+          aria-label={ariaLabel}
+        />
+        <span className={styles.unit} aria-hidden="true">{unit}</span>
+      </div>
+    </div>
+  );
+}
+
+function PiSchematic({ shunt, series, impedance }) {
+  return (
+    <svg viewBox="0 0 320 180" className={styles.svg} role="img"
+      aria-label={`Pi network: shunt resistors ${shunt}, series resistor ${series}, impedance ${impedance}`}>
+      {/* Top signal rail: IN → left node → series R → right node → OUT */}
+      <line x1="14" y1="45" x2="65" y2="45" className={styles.wire} />
+      <line x1="65" y1="45" x2="115" y2="45" className={styles.wire} />
+      <rect x="115" y="36" width="90" height="18" rx="3" className={styles.resistor} />
+      <line x1="205" y1="45" x2="255" y2="45" className={styles.wire} />
+      <line x1="255" y1="45" x2="306" y2="45" className={styles.wire} />
+
+      {/* Left shunt resistor to ground */}
+      <line x1="65" y1="45" x2="65" y2="78" className={styles.wire} />
+      <rect x="56" y="78" width="18" height="44" rx="3" className={styles.resistor} />
+      <line x1="65" y1="122" x2="65" y2="140" className={styles.wire} />
+      <Ground cx={65} y={140} />
+
+      {/* Right shunt resistor to ground */}
+      <line x1="255" y1="45" x2="255" y2="78" className={styles.wire} />
+      <rect x="246" y="78" width="18" height="44" rx="3" className={styles.resistor} />
+      <line x1="255" y1="122" x2="255" y2="140" className={styles.wire} />
+      <Ground cx={255} y={140} />
+
+      {/* Node dots */}
+      <circle cx="65" cy="45" r="3" className={styles.node} />
+      <circle cx="255" cy="45" r="3" className={styles.node} />
+
+      {/* Port labels */}
+      <text x="12" y="34" className={styles.port}>IN</text>
+      <text x="308" y="34" textAnchor="end" className={styles.port}>OUT</text>
+
+      {/* Live values */}
+      <text x="160" y="26" textAnchor="middle" className={styles.value}>{series}</text>
+      <text x="160" y="70" textAnchor="middle" className={styles.caption}>series</text>
+      <text x="65" y="165" textAnchor="middle" className={styles.value}>{shunt}</text>
+      <text x="65" y="176" textAnchor="middle" className={styles.caption}>shunt</text>
+      <text x="255" y="165" textAnchor="middle" className={styles.value}>{shunt}</text>
+      <text x="255" y="176" textAnchor="middle" className={styles.caption}>shunt</text>
+    </svg>
+  );
+}
+
+function Ground({ cx, y }) {
+  return (
+    <g className={styles.wire}>
+      <line x1={cx - 14} y1={y} x2={cx + 14} y2={y} />
+      <line x1={cx - 8} y1={y + 5} x2={cx + 8} y2={y + 5} />
+      <line x1={cx - 3} y1={y + 10} x2={cx + 3} y2={y + 10} />
+    </g>
   );
 }

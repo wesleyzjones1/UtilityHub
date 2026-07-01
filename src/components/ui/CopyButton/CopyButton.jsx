@@ -1,20 +1,24 @@
 import { useClipboard } from '../../../hooks/useClipboard';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './CopyButton.module.css';
 
-export default function CopyButton({ value = '', size = 'md', label = 'Copy', className }) {
+export default function CopyButton({ value = '', size = 'md', label, className }) {
   const { copied, copy } = useClipboard();
+  const { t } = useLanguage();
+  const copyLabel = label ?? t('copy');
+  const copiedLabel = t('copied');
 
   return (
     <button
       type="button"
       className={[styles.btn, styles[size], copied && styles.copied, className].filter(Boolean).join(' ')}
       onClick={() => copy(value)}
-      aria-label={copied ? 'Copied!' : label}
-      title={copied ? 'Copied!' : label}
+      aria-label={copied ? copiedLabel : copyLabel}
+      title={copied ? copiedLabel : copyLabel}
       disabled={!value}
     >
       {copied ? <CheckIcon /> : <CopyIcon />}
-      <span>{copied ? 'Copied!' : label}</span>
+      <span>{copied ? copiedLabel : copyLabel}</span>
     </button>
   );
 }

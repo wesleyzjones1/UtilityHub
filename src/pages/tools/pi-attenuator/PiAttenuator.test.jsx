@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { renderWithRouter } from '../../../test-utils';
 import PiAttenuator from './PiAttenuator';
 
@@ -16,40 +15,45 @@ describe('PiAttenuator', () => {
     expect(screen.getAllByText('Pi Attenuator Calculator').length).toBeGreaterThan(0);
   });
 
-  it('renders Inputs and Results sections', () => {
+  it('renders attenuation, shunt, and series inputs', () => {
     renderWithRouter(<PiAttenuator page={PAGE} />);
-    expect(screen.getByRole('region', { name: /inputs/i })).toBeDefined();
-    expect(screen.getByRole('region', { name: /results/i })).toBeDefined();
+    expect(screen.getByRole('spinbutton', { name: /attenuation db/i })).toBeDefined();
+    expect(screen.getByRole('spinbutton', { name: /r shunt/i })).toBeDefined();
+    expect(screen.getByRole('spinbutton', { name: /r series/i })).toBeDefined();
   });
 
-  it('calculates resistors for 6 dB at 50 Ω', () => {
+  it('fills the matched resistors from a 6 dB target at 50 Ω', () => {
     renderWithRouter(<PiAttenuator page={PAGE} />);
-    const dbInput = screen.getByRole('spinbutton', { name: /attenuation db/i });
-    fireEvent.change(dbInput, { target: { value: '6' } });
-    const results = screen.getByRole('region', { name: /results/i });
-    expect(results.textContent).toContain('R Shunt');
-    expect(results.textContent).toContain('R Series');
+    fireEvent.change(screen.getByRole('spinbutton', { name: /attenuation db/i }), { target: { value: '6' } });
+    expect(screen.getByRole('spinbutton', { name: /r shunt/i }).value).toBe('150.5');
+    expect(screen.getByRole('spinbutton', { name: /r series/i }).value).toBe('37.4');
   });
 
-  it('renders the diagram section', () => {
+  it('computes attenuation from both shunt and series resistors', () => {
     renderWithRouter(<PiAttenuator page={PAGE} />);
-    expect(screen.getByRole('region', { name: /diagram/i })).toBeDefined();
+    fireEvent.change(screen.getByRole('spinbutton', { name: /r shunt/i }), { target: { value: '150.5' } });
+    fireEvent.change(screen.getByRole('spinbutton', { name: /r series/i }), { target: { value: '37.4' } });
+    expect(screen.getByRole('spinbutton', { name: /attenuation db/i }).value).toBe('6');
   });
 
-  it('shows error for 0 dB', () => {
+  it('updates the gain when only the series resistor changes', () => {
     renderWithRouter(<PiAttenuator page={PAGE} />);
-    const dbInput = screen.getByRole('spinbutton', { name: /attenuation db/i });
-    fireEvent.change(dbInput, { target: { value: '0' } });
+    // Start from the matched 6 dB design, then change series independently.
+    fireEvent.change(screen.getByRole('spinbutton', { name: /attenuation db/i }), { target: { value: '6' } });
+    fireEvent.change(screen.getByRole('spinbutton', { name: /r series/i }), { target: { value: '100' } });
+    // Shunt is preserved; gain recomputes from both resistors.
+    expect(screen.getByRole('spinbutton', { name: /r shunt/i }).value).toBe('150.5');
+    expect(screen.getByRole('spinbutton', { name: /attenuation db/i }).value).toBe('9.8');
+  });
+
+  it('shows an error for a 0 dB target', () => {
+    renderWithRouter(<PiAttenuator page={PAGE} />);
+    fireEvent.change(screen.getByRole('spinbutton', { name: /attenuation db/i }), { target: { value: '0' } });
     expect(screen.getByRole('alert')).toBeDefined();
   });
 
-  it('reverse mode: shows dB from resistors', async () => {
+  it('renders the diagram', () => {
     renderWithRouter(<PiAttenuator page={PAGE} />);
-    const modeSelect = screen.getByRole('combobox', { name: /direction/i });
-    await userEvent.selectOptions(modeSelect, 'reverse');
-    fireEvent.change(screen.getByRole('spinbutton', { name: /r shunt/i }), { target: { value: '150' } });
-    fireEvent.change(screen.getByRole('spinbutton', { name: /r series/i }), { target: { value: '17' } });
-    const results = screen.getByRole('region', { name: /results/i });
-    expect(results.textContent).toContain('Attenuation');
+    expect(screen.getByRole('img', { name: /pi network/i })).toBeDefined();
   });
 });

@@ -1,9 +1,19 @@
 import { Link } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './ToolPage.module.css';
+
+/** Splits a `{value}` template and wraps the interpolated value in <strong>. */
+function InterpolatedStrong({ template, value }) {
+  const [before, after] = template.split('{value}');
+  return <>{before}<strong>{value}</strong>{after}</>;
+}
 
 export default function ToolPage({ page }) {
   const category = CATEGORIES[page.category];
+  const { t, td, tt } = useLanguage();
+  const title = tt(page);
+  const categoryLabel = category ? t(`cat${category.id.charAt(0).toUpperCase() + category.id.slice(1)}`) : '';
   const siblings = (PAGE_BY_CATEGORY[page.category] ?? [])
     .filter(p => p.id !== page.id)
     .slice(0, 3);
@@ -13,8 +23,8 @@ export default function ToolPage({ page }) {
       <div className={styles.inner}>
         {/* Header */}
         <div className={styles.header}>
-          <h1 className={styles.title}>{page.title}</h1>
-          <p className={styles.description}>{page.description}</p>
+          <h1 className={styles.title}>{title}</h1>
+          <p className={styles.description}>{td(page)}</p>
         </div>
 
         {/* Placeholder content */}
@@ -22,23 +32,23 @@ export default function ToolPage({ page }) {
           <div className={styles.placeholderIcon} aria-hidden="true">
             <WrenchIcon />
           </div>
-          <p className={styles.placeholderText}>This tool is coming soon.</p>
+          <p className={styles.placeholderText}>{t('toolComingSoon')}</p>
           <p className={styles.placeholderSub}>
-            The interface for <strong>{page.title}</strong> is under construction.
+            <InterpolatedStrong template={t('toolUnderConstructionMsg')} value={title} />
           </p>
           <Link to="/" className={styles.backLink}>
-            ← Back to all tools
+            {t('backToAllTools')}
           </Link>
         </div>
 
         {/* Related tools in same category */}
         {siblings.length > 0 && (
           <div className={styles.related}>
-            <p className={styles.relatedTitle}>Other {category?.label}:</p>
+            <p className={styles.relatedTitle}>{t('otherToolsLabel')} {categoryLabel}:</p>
             <ul className={styles.relatedList}>
               {siblings.map(p => (
                 <li key={p.id}>
-                  <Link to={p.path} className={styles.relatedLink}>{p.title}</Link>
+                  <Link to={p.path} className={styles.relatedLink}>{tt(p)}</Link>
                 </li>
               ))}
             </ul>

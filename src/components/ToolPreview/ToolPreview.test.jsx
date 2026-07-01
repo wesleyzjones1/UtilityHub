@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithRouter } from '../../test-utils';
 import ToolPreview from './ToolPreview';
 
 const PAGE = {
@@ -14,7 +15,7 @@ const RECT = { top: 100, left: 100, right: 340, bottom: 130 };
 
 describe('ToolPreview', () => {
   it('renders the description caption and a live snapshot of the tool', () => {
-    render(<ToolPreview page={PAGE} rect={RECT} />);
+    renderWithRouter(<ToolPreview page={PAGE} rect={RECT} />);
     // Description caption is shown.
     expect(screen.getByText(/Calculate percentages/)).toBeDefined();
     // The live tool content renders (percentage-calc inputs).
@@ -24,7 +25,7 @@ describe('ToolPreview', () => {
   });
 
   it('renders nothing when there is no page', () => {
-    const { container } = render(<ToolPreview page={null} rect={null} />);
+    const { container } = renderWithRouter(<ToolPreview page={null} rect={null} />);
     expect(container.firstChild).toBeNull();
   });
 });

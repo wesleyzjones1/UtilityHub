@@ -6,12 +6,6 @@ import {
 } from '../../../utils/colorUtils';
 import styles from './ColorConverter.module.css';
 
-const HOW_TO_USE = [
-  'Click the large color preview to pick a color, or type a hex value in the HEX field.',
-  'See the equivalent HEX, RGB, HSL, HSV, and CMYK values.',
-  'Use the copy buttons to grab any format.',
-];
-
 const HEX_RE = /^#?[0-9a-fA-F]{6}$/;
 
 function normalizeHex(raw) {
@@ -41,7 +35,7 @@ export default function ColorConverter({ page }) {
   const cmyk = valid ? rgbToCmyk(rgb.r, rgb.g, rgb.b) : null;
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         {/* Click the large preview to open the system color picker */}
         <label

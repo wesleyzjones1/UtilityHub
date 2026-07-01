@@ -1,18 +1,13 @@
 import { useState, useMemo, useDeferredValue } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
+import { useLanguage } from '../../../context/LanguageContext';
 import { lineDiff, wordDiff, diffStats } from '../../../utils/diff';
 import styles from './TextCompare.module.css';
-
-const HOW_TO_USE = [
-  'Paste the original text in the left input panel.',
-  'Paste the modified text in the right input panel.',
-  'The diff appears instantly below — green lines are added, red are removed, amber are case-only changes.',
-  'Word-level differences are highlighted within changed lines.',
-];
 
 export default function TextCompare({ page }) {
   const [textA, setTextA] = useState('');
   const [textB, setTextB] = useState('');
+  const { t } = useLanguage();
 
   const dA = useDeferredValue(textA);
   const dB = useDeferredValue(textB);
@@ -29,17 +24,17 @@ export default function TextCompare({ page }) {
   const rows = useMemo(() => buildRows(ops), [ops]);
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       {/* ── Input panels ── */}
       <div className={styles.inputGrid}>
         <InputPanel
-          label="Original"
+          label={t('compareOriginal')}
           value={textA}
           onChange={setTextA}
           placeholder="Paste the original text here…"
         />
         <InputPanel
-          label="Modified"
+          label={t('compareModified')}
           value={textB}
           onChange={setTextB}
           placeholder="Paste the modified text here…"
@@ -50,13 +45,13 @@ export default function TextCompare({ page }) {
       {hasInput && (
         <div className={styles.statsBar} role="status" aria-live="polite">
           {isIdentical ? (
-            <span className={styles.statEqual}>Texts are identical</span>
+            <span className={styles.statEqual}>{t('compareIdentical')}</span>
           ) : (
             <>
-              <StatBadge value={stats.added}      label="added"        cls={styles.statAdd} />
-              <StatBadge value={stats.removed}    label="removed"      cls={styles.statDel} />
-              <StatBadge value={stats.caseChanges} label="case changes" cls={styles.statCase} />
-              <StatBadge value={stats.unchanged}  label="unchanged"    cls={styles.statSame} />
+              <StatBadge value={stats.added}      label={t('compareAdded')}        cls={styles.statAdd} />
+              <StatBadge value={stats.removed}    label={t('compareRemoved')}      cls={styles.statDel} />
+              <StatBadge value={stats.caseChanges} label={t('compareCaseChanges')} cls={styles.statCase} />
+              <StatBadge value={stats.unchanged}  label={t('compareUnchanged')}    cls={styles.statSame} />
             </>
           )}
         </div>
@@ -67,8 +62,8 @@ export default function TextCompare({ page }) {
         <div className={styles.diffWrap} role="region" aria-label="Diff output">
           {/* Header */}
           <div className={styles.diffHeader}>
-            <div className={styles.diffHeaderCell}>Original</div>
-            <div className={styles.diffHeaderCell}>Modified</div>
+            <div className={styles.diffHeaderCell}>{t('compareOriginal')}</div>
+            <div className={styles.diffHeaderCell}>{t('compareModified')}</div>
           </div>
           {/* Rows */}
           <div className={styles.diffBody}>
@@ -81,7 +76,7 @@ export default function TextCompare({ page }) {
 
       {!hasInput && (
         <p className={styles.emptyHint}>
-          Enter text in both panels above to compare them.
+          {t('compareEmpty')}
         </p>
       )}
     </PageShell>

@@ -20,7 +20,7 @@ function HeroSearch() {
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(-1);
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, td, tt } = useLanguage();
   const results = query.trim() ? searchPages(query) : [];
   const showResults = results.length > 0;
   const showEmpty = query.trim() && results.length === 0;
@@ -88,9 +88,9 @@ function HeroSearch() {
                 className={`${styles.heroResult} ${i === activeIndex ? styles.heroResultActive : ''}`}
                 onClick={dismiss}
               >
-                <div className={styles.heroResultTitle}>{page.title}</div>
+                <div className={styles.heroResultTitle}>{tt(page)}</div>
                 <div className={styles.heroResultMeta}>
-                  {CATEGORIES[page.category]?.label} · {page.description}
+                  {CATEGORIES[page.category]?.label} · {td(page)}
                 </div>
               </Link>
             </li>
@@ -108,16 +108,20 @@ function HeroSearch() {
 }
 
 function ToolChip({ page }) {
+  const { tt } = useLanguage();
+  const title = tt(page);
   return (
     <li className={styles.toolItem}>
-      <Link to={page.path} className={styles.toolLink}>{page.title}</Link>
-      <FavoriteButton pageId={page.id} title={page.title} variant="chip" />
+      <Link to={page.path} className={styles.toolLink}>{title}</Link>
+      <FavoriteButton pageId={page.id} title={title} variant="chip" />
     </li>
   );
 }
 
 function CategorySection({ category }) {
   const pages = PAGE_BY_CATEGORY[category.id] ?? [];
+  const { t } = useLanguage();
+  const catKey = `cat${category.id.charAt(0).toUpperCase() + category.id.slice(1)}`;
 
   return (
     <section className={styles.catSection}>
@@ -125,11 +129,11 @@ function CategorySection({ category }) {
         <Link to={`/tools/category/${category.id}`} className={styles.catSectionHeadLeft}>
           <span className={styles.catIcon}>{CATEGORY_ICONS[category.id]}</span>
           <div>
-            <h2 className={styles.catSectionTitle}>{category.label}</h2>
-            <p className={styles.catSectionDesc}>{category.description}</p>
+            <h2 className={styles.catSectionTitle}>{t(catKey)}</h2>
+            <p className={styles.catSectionDesc}>{t(`${catKey}Desc`)}</p>
           </div>
         </Link>
-        <span className={styles.catSectionCount}>{pages.length} tools</span>
+        <span className={styles.catSectionCount}>{pages.length} {pages.length === 1 ? t('tool') : t('tools')}</span>
       </div>
       <ul className={styles.toolGrid}>
         {pages.map(page => <ToolChip key={page.id} page={page} />)}
@@ -140,16 +144,17 @@ function CategorySection({ category }) {
 
 export default function Home() {
   useDocumentMeta();
+  const { t } = useLanguage();
 
   return (
     <div className={styles.page}>
       {/* Hero */}
       <section className={styles.hero} aria-labelledby="hero-heading">
         <h1 id="hero-heading" className={styles.heroTitle}>
-          Free tools for<br />developers and power users
+          {t('heroTitle')}
         </h1>
         <p className={styles.heroSub}>
-          {PAGES.length} tools across {Object.keys(CATEGORIES).length} categories — no sign-up required.
+          {PAGES.length} {t('heroSubStart')} {Object.keys(CATEGORIES).length} {t('heroSubEnd')}
         </p>
         <HeroSearch />
       </section>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
+import { useLanguage } from '../../../context/LanguageContext';
 import { convertCase } from '../../../utils/textTransforms';
 import styles from './CaseConverter.module.css';
 
@@ -15,15 +16,10 @@ const CASE_OPTIONS = [
   { value: 'constant', label: 'CONSTANT_CASE' },
 ];
 
-const HOW_TO_USE = [
-  'Paste or type your text in the input panel.',
-  'Click a case format button to convert.',
-  'The converted text appears instantly — click "Copy" to copy it.',
-];
-
 export default function CaseConverter({ page }) {
   const [input, setInput] = useState('');
   const [caseType, setCaseType] = useState('upper');
+  const { t } = useLanguage();
 
   const output = input ? convertCase(input, caseType) : '';
 
@@ -33,7 +29,6 @@ export default function CaseConverter({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.buttons}>
           {CASE_OPTIONS.map(opt => (
@@ -51,8 +46,7 @@ export default function CaseConverter({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Input"
-      outputLabel="Converted"
+      outputLabel={t('converted')}
       inputPlaceholder={EXAMPLE}
       outputPlaceholder={outputPlaceholder}
     />

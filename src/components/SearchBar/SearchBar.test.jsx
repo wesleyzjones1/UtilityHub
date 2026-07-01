@@ -2,10 +2,17 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
+import { LanguageProvider } from '../../context/LanguageContext';
 import SearchBar from './SearchBar';
 
 function Wrapped({ onClose } = {}) {
-  return <MemoryRouter><SearchBar onClose={onClose} /></MemoryRouter>;
+  return (
+    <MemoryRouter>
+      <LanguageProvider>
+        <SearchBar onClose={onClose} />
+      </LanguageProvider>
+    </MemoryRouter>
+  );
 }
 
 describe('SearchBar', () => {

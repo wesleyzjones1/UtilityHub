@@ -42,19 +42,6 @@ describe('PageShell', () => {
     expect(screen.getByText('Tool UI here')).toBeInTheDocument();
   });
 
-  it('renders how-to-use section with steps', () => {
-    renderShell({ howToUse: ['Paste text', 'Select case', 'Copy result'] });
-    expect(screen.getByRole('heading', { level: 2, name: 'How to use' })).toBeInTheDocument();
-    expect(screen.getByText('Paste text')).toBeInTheDocument();
-    expect(screen.getByText('Select case')).toBeInTheDocument();
-    expect(screen.getByText('Copy result')).toBeInTheDocument();
-  });
-
-  it('does not render how-to-use section when steps are empty', () => {
-    renderShell({ howToUse: [] });
-    expect(screen.queryByRole('heading', { level: 2, name: 'How to use' })).not.toBeInTheDocument();
-  });
-
   it('renders related tools suggestions', () => {
     renderShell();
     expect(screen.getByRole('heading', { level: 2, name: 'Related tools' })).toBeInTheDocument();

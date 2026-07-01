@@ -52,8 +52,4 @@ describe('ImageDropTemplate', () => {
     expect(onFile).toHaveBeenCalledWith(file);
   });
 
-  it('renders how-to-use steps', () => {
-    renderTemplate({ howToUse: ['Drop an image', 'Set dimensions', 'Download'] });
-    expect(screen.getByText('Drop an image')).toBeInTheDocument();
-  });
 });

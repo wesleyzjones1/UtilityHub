@@ -8,7 +8,6 @@ import styles from './ImageDropTemplate.module.css';
  */
 export default function ImageDropTemplate({
   page,
-  howToUse = [],
   topControls,
   actions,
   onFile,
@@ -21,7 +20,7 @@ export default function ImageDropTemplate({
   children,
 }) {
   return (
-    <PageShell page={page} howToUse={howToUse}>
+    <PageShell page={page}>
       {topControls && (
         <div className={styles.topBar}>
           {topControls}

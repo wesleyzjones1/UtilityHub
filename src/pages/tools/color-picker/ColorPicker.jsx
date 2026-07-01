@@ -4,13 +4,6 @@ import CopyButton from '../../../components/ui/CopyButton/CopyButton';
 import { hexToRgb, hexToHsl, contrastLabel } from '../../../utils/colorUtils';
 import styles from './ColorPicker.module.css';
 
-const HOW_TO_USE = [
-  'Click "Pick a color" and your cursor turns into an eyedropper.',
-  'Click anywhere on your screen — any app, image, or web page.',
-  'The HEX, RGB, and HSL values appear instantly.',
-  'Use the copy buttons to grab the value you need.',
-];
-
 function EyedropperIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -58,7 +51,7 @@ export default function ColorPicker({ page }) {
   const labelColor = color ? contrastLabel(color) : '#000000';
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
 
         {/* Pick button */}

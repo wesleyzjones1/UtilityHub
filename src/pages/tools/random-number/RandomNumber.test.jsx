@@ -26,7 +26,7 @@ describe('RandomNumber', () => {
   it('clicking Generate shows a number in the result', async () => {
     const user = userEvent.setup();
     renderWithRouter(<RandomNumber page={PAGE} />);
-    await user.click(screen.getByRole('button', { name: /generate numbers/i }));
+    await user.click(screen.getByRole('button', { name: /generate/i }));
     expect(screen.queryByText('Click Generate to get numbers')).toBeNull();
     const pre = document.querySelector('pre');
     expect(pre).not.toBeNull();
@@ -39,7 +39,7 @@ describe('RandomNumber', () => {
     const countInput = screen.getByRole('spinbutton', { name: /count/i });
     await user.clear(countInput);
     await user.type(countInput, '5');
-    await user.click(screen.getByRole('button', { name: /generate numbers/i }));
+    await user.click(screen.getByRole('button', { name: /generate/i }));
     const pre = document.querySelector('pre');
     expect(pre).not.toBeNull();
     const lines = pre.textContent.trim().split('\n').filter(Boolean);

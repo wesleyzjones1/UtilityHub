@@ -7,13 +7,12 @@ import styles from './SinglePanelTemplate.module.css';
  */
 export default function SinglePanelTemplate({
   page,
-  howToUse = [],
   topControls,
   actions,
   children,
 }) {
   return (
-    <PageShell page={page} howToUse={howToUse}>
+    <PageShell page={page}>
       {topControls && (
         <div className={styles.topBar}>
           {topControls}

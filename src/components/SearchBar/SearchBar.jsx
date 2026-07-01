@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES, searchPages } from '../../registry/pages';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './SearchBar.module.css';
 
 function SearchIcon() {
@@ -27,6 +28,7 @@ export default function SearchBar({ onClose }) {
   const inputRef = useRef(null);
   const listRef = useRef(null);
   const navigate = useNavigate();
+  const { t, tt } = useLanguage();
 
   const handleChange = useCallback((e) => {
     const val = e.target.value;
@@ -77,11 +79,11 @@ export default function SearchBar({ onClose }) {
           ref={inputRef}
           className={styles.input}
           type="search"
-          placeholder="Search tools…"
+          placeholder={t('searchPlaceholder')}
           value={query}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          aria-label="Search tools"
+          aria-label={t('searchLabel')}
           aria-autocomplete="list"
           aria-controls={showResults ? 'search-results' : undefined}
           aria-activedescendant={activeIdx >= 0 ? `search-result-${activeIdx}` : undefined}
@@ -89,7 +91,7 @@ export default function SearchBar({ onClose }) {
           spellCheck={false}
         />
         {query && (
-          <button className={styles.clear} onClick={handleClear} aria-label="Clear search" tabIndex={-1}>
+          <button className={styles.clear} onClick={handleClear} aria-label={t('clearSearch')} tabIndex={-1}>
             <ClearIcon />
           </button>
         )}
@@ -101,7 +103,7 @@ export default function SearchBar({ onClose }) {
           id="search-results"
           className={styles.results}
           role="listbox"
-          aria-label="Search results"
+          aria-label={t('searchResultsLabel')}
         >
           {results.map((page, i) => (
             <li
@@ -115,7 +117,7 @@ export default function SearchBar({ onClose }) {
                 navigateTo(page.path);
               }}
             >
-              <span className={styles.resultTitle}>{page.title}</span>
+              <span className={styles.resultTitle}>{tt(page)}</span>
               <span className={styles.resultMeta}>
                 {CATEGORIES[page.category]?.label}
               </span>
@@ -126,7 +128,7 @@ export default function SearchBar({ onClose }) {
 
       {query.trim() && results.length === 0 && (
         <div className={styles.empty} role="status">
-          No tools found for &ldquo;{query}&rdquo;
+          {t('searchNoResults')} &ldquo;{query}&rdquo;
         </div>
       )}
     </div>

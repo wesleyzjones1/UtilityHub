@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import CommandPalette from './CommandPalette';
+import { LanguageProvider } from '../../context/LanguageContext';
 
 let store = {};
 
@@ -22,7 +23,9 @@ beforeEach(() => {
 function Wrapped({ open = true, onClose = vi.fn() }) {
   return (
     <MemoryRouter>
-      <CommandPalette open={open} onClose={onClose} />
+      <LanguageProvider>
+        <CommandPalette open={open} onClose={onClose} />
+      </LanguageProvider>
     </MemoryRouter>
   );
 }

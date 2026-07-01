@@ -13,13 +13,6 @@ import {
 } from './videoToGifUtils';
 import styles from './VideoToGif.module.css';
 
-const HOW_TO_USE = [
-  'Drop or select a video file (MP4, WebM, or MOV up to 100 MB).',
-  'Set the start time, clip duration (max 10 s), frame rate, and output width.',
-  'Click Convert and wait for encoding to finish — longer clips take more time.',
-  'Preview the animated GIF and click Download to save it.',
-];
-
 const FPS_OPTIONS = [5, 10, 15, 20, 25];
 const WIDTH_OPTIONS = [240, 320, 480, 640];
 const LARGE_OUTPUT_BYTES = 8 * 1024 * 1024;
@@ -148,7 +141,7 @@ export default function VideoToGif({ page }) {
   const pct = progress.total ? Math.round((progress.done / progress.total) * 100) : 0;
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         <ImageDropZone
           file={file}

@@ -27,11 +27,11 @@ describe('LoremIpsum', () => {
   it('selecting Words type and clicking Generate shows lorem ipsum words', async () => {
     const user = userEvent.setup();
     renderWithRouter(<LoremIpsum page={PAGE} />);
-    await user.selectOptions(screen.getByRole('combobox', { name: /output type/i }), 'words');
+    await user.selectOptions(screen.getByRole('combobox', { name: /^type$/i }), 'words');
     const countInput = screen.getByRole('spinbutton', { name: /count/i });
     await user.clear(countInput);
     await user.type(countInput, '30');
-    await user.click(screen.getByRole('button', { name: /generate text/i }));
+    await user.click(screen.getByRole('button', { name: /generate/i }));
     const textarea = screen.getByRole('textbox', { name: /generated text/i });
     expect(textarea.value.trim().length).toBeGreaterThan(0);
     expect(textarea.value.toLowerCase()).toMatch(/[a-z]+/);
@@ -41,17 +41,17 @@ describe('LoremIpsum', () => {
     const user = userEvent.setup();
     renderWithRouter(<LoremIpsum page={PAGE} />);
 
-    await user.selectOptions(screen.getByRole('combobox', { name: /output type/i }), 'sentences');
+    await user.selectOptions(screen.getByRole('combobox', { name: /^type$/i }), 'sentences');
     const countInput = screen.getByRole('spinbutton', { name: /count/i });
     await user.clear(countInput);
     await user.type(countInput, '1');
-    await user.click(screen.getByRole('button', { name: /generate text/i }));
+    await user.click(screen.getByRole('button', { name: /generate/i }));
     const sentenceOutput = screen.getByRole('textbox', { name: /generated text/i }).value;
 
-    await user.selectOptions(screen.getByRole('combobox', { name: /output type/i }), 'paragraphs');
+    await user.selectOptions(screen.getByRole('combobox', { name: /^type$/i }), 'paragraphs');
     await user.clear(countInput);
     await user.type(countInput, '3');
-    await user.click(screen.getByRole('button', { name: /generate text/i }));
+    await user.click(screen.getByRole('button', { name: /generate/i }));
     const paraOutput = screen.getByRole('textbox', { name: /generated text/i }).value;
 
     expect(sentenceOutput.length).toBeLessThan(paraOutput.length);

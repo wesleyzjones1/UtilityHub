@@ -2,6 +2,7 @@ import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../../context/LanguageContext';
 import { convertBase } from '../../../utils/converters';
 import styles from './BaseConverter.module.css';
 
@@ -13,17 +14,11 @@ const BASE_OPTIONS = [
   { value: 'text',        label: 'Text',    title: 'Text (UTF-8)' },
 ];
 
-const HOW_TO_USE = [
-  'Choose the source base using the buttons above the input.',
-  'Choose the target base using the buttons above the output.',
-  'Type or paste your value — the result appears instantly.',
-  'For Text conversions, each character is space-separated in the output.',
-];
-
 export default function BaseConverter({ page }) {
   const [from, setFrom] = useState('binary');
   const [to, setTo]     = useState('hexadecimal');
   const [input, setInput] = useState('');
+  const { t } = useLanguage();
 
   const { output, error } = convertBase(input, from, to);
 
@@ -34,12 +29,11 @@ export default function BaseConverter({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       hideHeaderActions
       inputControls={
         <div className={styles.controlsRow}>
           <ButtonGroup
-            label="From"
+            label={t('from')}
             hideLabel
             options={BASE_OPTIONS}
             value={from}
@@ -60,7 +54,7 @@ export default function BaseConverter({ page }) {
       outputControls={
         <div className={styles.controlsRow}>
           <ButtonGroup
-            label="To"
+            label={t('to')}
             hideLabel
             options={BASE_OPTIONS}
             value={to}
@@ -72,8 +66,6 @@ export default function BaseConverter({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Input"
-      outputLabel="Output"
       actions={error && <span className={styles.error} role="alert">{error}</span>}
       inputMono
       outputMono

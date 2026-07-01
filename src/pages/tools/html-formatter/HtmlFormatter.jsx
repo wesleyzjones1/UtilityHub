@@ -1,24 +1,15 @@
 import { useState, useEffect } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
+import { useLanguage } from '../../../context/LanguageContext';
 import { minifyHTML } from '../../../utils/formatters';
-
-const MODE_OPTIONS = [
-  { value: 'format', label: 'Format' },
-  { value: 'minify', label: 'Minify' },
-];
-
-const HOW_TO_USE = [
-  'Paste your HTML into the input panel.',
-  'Choose Format to prettify with proper indentation, or Minify to compress.',
-  'Copy the result from the output panel.',
-];
 
 export default function HtmlFormatter({ page }) {
   const [mode, setMode] = useState('format');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!input.trim()) { setOutput(''); setError(null); return; }
@@ -49,11 +40,10 @@ export default function HtmlFormatter({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <Select
-          label="Mode"
-          options={MODE_OPTIONS}
+          label={t('mode')}
+          options={[{ value: 'format', label: t('format') }, { value: 'minify', label: t('minify') }]}
           value={mode}
           onChange={setMode}
         />
@@ -61,8 +51,8 @@ export default function HtmlFormatter({ page }) {
       input={input}
       onInputChange={setInput}
       output={error ? `<!-- Error: ${error} -->` : output}
-      inputLabel="HTML Input"
-      outputLabel="HTML Output"
+      inputLabel={t('htmlInput')}
+      outputLabel={t('htmlOutput')}
       inputMono
       outputMono
       inputPlaceholder={mode === 'minify' ? "<div>\n  <p>Hello world</p>\n</div>" : "<div><p>Hello world</p></div>"}

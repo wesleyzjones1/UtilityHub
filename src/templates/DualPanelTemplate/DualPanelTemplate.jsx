@@ -1,6 +1,7 @@
 import PageShell from '../PageShell/PageShell';
 import Textarea from '../../components/ui/Textarea/Textarea';
 import CopyButton from '../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './DualPanelTemplate.module.css';
 
 /**
@@ -9,12 +10,11 @@ import styles from './DualPanelTemplate.module.css';
  */
 export default function DualPanelTemplate({
   page,
-  howToUse = [],
   topControls,
   inputControls,
   outputControls,
-  inputLabel = 'Input',
-  outputLabel = 'Output',
+  inputLabel,
+  outputLabel,
   input = '',
   onInputChange,
   output = '',
@@ -22,13 +22,19 @@ export default function DualPanelTemplate({
   inputMono = false,
   inputRows = 12,
   outputRows = 12,
-  inputPlaceholder = 'Paste or type your input here…',
-  outputPlaceholder = 'Output will appear here…',
+  inputPlaceholder,
+  outputPlaceholder,
   actions,
   hideHeaderActions = false,
 }) {
+  const { t } = useLanguage();
+  const resolvedInputLabel = inputLabel ?? t('input');
+  const resolvedOutputLabel = outputLabel ?? t('output');
+  const resolvedInputPlaceholder = inputPlaceholder ?? 'Paste or type your input here…';
+  const resolvedOutputPlaceholder = outputPlaceholder ?? 'Output will appear here…';
+
   return (
-    <PageShell page={page} howToUse={howToUse}>
+    <PageShell page={page}>
       {topControls && (
         <div className={styles.topBar}>
           {topControls}
@@ -39,13 +45,13 @@ export default function DualPanelTemplate({
         {/* Input panel */}
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
-            <span className={styles.panelLabel}>{inputLabel}</span>
+            <span className={styles.panelLabel}>{resolvedInputLabel}</span>
             {!hideHeaderActions && input && onInputChange && (
               <button
                 className={styles.clearBtn}
                 onClick={() => onInputChange('')}
-                aria-label="Clear input"
-                title="Clear input"
+                aria-label={t('clearInput')}
+                title={t('clearInput')}
               >
                 ✕
               </button>
@@ -58,11 +64,11 @@ export default function DualPanelTemplate({
             className={styles.field}
             value={input}
             onChange={onInputChange}
-            placeholder={inputPlaceholder}
+            placeholder={resolvedInputPlaceholder}
             mono={inputMono}
             rows={inputRows}
             resize="vertical"
-            aria-label={inputLabel}
+            aria-label={resolvedInputLabel}
           />
         </div>
 
@@ -74,7 +80,7 @@ export default function DualPanelTemplate({
         {/* Output panel */}
         <div className={styles.panel}>
           <div className={styles.panelHeader}>
-            <span className={styles.panelLabel}>{outputLabel}</span>
+            <span className={styles.panelLabel}>{resolvedOutputLabel}</span>
             {!hideHeaderActions && output && <CopyButton value={output} size="sm" />}
           </div>
           {outputControls && (
@@ -84,11 +90,11 @@ export default function DualPanelTemplate({
             className={styles.field}
             value={output}
             readOnly
-            placeholder={outputPlaceholder}
+            placeholder={resolvedOutputPlaceholder}
             mono={outputMono}
             rows={outputRows}
             resize="vertical"
-            aria-label={outputLabel}
+            aria-label={resolvedOutputLabel}
           />
         </div>
       </div>

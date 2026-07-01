@@ -5,13 +5,6 @@ import Button from '../../../components/ui/Button/Button';
 import { loadImage, canvasToBlob, downloadBlob, replaceExt, formatBytes } from '../../../utils/imageUtils';
 import styles from './ImageCropper.module.css';
 
-const HOW_TO_USE = [
-  'Drop an image or click to browse.',
-  'Drag the box to move it, or drag its edges/corners to resize.',
-  'Zoom in or out to work precisely, and use Center to recenter the box.',
-  'Click Crop to apply, then Download to save.',
-];
-
 const VIEWPORT_H = 440;
 const HANDLES = ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'];
 const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
@@ -212,7 +205,7 @@ export default function ImageCropper({ page }) {
   const hasCrop = crop.w > 0 && crop.h > 0;
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       {!file ? (
         <div className={styles.dropWrap}>
           <ImageDropZone

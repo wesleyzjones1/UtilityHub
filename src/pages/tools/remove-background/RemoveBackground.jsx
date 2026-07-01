@@ -5,13 +5,6 @@ import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
 import { loadImage, renderToCanvas, canvasToBlob, downloadBlob, formatBytes } from '../../../utils/imageUtils';
 import styles from './RemoveBackground.module.css';
 
-const HOW_TO_USE = [
-  'Drop an image or click to browse.',
-  'Choose the background to remove: White, Black, or Auto (samples the corners).',
-  'Adjust the tolerance so just the background disappears.',
-  'Download the result as a transparent PNG.',
-];
-
 const TARGET_OPTIONS = [
   { value: 'white', label: 'White' },
   { value: 'black', label: 'Black' },
@@ -127,7 +120,6 @@ export default function RemoveBackground({ page }) {
   return (
     <ImageDropTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       file={file}
       onFile={handleFile}
       onClear={handleClear}

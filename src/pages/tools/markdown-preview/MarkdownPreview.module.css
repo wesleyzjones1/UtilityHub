@@ -21,6 +21,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  /* Prevent long content from stretching one grid column wider than the other. */
+  min-width: 0;
 }
 
 .panelHeader {

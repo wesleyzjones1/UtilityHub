@@ -5,6 +5,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { AdPreferenceProvider } from './context/AdPreferenceContext';
 import { SupportProvider } from './context/SupportContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { CountdownProvider } from './context/CountdownContext';
 
 function AllProviders({ children }) {
   return (
@@ -14,7 +15,9 @@ function AllProviders({ children }) {
           <AdPreferenceProvider>
             <FavoritesProvider>
               <SupportProvider>
-                {children}
+                <CountdownProvider>
+                  {children}
+                </CountdownProvider>
               </SupportProvider>
             </FavoritesProvider>
           </AdPreferenceProvider>

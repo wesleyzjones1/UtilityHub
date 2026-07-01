@@ -2,24 +2,22 @@ import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
 import Toggle from '../../../components/ui/Toggle/Toggle';
+import { useLanguage } from '../../../context/LanguageContext';
 import { sortNumbers } from '../../../utils/converters';
 
-const ORDER_OPTIONS = [
-  { value: 'asc',  label: 'Smallest first' },
-  { value: 'desc', label: 'Largest first' },
-];
-
-const HOW_TO_USE = [
-  'Paste or type numbers — one per line or comma-separated.',
-  'Choose a sort order.',
-  'Toggle "Remove duplicates" to keep only unique values.',
-  'Non-numeric lines are ignored automatically.',
-];
+function useOrderOptions(t) {
+  return [
+    { value: 'asc',  label: t('nsSmallestFirst') },
+    { value: 'desc', label: t('nsLargestFirst') },
+  ];
+}
 
 export default function NumberSorter({ page }) {
   const [input, setInput] = useState('');
   const [order, setOrder] = useState('asc');
   const [removeDuplicates, setRemoveDuplicates] = useState(false);
+  const { t } = useLanguage();
+  const orderOptions = useOrderOptions(t);
 
   const output = input ? sortNumbers(input, order, removeDuplicates) : '';
 
@@ -29,27 +27,26 @@ export default function NumberSorter({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <>
           <Select
-            label="Order"
-            options={ORDER_OPTIONS}
+            label={t('order')}
+            options={orderOptions}
             value={order}
             onChange={setOrder}
           />
           <Toggle
             checked={removeDuplicates}
             onChange={setRemoveDuplicates}
-            label="Remove duplicates"
+            label={t('nsRemoveDuplicates')}
           />
         </>
       }
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Numbers"
-      outputLabel="Sorted"
+      inputLabel={t('nsNumbers')}
+      outputLabel={t('sortSorted')}
       inputMono
       outputMono
       inputPlaceholder={EXAMPLE}

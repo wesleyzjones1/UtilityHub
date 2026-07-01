@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
+import { useLanguage } from '../../../context/LanguageContext';
 import { removeLineBreaks } from '../../../utils/textTransforms';
 
 const REPLACEMENT_OPTIONS = [
@@ -10,16 +11,10 @@ const REPLACEMENT_OPTIONS = [
   { value: ' | ', label: 'Pipe ( | )' },
 ];
 
-const HOW_TO_USE = [
-  'Paste multi-line text in the input panel.',
-  'Choose what to replace line breaks with.',
-  'All line breaks (\n, \r\n) are removed instantly.',
-  'Click "Copy" to copy the single-line output.',
-];
-
 export default function RemoveLineBreaks({ page }) {
   const [input, setInput] = useState('');
   const [replacement, setReplacement] = useState(' ');
+  const { t } = useLanguage();
 
   const output = input ? removeLineBreaks(input, replacement) : '';
 
@@ -29,10 +24,9 @@ export default function RemoveLineBreaks({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <Select
-          label="Replace line breaks with"
+          label={t('rlbReplaceWith')}
           options={REPLACEMENT_OPTIONS}
           value={replacement}
           onChange={setReplacement}
@@ -41,8 +35,8 @@ export default function RemoveLineBreaks({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Multi-line Input"
-      outputLabel="Single Line"
+      inputLabel={t('rlbMultiLine')}
+      outputLabel={t('rlbSingleLine')}
       inputPlaceholder={EXAMPLE}
       outputPlaceholder={outputPlaceholder}
     />

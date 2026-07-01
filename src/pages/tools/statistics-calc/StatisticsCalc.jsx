@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import Textarea from '../../../components/ui/Textarea/Textarea';
+import { useLanguage } from '../../../context/LanguageContext';
 import { parseNumbers, mean, median, mode, variance, stddev } from './statisticsUtils';
 import styles from './StatisticsCalc.module.css';
-
-const HOW_TO_USE = [
-  'Enter numbers separated by commas, spaces, or new lines.',
-  'Statistics update automatically as you type.',
-];
 
 function fmt(n) {
   if (n === null || n === undefined || isNaN(n)) return '—';
@@ -16,6 +12,7 @@ function fmt(n) {
 
 export default function StatisticsCalc({ page }) {
   const [input, setInput] = useState('');
+  const { t } = useLanguage();
 
   const nums = parseNumbers(input);
   const hasData = nums.length > 0;
@@ -36,20 +33,20 @@ export default function StatisticsCalc({ page }) {
     : null;
 
   const rows = [
-    { label: 'Count', value: hasData ? stats.count : '—' },
-    { label: 'Sum', value: hasData ? fmt(stats.sum) : '—' },
-    { label: 'Mean', value: hasData ? fmt(stats.mean) : '—' },
-    { label: 'Median', value: hasData ? fmt(stats.median) : '—' },
-    { label: 'Mode', value: hasData ? (stats.mode ? stats.mode.map(fmt).join(', ') : 'N/A') : '—' },
-    { label: 'Min', value: hasData ? fmt(stats.min) : '—' },
-    { label: 'Max', value: hasData ? fmt(stats.max) : '—' },
-    { label: 'Range', value: hasData ? fmt(stats.range) : '—' },
-    { label: 'Variance', value: hasData ? fmt(stats.variance) : '—' },
-    { label: 'Std Dev', value: hasData ? fmt(stats.stddev) : '—' },
+    { label: t('statsCount'), value: hasData ? stats.count : '—' },
+    { label: t('statsSum'), value: hasData ? fmt(stats.sum) : '—' },
+    { label: t('statsMean'), value: hasData ? fmt(stats.mean) : '—' },
+    { label: t('statsMedian'), value: hasData ? fmt(stats.median) : '—' },
+    { label: t('statsMode'), value: hasData ? (stats.mode ? stats.mode.map(fmt).join(', ') : 'N/A') : '—' },
+    { label: t('statsMin'), value: hasData ? fmt(stats.min) : '—' },
+    { label: t('statsMax'), value: hasData ? fmt(stats.max) : '—' },
+    { label: t('statsRange'), value: hasData ? fmt(stats.range) : '—' },
+    { label: t('statsVariance'), value: hasData ? fmt(stats.variance) : '—' },
+    { label: t('statsStdDev'), value: hasData ? fmt(stats.stddev) : '—' },
   ];
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         <div className={styles.inputPanel}>
           <Textarea

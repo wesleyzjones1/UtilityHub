@@ -1,24 +1,15 @@
 import { useState, useEffect } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
+import { useLanguage } from '../../../context/LanguageContext';
 import { minifyCSS } from '../../../utils/formatters';
-
-const MODE_OPTIONS = [
-  { value: 'format', label: 'Format' },
-  { value: 'minify', label: 'Minify' },
-];
-
-const HOW_TO_USE = [
-  'Paste your CSS into the input panel.',
-  'Choose Format to prettify, or Minify to compress for production.',
-  'Copy the result from the output panel.',
-];
 
 export default function CssMinifier({ page }) {
   const [mode, setMode] = useState('format');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!input.trim()) { setOutput(''); setError(null); return; }
@@ -49,11 +40,10 @@ export default function CssMinifier({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <Select
-          label="Mode"
-          options={MODE_OPTIONS}
+          label={t('mode')}
+          options={[{ value: 'format', label: t('format') }, { value: 'minify', label: t('minify') }]}
           value={mode}
           onChange={setMode}
         />
@@ -61,8 +51,8 @@ export default function CssMinifier({ page }) {
       input={input}
       onInputChange={setInput}
       output={error ? `/* Error: ${error} */` : output}
-      inputLabel="CSS Input"
-      outputLabel="CSS Output"
+      inputLabel={t('cssInput')}
+      outputLabel={t('cssOutput')}
       inputMono
       outputMono
       inputPlaceholder={mode === 'minify' ? ".btn { color: red; padding: 8px; }" : ".btn {\n  color: red;\n  padding: 8px;\n}"}

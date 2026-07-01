@@ -37,9 +37,4 @@ describe('SinglePanelTemplate', () => {
     expect(screen.getByRole('button', { name: 'Convert' })).toBeInTheDocument();
   });
 
-  it('renders how-to-use steps', () => {
-    renderTemplate({ howToUse: ['Enter a number', 'Pick target base'] });
-    expect(screen.getByText('Enter a number')).toBeInTheDocument();
-    expect(screen.getByText('Pick target base')).toBeInTheDocument();
-  });
 });

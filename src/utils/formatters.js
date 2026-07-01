@@ -93,3 +93,52 @@ export function reversePiAttenuator(rShunt, rSeries, impedance) {
   const dB = 20 * Math.log10(K);
   return { dB };
 }
+
+function trimNum(n) {
+  if (!isFinite(n)) return '';
+  // Show at most one decimal place (e.g. 23.4), dropping a trailing ".0".
+  return String(parseFloat(n.toFixed(1)));
+}
+
+/**
+ * Matched symmetric Pi attenuator: given a target attenuation and the system
+ * impedance, return the resistor values that make the pad impedance-matched.
+ * Used to auto-fill the resistor fields when the user types a target dB.
+ *
+ * @returns { rShunt, rSeries } display strings ('' when blank), or an `error`.
+ */
+export function matchedPiAttenuator(db, impedance) {
+  const n = parseFloat(db);
+  if (String(db).trim() === '' || isNaN(n)) return { rShunt: '', rSeries: '' };
+  if (!(impedance > 0)) return { rShunt: '', rSeries: '', error: 'Enter a valid impedance first.' };
+  if (n <= 0) return { rShunt: '', rSeries: '', error: 'Attenuation must be greater than 0 dB.' };
+  const { rShunt, rSeries } = calculatePiAttenuator(n, impedance);
+  return { rShunt: trimNum(rShunt), rSeries: trimNum(rSeries) };
+}
+
+/**
+ * Attenuation of a symmetric Pi network from its two independent resistor
+ * values (shunt legs equal, one series arm), terminated in `impedance` at both
+ * ports. This is the general case — the resistors need not be matched.
+ *
+ * Nodal analysis with source/load = Z gives a load voltage of Vs/(Rs·D) where
+ * D = GA·GB·Rseries − 1/Rseries, GA = 1/Z+1/Rsh+1/Rse, GB = 1/Rse+1/Rsh+1/Z.
+ * Attenuation is referenced to the matched Vs/2 divider: ratio = (Z/2)·D.
+ *
+ * @returns { db } display string ('' when either resistor is blank), or `error`.
+ */
+export function piAttenuationDb(rShunt, rSeries, impedance) {
+  const rsh = parseFloat(rShunt);
+  const rse = parseFloat(rSeries);
+  if (String(rShunt).trim() === '' || String(rSeries).trim() === '' || isNaN(rsh) || isNaN(rse)) {
+    return { db: '' };
+  }
+  if (!(impedance > 0)) return { db: '', error: 'Enter a valid impedance first.' };
+  if (rsh <= 0 || rse <= 0) return { db: '', error: 'Resistor values must be greater than 0 Ω.' };
+
+  const GA = 1 / impedance + 1 / rsh + 1 / rse;
+  const GB = 1 / rse + 1 / rsh + 1 / impedance;
+  const ratio = (impedance / 2) * (GA * GB * rse - 1 / rse);
+  if (!isFinite(ratio) || ratio <= 0) return { db: '', error: 'No valid attenuation for these values.' };
+  return { db: trimNum(20 * Math.log10(ratio)) };
+}

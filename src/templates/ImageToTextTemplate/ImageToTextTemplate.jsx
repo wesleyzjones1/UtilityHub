@@ -10,7 +10,6 @@ import styles from './ImageToTextTemplate.module.css';
  */
 export default function ImageToTextTemplate({
   page,
-  howToUse = [],
   topControls,
   actions,
   onFile,
@@ -27,7 +26,7 @@ export default function ImageToTextTemplate({
   outputPlaceholder = 'Output will appear here…',
 }) {
   return (
-    <PageShell page={page} howToUse={howToUse}>
+    <PageShell page={page}>
       {topControls && (
         <div className={styles.topBar}>
           {topControls}

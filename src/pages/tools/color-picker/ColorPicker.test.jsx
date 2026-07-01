@@ -39,7 +39,8 @@ describe('ColorPicker — EyeDropper supported', () => {
 
   beforeEach(() => {
     mockOpen = vi.fn();
-    window.EyeDropper = vi.fn(() => ({ open: mockOpen }));
+    // Must be a real constructor: the component calls `new window.EyeDropper()`.
+    window.EyeDropper = vi.fn(function () { this.open = mockOpen; });
   });
 
   afterEach(() => {

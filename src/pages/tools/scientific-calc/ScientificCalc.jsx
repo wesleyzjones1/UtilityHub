@@ -2,12 +2,6 @@ import { useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import styles from './ScientificCalc.module.css';
 
-const HOW_TO_USE = [
-  'Click number and operator buttons to build an expression.',
-  'Use scientific functions like sin, cos, log, and √.',
-  'Press = to evaluate; AC clears the display.',
-];
-
 function safeEval(expr) {
   try {
     const sanitized = expr
@@ -104,7 +98,7 @@ export default function ScientificCalc({ page }) {
   const shown = display || '0';
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.calculator}>
         <div className={styles.display} aria-label="Display" role="textbox" aria-readonly="true">
           <span className={styles.displayText}>{shown}</span>

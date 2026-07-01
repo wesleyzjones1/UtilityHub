@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './TimezoneConverter.module.css';
-
-const HOW_TO_USE = [
-  'Pick a date and time to convert.',
-  'Select the source timezone ("From") and the target timezone ("To").',
-  'The converted time updates instantly.',
-];
 
 const TIMEZONES = [
   'UTC',
@@ -88,32 +83,33 @@ export default function TimezoneConverter({ page }) {
   const [datetime, setDatetime] = useState(toLocalDatetimeValue(new Date()));
   const [fromTz, setFromTz] = useState('UTC');
   const [toTz, setToTz] = useState('America/New_York');
+  const { t } = useLanguage();
 
   const result = convertTimezone(datetime, fromTz, toTz);
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         <div className={styles.fields}>
           <label className={styles.fieldLabel}>
-            Date and time
+            {t('tzDateAndTime')}
             <input
               type="datetime-local"
               className={styles.input}
               value={datetime}
               onChange={e => setDatetime(e.target.value)}
-              aria-label="Date and time"
+              aria-label={t('tzDateAndTime')}
             />
           </label>
 
           <div className={styles.tzRow}>
             <label className={styles.fieldLabel}>
-              From timezone
+              {t('tzFrom')}
               <select
                 className={styles.select}
                 value={fromTz}
                 onChange={e => setFromTz(e.target.value)}
-                aria-label="From timezone"
+                aria-label={t('tzFrom')}
               >
                 {TIMEZONES.map(tz => (
                   <option key={tz} value={tz}>{tz}</option>
@@ -124,12 +120,12 @@ export default function TimezoneConverter({ page }) {
             <span className={styles.arrow} aria-hidden="true">→</span>
 
             <label className={styles.fieldLabel}>
-              To timezone
+              {t('tzTo')}
               <select
                 className={styles.select}
                 value={toTz}
                 onChange={e => setToTz(e.target.value)}
-                aria-label="To timezone"
+                aria-label={t('tzTo')}
               >
                 {TIMEZONES.map(tz => (
                   <option key={tz} value={tz}>{tz}</option>
@@ -142,7 +138,7 @@ export default function TimezoneConverter({ page }) {
         {result && (
           <div className={styles.resultCard}>
             <span className={styles.resultValue}>{result}</span>
-            <CopyButton value={result} label="Copy result" />
+            <CopyButton value={result} label={t('tzCopyResult')} />
           </div>
         )}
       </div>

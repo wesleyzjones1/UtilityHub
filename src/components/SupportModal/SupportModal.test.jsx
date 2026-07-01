@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AdPreferenceProvider } from '../../context/AdPreferenceContext';
+import { LanguageProvider } from '../../context/LanguageContext';
 import SupportModal from './SupportModal';
 
 let store = {};
@@ -21,9 +22,11 @@ beforeEach(() => {
 
 function Wrapped({ open = true, onClose = vi.fn() }) {
   return (
-    <AdPreferenceProvider>
-      <SupportModal open={open} onClose={onClose} />
-    </AdPreferenceProvider>
+    <LanguageProvider>
+      <AdPreferenceProvider>
+        <SupportModal open={open} onClose={onClose} />
+      </AdPreferenceProvider>
+    </LanguageProvider>
   );
 }
 

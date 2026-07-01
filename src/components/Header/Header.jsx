@@ -7,6 +7,8 @@ import FavoritesMenu from '../FavoritesMenu/FavoritesMenu';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import MobileMenu from './MobileMenu';
 import { useSupport } from '../../context/SupportContext';
+import { useCountdown } from '../../context/CountdownContext';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Header.module.css';
 
 function HamburgerIcon({ open }) {
@@ -25,8 +27,19 @@ function HamburgerIcon({ open }) {
   );
 }
 
+function formatTime(total) {
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  const mm = String(m).padStart(2, '0');
+  const ss = String(s).padStart(2, '0');
+  return h > 0 ? `${h}:${mm}:${ss}` : `${mm}:${ss}`;
+}
+
 export default function Header({ onOpenPalette }) {
   const { openSupport } = useSupport();
+  const { timerState } = useCountdown();
+  const { t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const headerRef = useRef(null);
@@ -49,10 +62,21 @@ export default function Header({ onOpenPalette }) {
       <header className={styles.header} ref={headerRef}>
         <div className={styles.inner}>
           {/* Brand */}
-          <Link to="/" className={styles.brand} aria-label="UtilityHub home">
+          <Link to="/" className={styles.brand} aria-label={t('brandHomeAria')}>
             <LogoIcon />
             <span className={styles.brandName}>UtilityHub</span>
           </Link>
+
+          {/* Countdown badge */}
+          {timerState && (
+            <div
+              className={`${styles.timerBadge} ${timerState.phase === 'done' ? styles.timerBadgeDone : timerState.phase === 'paused' ? styles.timerBadgePaused : ''}`}
+              aria-live="polite"
+              aria-label={timerState.phase === 'done' ? t('timerDone') : `Timer: ${formatTime(timerState.secondsLeft)}`}
+            >
+              {timerState.phase === 'done' ? t('timerDone') : formatTime(timerState.secondsLeft)}
+            </div>
+          )}
 
           {/* Category tabs (desktop) */}
           <CategoryNav />
@@ -66,8 +90,8 @@ export default function Header({ onOpenPalette }) {
               <button
                 className={styles.paletteBtn}
                 onClick={onOpenPalette}
-                aria-label="Open command palette (Ctrl+K)"
-                title="Search tools (Ctrl+K)"
+                aria-label={t('openCommandPaletteAria')}
+                title={t('searchToolsShortcutTitle')}
               >
                 <SearchGlyph />
                 <kbd className={styles.paletteKbd}>⌘K</kbd>
@@ -78,10 +102,10 @@ export default function Header({ onOpenPalette }) {
             <button
               className={styles.supportBtn}
               onClick={openSupport}
-              aria-label="Support UtilityHub"
+              aria-label={t('supportUtilityHub')}
             >
               <span className={styles.supportHeart} aria-hidden="true">♥</span>
-              <span className={styles.supportLabel}>Support</span>
+              <span className={styles.supportLabel}>{t('support')}</span>
             </button>
             <ThemeToggle />
             <button
@@ -89,7 +113,7 @@ export default function Header({ onOpenPalette }) {
               onClick={() => setMobileOpen(o => !o)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-label={mobileOpen ? t('closeMenu') : t('openMenu')}
             >
               <HamburgerIcon open={mobileOpen} />
             </button>

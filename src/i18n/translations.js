@@ -1,5 +1,6 @@
 export const translations = {
   en: {
+    // ── Shell / Navigation ──────────────────────────────────────────
     searchPlaceholder: 'Search all tools…',
     searchLabel: 'Search all tools',
     searchNoResults: 'No tools found for',
@@ -13,8 +14,324 @@ export const translations = {
     languageLabel: 'Language',
     tools: 'tools',
     tool: 'tool',
+
+    // ── Categories ──────────────────────────────────────────────────
+    catText: 'Text Tools',
+    catTextDesc: 'Manipulate, analyze, and transform text',
+    catMath: 'Math & Numbers',
+    catMathDesc: 'Calculators, converters, and number utilities',
+    catColor: 'Color Tools',
+    catColorDesc: 'Pick, convert, and generate color schemes',
+    catImage: 'Image Tools',
+    catImageDesc: 'Convert, resize, crop, and optimize images',
+    catWeb: 'Web & Code',
+    catWebDesc: 'Format, encode, and validate code and data',
+    catTime: 'Time & Date',
+    catTimeDesc: 'Timezones, countdowns, and date calculations',
+
+    // ── Home page ───────────────────────────────────────────────────
+    heroTitle: 'Free tools for developers and power users',
+    heroSubStart: 'tools across',
+    heroSubEnd: 'categories — no sign-up required.',
+
+    // ── PageShell ───────────────────────────────────────────────────
+    relatedTools: 'Related tools',
+
+    // ── NotFound ────────────────────────────────────────────────────
+    notFoundTitle: 'Page not found',
+    notFoundSub: "The page you're looking for doesn't exist or has been moved.",
+    notFoundGoHome: 'Go to home',
+
+    // ── Common UI ───────────────────────────────────────────────────
+    input: 'Input',
+    output: 'Output',
+    clearInput: 'Clear input',
+    generate: 'Generate',
+    copy: 'Copy',
+    copied: 'Copied!',
+    copyAll: 'Copy all',
+    copyResult: 'Copy result',
+    result: 'Result',
+    from: 'From',
+    to: 'To',
+    mode: 'Mode',
+    type: 'Type',
+    count: 'Count',
+    format: 'Format',
+    minify: 'Minify',
+    preview: 'Preview',
+    original: 'Original',
+    converted: 'Converted',
+    separator: 'Separator',
+    measurement: 'Measurement',
+    sortOrder: 'Sort order',
+    pattern: 'Pattern',
+    dropImage: 'Drop an image here',
+    dropImageSub: 'or click to browse',
+    releaseToUpload: 'Release to upload',
+    removeFile: 'Remove file',
+
+    // ── Header / Footer / Shell ───────────────────────────────────────
+    brandHomeAria: 'UtilityHub home',
+    skipToMainContent: 'Skip to main content',
+    openCommandPaletteAria: 'Open command palette (Ctrl+K)',
+    searchToolsShortcutTitle: 'Search tools (Ctrl+K)',
+    supportUtilityHub: 'Support UtilityHub',
+    support: 'Support',
+    footerSupportText: 'If this tool saved you time, consider supporting the project.',
+    categoryNavigationLabel: 'Category navigation',
+    navigationMenuLabel: 'Navigation menu',
+
+    // ── Command Palette ────────────────────────────────────────────────
+    cmdPaletteLabel: 'Command palette',
+    cmdSearchPlaceholder: 'Search tools…',
+    cmdSearchLabel: 'Search tools',
+    cmdResults: 'Results',
+    cmdRecent: 'Recent',
+    cmdNoResults: 'No tools found',
+    cmdTypeToSearch: 'Type to search all tools',
+    cmdNavigate: 'navigate',
+    cmdOpenHint: 'open',
+    cmdCloseHint: 'close',
+
+    // ── Search ──────────────────────────────────────────────────────────
+    searchResultsLabel: 'Search results',
+
+    // ── Favorites ───────────────────────────────────────────────────────
+    favoritesLabel: 'Favorites',
+    favoritesEmpty: 'No favorites yet',
+    favoritesEmptyHint: 'Tap the star on any tool to save it here.',
+    favAddLabel: 'Add {value} to favorites',
+    favRemoveLabel: 'Remove {value} from favorites',
+    favAddTitle: 'Add to favorites',
+    favRemoveTitle: 'Remove from favorites',
+    favoriteSaved: 'Saved',
+    favoriteSaveToFavorites: 'Save to favorites',
+
+    // ── Support Modal ────────────────────────────────────────────────────
+    supportModalSubtitle: "These tools are free. If they save you time, here's how you can help.",
+    close: 'Close',
+    starOnGithub: 'Star on GitHub',
+    alreadyPaidRemoveAds: 'Already paid? Remove ads',
+
+    // ── Ad Blocker Banner ────────────────────────────────────────────────
+    adBlockerText: "Looks like you're using an ad blocker — that's completely fine. If these tools are useful, consider",
+    adBlockerLinkText: 'supporting UtilityHub',
+    adBlockerSuffix: 'instead.',
+    dismissAdBlockerNotice: 'Dismiss ad blocker notice',
+
+    // ── Ad Banner ───────────────────────────────────────────────────────
+    advertisement: 'Advertisement',
+
+    // ── Tool Page (placeholder) ──────────────────────────────────────────
+    toolComingSoon: 'This tool is coming soon.',
+    toolUnderConstructionMsg: 'The interface for {value} is under construction.',
+    backToAllTools: '← Back to all tools',
+    otherToolsLabel: 'Other',
+
+    // ── Word Counter ────────────────────────────────────────────────
+    wcChars: 'Characters',
+    wcCharsNoSpaces: 'Chars (no spaces)',
+    wcWords: 'Words',
+    wcUniqueWords: 'Unique words',
+    wcSentences: 'Sentences',
+    wcParagraphs: 'Paragraphs',
+    wcLines: 'Lines',
+    wcReadingTime: 'Reading time',
+
+    // ── Countdown Timer ─────────────────────────────────────────────
+    timerEnterTime: 'Enter time in minutes',
+    timerStart: 'Start',
+    timerPause: 'Pause',
+    timerResume: 'Resume',
+    timerStop: 'Stop',
+    timerRestart: 'Restart',
+    timerDone: "Time's up!",
+    timerPaused: 'Paused',
+
+    // ── Date Calculator ─────────────────────────────────────────────
+    dateStart: 'Start date',
+    dateEnd: 'End date',
+    dateDays: 'days',
+    dateWeeks: 'weeks',
+    dateMonths: 'months',
+    dateYears: 'years',
+    dateCopyDays: 'Copy days',
+
+    // ── Text Compare ────────────────────────────────────────────────
+    compareOriginal: 'Original',
+    compareModified: 'Modified',
+    compareIdentical: 'Texts are identical',
+    compareAdded: 'added',
+    compareRemoved: 'removed',
+    compareCaseChanges: 'case changes',
+    compareUnchanged: 'unchanged',
+    compareEmpty: 'Enter text in both panels above to compare them.',
+
+    // ── Regex Tester ────────────────────────────────────────────────
+    regexTestString: 'Test string',
+    regexPreview: 'Preview',
+    regexMatches: 'Matches',
+    regexInvalidPattern: 'Invalid pattern',
+    regexNoMatches: 'No matches found.',
+    regexEnterPattern: 'Enter a pattern above',
+
+    // ── Word Frequency ──────────────────────────────────────────────
+    freqExcludeStop: 'Exclude stop words',
+    freqCaseSensitive: 'Case sensitive',
+    freqNoWords: 'No words found.',
+    freqWord: 'Word',
+    freqFrequency: 'Frequency',
+
+    // ── Lorem Ipsum ─────────────────────────────────────────────────
+    loremParagraphs: 'Paragraphs',
+    loremSentences: 'Sentences',
+    loremWords: 'Words',
+    loremOutput: 'Output',
+    loremGenerated: 'Generated text will appear here…',
+
+    // ── Random Number ───────────────────────────────────────────────
+    randomMin: 'Min',
+    randomMax: 'Max',
+    randomClickGenerate: 'Click Generate to get numbers',
+    randomInteger: 'Integer',
+    randomDecimal: 'Decimal (2 places)',
+
+    // ── Temperature ─────────────────────────────────────────────────
+    tempFahrenheit: 'Fahrenheit',
+    tempCelsius: 'Celsius',
+    tempKelvin: 'Kelvin',
+
+    // ── Unix Timestamp ──────────────────────────────────────────────
+    tsEpochToDate: 'Epoch to Date',
+    tsDateToEpoch: 'Date to Epoch',
+    tsCurrentTimestamp: 'Current timestamp',
+    tsUTC: 'UTC',
+    tsLocal: 'Local',
+    tsSeconds: 'Seconds',
+    tsMilliseconds: 'Milliseconds',
+    tsCopyUTC: 'Copy UTC',
+    tsCopyLocal: 'Copy local',
+    tsCopySeconds: 'Copy seconds',
+    tsCopyMilliseconds: 'Copy milliseconds',
+
+    // ── Timezone Converter ──────────────────────────────────────────
+    tzDateAndTime: 'Date and time',
+    tzFrom: 'From timezone',
+    tzTo: 'To timezone',
+    tzCopyResult: 'Copy result',
+
+    // ── Sort Words ──────────────────────────────────────────────────
+    sortAscending: 'A → Z',
+    sortDescending: 'Z → A',
+    sortShortestFirst: 'Shortest first',
+    sortLongestFirst: 'Longest first',
+    sortWords: 'Words',
+    sortSorted: 'Sorted',
+    sortCaseSensitive: 'Case sensitive',
+
+    // ── Reverse Text ────────────────────────────────────────────────
+    reverseCharacters: 'Reverse characters',
+    reverseWordOrder: 'Reverse word order',
+    reverseEachWord: 'Reverse text in each word',
+    reverseReversed: 'Reversed',
+    reverseEachWordLabel: 'Each Word Reversed',
+
+    // ── Add Punctuation ─────────────────────────────────────────────
+    punctPunctuation: 'Punctuation',
+    punctAddMissing: 'Add if missing',
+    punctAlwaysAppend: 'Always append',
+    punctReplace: 'Replace existing',
+    punctWithPunctuation: 'With Punctuation',
+
+    // ── Inline / Column Converter ───────────────────────────────────
+    iccColumnToInline: 'Column → Inline',
+    iccInlineToColumn: 'Inline → Column',
+    iccColumnPerLine: 'Column (one per line)',
+    iccInlineSeparated: 'Inline (separated)',
+
+    // ── JSON Formatter ──────────────────────────────────────────────
+    jsonInput: 'JSON Input',
+    jsonOutput: 'JSON Output',
+
+    // ── Statistics ──────────────────────────────────────────────────
+    statsCount: 'Count',
+    statsSum: 'Sum',
+    statsMean: 'Mean',
+    statsMedian: 'Median',
+    statsMode: 'Mode',
+    statsMin: 'Min',
+    statsMax: 'Max',
+    statsRange: 'Range',
+    statsVariance: 'Variance',
+    statsStdDev: 'Std Dev',
+
+    // ── Unit Converter ──────────────────────────────────────────────
+    unitMeasurement: 'Measurement',
+    unitFrom: 'From',
+    unitTo: 'To',
+    unitEnterValue: 'Enter a value',
+
+    // ── Array Formatter ─────────────────────────────────────────────
+    quoteStyle: 'Quote style',
+    arrayItems: 'Items (one per line)',
+
+    // ── Number Sorter ───────────────────────────────────────────────
+    order: 'Order',
+    nsSmallestFirst: 'Smallest first',
+    nsLargestFirst: 'Largest first',
+    nsRemoveDuplicates: 'Remove duplicates',
+    nsNumbers: 'Numbers',
+
+    // ── Remove Whitespace / Remove Character ────────────────────────
+    remove: 'Remove',
+    cleaned: 'Cleaned',
+    wsAllWhitespace: 'All whitespace',
+    wsSpacesOnly: 'Spaces only',
+    wsTabsOnly: 'Tabs only',
+    wsExtraSpaces: 'Extra spaces (collapse)',
+
+    // ── Text Style Tools ────────────────────────────────────────────
+    style: 'Style',
+    styleBold: 'Bold',
+    styleItalic: 'Italic',
+    styleStrikethrough: 'Strikethrough',
+    outputBold: 'Bold Output',
+    outputItalic: 'Italic Output',
+    outputStrikethrough: 'Strikethrough Output',
+
+    // ── Code Formatters ─────────────────────────────────────────────
+    xmlInput: 'XML Input',
+    xmlOutput: 'XML Output',
+    cssInput: 'CSS Input',
+    cssOutput: 'CSS Output',
+    jsInput: 'JavaScript Input',
+    jsOutput: 'JavaScript Output',
+    tsInput: 'TypeScript Input',
+    tsOutput: 'TypeScript Output',
+    htmlInput: 'HTML Input',
+    htmlOutput: 'HTML Output',
+
+    // ── Markdown Preview ────────────────────────────────────────────
+    mdRightPanel: 'Right panel',
+    mdMarkdownInput: 'Markdown Input',
+    mdHtmlPreview: 'HTML Preview',
+    mdFormattedMarkdown: 'Formatted Markdown',
+
+    // ── Misc Tools ──────────────────────────────────────────────────
+    copyLink: 'Copy link',
+    plainText: 'Plain Text',
+    jsonString: 'JSON String',
+    mdtDelimitedData: 'Delimited Data',
+    mdtMarkdownTable: 'Markdown Table',
+    rlbReplaceWith: 'Replace line breaks with',
+    rlbMultiLine: 'Multi-line Input',
+    rlbSingleLine: 'Single Line',
+    rtfFormattedInput: 'Formatted Input',
   },
+
   es: {
+    // ── Shell / Navigation ──────────────────────────────────────────
     searchPlaceholder: 'Buscar herramientas…',
     searchLabel: 'Buscar todas las herramientas',
     searchNoResults: 'No se encontraron herramientas para',
@@ -28,8 +345,438 @@ export const translations = {
     languageLabel: 'Idioma',
     tools: 'herramientas',
     tool: 'herramienta',
+
+    // ── Categories ──────────────────────────────────────────────────
+    catText: 'Herramientas de texto',
+    catTextDesc: 'Manipular, analizar y transformar texto',
+    catMath: 'Matemáticas y Números',
+    catMathDesc: 'Calculadoras, convertidores y utilidades numéricas',
+    catColor: 'Herramientas de color',
+    catColorDesc: 'Elegir, convertir y generar esquemas de color',
+    catImage: 'Herramientas de imagen',
+    catImageDesc: 'Convertir, redimensionar, recortar y optimizar imágenes',
+    catWeb: 'Web y Código',
+    catWebDesc: 'Formatear, codificar y validar código y datos',
+    catTime: 'Tiempo y Fecha',
+    catTimeDesc: 'Zonas horarias, cuentas regresivas y cálculos de fechas',
+
+    // ── Home page ───────────────────────────────────────────────────
+    heroTitle: 'Herramientas gratuitas para desarrolladores y usuarios avanzados',
+    heroSubStart: 'herramientas en',
+    heroSubEnd: 'categorías — sin registro.',
+
+    // ── PageShell ───────────────────────────────────────────────────
+    relatedTools: 'Herramientas relacionadas',
+
+    // ── NotFound ────────────────────────────────────────────────────
+    notFoundTitle: 'Página no encontrada',
+    notFoundSub: 'La página que buscas no existe o ha sido movida.',
+    notFoundGoHome: 'Ir al inicio',
+
+    // ── Common UI ───────────────────────────────────────────────────
+    input: 'Entrada',
+    output: 'Salida',
+    clearInput: 'Limpiar entrada',
+    generate: 'Generar',
+    copy: 'Copiar',
+    copied: '¡Copiado!',
+    copyAll: 'Copiar todo',
+    copyResult: 'Copiar resultado',
+    result: 'Resultado',
+    from: 'De',
+    to: 'A',
+    mode: 'Modo',
+    type: 'Tipo',
+    count: 'Cantidad',
+    format: 'Formatear',
+    minify: 'Minificar',
+    preview: 'Vista previa',
+    original: 'Original',
+    converted: 'Convertido',
+    separator: 'Separador',
+    measurement: 'Medición',
+    sortOrder: 'Orden de clasificación',
+    pattern: 'Patrón',
+    dropImage: 'Suelta una imagen aquí',
+    dropImageSub: 'o haz clic para buscar',
+    releaseToUpload: 'Suelta para subir',
+    removeFile: 'Eliminar archivo',
+
+    // ── Header / Footer / Shell ───────────────────────────────────────
+    brandHomeAria: 'Inicio de UtilityHub',
+    skipToMainContent: 'Saltar al contenido principal',
+    openCommandPaletteAria: 'Abrir paleta de comandos (Ctrl+K)',
+    searchToolsShortcutTitle: 'Buscar herramientas (Ctrl+K)',
+    supportUtilityHub: 'Apoyar a UtilityHub',
+    support: 'Apoyar',
+    footerSupportText: 'Si esta herramienta te ahorró tiempo, considera apoyar el proyecto.',
+    categoryNavigationLabel: 'Navegación de categorías',
+    navigationMenuLabel: 'Menú de navegación',
+
+    // ── Command Palette ────────────────────────────────────────────────
+    cmdPaletteLabel: 'Paleta de comandos',
+    cmdSearchPlaceholder: 'Buscar herramientas…',
+    cmdSearchLabel: 'Buscar herramientas',
+    cmdResults: 'Resultados',
+    cmdRecent: 'Recientes',
+    cmdNoResults: 'No se encontraron herramientas',
+    cmdTypeToSearch: 'Escribe para buscar todas las herramientas',
+    cmdNavigate: 'navegar',
+    cmdOpenHint: 'abrir',
+    cmdCloseHint: 'cerrar',
+
+    // ── Search ──────────────────────────────────────────────────────────
+    searchResultsLabel: 'Resultados de búsqueda',
+
+    // ── Favorites ───────────────────────────────────────────────────────
+    favoritesLabel: 'Favoritos',
+    favoritesEmpty: 'Aún no hay favoritos',
+    favoritesEmptyHint: 'Toca la estrella en cualquier herramienta para guardarla aquí.',
+    favAddLabel: 'Añadir {value} a favoritos',
+    favRemoveLabel: 'Quitar {value} de favoritos',
+    favAddTitle: 'Añadir a favoritos',
+    favRemoveTitle: 'Quitar de favoritos',
+    favoriteSaved: 'Guardado',
+    favoriteSaveToFavorites: 'Guardar en favoritos',
+
+    // ── Support Modal ────────────────────────────────────────────────────
+    supportModalSubtitle: 'Estas herramientas son gratuitas. Si te ahorran tiempo, así puedes ayudar.',
+    close: 'Cerrar',
+    starOnGithub: 'Danos una estrella en GitHub',
+    alreadyPaidRemoveAds: '¿Ya pagaste? Quitar anuncios',
+
+    // ── Ad Blocker Banner ────────────────────────────────────────────────
+    adBlockerText: 'Parece que estás usando un bloqueador de anuncios — no hay problema. Si estas herramientas te son útiles, considera',
+    adBlockerLinkText: 'apoyar a UtilityHub',
+    adBlockerSuffix: 'en su lugar.',
+    dismissAdBlockerNotice: 'Descartar aviso de bloqueador de anuncios',
+
+    // ── Ad Banner ───────────────────────────────────────────────────────
+    advertisement: 'Publicidad',
+
+    // ── Tool Page (placeholder) ──────────────────────────────────────────
+    toolComingSoon: 'Esta herramienta estará disponible pronto.',
+    toolUnderConstructionMsg: 'La interfaz de {value} está en construcción.',
+    backToAllTools: '← Volver a todas las herramientas',
+    otherToolsLabel: 'Otras',
+
+    // ── Word Counter ────────────────────────────────────────────────
+    wcChars: 'Caracteres',
+    wcCharsNoSpaces: 'Caract. (sin espacios)',
+    wcWords: 'Palabras',
+    wcUniqueWords: 'Palabras únicas',
+    wcSentences: 'Oraciones',
+    wcParagraphs: 'Párrafos',
+    wcLines: 'Líneas',
+    wcReadingTime: 'Tiempo de lectura',
+
+    // ── Countdown Timer ─────────────────────────────────────────────
+    timerEnterTime: 'Ingresa el tiempo en minutos',
+    timerStart: 'Iniciar',
+    timerPause: 'Pausar',
+    timerResume: 'Reanudar',
+    timerStop: 'Detener',
+    timerRestart: 'Reiniciar',
+    timerDone: '¡Tiempo agotado!',
+    timerPaused: 'Pausado',
+
+    // ── Date Calculator ─────────────────────────────────────────────
+    dateStart: 'Fecha de inicio',
+    dateEnd: 'Fecha de fin',
+    dateDays: 'días',
+    dateWeeks: 'semanas',
+    dateMonths: 'meses',
+    dateYears: 'años',
+    dateCopyDays: 'Copiar días',
+
+    // ── Text Compare ────────────────────────────────────────────────
+    compareOriginal: 'Original',
+    compareModified: 'Modificado',
+    compareIdentical: 'Los textos son idénticos',
+    compareAdded: 'añadido',
+    compareRemoved: 'eliminado',
+    compareCaseChanges: 'cambios de mayúsculas',
+    compareUnchanged: 'sin cambios',
+    compareEmpty: 'Introduce texto en ambos paneles para comparar.',
+
+    // ── Regex Tester ────────────────────────────────────────────────
+    regexTestString: 'Cadena de prueba',
+    regexPreview: 'Vista previa',
+    regexMatches: 'Coincidencias',
+    regexInvalidPattern: 'Patrón inválido',
+    regexNoMatches: 'No se encontraron coincidencias.',
+    regexEnterPattern: 'Introduce un patrón arriba',
+
+    // ── Word Frequency ──────────────────────────────────────────────
+    freqExcludeStop: 'Excluir palabras vacías',
+    freqCaseSensitive: 'Distinguir mayúsculas',
+    freqNoWords: 'No se encontraron palabras.',
+    freqWord: 'Palabra',
+    freqFrequency: 'Frecuencia',
+
+    // ── Lorem Ipsum ─────────────────────────────────────────────────
+    loremParagraphs: 'Párrafos',
+    loremSentences: 'Oraciones',
+    loremWords: 'Palabras',
+    loremOutput: 'Salida',
+    loremGenerated: 'El texto generado aparecerá aquí…',
+
+    // ── Random Number ───────────────────────────────────────────────
+    randomMin: 'Mín',
+    randomMax: 'Máx',
+    randomClickGenerate: 'Haz clic en Generar para obtener números',
+    randomInteger: 'Entero',
+    randomDecimal: 'Decimal (2 decimales)',
+
+    // ── Temperature ─────────────────────────────────────────────────
+    tempFahrenheit: 'Fahrenheit',
+    tempCelsius: 'Celsius',
+    tempKelvin: 'Kelvin',
+
+    // ── Unix Timestamp ──────────────────────────────────────────────
+    tsEpochToDate: 'Época a Fecha',
+    tsDateToEpoch: 'Fecha a Época',
+    tsCurrentTimestamp: 'Marca de tiempo actual',
+    tsUTC: 'UTC',
+    tsLocal: 'Local',
+    tsSeconds: 'Segundos',
+    tsMilliseconds: 'Milisegundos',
+    tsCopyUTC: 'Copiar UTC',
+    tsCopyLocal: 'Copiar local',
+    tsCopySeconds: 'Copiar segundos',
+    tsCopyMilliseconds: 'Copiar milisegundos',
+
+    // ── Timezone Converter ──────────────────────────────────────────
+    tzDateAndTime: 'Fecha y hora',
+    tzFrom: 'Zona horaria de origen',
+    tzTo: 'Zona horaria de destino',
+    tzCopyResult: 'Copiar resultado',
+
+    // ── Sort Words ──────────────────────────────────────────────────
+    sortAscending: 'A → Z',
+    sortDescending: 'Z → A',
+    sortShortestFirst: 'Más corta primero',
+    sortLongestFirst: 'Más larga primero',
+    sortWords: 'Palabras',
+    sortSorted: 'Ordenado',
+    sortCaseSensitive: 'Distinguir mayúsculas',
+
+    // ── Reverse Text ────────────────────────────────────────────────
+    reverseCharacters: 'Invertir caracteres',
+    reverseWordOrder: 'Invertir orden de palabras',
+    reverseEachWord: 'Invertir texto en cada palabra',
+    reverseReversed: 'Invertido',
+    reverseEachWordLabel: 'Cada palabra invertida',
+
+    // ── Add Punctuation ─────────────────────────────────────────────
+    punctPunctuation: 'Puntuación',
+    punctAddMissing: 'Agregar si falta',
+    punctAlwaysAppend: 'Siempre agregar',
+    punctReplace: 'Reemplazar existente',
+    punctWithPunctuation: 'Con puntuación',
+
+    // ── Inline / Column Converter ───────────────────────────────────
+    iccColumnToInline: 'Columna → En línea',
+    iccInlineToColumn: 'En línea → Columna',
+    iccColumnPerLine: 'Columna (uno por línea)',
+    iccInlineSeparated: 'En línea (separado)',
+
+    // ── JSON Formatter ──────────────────────────────────────────────
+    jsonInput: 'Entrada JSON',
+    jsonOutput: 'Salida JSON',
+
+    // ── Statistics ──────────────────────────────────────────────────
+    statsCount: 'Cantidad',
+    statsSum: 'Suma',
+    statsMean: 'Media',
+    statsMedian: 'Mediana',
+    statsMode: 'Moda',
+    statsMin: 'Mín',
+    statsMax: 'Máx',
+    statsRange: 'Rango',
+    statsVariance: 'Varianza',
+    statsStdDev: 'Desv. Est.',
+
+    // ── Unit Converter ──────────────────────────────────────────────
+    unitMeasurement: 'Medición',
+    unitFrom: 'De',
+    unitTo: 'A',
+    unitEnterValue: 'Introduce un valor',
+
+    // ── Array Formatter ─────────────────────────────────────────────
+    quoteStyle: 'Estilo de comillas',
+    arrayItems: 'Elementos (uno por línea)',
+
+    // ── Number Sorter ───────────────────────────────────────────────
+    order: 'Orden',
+    nsSmallestFirst: 'Menor primero',
+    nsLargestFirst: 'Mayor primero',
+    nsRemoveDuplicates: 'Eliminar duplicados',
+    nsNumbers: 'Números',
+
+    // ── Remove Whitespace / Remove Character ────────────────────────
+    remove: 'Eliminar',
+    cleaned: 'Limpiado',
+    wsAllWhitespace: 'Todo el espacio en blanco',
+    wsSpacesOnly: 'Solo espacios',
+    wsTabsOnly: 'Solo tabulaciones',
+    wsExtraSpaces: 'Espacios extra (colapsar)',
+
+    // ── Text Style Tools ────────────────────────────────────────────
+    style: 'Estilo',
+    styleBold: 'Negrita',
+    styleItalic: 'Cursiva',
+    styleStrikethrough: 'Tachado',
+    outputBold: 'Salida en negrita',
+    outputItalic: 'Salida en cursiva',
+    outputStrikethrough: 'Salida tachada',
+
+    // ── Code Formatters ─────────────────────────────────────────────
+    xmlInput: 'Entrada XML',
+    xmlOutput: 'Salida XML',
+    cssInput: 'Entrada CSS',
+    cssOutput: 'Salida CSS',
+    jsInput: 'Entrada JavaScript',
+    jsOutput: 'Salida JavaScript',
+    tsInput: 'Entrada TypeScript',
+    tsOutput: 'Salida TypeScript',
+    htmlInput: 'Entrada HTML',
+    htmlOutput: 'Salida HTML',
+
+    // ── Markdown Preview ────────────────────────────────────────────
+    mdRightPanel: 'Panel derecho',
+    mdMarkdownInput: 'Entrada Markdown',
+    mdHtmlPreview: 'Vista previa HTML',
+    mdFormattedMarkdown: 'Markdown formateado',
+
+    // ── Misc Tools ──────────────────────────────────────────────────
+    copyLink: 'Copiar enlace',
+    plainText: 'Texto plano',
+    jsonString: 'Cadena JSON',
+    mdtDelimitedData: 'Datos delimitados',
+    mdtMarkdownTable: 'Tabla Markdown',
+    rlbReplaceWith: 'Reemplazar saltos de línea con',
+    rlbMultiLine: 'Entrada multilínea',
+    rlbSingleLine: 'Línea única',
+    rtfFormattedInput: 'Entrada formateada',
+
+    // ── Tool Descriptions ────────────────────────────────────────────
+    'desc:add-punctuation': 'Añade un punto, signo de exclamación u otro signo de puntuación al final de cada línea.',
+    'desc:bold-text': 'Aplica negrita, cursiva o tachado con caracteres Unicode — pégalo donde se admita Unicode.',
+    'desc:case-converter': 'Convierte texto entre mayúsculas, minúsculas, tipo título, camelCase y más.',
+    'desc:inline-column-converter': 'Convierte entre formato de columna (uno por línea) y formato en línea separado por un delimitador. También elimina saltos de línea.',
+    'desc:markdown-table': 'Convierte datos CSV o separados por tabulaciones en una tabla Markdown con formato.',
+    'desc:lorem-ipsum': 'Genera texto de relleno Lorem Ipsum por número de palabras, oraciones o párrafos.',
+    'desc:markdown-preview': 'Escribe Markdown y previsualiza el HTML renderizado o formatea con Prettier.',
+    'desc:remove-all-whitespace': 'Elimina todos los espacios, tabulaciones y saltos de línea de tu texto.',
+    'desc:remove-character': 'Elimina cualquier carácter específico o conjunto de caracteres de tu texto.',
+    'desc:remove-text-formatting': 'Elimina Markdown, etiquetas HTML y otro formato para obtener texto sin formato.',
+    'desc:remove-trailing-whitespace': 'Recorta los espacios y tabulaciones finales al final de cada línea.',
+    'desc:reverse-text': 'Invierte tu texto carácter por carácter hacia atrás, o invierte el orden de las palabras — elige un modo.',
+    'desc:sort-words': 'Ordena palabras alfabéticamente, por longitud, o mézclalas aleatoriamente.',
+    'desc:text-compare': 'Compara dos textos lado a lado con resaltado de diferencias a nivel de línea y de palabra.',
+    'desc:word-counter': 'Cuenta palabras, caracteres, oraciones y párrafos en tu texto.',
+    'desc:word-frequency': 'Cuenta cuántas veces aparece cada palabra y clasifícalas por frecuencia.',
+    'desc:base-converter': 'Convierte valores entre binario, octal, decimal, hexadecimal y texto.',
+    'desc:engineering-cheat-sheet': 'Tablas de referencia rápida para prefijos SI, condensadores, frecuencia y más.',
+    'desc:fahrenheit-celsius': 'Convierte temperaturas entre Fahrenheit, Celsius y Kelvin.',
+    'desc:graph-calculator': 'Grafica una función de x y consulta sus resultados, raíces (intersecciones con x) e intersección con y.',
+    'desc:number-sorter': 'Ordena números de forma ascendente o descendente, con eliminación opcional de duplicados.',
+    'desc:pi-attenuator': 'Calcula los valores de las resistencias de un atenuador Pi (π) para cualquier pérdida en dB e impedancia.',
+    'desc:percentage-calc': 'Calcula porcentajes, cambios porcentuales y proporciones.',
+    'desc:random-number': 'Genera números enteros o decimales aleatorios dentro de un rango personalizado.',
+    'desc:scientific-calc': 'Calculadora científica completa con trigonometría y logaritmos.',
+    'desc:statistics-calc': 'Calcula la media, mediana, moda, desviación estándar y más.',
+    'desc:unit-converter': 'Convierte entre longitud, masa, temperatura, volumen, área y más.',
+    'desc:color-picker': 'Elige cualquier color de tu pantalla y obtén al instante sus valores HEX, RGB y HSL.',
+    'desc:color-converter': 'Convierte colores entre HEX, RGB, HSL, HSV y CMYK.',
+    'desc:contrast-checker': 'Comprueba el contraste entre el texto y el fondo según los estándares de accesibilidad WCAG.',
+    'desc:gradient-generator': 'Combina colores en un degradado CSS y copia una paleta de colores uniformemente espaciada.',
+    'desc:ico-creator': 'Convierte cualquier imagen en un archivo .ico de varios tamaños para favicons.',
+    'desc:image-converter': 'Convierte imágenes entre PNG, JPG y WEBP — con opciones de calidad y tamaño de salida.',
+    'desc:image-cropper': 'Recorta una imagen a una región personalizada, todo desde tu navegador.',
+    'desc:image-resizer': 'Redimensiona imágenes a dimensiones exactas en píxeles, manteniendo o ignorando la relación de aspecto.',
+    'desc:png-minifier': 'Reduce el tamaño de archivos PNG escalando o recodificando sin salir de tu navegador.',
+    'desc:remove-background': 'Elimina un fondo sólido simple (blanco, negro o automático) y exporta un PNG transparente.',
+    'desc:video-to-gif': 'Convierte un clip MP4 o WebM en un GIF animado directamente en tu navegador.',
+    'desc:array-formatter': 'Formatea una lista de elementos en un literal de array de JavaScript, JSON, Python o SQL.',
+    'desc:base64': 'Codifica texto o archivos en Base64 y decodifica cadenas Base64.',
+    'desc:css-minifier': 'Embellece o minifica código CSS con Prettier.',
+    'desc:html-formatter': 'Embellece o minifica HTML con una sangría limpia y consistente.',
+    'desc:js-formatter': 'Embellece o minifica código JavaScript con Prettier.',
+    'desc:json-formatter': 'Embellece, valida y minifica datos JSON.',
+    'desc:json-text-formatter': 'Codifica texto sin formato como una cadena JSON y decodifica cadenas JSON de vuelta a texto.',
+    'desc:typescript-formatter': 'Embellece o minifica código TypeScript con Prettier.',
+    'desc:xml-formatter': 'Embellece o minifica XML con una sangría limpia y consistente.',
+    'desc:regex-tester': 'Prueba y depura expresiones regulares de forma interactiva con resaltado de coincidencias en vivo.',
+    'desc:url-encoder': 'Codifica y decodifica URLs y componentes de cadenas de consulta.',
+    'desc:uuid-generator': 'Genera UUIDs (v4) conformes con RFC al instante.',
+    'desc:countdown-timer': 'Configura un temporizador de cuenta regresiva a pantalla completa para cualquier duración.',
+    'desc:date-calculator': 'Calcula el número de días entre dos fechas.',
+    'desc:task-list': 'Escribe una lista de tareas rápida y márcalas al terminarlas. Se guarda en tu navegador.',
+    'desc:timezone-converter': 'Convierte una fecha y hora entre dos zonas horarias cualesquiera.',
+    'desc:unix-timestamp': 'Convierte marcas de tiempo Unix (epoch) a fechas legibles y viceversa.',
+
+    // ── Tool Titles ───────────────────────────────────────────────────
+    'title:add-punctuation': 'Añadir Puntuación',
+    'title:bold-text': 'Generador de Estilo de Texto',
+    'title:case-converter': 'Convertidor de Mayúsculas/Minúsculas',
+    'title:inline-column-converter': 'Convertidor en Línea / Columna',
+    'title:markdown-table': 'Generador de Tablas Markdown',
+    'title:lorem-ipsum': 'Generador de Lorem Ipsum',
+    'title:markdown-preview': 'Vista Previa de Markdown',
+    'title:remove-all-whitespace': 'Eliminar Todos los Espacios',
+    'title:remove-character': 'Eliminar Carácter',
+    'title:remove-text-formatting': 'Eliminar Formato de Texto',
+    'title:remove-trailing-whitespace': 'Eliminar Espacios Finales',
+    'title:reverse-text': 'Invertir Texto',
+    'title:sort-words': 'Ordenar Palabras',
+    'title:text-compare': 'Comparar Textos',
+    'title:word-counter': 'Contador de Palabras',
+    'title:word-frequency': 'Analizador de Frecuencia de Palabras',
+    'title:base-converter': 'Convertidor de Bases',
+    'title:engineering-cheat-sheet': 'Hoja de Referencia de Ingeniería',
+    'title:fahrenheit-celsius': 'Fahrenheit a Celsius',
+    'title:graph-calculator': 'Calculadora de Gráficas',
+    'title:number-sorter': 'Ordenador de Números',
+    'title:pi-attenuator': 'Calculadora de Atenuador Pi',
+    'title:percentage-calc': 'Calculadora de Porcentajes',
+    'title:random-number': 'Generador de Números Aleatorios',
+    'title:scientific-calc': 'Calculadora Científica',
+    'title:statistics-calc': 'Calculadora Estadística',
+    'title:unit-converter': 'Convertidor de Unidades',
+    'title:color-picker': 'Selector de Color',
+    'title:color-converter': 'Convertidor de Color',
+    'title:contrast-checker': 'Verificador de Contraste',
+    'title:gradient-generator': 'Generador de Degradados y Paletas',
+    'title:ico-creator': 'Creador de ICO',
+    'title:image-converter': 'Convertidor de Imágenes',
+    'title:image-cropper': 'Recortador de Imágenes',
+    'title:image-resizer': 'Redimensionador de Imágenes',
+    'title:png-minifier': 'Minificador de PNG',
+    'title:remove-background': 'Eliminar Fondo',
+    'title:video-to-gif': 'Video a GIF',
+    'title:array-formatter': 'Formateador de Arrays',
+    'title:base64': 'Codificador / Decodificador Base64',
+    'title:css-minifier': 'Formateador / Minificador de CSS',
+    'title:html-formatter': 'Formateador / Minificador de HTML',
+    'title:js-formatter': 'Formateador / Minificador de JavaScript',
+    'title:json-formatter': 'Formateador / Minificador de JSON',
+    'title:json-text-formatter': 'Formateador de Texto JSON',
+    'title:typescript-formatter': 'Formateador / Minificador de TypeScript',
+    'title:xml-formatter': 'Formateador / Minificador de XML',
+    'title:regex-tester': 'Probador de Expresiones Regulares',
+    'title:url-encoder': 'Codificador / Decodificador de URL',
+    'title:uuid-generator': 'Generador de UUID',
+    'title:countdown-timer': 'Temporizador de Cuenta Regresiva',
+    'title:date-calculator': 'Calculadora de Fechas',
+    'title:task-list': 'Lista de Tareas',
+    'title:timezone-converter': 'Convertidor de Zona Horaria',
+    'title:unix-timestamp': 'Convertidor de Marca de Tiempo Unix',
   },
+
   fr: {
+    // ── Shell / Navigation ──────────────────────────────────────────
     searchPlaceholder: 'Rechercher des outils…',
     searchLabel: 'Rechercher tous les outils',
     searchNoResults: 'Aucun outil trouvé pour',
@@ -43,8 +790,438 @@ export const translations = {
     languageLabel: 'Langue',
     tools: 'outils',
     tool: 'outil',
+
+    // ── Categories ──────────────────────────────────────────────────
+    catText: 'Outils texte',
+    catTextDesc: 'Manipuler, analyser et transformer du texte',
+    catMath: 'Maths & Chiffres',
+    catMathDesc: 'Calculatrices, convertisseurs et utilitaires numériques',
+    catColor: 'Outils couleur',
+    catColorDesc: 'Sélectionner, convertir et générer des palettes de couleurs',
+    catImage: 'Outils image',
+    catImageDesc: 'Convertir, redimensionner, recadrer et optimiser des images',
+    catWeb: 'Web & Code',
+    catWebDesc: 'Formater, encoder et valider du code et des données',
+    catTime: 'Temps & Date',
+    catTimeDesc: 'Fuseaux horaires, comptes à rebours et calculs de dates',
+
+    // ── Home page ───────────────────────────────────────────────────
+    heroTitle: 'Outils gratuits pour développeurs et utilisateurs avancés',
+    heroSubStart: 'outils en',
+    heroSubEnd: 'catégories — sans inscription.',
+
+    // ── PageShell ───────────────────────────────────────────────────
+    relatedTools: 'Outils associés',
+
+    // ── NotFound ────────────────────────────────────────────────────
+    notFoundTitle: 'Page introuvable',
+    notFoundSub: "La page que vous cherchez n'existe pas ou a été déplacée.",
+    notFoundGoHome: "Aller à l'accueil",
+
+    // ── Common UI ───────────────────────────────────────────────────
+    input: 'Entrée',
+    output: 'Sortie',
+    clearInput: "Effacer l'entrée",
+    generate: 'Générer',
+    copy: 'Copier',
+    copied: 'Copié !',
+    copyAll: 'Tout copier',
+    copyResult: 'Copier le résultat',
+    result: 'Résultat',
+    from: 'De',
+    to: 'Vers',
+    mode: 'Mode',
+    type: 'Type',
+    count: 'Quantité',
+    format: 'Formater',
+    minify: 'Minifier',
+    preview: 'Aperçu',
+    original: 'Original',
+    converted: 'Converti',
+    separator: 'Séparateur',
+    measurement: 'Mesure',
+    sortOrder: 'Ordre de tri',
+    pattern: 'Modèle',
+    dropImage: 'Déposez une image ici',
+    dropImageSub: 'ou cliquez pour parcourir',
+    releaseToUpload: 'Relâchez pour télécharger',
+    removeFile: 'Supprimer le fichier',
+
+    // ── Header / Footer / Shell ───────────────────────────────────────
+    brandHomeAria: 'Accueil UtilityHub',
+    skipToMainContent: 'Aller au contenu principal',
+    openCommandPaletteAria: 'Ouvrir la palette de commandes (Ctrl+K)',
+    searchToolsShortcutTitle: 'Rechercher des outils (Ctrl+K)',
+    supportUtilityHub: 'Soutenir UtilityHub',
+    support: 'Soutenir',
+    footerSupportText: 'Si cet outil vous a fait gagner du temps, pensez à soutenir le projet.',
+    categoryNavigationLabel: 'Navigation par catégorie',
+    navigationMenuLabel: 'Menu de navigation',
+
+    // ── Command Palette ────────────────────────────────────────────────
+    cmdPaletteLabel: 'Palette de commandes',
+    cmdSearchPlaceholder: 'Rechercher des outils…',
+    cmdSearchLabel: 'Rechercher des outils',
+    cmdResults: 'Résultats',
+    cmdRecent: 'Récents',
+    cmdNoResults: 'Aucun outil trouvé',
+    cmdTypeToSearch: 'Tapez pour rechercher tous les outils',
+    cmdNavigate: 'naviguer',
+    cmdOpenHint: 'ouvrir',
+    cmdCloseHint: 'fermer',
+
+    // ── Search ──────────────────────────────────────────────────────────
+    searchResultsLabel: 'Résultats de recherche',
+
+    // ── Favorites ───────────────────────────────────────────────────────
+    favoritesLabel: 'Favoris',
+    favoritesEmpty: 'Aucun favori pour le moment',
+    favoritesEmptyHint: "Appuyez sur l'étoile de n'importe quel outil pour l'enregistrer ici.",
+    favAddLabel: 'Ajouter {value} aux favoris',
+    favRemoveLabel: 'Retirer {value} des favoris',
+    favAddTitle: 'Ajouter aux favoris',
+    favRemoveTitle: 'Retirer des favoris',
+    favoriteSaved: 'Enregistré',
+    favoriteSaveToFavorites: 'Ajouter aux favoris',
+
+    // ── Support Modal ────────────────────────────────────────────────────
+    supportModalSubtitle: "Ces outils sont gratuits. S'ils vous font gagner du temps, voici comment aider.",
+    close: 'Fermer',
+    starOnGithub: 'Mettre une étoile sur GitHub',
+    alreadyPaidRemoveAds: 'Déjà payé ? Supprimer les publicités',
+
+    // ── Ad Blocker Banner ────────────────────────────────────────────────
+    adBlockerText: "On dirait que vous utilisez un bloqueur de publicités — c'est tout à fait normal. Si ces outils vous sont utiles, pensez à",
+    adBlockerLinkText: 'soutenir UtilityHub',
+    adBlockerSuffix: 'à la place.',
+    dismissAdBlockerNotice: "Ignorer l'avis de bloqueur de publicités",
+
+    // ── Ad Banner ───────────────────────────────────────────────────────
+    advertisement: 'Publicité',
+
+    // ── Tool Page (placeholder) ──────────────────────────────────────────
+    toolComingSoon: 'Cet outil arrive bientôt.',
+    toolUnderConstructionMsg: "L'interface de {value} est en construction.",
+    backToAllTools: '← Retour à tous les outils',
+    otherToolsLabel: 'Autres',
+
+    // ── Word Counter ────────────────────────────────────────────────
+    wcChars: 'Caractères',
+    wcCharsNoSpaces: 'Caract. (sans espaces)',
+    wcWords: 'Mots',
+    wcUniqueWords: 'Mots uniques',
+    wcSentences: 'Phrases',
+    wcParagraphs: 'Paragraphes',
+    wcLines: 'Lignes',
+    wcReadingTime: 'Temps de lecture',
+
+    // ── Countdown Timer ─────────────────────────────────────────────
+    timerEnterTime: 'Entrez le temps en minutes',
+    timerStart: 'Démarrer',
+    timerPause: 'Pause',
+    timerResume: 'Reprendre',
+    timerStop: 'Arrêter',
+    timerRestart: 'Redémarrer',
+    timerDone: 'Temps écoulé !',
+    timerPaused: 'En pause',
+
+    // ── Date Calculator ─────────────────────────────────────────────
+    dateStart: 'Date de début',
+    dateEnd: 'Date de fin',
+    dateDays: 'jours',
+    dateWeeks: 'semaines',
+    dateMonths: 'mois',
+    dateYears: 'années',
+    dateCopyDays: 'Copier les jours',
+
+    // ── Text Compare ────────────────────────────────────────────────
+    compareOriginal: 'Original',
+    compareModified: 'Modifié',
+    compareIdentical: 'Les textes sont identiques',
+    compareAdded: 'ajouté',
+    compareRemoved: 'supprimé',
+    compareCaseChanges: 'changements de casse',
+    compareUnchanged: 'inchangé',
+    compareEmpty: 'Saisissez du texte dans les deux panneaux pour comparer.',
+
+    // ── Regex Tester ────────────────────────────────────────────────
+    regexTestString: 'Chaîne de test',
+    regexPreview: 'Aperçu',
+    regexMatches: 'Correspondances',
+    regexInvalidPattern: 'Modèle invalide',
+    regexNoMatches: 'Aucune correspondance trouvée.',
+    regexEnterPattern: 'Entrez un modèle ci-dessus',
+
+    // ── Word Frequency ──────────────────────────────────────────────
+    freqExcludeStop: 'Exclure les mots vides',
+    freqCaseSensitive: 'Sensible à la casse',
+    freqNoWords: 'Aucun mot trouvé.',
+    freqWord: 'Mot',
+    freqFrequency: 'Fréquence',
+
+    // ── Lorem Ipsum ─────────────────────────────────────────────────
+    loremParagraphs: 'Paragraphes',
+    loremSentences: 'Phrases',
+    loremWords: 'Mots',
+    loremOutput: 'Sortie',
+    loremGenerated: 'Le texte généré apparaîtra ici…',
+
+    // ── Random Number ───────────────────────────────────────────────
+    randomMin: 'Min',
+    randomMax: 'Max',
+    randomClickGenerate: 'Cliquez sur Générer pour obtenir des nombres',
+    randomInteger: 'Entier',
+    randomDecimal: 'Décimal (2 décimales)',
+
+    // ── Temperature ─────────────────────────────────────────────────
+    tempFahrenheit: 'Fahrenheit',
+    tempCelsius: 'Celsius',
+    tempKelvin: 'Kelvin',
+
+    // ── Unix Timestamp ──────────────────────────────────────────────
+    tsEpochToDate: 'Époque vers Date',
+    tsDateToEpoch: 'Date vers Époque',
+    tsCurrentTimestamp: 'Horodatage actuel',
+    tsUTC: 'UTC',
+    tsLocal: 'Local',
+    tsSeconds: 'Secondes',
+    tsMilliseconds: 'Millisecondes',
+    tsCopyUTC: 'Copier UTC',
+    tsCopyLocal: 'Copier local',
+    tsCopySeconds: 'Copier secondes',
+    tsCopyMilliseconds: 'Copier millisecondes',
+
+    // ── Timezone Converter ──────────────────────────────────────────
+    tzDateAndTime: 'Date et heure',
+    tzFrom: 'Fuseau horaire source',
+    tzTo: 'Fuseau horaire cible',
+    tzCopyResult: 'Copier le résultat',
+
+    // ── Sort Words ──────────────────────────────────────────────────
+    sortAscending: 'A → Z',
+    sortDescending: 'Z → A',
+    sortShortestFirst: "Plus court d'abord",
+    sortLongestFirst: "Plus long d'abord",
+    sortWords: 'Mots',
+    sortSorted: 'Trié',
+    sortCaseSensitive: 'Sensible à la casse',
+
+    // ── Reverse Text ────────────────────────────────────────────────
+    reverseCharacters: 'Inverser les caractères',
+    reverseWordOrder: "Inverser l'ordre des mots",
+    reverseEachWord: 'Inverser le texte dans chaque mot',
+    reverseReversed: 'Inversé',
+    reverseEachWordLabel: 'Chaque mot inversé',
+
+    // ── Add Punctuation ─────────────────────────────────────────────
+    punctPunctuation: 'Ponctuation',
+    punctAddMissing: 'Ajouter si manquant',
+    punctAlwaysAppend: 'Toujours ajouter',
+    punctReplace: 'Remplacer existant',
+    punctWithPunctuation: 'Avec ponctuation',
+
+    // ── Inline / Column Converter ───────────────────────────────────
+    iccColumnToInline: 'Colonne → En ligne',
+    iccInlineToColumn: 'En ligne → Colonne',
+    iccColumnPerLine: 'Colonne (un par ligne)',
+    iccInlineSeparated: 'En ligne (séparé)',
+
+    // ── JSON Formatter ──────────────────────────────────────────────
+    jsonInput: 'Entrée JSON',
+    jsonOutput: 'Sortie JSON',
+
+    // ── Statistics ──────────────────────────────────────────────────
+    statsCount: 'Quantité',
+    statsSum: 'Somme',
+    statsMean: 'Moyenne',
+    statsMedian: 'Médiane',
+    statsMode: 'Mode',
+    statsMin: 'Min',
+    statsMax: 'Max',
+    statsRange: 'Plage',
+    statsVariance: 'Variance',
+    statsStdDev: 'Écart type',
+
+    // ── Unit Converter ──────────────────────────────────────────────
+    unitMeasurement: 'Mesure',
+    unitFrom: 'De',
+    unitTo: 'Vers',
+    unitEnterValue: 'Entrez une valeur',
+
+    // ── Array Formatter ─────────────────────────────────────────────
+    quoteStyle: 'Style de guillemets',
+    arrayItems: 'Éléments (un par ligne)',
+
+    // ── Number Sorter ───────────────────────────────────────────────
+    order: 'Ordre',
+    nsSmallestFirst: 'Le plus petit en premier',
+    nsLargestFirst: 'Le plus grand en premier',
+    nsRemoveDuplicates: 'Supprimer les doublons',
+    nsNumbers: 'Nombres',
+
+    // ── Remove Whitespace / Remove Character ────────────────────────
+    remove: 'Supprimer',
+    cleaned: 'Nettoyé',
+    wsAllWhitespace: 'Tous les espaces',
+    wsSpacesOnly: 'Espaces seulement',
+    wsTabsOnly: 'Tabulations seulement',
+    wsExtraSpaces: 'Espaces supplémentaires (réduire)',
+
+    // ── Text Style Tools ────────────────────────────────────────────
+    style: 'Style',
+    styleBold: 'Gras',
+    styleItalic: 'Italique',
+    styleStrikethrough: 'Barré',
+    outputBold: 'Sortie en gras',
+    outputItalic: 'Sortie en italique',
+    outputStrikethrough: 'Sortie barrée',
+
+    // ── Code Formatters ─────────────────────────────────────────────
+    xmlInput: 'Entrée XML',
+    xmlOutput: 'Sortie XML',
+    cssInput: 'Entrée CSS',
+    cssOutput: 'Sortie CSS',
+    jsInput: 'Entrée JavaScript',
+    jsOutput: 'Sortie JavaScript',
+    tsInput: 'Entrée TypeScript',
+    tsOutput: 'Sortie TypeScript',
+    htmlInput: 'Entrée HTML',
+    htmlOutput: 'Sortie HTML',
+
+    // ── Markdown Preview ────────────────────────────────────────────
+    mdRightPanel: 'Panneau droit',
+    mdMarkdownInput: 'Entrée Markdown',
+    mdHtmlPreview: 'Aperçu HTML',
+    mdFormattedMarkdown: 'Markdown formaté',
+
+    // ── Misc Tools ──────────────────────────────────────────────────
+    copyLink: 'Copier le lien',
+    plainText: 'Texte brut',
+    jsonString: 'Chaîne JSON',
+    mdtDelimitedData: 'Données délimitées',
+    mdtMarkdownTable: 'Tableau Markdown',
+    rlbReplaceWith: 'Remplacer les sauts de ligne par',
+    rlbMultiLine: 'Entrée multiligne',
+    rlbSingleLine: 'Ligne unique',
+    rtfFormattedInput: 'Entrée formatée',
+
+    // ── Tool Descriptions ────────────────────────────────────────────
+    'desc:add-punctuation': "Ajoutez un point, un point d'exclamation ou un autre signe de ponctuation à la fin de chaque ligne.",
+    'desc:bold-text': "Appliquez du gras, de l'italique ou du barré avec des caractères Unicode — collez n'importe où Unicode est pris en charge.",
+    'desc:case-converter': 'Convertissez du texte entre majuscules, minuscules, casse de titre, camelCase et plus encore.',
+    'desc:inline-column-converter': 'Convertissez entre le format colonne (un par ligne) et le format en ligne séparé par un délimiteur. Supprime aussi les sauts de ligne.',
+    'desc:markdown-table': 'Convertissez des données CSV ou séparées par tabulations en un tableau Markdown formaté.',
+    'desc:lorem-ipsum': 'Générez du texte de remplissage Lorem Ipsum par nombre de mots, de phrases ou de paragraphes.',
+    'desc:markdown-preview': 'Rédigez du Markdown et prévisualisez le HTML rendu ou formatez avec Prettier.',
+    'desc:remove-all-whitespace': 'Supprimez tous les espaces, tabulations et sauts de ligne de votre texte.',
+    'desc:remove-character': 'Supprimez un caractère spécifique ou un ensemble de caractères de votre texte.',
+    'desc:remove-text-formatting': 'Supprimez le Markdown, les balises HTML et autre mise en forme pour obtenir du texte brut.',
+    'desc:remove-trailing-whitespace': 'Supprimez les espaces et tabulations en fin de chaque ligne.',
+    'desc:reverse-text': "Inversez votre texte caractère par caractère, ou inversez l'ordre des mots — choisissez un mode.",
+    'desc:sort-words': 'Triez les mots par ordre alphabétique, par longueur, ou mélangez-les aléatoirement.',
+    'desc:text-compare': 'Comparez deux textes côte à côte avec mise en évidence des différences ligne par ligne et mot par mot.',
+    'desc:word-counter': 'Comptez les mots, caractères, phrases et paragraphes de votre texte.',
+    'desc:word-frequency': 'Comptez combien de fois chaque mot apparaît et classez-les par fréquence.',
+    'desc:base-converter': 'Convertissez des valeurs entre binaire, octal, décimal, hexadécimal et texte.',
+    'desc:engineering-cheat-sheet': 'Tableaux de référence rapide pour les préfixes SI, les condensateurs, la fréquence et plus encore.',
+    'desc:fahrenheit-celsius': 'Convertissez les températures entre Fahrenheit, Celsius et Kelvin.',
+    'desc:graph-calculator': "Tracez une fonction de x et consultez ses résultats, racines (intersections avec x) et ordonnée à l'origine.",
+    'desc:number-sorter': 'Triez des nombres par ordre croissant ou décroissant, avec suppression facultative des doublons.',
+    'desc:pi-attenuator': 'Calculez les valeurs des résistances d\'un atténuateur Pi (π) pour toute perte en dB et impédance.',
+    'desc:percentage-calc': 'Calculez des pourcentages, des variations en pourcentage et des ratios.',
+    'desc:random-number': 'Générez des nombres entiers ou décimaux aléatoires dans une plage personnalisée.',
+    'desc:scientific-calc': 'Calculatrice scientifique complète avec trigonométrie et logarithmes.',
+    'desc:statistics-calc': "Calculez la moyenne, la médiane, le mode, l'écart type et plus encore.",
+    'desc:unit-converter': 'Convertissez entre longueur, masse, température, volume, aire et plus encore.',
+    'desc:color-picker': "Choisissez n'importe quelle couleur sur votre écran et obtenez instantanément ses valeurs HEX, RGB et HSL.",
+    'desc:color-converter': 'Convertissez des couleurs entre HEX, RGB, HSL, HSV et CMJN.',
+    'desc:contrast-checker': "Vérifiez le contraste entre le texte et l'arrière-plan selon les normes d'accessibilité WCAG.",
+    'desc:gradient-generator': 'Mélangez des couleurs en un dégradé CSS et copiez une palette de couleurs uniformément espacées.',
+    'desc:ico-creator': "Convertissez n'importe quelle image en un fichier .ico multi-tailles pour les favicons.",
+    'desc:image-converter': 'Convertissez des images entre PNG, JPG et WEBP — avec des options de qualité et de taille de sortie.',
+    'desc:image-cropper': 'Recadrez une image sur une zone personnalisée, entièrement dans votre navigateur.',
+    'desc:image-resizer': "Redimensionnez des images à des dimensions exactes en pixels, en conservant ou en ignorant le rapport d'aspect.",
+    'desc:png-minifier': 'Réduisez la taille des fichiers PNG en les redimensionnant ou en les réencodant sans quitter votre navigateur.',
+    'desc:remove-background': 'Supprimez un arrière-plan uni simple (blanc, noir ou automatique) et exportez un PNG transparent.',
+    'desc:video-to-gif': 'Convertissez un clip MP4 ou WebM en GIF animé directement dans votre navigateur.',
+    'desc:array-formatter': 'Formatez une liste d\'éléments en tableau littéral JavaScript, JSON, Python ou SQL.',
+    'desc:base64': 'Encodez du texte ou des fichiers en Base64 et décodez des chaînes Base64.',
+    'desc:css-minifier': 'Formatez ou minifiez du code CSS avec Prettier.',
+    'desc:html-formatter': 'Formatez ou minifiez du HTML avec une indentation propre et cohérente.',
+    'desc:js-formatter': 'Formatez ou minifiez du code JavaScript avec Prettier.',
+    'desc:json-formatter': 'Formatez, validez et minifiez des données JSON.',
+    'desc:json-text-formatter': 'Encodez du texte brut en chaîne JSON et décodez des chaînes JSON en texte.',
+    'desc:typescript-formatter': 'Formatez ou minifiez du code TypeScript avec Prettier.',
+    'desc:xml-formatter': 'Formatez ou minifiez du XML avec une indentation propre et cohérente.',
+    'desc:regex-tester': 'Testez et déboguez des expressions régulières de manière interactive avec surbrillance des correspondances en direct.',
+    'desc:url-encoder': 'Encodez et décodez des URLs et des composants de chaîne de requête.',
+    'desc:uuid-generator': 'Générez instantanément des UUID (v4) conformes à la RFC.',
+    'desc:countdown-timer': "Configurez un compte à rebours plein écran pour n'importe quelle durée.",
+    'desc:date-calculator': 'Calculez le nombre de jours entre deux dates.',
+    'desc:task-list': 'Rédigez une liste de tâches rapide et cochez-les au fur et à mesure. Enregistrée dans votre navigateur.',
+    'desc:timezone-converter': 'Convertissez une date et une heure entre deux fuseaux horaires quelconques.',
+    'desc:unix-timestamp': 'Convertissez des horodatages Unix (epoch) en dates lisibles et inversement.',
+
+    // ── Tool Titles ───────────────────────────────────────────────────
+    'title:add-punctuation': 'Ajouter de la Ponctuation',
+    'title:bold-text': 'Générateur de Style de Texte',
+    'title:case-converter': 'Convertisseur de Casse',
+    'title:inline-column-converter': 'Convertisseur En Ligne / Colonne',
+    'title:markdown-table': 'Générateur de Tableaux Markdown',
+    'title:lorem-ipsum': 'Générateur de Lorem Ipsum',
+    'title:markdown-preview': 'Aperçu Markdown',
+    'title:remove-all-whitespace': 'Supprimer Tous les Espaces',
+    'title:remove-character': 'Supprimer un Caractère',
+    'title:remove-text-formatting': 'Supprimer la Mise en Forme',
+    'title:remove-trailing-whitespace': 'Supprimer les Espaces Finaux',
+    'title:reverse-text': 'Inverser le Texte',
+    'title:sort-words': 'Trier les Mots',
+    'title:text-compare': 'Comparer des Textes',
+    'title:word-counter': 'Compteur de Mots',
+    'title:word-frequency': 'Analyseur de Fréquence des Mots',
+    'title:base-converter': 'Convertisseur de Base',
+    'title:engineering-cheat-sheet': "Aide-Mémoire d'Ingénierie",
+    'title:fahrenheit-celsius': 'Fahrenheit vers Celsius',
+    'title:graph-calculator': 'Calculatrice Graphique',
+    'title:number-sorter': 'Trieur de Nombres',
+    'title:pi-attenuator': "Calculateur d'Atténuateur Pi",
+    'title:percentage-calc': 'Calculateur de Pourcentage',
+    'title:random-number': 'Générateur de Nombres Aléatoires',
+    'title:scientific-calc': 'Calculatrice Scientifique',
+    'title:statistics-calc': 'Calculatrice Statistique',
+    'title:unit-converter': "Convertisseur d'Unités",
+    'title:color-picker': 'Pipette à Couleurs',
+    'title:color-converter': 'Convertisseur de Couleurs',
+    'title:contrast-checker': 'Vérificateur de Contraste',
+    'title:gradient-generator': 'Générateur de Dégradés et Palettes',
+    'title:ico-creator': "Créateur d'ICO",
+    'title:image-converter': "Convertisseur d'Images",
+    'title:image-cropper': "Recadreur d'Images",
+    'title:image-resizer': "Redimensionneur d'Images",
+    'title:png-minifier': 'Minificateur PNG',
+    'title:remove-background': "Suppression d'Arrière-Plan",
+    'title:video-to-gif': 'Vidéo vers GIF',
+    'title:array-formatter': 'Formateur de Tableaux',
+    'title:base64': 'Encodeur / Décodeur Base64',
+    'title:css-minifier': 'Formateur / Minificateur CSS',
+    'title:html-formatter': 'Formateur / Minificateur HTML',
+    'title:js-formatter': 'Formateur / Minificateur JavaScript',
+    'title:json-formatter': 'Formateur / Minificateur JSON',
+    'title:json-text-formatter': 'Formateur de Texte JSON',
+    'title:typescript-formatter': 'Formateur / Minificateur TypeScript',
+    'title:xml-formatter': 'Formateur / Minificateur XML',
+    'title:regex-tester': "Testeur d'Expressions Régulières",
+    'title:url-encoder': "Encodeur / Décodeur d'URL",
+    'title:uuid-generator': "Générateur d'UUID",
+    'title:countdown-timer': 'Minuteur Compte à Rebours',
+    'title:date-calculator': 'Calculateur de Dates',
+    'title:task-list': 'Liste de Tâches',
+    'title:timezone-converter': 'Convertisseur de Fuseau Horaire',
+    'title:unix-timestamp': "Convertisseur d'Horodatage Unix",
   },
+
   de: {
+    // ── Shell / Navigation ──────────────────────────────────────────
     searchPlaceholder: 'Tools durchsuchen…',
     searchLabel: 'Alle Tools durchsuchen',
     searchNoResults: 'Keine Tools gefunden für',
@@ -58,8 +1235,438 @@ export const translations = {
     languageLabel: 'Sprache',
     tools: 'Tools',
     tool: 'Tool',
+
+    // ── Categories ──────────────────────────────────────────────────
+    catText: 'Textwerkzeuge',
+    catTextDesc: 'Text bearbeiten, analysieren und transformieren',
+    catMath: 'Mathematik & Zahlen',
+    catMathDesc: 'Rechner, Konverter und Zahlen-Werkzeuge',
+    catColor: 'Farbwerkzeuge',
+    catColorDesc: 'Farben wählen, konvertieren und Paletten erstellen',
+    catImage: 'Bildwerkzeuge',
+    catImageDesc: 'Bilder konvertieren, skalieren, zuschneiden und optimieren',
+    catWeb: 'Web & Code',
+    catWebDesc: 'Code und Daten formatieren, kodieren und validieren',
+    catTime: 'Zeit & Datum',
+    catTimeDesc: 'Zeitzonen, Countdowns und Datumsberechnungen',
+
+    // ── Home page ───────────────────────────────────────────────────
+    heroTitle: 'Kostenlose Tools für Entwickler und Power-User',
+    heroSubStart: 'Tools in',
+    heroSubEnd: 'Kategorien — keine Anmeldung erforderlich.',
+
+    // ── PageShell ───────────────────────────────────────────────────
+    relatedTools: 'Ähnliche Tools',
+
+    // ── NotFound ────────────────────────────────────────────────────
+    notFoundTitle: 'Seite nicht gefunden',
+    notFoundSub: 'Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.',
+    notFoundGoHome: 'Zur Startseite',
+
+    // ── Common UI ───────────────────────────────────────────────────
+    input: 'Eingabe',
+    output: 'Ausgabe',
+    clearInput: 'Eingabe löschen',
+    generate: 'Generieren',
+    copy: 'Kopieren',
+    copied: 'Kopiert!',
+    copyAll: 'Alles kopieren',
+    copyResult: 'Ergebnis kopieren',
+    result: 'Ergebnis',
+    from: 'Von',
+    to: 'Nach',
+    mode: 'Modus',
+    type: 'Typ',
+    count: 'Anzahl',
+    format: 'Formatieren',
+    minify: 'Minimieren',
+    preview: 'Vorschau',
+    original: 'Original',
+    converted: 'Konvertiert',
+    separator: 'Trennzeichen',
+    measurement: 'Maßeinheit',
+    sortOrder: 'Sortierreihenfolge',
+    pattern: 'Muster',
+    dropImage: 'Bild hier ablegen',
+    dropImageSub: 'oder klicken zum Suchen',
+    releaseToUpload: 'Loslassen zum Hochladen',
+    removeFile: 'Datei entfernen',
+
+    // ── Header / Footer / Shell ───────────────────────────────────────
+    brandHomeAria: 'UtilityHub Startseite',
+    skipToMainContent: 'Zum Hauptinhalt springen',
+    openCommandPaletteAria: 'Befehlspalette öffnen (Strg+K)',
+    searchToolsShortcutTitle: 'Tools durchsuchen (Strg+K)',
+    supportUtilityHub: 'UtilityHub unterstützen',
+    support: 'Unterstützen',
+    footerSupportText: 'Wenn Ihnen dieses Tool Zeit gespart hat, unterstützen Sie doch das Projekt.',
+    categoryNavigationLabel: 'Kategorienavigation',
+    navigationMenuLabel: 'Navigationsmenü',
+
+    // ── Command Palette ────────────────────────────────────────────────
+    cmdPaletteLabel: 'Befehlspalette',
+    cmdSearchPlaceholder: 'Tools durchsuchen…',
+    cmdSearchLabel: 'Tools durchsuchen',
+    cmdResults: 'Ergebnisse',
+    cmdRecent: 'Zuletzt verwendet',
+    cmdNoResults: 'Keine Tools gefunden',
+    cmdTypeToSearch: 'Tippen, um alle Tools zu durchsuchen',
+    cmdNavigate: 'navigieren',
+    cmdOpenHint: 'öffnen',
+    cmdCloseHint: 'schließen',
+
+    // ── Search ──────────────────────────────────────────────────────────
+    searchResultsLabel: 'Suchergebnisse',
+
+    // ── Favorites ───────────────────────────────────────────────────────
+    favoritesLabel: 'Favoriten',
+    favoritesEmpty: 'Noch keine Favoriten',
+    favoritesEmptyHint: 'Tippen Sie auf den Stern eines Tools, um es hier zu speichern.',
+    favAddLabel: '{value} zu Favoriten hinzufügen',
+    favRemoveLabel: '{value} aus Favoriten entfernen',
+    favAddTitle: 'Zu Favoriten hinzufügen',
+    favRemoveTitle: 'Aus Favoriten entfernen',
+    favoriteSaved: 'Gespeichert',
+    favoriteSaveToFavorites: 'Zu Favoriten hinzufügen',
+
+    // ── Support Modal ────────────────────────────────────────────────────
+    supportModalSubtitle: 'Diese Tools sind kostenlos. Wenn sie Ihnen Zeit sparen, können Sie so helfen.',
+    close: 'Schließen',
+    starOnGithub: 'Auf GitHub favorisieren',
+    alreadyPaidRemoveAds: 'Bereits bezahlt? Werbung entfernen',
+
+    // ── Ad Blocker Banner ────────────────────────────────────────────────
+    adBlockerText: 'Sieht so aus, als würden Sie einen Werbeblocker verwenden — kein Problem. Wenn diese Tools nützlich sind, erwägen Sie',
+    adBlockerLinkText: 'UtilityHub zu unterstützen',
+    adBlockerSuffix: 'stattdessen.',
+    dismissAdBlockerNotice: 'Werbeblocker-Hinweis schließen',
+
+    // ── Ad Banner ───────────────────────────────────────────────────────
+    advertisement: 'Werbung',
+
+    // ── Tool Page (placeholder) ──────────────────────────────────────────
+    toolComingSoon: 'Dieses Tool kommt bald.',
+    toolUnderConstructionMsg: 'Die Oberfläche für {value} befindet sich im Aufbau.',
+    backToAllTools: '← Zurück zu allen Tools',
+    otherToolsLabel: 'Weitere',
+
+    // ── Word Counter ────────────────────────────────────────────────
+    wcChars: 'Zeichen',
+    wcCharsNoSpaces: 'Zeichen (ohne Leerzeichen)',
+    wcWords: 'Wörter',
+    wcUniqueWords: 'Einzigartige Wörter',
+    wcSentences: 'Sätze',
+    wcParagraphs: 'Absätze',
+    wcLines: 'Zeilen',
+    wcReadingTime: 'Lesezeit',
+
+    // ── Countdown Timer ─────────────────────────────────────────────
+    timerEnterTime: 'Zeit in Minuten eingeben',
+    timerStart: 'Start',
+    timerPause: 'Pause',
+    timerResume: 'Fortsetzen',
+    timerStop: 'Stop',
+    timerRestart: 'Neustart',
+    timerDone: 'Zeit abgelaufen!',
+    timerPaused: 'Pausiert',
+
+    // ── Date Calculator ─────────────────────────────────────────────
+    dateStart: 'Startdatum',
+    dateEnd: 'Enddatum',
+    dateDays: 'Tage',
+    dateWeeks: 'Wochen',
+    dateMonths: 'Monate',
+    dateYears: 'Jahre',
+    dateCopyDays: 'Tage kopieren',
+
+    // ── Text Compare ────────────────────────────────────────────────
+    compareOriginal: 'Original',
+    compareModified: 'Geändert',
+    compareIdentical: 'Texte sind identisch',
+    compareAdded: 'hinzugefügt',
+    compareRemoved: 'entfernt',
+    compareCaseChanges: 'Groß-/Kleinschreibung',
+    compareUnchanged: 'unverändert',
+    compareEmpty: 'Text in beiden Bereichen eingeben, um zu vergleichen.',
+
+    // ── Regex Tester ────────────────────────────────────────────────
+    regexTestString: 'Testzeichenkette',
+    regexPreview: 'Vorschau',
+    regexMatches: 'Treffer',
+    regexInvalidPattern: 'Ungültiges Muster',
+    regexNoMatches: 'Keine Treffer gefunden.',
+    regexEnterPattern: 'Geben Sie oben ein Muster ein',
+
+    // ── Word Frequency ──────────────────────────────────────────────
+    freqExcludeStop: 'Stoppwörter ausschließen',
+    freqCaseSensitive: 'Groß-/Kleinschreibung',
+    freqNoWords: 'Keine Wörter gefunden.',
+    freqWord: 'Wort',
+    freqFrequency: 'Häufigkeit',
+
+    // ── Lorem Ipsum ─────────────────────────────────────────────────
+    loremParagraphs: 'Absätze',
+    loremSentences: 'Sätze',
+    loremWords: 'Wörter',
+    loremOutput: 'Ausgabe',
+    loremGenerated: 'Generierter Text erscheint hier…',
+
+    // ── Random Number ───────────────────────────────────────────────
+    randomMin: 'Min',
+    randomMax: 'Max',
+    randomClickGenerate: 'Klicken Sie auf Generieren für Zahlen',
+    randomInteger: 'Ganzzahl',
+    randomDecimal: 'Dezimal (2 Stellen)',
+
+    // ── Temperature ─────────────────────────────────────────────────
+    tempFahrenheit: 'Fahrenheit',
+    tempCelsius: 'Celsius',
+    tempKelvin: 'Kelvin',
+
+    // ── Unix Timestamp ──────────────────────────────────────────────
+    tsEpochToDate: 'Epoch zu Datum',
+    tsDateToEpoch: 'Datum zu Epoch',
+    tsCurrentTimestamp: 'Aktueller Zeitstempel',
+    tsUTC: 'UTC',
+    tsLocal: 'Lokal',
+    tsSeconds: 'Sekunden',
+    tsMilliseconds: 'Millisekunden',
+    tsCopyUTC: 'UTC kopieren',
+    tsCopyLocal: 'Lokal kopieren',
+    tsCopySeconds: 'Sekunden kopieren',
+    tsCopyMilliseconds: 'Millisekunden kopieren',
+
+    // ── Timezone Converter ──────────────────────────────────────────
+    tzDateAndTime: 'Datum und Uhrzeit',
+    tzFrom: 'Quell-Zeitzone',
+    tzTo: 'Ziel-Zeitzone',
+    tzCopyResult: 'Ergebnis kopieren',
+
+    // ── Sort Words ──────────────────────────────────────────────────
+    sortAscending: 'A → Z',
+    sortDescending: 'Z → A',
+    sortShortestFirst: 'Kürzeste zuerst',
+    sortLongestFirst: 'Längste zuerst',
+    sortWords: 'Wörter',
+    sortSorted: 'Sortiert',
+    sortCaseSensitive: 'Groß-/Kleinschreibung',
+
+    // ── Reverse Text ────────────────────────────────────────────────
+    reverseCharacters: 'Zeichen umkehren',
+    reverseWordOrder: 'Wortreihenfolge umkehren',
+    reverseEachWord: 'Text in jedem Wort umkehren',
+    reverseReversed: 'Umgekehrt',
+    reverseEachWordLabel: 'Jedes Wort umgekehrt',
+
+    // ── Add Punctuation ─────────────────────────────────────────────
+    punctPunctuation: 'Interpunktion',
+    punctAddMissing: 'Hinzufügen wenn fehlend',
+    punctAlwaysAppend: 'Immer anhängen',
+    punctReplace: 'Vorhandene ersetzen',
+    punctWithPunctuation: 'Mit Interpunktion',
+
+    // ── Inline / Column Converter ───────────────────────────────────
+    iccColumnToInline: 'Spalte → Inline',
+    iccInlineToColumn: 'Inline → Spalte',
+    iccColumnPerLine: 'Spalte (eines pro Zeile)',
+    iccInlineSeparated: 'Inline (getrennt)',
+
+    // ── JSON Formatter ──────────────────────────────────────────────
+    jsonInput: 'JSON-Eingabe',
+    jsonOutput: 'JSON-Ausgabe',
+
+    // ── Statistics ──────────────────────────────────────────────────
+    statsCount: 'Anzahl',
+    statsSum: 'Summe',
+    statsMean: 'Mittelwert',
+    statsMedian: 'Median',
+    statsMode: 'Modus',
+    statsMin: 'Min',
+    statsMax: 'Max',
+    statsRange: 'Spannweite',
+    statsVariance: 'Varianz',
+    statsStdDev: 'Std. Abw.',
+
+    // ── Unit Converter ──────────────────────────────────────────────
+    unitMeasurement: 'Maßeinheit',
+    unitFrom: 'Von',
+    unitTo: 'Nach',
+    unitEnterValue: 'Wert eingeben',
+
+    // ── Array Formatter ─────────────────────────────────────────────
+    quoteStyle: 'Anführungszeichenstil',
+    arrayItems: 'Elemente (eins pro Zeile)',
+
+    // ── Number Sorter ───────────────────────────────────────────────
+    order: 'Reihenfolge',
+    nsSmallestFirst: 'Kleinster zuerst',
+    nsLargestFirst: 'Größter zuerst',
+    nsRemoveDuplicates: 'Duplikate entfernen',
+    nsNumbers: 'Zahlen',
+
+    // ── Remove Whitespace / Remove Character ────────────────────────
+    remove: 'Entfernen',
+    cleaned: 'Bereinigt',
+    wsAllWhitespace: 'Alle Leerzeichen',
+    wsSpacesOnly: 'Nur Leerzeichen',
+    wsTabsOnly: 'Nur Tabulatoren',
+    wsExtraSpaces: 'Überflüssige Leerzeichen (reduzieren)',
+
+    // ── Text Style Tools ────────────────────────────────────────────
+    style: 'Stil',
+    styleBold: 'Fett',
+    styleItalic: 'Kursiv',
+    styleStrikethrough: 'Durchgestrichen',
+    outputBold: 'Fette Ausgabe',
+    outputItalic: 'Kursive Ausgabe',
+    outputStrikethrough: 'Durchgestrichene Ausgabe',
+
+    // ── Code Formatters ─────────────────────────────────────────────
+    xmlInput: 'XML-Eingabe',
+    xmlOutput: 'XML-Ausgabe',
+    cssInput: 'CSS-Eingabe',
+    cssOutput: 'CSS-Ausgabe',
+    jsInput: 'JavaScript-Eingabe',
+    jsOutput: 'JavaScript-Ausgabe',
+    tsInput: 'TypeScript-Eingabe',
+    tsOutput: 'TypeScript-Ausgabe',
+    htmlInput: 'HTML-Eingabe',
+    htmlOutput: 'HTML-Ausgabe',
+
+    // ── Markdown Preview ────────────────────────────────────────────
+    mdRightPanel: 'Rechtes Panel',
+    mdMarkdownInput: 'Markdown-Eingabe',
+    mdHtmlPreview: 'HTML-Vorschau',
+    mdFormattedMarkdown: 'Formatiertes Markdown',
+
+    // ── Misc Tools ──────────────────────────────────────────────────
+    copyLink: 'Link kopieren',
+    plainText: 'Klartext',
+    jsonString: 'JSON-String',
+    mdtDelimitedData: 'Trennzeichendaten',
+    mdtMarkdownTable: 'Markdown-Tabelle',
+    rlbReplaceWith: 'Zeilenumbrüche ersetzen durch',
+    rlbMultiLine: 'Mehrzeilige Eingabe',
+    rlbSingleLine: 'Einzelzeile',
+    rtfFormattedInput: 'Formatierte Eingabe',
+
+    // ── Tool Descriptions ────────────────────────────────────────────
+    'desc:add-punctuation': 'Fügt am Ende jeder Zeile einen Punkt, ein Ausrufezeichen oder ein anderes Satzzeichen hinzu.',
+    'desc:bold-text': 'Wendet Fett, Kursiv oder Durchgestrichen mit Unicode-Zeichen an — überall einfügbar, wo Unicode unterstützt wird.',
+    'desc:case-converter': 'Konvertiert Text zwischen Großbuchstaben, Kleinbuchstaben, Titelschreibweise, camelCase und mehr.',
+    'desc:inline-column-converter': 'Konvertiert zwischen Spaltenformat (eins pro Zeile) und durch Trennzeichen getrenntem Inline-Format. Entfernt auch Zeilenumbrüche.',
+    'desc:markdown-table': 'Konvertiert CSV- oder tabulatorgetrennte Daten in eine formatierte Markdown-Tabelle.',
+    'desc:lorem-ipsum': 'Erzeugt Lorem-Ipsum-Platzhaltertext nach Wort-, Satz- oder Absatzanzahl.',
+    'desc:markdown-preview': 'Markdown schreiben und das gerenderte HTML in der Vorschau anzeigen oder mit Prettier formatieren.',
+    'desc:remove-all-whitespace': 'Entfernt jedes Leerzeichen, jeden Tabulator und jeden Zeilenumbruch aus Ihrem Text.',
+    'desc:remove-character': 'Entfernt ein bestimmtes Zeichen oder eine Zeichenmenge aus Ihrem Text.',
+    'desc:remove-text-formatting': 'Entfernt Markdown, HTML-Tags und andere Formatierung, um reinen Text zu erhalten.',
+    'desc:remove-trailing-whitespace': 'Entfernt nachgestellte Leerzeichen und Tabulatoren am Ende jeder Zeile.',
+    'desc:reverse-text': 'Kehrt Ihren Text zeichenweise um oder kehrt die Wortreihenfolge um — wählen Sie einen Modus.',
+    'desc:sort-words': 'Sortiert Wörter alphabetisch, nach Länge oder mischt sie zufällig.',
+    'desc:text-compare': 'Vergleicht zwei Texte nebeneinander mit Hervorhebung der Unterschiede auf Zeilen- und Wortebene.',
+    'desc:word-counter': 'Zählt Wörter, Zeichen, Sätze und Absätze in Ihrem Text.',
+    'desc:word-frequency': 'Zählt, wie oft jedes Wort vorkommt, und ordnet sie nach Häufigkeit.',
+    'desc:base-converter': 'Konvertiert Werte zwischen Binär-, Oktal-, Dezimal-, Hexadezimalsystem und Text.',
+    'desc:engineering-cheat-sheet': 'Schnellreferenztabellen für SI-Präfixe, Kondensatoren, Frequenz und mehr.',
+    'desc:fahrenheit-celsius': 'Konvertiert Temperaturen zwischen Fahrenheit, Celsius und Kelvin.',
+    'desc:graph-calculator': 'Zeichnet eine Funktion von x und zeigt Ergebnisse, Nullstellen (x-Achsenabschnitte) und y-Achsenabschnitt.',
+    'desc:number-sorter': 'Sortiert Zahlen auf- oder absteigend, mit optionaler Entfernung von Duplikaten.',
+    'desc:pi-attenuator': 'Berechnet die Widerstandswerte eines Pi-Dämpfungsglieds (π) für jede dB-Dämpfung und Impedanz.',
+    'desc:percentage-calc': 'Berechnet Prozentsätze, prozentuale Veränderungen und Verhältnisse.',
+    'desc:random-number': 'Erzeugt zufällige Ganzzahlen oder Dezimalzahlen innerhalb eines benutzerdefinierten Bereichs.',
+    'desc:scientific-calc': 'Vollwertiger wissenschaftlicher Taschenrechner mit Trigonometrie und Logarithmen.',
+    'desc:statistics-calc': 'Berechnet Mittelwert, Median, Modus, Standardabweichung und mehr.',
+    'desc:unit-converter': 'Konvertiert zwischen Länge, Masse, Temperatur, Volumen, Fläche und mehr.',
+    'desc:color-picker': 'Wählt jede Farbe von Ihrem Bildschirm und erhält sofort ihre HEX-, RGB- und HSL-Werte.',
+    'desc:color-converter': 'Konvertiert Farben zwischen HEX, RGB, HSL, HSV und CMYK.',
+    'desc:contrast-checker': 'Prüft den Kontrast zwischen Text- und Hintergrundfarbe anhand der WCAG-Barrierefreiheitsstandards.',
+    'desc:gradient-generator': 'Mischt Farben zu einem CSS-Verlauf und kopiert eine gleichmäßig abgestufte Farbpalette.',
+    'desc:ico-creator': 'Konvertiert jedes Bild in eine mehrgrößige .ico-Datei für Favicons.',
+    'desc:image-converter': 'Konvertiert Bilder zwischen PNG, JPG und WEBP — mit Qualitäts- und Ausgabegrößenoptionen.',
+    'desc:image-cropper': 'Schneidet ein Bild auf einen benutzerdefinierten Bereich zu — vollständig im Browser.',
+    'desc:image-resizer': 'Skaliert Bilder auf exakte Pixelmaße, unter Beibehaltung oder Ignorierung des Seitenverhältnisses.',
+    'desc:png-minifier': 'Reduziert die PNG-Dateigröße durch Skalieren oder Neukodieren, ohne den Browser zu verlassen.',
+    'desc:remove-background': 'Entfernt einen einfachen einfarbigen Hintergrund (weiß, schwarz oder automatisch) und exportiert ein transparentes PNG.',
+    'desc:video-to-gif': 'Konvertiert einen MP4- oder WebM-Clip direkt im Browser in ein animiertes GIF.',
+    'desc:array-formatter': 'Formatiert eine Liste von Elementen als JavaScript-, JSON-, Python- oder SQL-Array-Literal.',
+    'desc:base64': 'Kodiert Text oder Dateien in Base64 und dekodiert Base64-Zeichenfolgen.',
+    'desc:css-minifier': 'Formatiert oder minimiert CSS-Code mit Prettier.',
+    'desc:html-formatter': 'Formatiert oder minimiert HTML mit sauberer, konsistenter Einrückung.',
+    'desc:js-formatter': 'Formatiert oder minimiert JavaScript-Code mit Prettier.',
+    'desc:json-formatter': 'Formatiert, validiert und minimiert JSON-Daten.',
+    'desc:json-text-formatter': 'Kodiert Klartext als JSON-Zeichenfolge und dekodiert JSON-Zeichenfolgen zurück in Text.',
+    'desc:typescript-formatter': 'Formatiert oder minimiert TypeScript-Code mit Prettier.',
+    'desc:xml-formatter': 'Formatiert oder minimiert XML mit sauberer, konsistenter Einrückung.',
+    'desc:regex-tester': 'Testet und debuggt reguläre Ausdrücke interaktiv mit Live-Hervorhebung der Treffer.',
+    'desc:url-encoder': 'Kodiert und dekodiert URLs und Abfragezeichenfolgen-Komponenten.',
+    'desc:uuid-generator': 'Erzeugt sofort RFC-konforme UUIDs (v4).',
+    'desc:countdown-timer': 'Stellt einen Vollbild-Countdown-Timer für eine beliebige Dauer ein.',
+    'desc:date-calculator': 'Berechnet die Anzahl der Tage zwischen zwei Daten.',
+    'desc:task-list': 'Erstellt eine schnelle Aufgabenliste und hakt Aufgaben nach Erledigung ab. Wird im Browser gespeichert.',
+    'desc:timezone-converter': 'Konvertiert ein Datum und eine Uhrzeit zwischen zwei beliebigen Zeitzonen.',
+    'desc:unix-timestamp': 'Konvertiert Unix-Epoch-Zeitstempel in lesbare Daten und zurück.',
+
+    // ── Tool Titles ───────────────────────────────────────────────────
+    'title:add-punctuation': 'Interpunktion Hinzufügen',
+    'title:bold-text': 'Textstil-Generator',
+    'title:case-converter': 'Groß-/Kleinschreibung Konverter',
+    'title:inline-column-converter': 'Inline-/Spalten-Konverter',
+    'title:markdown-table': 'Markdown-Tabellengenerator',
+    'title:lorem-ipsum': 'Lorem-Ipsum-Generator',
+    'title:markdown-preview': 'Markdown-Vorschau',
+    'title:remove-all-whitespace': 'Alle Leerzeichen Entfernen',
+    'title:remove-character': 'Zeichen Entfernen',
+    'title:remove-text-formatting': 'Textformatierung Entfernen',
+    'title:remove-trailing-whitespace': 'Nachgestellte Leerzeichen Entfernen',
+    'title:reverse-text': 'Text Umkehren',
+    'title:sort-words': 'Wörter Sortieren',
+    'title:text-compare': 'Textvergleich',
+    'title:word-counter': 'Wortzähler',
+    'title:word-frequency': 'Wortfrequenz-Analyse',
+    'title:base-converter': 'Basiskonverter',
+    'title:engineering-cheat-sheet': 'Ingenieur-Spickzettel',
+    'title:fahrenheit-celsius': 'Fahrenheit zu Celsius',
+    'title:graph-calculator': 'Grafikrechner',
+    'title:number-sorter': 'Zahlensortierer',
+    'title:pi-attenuator': 'Pi-Dämpfungsglied-Rechner',
+    'title:percentage-calc': 'Prozentrechner',
+    'title:random-number': 'Zufallszahlengenerator',
+    'title:scientific-calc': 'Wissenschaftlicher Taschenrechner',
+    'title:statistics-calc': 'Statistikrechner',
+    'title:unit-converter': 'Einheitenumrechner',
+    'title:color-picker': 'Farbpipette',
+    'title:color-converter': 'Farbkonverter',
+    'title:contrast-checker': 'Kontrastprüfer',
+    'title:gradient-generator': 'Verlaufs- und Palettengenerator',
+    'title:ico-creator': 'ICO-Ersteller',
+    'title:image-converter': 'Bildkonverter',
+    'title:image-cropper': 'Bildzuschnitt',
+    'title:image-resizer': 'Bildgrößenänderung',
+    'title:png-minifier': 'PNG-Minimierer',
+    'title:remove-background': 'Hintergrund Entfernen',
+    'title:video-to-gif': 'Video zu GIF',
+    'title:array-formatter': 'Array-Formatierer',
+    'title:base64': 'Base64-Kodierer / Dekodierer',
+    'title:css-minifier': 'CSS-Formatierer / Minimierer',
+    'title:html-formatter': 'HTML-Formatierer / Minimierer',
+    'title:js-formatter': 'JavaScript-Formatierer / Minimierer',
+    'title:json-formatter': 'JSON-Formatierer / Minimierer',
+    'title:json-text-formatter': 'JSON-Textformatierer',
+    'title:typescript-formatter': 'TypeScript-Formatierer / Minimierer',
+    'title:xml-formatter': 'XML-Formatierer / Minimierer',
+    'title:regex-tester': 'Regex-Tester',
+    'title:url-encoder': 'URL-Kodierer / Dekodierer',
+    'title:uuid-generator': 'UUID-Generator',
+    'title:countdown-timer': 'Countdown-Timer',
+    'title:date-calculator': 'Datumsrechner',
+    'title:task-list': 'Aufgabenliste',
+    'title:timezone-converter': 'Zeitzonenumrechner',
+    'title:unix-timestamp': 'Unix-Zeitstempel-Konverter',
   },
+
   zh: {
+    // ── Shell / Navigation ──────────────────────────────────────────
     searchPlaceholder: '搜索工具…',
     searchLabel: '搜索所有工具',
     searchNoResults: '未找到相关工具',
@@ -73,8 +1680,438 @@ export const translations = {
     languageLabel: '语言',
     tools: '工具',
     tool: '工具',
+
+    // ── Categories ──────────────────────────────────────────────────
+    catText: '文本工具',
+    catTextDesc: '操作、分析和转换文本',
+    catMath: '数学与数字',
+    catMathDesc: '计算器、转换器和数字实用工具',
+    catColor: '颜色工具',
+    catColorDesc: '选取、转换和生成配色方案',
+    catImage: '图片工具',
+    catImageDesc: '转换、调整、裁剪和优化图片',
+    catWeb: '网页与代码',
+    catWebDesc: '格式化、编码和验证代码和数据',
+    catTime: '时间与日期',
+    catTimeDesc: '时区、倒计时和日期计算',
+
+    // ── Home page ───────────────────────────────────────────────────
+    heroTitle: '面向开发者和高级用户的免费工具',
+    heroSubStart: '个工具，共',
+    heroSubEnd: '个分类 — 无需注册。',
+
+    // ── PageShell ───────────────────────────────────────────────────
+    relatedTools: '相关工具',
+
+    // ── NotFound ────────────────────────────────────────────────────
+    notFoundTitle: '页面未找到',
+    notFoundSub: '您访问的页面不存在或已被移动。',
+    notFoundGoHome: '返回首页',
+
+    // ── Common UI ───────────────────────────────────────────────────
+    input: '输入',
+    output: '输出',
+    clearInput: '清除输入',
+    generate: '生成',
+    copy: '复制',
+    copied: '已复制！',
+    copyAll: '全部复制',
+    copyResult: '复制结果',
+    result: '结果',
+    from: '从',
+    to: '到',
+    mode: '模式',
+    type: '类型',
+    count: '数量',
+    format: '格式化',
+    minify: '压缩',
+    preview: '预览',
+    original: '原文',
+    converted: '已转换',
+    separator: '分隔符',
+    measurement: '测量单位',
+    sortOrder: '排序顺序',
+    pattern: '模式',
+    dropImage: '将图片拖放到这里',
+    dropImageSub: '或点击浏览',
+    releaseToUpload: '释放以上传',
+    removeFile: '删除文件',
+
+    // ── Header / Footer / Shell ───────────────────────────────────────
+    brandHomeAria: 'UtilityHub 首页',
+    skipToMainContent: '跳转到主要内容',
+    openCommandPaletteAria: '打开命令面板 (Ctrl+K)',
+    searchToolsShortcutTitle: '搜索工具 (Ctrl+K)',
+    supportUtilityHub: '支持 UtilityHub',
+    support: '支持',
+    footerSupportText: '如果这个工具为您节省了时间，欢迎支持本项目。',
+    categoryNavigationLabel: '分类导航',
+    navigationMenuLabel: '导航菜单',
+
+    // ── Command Palette ────────────────────────────────────────────────
+    cmdPaletteLabel: '命令面板',
+    cmdSearchPlaceholder: '搜索工具…',
+    cmdSearchLabel: '搜索工具',
+    cmdResults: '结果',
+    cmdRecent: '最近使用',
+    cmdNoResults: '未找到工具',
+    cmdTypeToSearch: '输入以搜索所有工具',
+    cmdNavigate: '导航',
+    cmdOpenHint: '打开',
+    cmdCloseHint: '关闭',
+
+    // ── Search ──────────────────────────────────────────────────────────
+    searchResultsLabel: '搜索结果',
+
+    // ── Favorites ───────────────────────────────────────────────────────
+    favoritesLabel: '收藏',
+    favoritesEmpty: '暂无收藏',
+    favoritesEmptyHint: '点击任意工具上的星标即可收藏。',
+    favAddLabel: '添加 {value} 到收藏',
+    favRemoveLabel: '从收藏中移除 {value}',
+    favAddTitle: '添加到收藏',
+    favRemoveTitle: '从收藏中移除',
+    favoriteSaved: '已收藏',
+    favoriteSaveToFavorites: '添加到收藏',
+
+    // ── Support Modal ────────────────────────────────────────────────────
+    supportModalSubtitle: '这些工具是免费的。如果它们为您节省了时间，这里有支持我们的方式。',
+    close: '关闭',
+    starOnGithub: '在 GitHub 上点星',
+    alreadyPaidRemoveAds: '已经付费？移除广告',
+
+    // ── Ad Blocker Banner ────────────────────────────────────────────────
+    adBlockerText: '看起来您正在使用广告拦截器 — 完全没问题。如果这些工具对您有帮助，欢迎',
+    adBlockerLinkText: '支持 UtilityHub',
+    adBlockerSuffix: '。',
+    dismissAdBlockerNotice: '关闭广告拦截提示',
+
+    // ── Ad Banner ───────────────────────────────────────────────────────
+    advertisement: '广告',
+
+    // ── Tool Page (placeholder) ──────────────────────────────────────────
+    toolComingSoon: '此工具即将推出。',
+    toolUnderConstructionMsg: '{value} 的界面正在建设中。',
+    backToAllTools: '← 返回所有工具',
+    otherToolsLabel: '其他',
+
+    // ── Word Counter ────────────────────────────────────────────────
+    wcChars: '字符',
+    wcCharsNoSpaces: '字符（不含空格）',
+    wcWords: '单词',
+    wcUniqueWords: '唯一单词',
+    wcSentences: '句子',
+    wcParagraphs: '段落',
+    wcLines: '行数',
+    wcReadingTime: '阅读时间',
+
+    // ── Countdown Timer ─────────────────────────────────────────────
+    timerEnterTime: '输入分钟数',
+    timerStart: '开始',
+    timerPause: '暂停',
+    timerResume: '继续',
+    timerStop: '停止',
+    timerRestart: '重新开始',
+    timerDone: '时间到！',
+    timerPaused: '已暂停',
+
+    // ── Date Calculator ─────────────────────────────────────────────
+    dateStart: '开始日期',
+    dateEnd: '结束日期',
+    dateDays: '天',
+    dateWeeks: '周',
+    dateMonths: '月',
+    dateYears: '年',
+    dateCopyDays: '复制天数',
+
+    // ── Text Compare ────────────────────────────────────────────────
+    compareOriginal: '原文',
+    compareModified: '修改后',
+    compareIdentical: '文本完全相同',
+    compareAdded: '已添加',
+    compareRemoved: '已删除',
+    compareCaseChanges: '大小写变化',
+    compareUnchanged: '未更改',
+    compareEmpty: '在两个面板中输入文本以进行比较。',
+
+    // ── Regex Tester ────────────────────────────────────────────────
+    regexTestString: '测试字符串',
+    regexPreview: '预览',
+    regexMatches: '匹配项',
+    regexInvalidPattern: '无效模式',
+    regexNoMatches: '未找到匹配项。',
+    regexEnterPattern: '请在上方输入模式',
+
+    // ── Word Frequency ──────────────────────────────────────────────
+    freqExcludeStop: '排除停用词',
+    freqCaseSensitive: '区分大小写',
+    freqNoWords: '未找到单词。',
+    freqWord: '单词',
+    freqFrequency: '频率',
+
+    // ── Lorem Ipsum ─────────────────────────────────────────────────
+    loremParagraphs: '段落',
+    loremSentences: '句子',
+    loremWords: '单词',
+    loremOutput: '输出',
+    loremGenerated: '生成的文本将显示在这里…',
+
+    // ── Random Number ───────────────────────────────────────────────
+    randomMin: '最小值',
+    randomMax: '最大值',
+    randomClickGenerate: '点击生成以获取数字',
+    randomInteger: '整数',
+    randomDecimal: '小数（2位）',
+
+    // ── Temperature ─────────────────────────────────────────────────
+    tempFahrenheit: '华氏度',
+    tempCelsius: '摄氏度',
+    tempKelvin: '开尔文',
+
+    // ── Unix Timestamp ──────────────────────────────────────────────
+    tsEpochToDate: 'Epoch 转日期',
+    tsDateToEpoch: '日期转 Epoch',
+    tsCurrentTimestamp: '当前时间戳',
+    tsUTC: 'UTC',
+    tsLocal: '本地',
+    tsSeconds: '秒',
+    tsMilliseconds: '毫秒',
+    tsCopyUTC: '复制 UTC',
+    tsCopyLocal: '复制本地时间',
+    tsCopySeconds: '复制秒数',
+    tsCopyMilliseconds: '复制毫秒数',
+
+    // ── Timezone Converter ──────────────────────────────────────────
+    tzDateAndTime: '日期和时间',
+    tzFrom: '源时区',
+    tzTo: '目标时区',
+    tzCopyResult: '复制结果',
+
+    // ── Sort Words ──────────────────────────────────────────────────
+    sortAscending: 'A → Z',
+    sortDescending: 'Z → A',
+    sortShortestFirst: '最短优先',
+    sortLongestFirst: '最长优先',
+    sortWords: '单词',
+    sortSorted: '已排序',
+    sortCaseSensitive: '区分大小写',
+
+    // ── Reverse Text ────────────────────────────────────────────────
+    reverseCharacters: '反转字符',
+    reverseWordOrder: '反转词序',
+    reverseEachWord: '反转每个单词中的文本',
+    reverseReversed: '已反转',
+    reverseEachWordLabel: '每个单词已反转',
+
+    // ── Add Punctuation ─────────────────────────────────────────────
+    punctPunctuation: '标点符号',
+    punctAddMissing: '缺少时添加',
+    punctAlwaysAppend: '始终追加',
+    punctReplace: '替换现有',
+    punctWithPunctuation: '带标点符号',
+
+    // ── Inline / Column Converter ───────────────────────────────────
+    iccColumnToInline: '列 → 行内',
+    iccInlineToColumn: '行内 → 列',
+    iccColumnPerLine: '列（每行一个）',
+    iccInlineSeparated: '行内（分隔）',
+
+    // ── JSON Formatter ──────────────────────────────────────────────
+    jsonInput: 'JSON 输入',
+    jsonOutput: 'JSON 输出',
+
+    // ── Statistics ──────────────────────────────────────────────────
+    statsCount: '数量',
+    statsSum: '总和',
+    statsMean: '平均值',
+    statsMedian: '中位数',
+    statsMode: '众数',
+    statsMin: '最小值',
+    statsMax: '最大值',
+    statsRange: '范围',
+    statsVariance: '方差',
+    statsStdDev: '标准差',
+
+    // ── Unit Converter ──────────────────────────────────────────────
+    unitMeasurement: '测量单位',
+    unitFrom: '从',
+    unitTo: '到',
+    unitEnterValue: '输入数值',
+
+    // ── Array Formatter ─────────────────────────────────────────────
+    quoteStyle: '引号样式',
+    arrayItems: '条目（每行一个）',
+
+    // ── Number Sorter ───────────────────────────────────────────────
+    order: '排序',
+    nsSmallestFirst: '从小到大',
+    nsLargestFirst: '从大到小',
+    nsRemoveDuplicates: '删除重复项',
+    nsNumbers: '数字',
+
+    // ── Remove Whitespace / Remove Character ────────────────────────
+    remove: '删除',
+    cleaned: '已清理',
+    wsAllWhitespace: '所有空白字符',
+    wsSpacesOnly: '仅空格',
+    wsTabsOnly: '仅制表符',
+    wsExtraSpaces: '多余空格（合并）',
+
+    // ── Text Style Tools ────────────────────────────────────────────
+    style: '样式',
+    styleBold: '粗体',
+    styleItalic: '斜体',
+    styleStrikethrough: '删除线',
+    outputBold: '粗体输出',
+    outputItalic: '斜体输出',
+    outputStrikethrough: '删除线输出',
+
+    // ── Code Formatters ─────────────────────────────────────────────
+    xmlInput: 'XML输入',
+    xmlOutput: 'XML输出',
+    cssInput: 'CSS输入',
+    cssOutput: 'CSS输出',
+    jsInput: 'JavaScript输入',
+    jsOutput: 'JavaScript输出',
+    tsInput: 'TypeScript输入',
+    tsOutput: 'TypeScript输出',
+    htmlInput: 'HTML输入',
+    htmlOutput: 'HTML输出',
+
+    // ── Markdown Preview ────────────────────────────────────────────
+    mdRightPanel: '右侧面板',
+    mdMarkdownInput: 'Markdown输入',
+    mdHtmlPreview: 'HTML预览',
+    mdFormattedMarkdown: '格式化Markdown',
+
+    // ── Misc Tools ──────────────────────────────────────────────────
+    copyLink: '复制链接',
+    plainText: '纯文本',
+    jsonString: 'JSON字符串',
+    mdtDelimitedData: '分隔数据',
+    mdtMarkdownTable: 'Markdown表格',
+    rlbReplaceWith: '将换行符替换为',
+    rlbMultiLine: '多行输入',
+    rlbSingleLine: '单行',
+    rtfFormattedInput: '格式化输入',
+
+    // ── Tool Descriptions ────────────────────────────────────────────
+    'desc:add-punctuation': '在每行末尾添加句号、感叹号或其他标点符号。',
+    'desc:bold-text': '使用 Unicode 字符应用粗体、斜体或删除线 — 可粘贴到任何支持 Unicode 的地方。',
+    'desc:case-converter': '在大写、小写、标题大小写、驼峰命名法等之间转换文本。',
+    'desc:inline-column-converter': '在每行一项的列格式与分隔符连接的行内格式之间转换，同时可去除换行符。',
+    'desc:markdown-table': '将 CSV 或制表符分隔的数据转换为格式化的 Markdown 表格。',
+    'desc:lorem-ipsum': '按单词、句子或段落数生成 Lorem Ipsum 占位文本。',
+    'desc:markdown-preview': '编写 Markdown 并预览渲染后的 HTML，或使用 Prettier 格式化。',
+    'desc:remove-all-whitespace': '移除文本中的所有空格、制表符和换行符。',
+    'desc:remove-character': '从文本中移除任何特定字符或字符集。',
+    'desc:remove-text-formatting': '去除 Markdown、HTML 标签及其他格式，获取纯文本。',
+    'desc:remove-trailing-whitespace': '修剪每行末尾的空格和制表符。',
+    'desc:reverse-text': '按字符反转文本，或反转单词顺序 — 可选择模式。',
+    'desc:sort-words': '按字母顺序、长度排序单词，或随机打乱。',
+    'desc:text-compare': '并排比较两段文本，高亮显示行级和词级差异。',
+    'desc:word-counter': '统计文本中的字数、字符数、句子数和段落数。',
+    'desc:word-frequency': '统计每个单词出现的次数并按频率排名。',
+    'desc:base-converter': '在二进制、八进制、十进制、十六进制和文本之间转换数值。',
+    'desc:engineering-cheat-sheet': 'SI 前缀、电容器、频率等的快速参考表。',
+    'desc:fahrenheit-celsius': '在华氏度、摄氏度和开尔文之间转换温度。',
+    'desc:graph-calculator': '绘制 x 的函数图像，并读取其结果、根（x 轴截距）和 y 轴截距。',
+    'desc:number-sorter': '按升序或降序排序数字，可选择去除重复项。',
+    'desc:pi-attenuator': '计算任意 dB 衰减和阻抗下的 Pi（π）衰减器电阻值。',
+    'desc:percentage-calc': '计算百分比、百分比变化和比率。',
+    'desc:random-number': '在自定义范围内生成随机整数或小数。',
+    'desc:scientific-calc': '功能齐全的科学计算器，支持三角函数和对数运算。',
+    'desc:statistics-calc': '计算平均值、中位数、众数、标准差等统计量。',
+    'desc:unit-converter': '在长度、质量、温度、体积、面积等单位之间转换。',
+    'desc:color-picker': '从屏幕上选取任意颜色，立即获取其 HEX、RGB 和 HSL 值。',
+    'desc:color-converter': '在 HEX、RGB、HSL、HSV 和 CMYK 之间转换颜色。',
+    'desc:contrast-checker': '根据 WCAG 无障碍标准检查文本与背景的颜色对比度。',
+    'desc:gradient-generator': '将颜色混合成 CSS 渐变，并复制均匀分布的调色板。',
+    'desc:ico-creator': '将任意图片转换为用于网站图标的多尺寸 .ico 文件。',
+    'desc:image-converter': '在 PNG、JPG 和 WEBP 之间转换图片 — 可设置质量和输出大小选项。',
+    'desc:image-cropper': '完全在浏览器中将图片裁剪为自定义区域。',
+    'desc:image-resizer': '将图片调整为精确的像素尺寸，可保持或忽略宽高比。',
+    'desc:png-minifier': '通过缩放或重新编码来减小 PNG 文件大小，无需离开浏览器。',
+    'desc:remove-background': '移除简单的纯色背景（白色、黑色或自动）并导出透明 PNG。',
+    'desc:video-to-gif': '直接在浏览器中将 MP4 或 WebM 片段转换为动图 GIF。',
+    'desc:array-formatter': '将项目列表格式化为 JavaScript、JSON、Python 或 SQL 数组字面量。',
+    'desc:base64': '将文本或文件编码为 Base64，并解码 Base64 字符串。',
+    'desc:css-minifier': '使用 Prettier 美化或压缩 CSS 代码。',
+    'desc:html-formatter': '使用整洁一致的缩进美化或压缩 HTML。',
+    'desc:js-formatter': '使用 Prettier 美化或压缩 JavaScript 代码。',
+    'desc:json-formatter': '美化、验证并压缩 JSON 数据。',
+    'desc:json-text-formatter': '将纯文本编码为 JSON 字符串，并将 JSON 字符串解码回文本。',
+    'desc:typescript-formatter': '使用 Prettier 美化或压缩 TypeScript 代码。',
+    'desc:xml-formatter': '使用整洁一致的缩进美化或压缩 XML。',
+    'desc:regex-tester': '交互式测试和调试正则表达式，并实时高亮显示匹配项。',
+    'desc:url-encoder': '编码和解码 URL 及查询字符串参数。',
+    'desc:uuid-generator': '即时生成符合 RFC 标准的 UUID（v4）。',
+    'desc:countdown-timer': '设置任意时长的全屏倒计时器。',
+    'desc:date-calculator': '计算两个日期之间相差的天数。',
+    'desc:task-list': '快速创建待办事项列表，完成后勾选。保存在浏览器中。',
+    'desc:timezone-converter': '在任意两个时区之间转换日期和时间。',
+    'desc:unix-timestamp': '将 Unix 纪元时间戳转换为可读日期，反之亦然。',
+
+    // ── Tool Titles ───────────────────────────────────────────────────
+    'title:add-punctuation': '添加标点符号',
+    'title:bold-text': '文本样式生成器',
+    'title:case-converter': '大小写转换器',
+    'title:inline-column-converter': '行内/列转换器',
+    'title:markdown-table': 'Markdown 表格生成器',
+    'title:lorem-ipsum': 'Lorem Ipsum 生成器',
+    'title:markdown-preview': 'Markdown 预览',
+    'title:remove-all-whitespace': '移除所有空白',
+    'title:remove-character': '移除字符',
+    'title:remove-text-formatting': '移除文本格式',
+    'title:remove-trailing-whitespace': '移除行尾空白',
+    'title:reverse-text': '反转文本',
+    'title:sort-words': '排序单词',
+    'title:text-compare': '文本比较',
+    'title:word-counter': '字数统计',
+    'title:word-frequency': '单词频率分析器',
+    'title:base-converter': '进制转换器',
+    'title:engineering-cheat-sheet': '工程速查表',
+    'title:fahrenheit-celsius': '华氏度转摄氏度',
+    'title:graph-calculator': '图形计算器',
+    'title:number-sorter': '数字排序器',
+    'title:pi-attenuator': 'Pi 衰减器计算器',
+    'title:percentage-calc': '百分比计算器',
+    'title:random-number': '随机数生成器',
+    'title:scientific-calc': '科学计算器',
+    'title:statistics-calc': '统计计算器',
+    'title:unit-converter': '单位转换器',
+    'title:color-picker': '取色器',
+    'title:color-converter': '颜色转换器',
+    'title:contrast-checker': '对比度检查器',
+    'title:gradient-generator': '渐变与调色板生成器',
+    'title:ico-creator': 'ICO 图标制作工具',
+    'title:image-converter': '图片格式转换器',
+    'title:image-cropper': '图片裁剪工具',
+    'title:image-resizer': '图片尺寸调整工具',
+    'title:png-minifier': 'PNG 压缩工具',
+    'title:remove-background': '背景移除工具',
+    'title:video-to-gif': '视频转 GIF',
+    'title:array-formatter': '数组格式化工具',
+    'title:base64': 'Base64 编码/解码器',
+    'title:css-minifier': 'CSS 格式化/压缩工具',
+    'title:html-formatter': 'HTML 格式化/压缩工具',
+    'title:js-formatter': 'JavaScript 格式化/压缩工具',
+    'title:json-formatter': 'JSON 格式化/压缩工具',
+    'title:json-text-formatter': 'JSON 文本格式化工具',
+    'title:typescript-formatter': 'TypeScript 格式化/压缩工具',
+    'title:xml-formatter': 'XML 格式化/压缩工具',
+    'title:regex-tester': '正则表达式测试工具',
+    'title:url-encoder': 'URL 编码/解码器',
+    'title:uuid-generator': 'UUID 生成器',
+    'title:countdown-timer': '倒计时器',
+    'title:date-calculator': '日期计算器',
+    'title:task-list': '任务清单',
+    'title:timezone-converter': '时区转换器',
+    'title:unix-timestamp': 'Unix 时间戳转换器',
   },
+
   ja: {
+    // ── Shell / Navigation ──────────────────────────────────────────
     searchPlaceholder: 'ツールを検索…',
     searchLabel: 'すべてのツールを検索',
     searchNoResults: '見つかりませんでした',
@@ -88,9 +2125,447 @@ export const translations = {
     languageLabel: '言語',
     tools: 'ツール',
     tool: 'ツール',
+
+    // ── Categories ──────────────────────────────────────────────────
+    catText: 'テキストツール',
+    catTextDesc: 'テキストの操作・分析・変換',
+    catMath: '数学・数字',
+    catMathDesc: '計算機、コンバーター、数値ユーティリティ',
+    catColor: 'カラーツール',
+    catColorDesc: 'カラーの選択・変換・配色生成',
+    catImage: '画像ツール',
+    catImageDesc: '画像の変換・リサイズ・切り取り・最適化',
+    catWeb: 'Web・コード',
+    catWebDesc: 'コードとデータのフォーマット・エンコード・検証',
+    catTime: '時間・日付',
+    catTimeDesc: 'タイムゾーン、カウントダウン、日付計算',
+
+    // ── Home page ───────────────────────────────────────────────────
+    heroTitle: '開発者とパワーユーザーのための無料ツール',
+    heroSubStart: '個のツール、',
+    heroSubEnd: 'カテゴリ — 登録不要。',
+
+    // ── PageShell ───────────────────────────────────────────────────
+    relatedTools: '関連ツール',
+
+    // ── NotFound ────────────────────────────────────────────────────
+    notFoundTitle: 'ページが見つかりません',
+    notFoundSub: 'お探しのページは存在しないか、移動されました。',
+    notFoundGoHome: 'ホームへ戻る',
+
+    // ── Common UI ───────────────────────────────────────────────────
+    input: '入力',
+    output: '出力',
+    clearInput: '入力をクリア',
+    generate: '生成',
+    copy: 'コピー',
+    copied: 'コピーしました！',
+    copyAll: 'すべてコピー',
+    copyResult: '結果をコピー',
+    result: '結果',
+    from: 'から',
+    to: 'へ',
+    mode: 'モード',
+    type: 'タイプ',
+    count: '数量',
+    format: 'フォーマット',
+    minify: '圧縮',
+    preview: 'プレビュー',
+    original: 'オリジナル',
+    converted: '変換済み',
+    separator: 'セパレーター',
+    measurement: '測定単位',
+    sortOrder: '並び順',
+    pattern: 'パターン',
+    dropImage: '画像をここにドロップ',
+    dropImageSub: 'またはクリックして参照',
+    releaseToUpload: 'リリースしてアップロード',
+    removeFile: 'ファイルを削除',
+
+    // ── Header / Footer / Shell ───────────────────────────────────────
+    brandHomeAria: 'UtilityHub ホーム',
+    skipToMainContent: 'メインコンテンツへスキップ',
+    openCommandPaletteAria: 'コマンドパレットを開く (Ctrl+K)',
+    searchToolsShortcutTitle: 'ツールを検索 (Ctrl+K)',
+    supportUtilityHub: 'UtilityHub をサポート',
+    support: 'サポート',
+    footerSupportText: 'このツールが時間の節約に役立ったなら、プロジェクトの支援をご検討ください。',
+    categoryNavigationLabel: 'カテゴリナビゲーション',
+    navigationMenuLabel: 'ナビゲーションメニュー',
+
+    // ── Command Palette ────────────────────────────────────────────────
+    cmdPaletteLabel: 'コマンドパレット',
+    cmdSearchPlaceholder: 'ツールを検索…',
+    cmdSearchLabel: 'ツールを検索',
+    cmdResults: '検索結果',
+    cmdRecent: '最近使用したツール',
+    cmdNoResults: 'ツールが見つかりません',
+    cmdTypeToSearch: '入力してすべてのツールを検索',
+    cmdNavigate: '移動',
+    cmdOpenHint: '開く',
+    cmdCloseHint: '閉じる',
+
+    // ── Search ──────────────────────────────────────────────────────────
+    searchResultsLabel: '検索結果',
+
+    // ── Favorites ───────────────────────────────────────────────────────
+    favoritesLabel: 'お気に入り',
+    favoritesEmpty: 'お気に入りはまだありません',
+    favoritesEmptyHint: 'ツールの星マークをタップして、ここに保存できます。',
+    favAddLabel: '{value} をお気に入りに追加',
+    favRemoveLabel: '{value} をお気に入りから削除',
+    favAddTitle: 'お気に入りに追加',
+    favRemoveTitle: 'お気に入りから削除',
+    favoriteSaved: '保存済み',
+    favoriteSaveToFavorites: 'お気に入りに追加',
+
+    // ── Support Modal ────────────────────────────────────────────────────
+    supportModalSubtitle: 'これらのツールは無料です。時間の節約に役立った場合は、こちらの方法でご支援いただけます。',
+    close: '閉じる',
+    starOnGithub: 'GitHub でスターを付ける',
+    alreadyPaidRemoveAds: 'すでに支払い済みですか？広告を削除',
+
+    // ── Ad Blocker Banner ────────────────────────────────────────────────
+    adBlockerText: '広告ブロッカーをご利用のようですね — 問題ありません。これらのツールが役立つ場合は',
+    adBlockerLinkText: 'UtilityHub のサポート',
+    adBlockerSuffix: 'をご検討ください。',
+    dismissAdBlockerNotice: '広告ブロッカーの通知を閉じる',
+
+    // ── Ad Banner ───────────────────────────────────────────────────────
+    advertisement: '広告',
+
+    // ── Tool Page (placeholder) ──────────────────────────────────────────
+    toolComingSoon: 'このツールは近日公開予定です。',
+    toolUnderConstructionMsg: '{value} のインターフェースは準備中です。',
+    backToAllTools: '← すべてのツールに戻る',
+    otherToolsLabel: 'その他の',
+
+    // ── Word Counter ────────────────────────────────────────────────
+    wcChars: '文字数',
+    wcCharsNoSpaces: '文字数（スペース除く）',
+    wcWords: '単語数',
+    wcUniqueWords: 'ユニーク単語数',
+    wcSentences: '文数',
+    wcParagraphs: '段落数',
+    wcLines: '行数',
+    wcReadingTime: '読み時間',
+
+    // ── Countdown Timer ─────────────────────────────────────────────
+    timerEnterTime: '分数を入力してください',
+    timerStart: 'スタート',
+    timerPause: '一時停止',
+    timerResume: '再開',
+    timerStop: '停止',
+    timerRestart: '再スタート',
+    timerDone: '時間切れ！',
+    timerPaused: '一時停止中',
+
+    // ── Date Calculator ─────────────────────────────────────────────
+    dateStart: '開始日',
+    dateEnd: '終了日',
+    dateDays: '日',
+    dateWeeks: '週',
+    dateMonths: '月',
+    dateYears: '年',
+    dateCopyDays: '日数をコピー',
+
+    // ── Text Compare ────────────────────────────────────────────────
+    compareOriginal: '元のテキスト',
+    compareModified: '変更後',
+    compareIdentical: 'テキストは同一です',
+    compareAdded: '追加',
+    compareRemoved: '削除',
+    compareCaseChanges: '大文字小文字の変更',
+    compareUnchanged: '変更なし',
+    compareEmpty: '比較するには両方のパネルにテキストを入力してください。',
+
+    // ── Regex Tester ────────────────────────────────────────────────
+    regexTestString: 'テスト文字列',
+    regexPreview: 'プレビュー',
+    regexMatches: 'マッチ',
+    regexInvalidPattern: '無効なパターン',
+    regexNoMatches: 'マッチが見つかりませんでした。',
+    regexEnterPattern: '上にパターンを入力してください',
+
+    // ── Word Frequency ──────────────────────────────────────────────
+    freqExcludeStop: 'ストップワードを除外',
+    freqCaseSensitive: '大文字小文字を区別',
+    freqNoWords: '単語が見つかりませんでした。',
+    freqWord: '単語',
+    freqFrequency: '頻度',
+
+    // ── Lorem Ipsum ─────────────────────────────────────────────────
+    loremParagraphs: '段落',
+    loremSentences: '文',
+    loremWords: '単語',
+    loremOutput: '出力',
+    loremGenerated: '生成されたテキストがここに表示されます…',
+
+    // ── Random Number ───────────────────────────────────────────────
+    randomMin: '最小値',
+    randomMax: '最大値',
+    randomClickGenerate: '生成をクリックして数字を取得',
+    randomInteger: '整数',
+    randomDecimal: '小数（2桁）',
+
+    // ── Temperature ─────────────────────────────────────────────────
+    tempFahrenheit: 'ファーレンハイト',
+    tempCelsius: '摂氏',
+    tempKelvin: 'ケルビン',
+
+    // ── Unix Timestamp ──────────────────────────────────────────────
+    tsEpochToDate: 'Epoch から日付',
+    tsDateToEpoch: '日付から Epoch',
+    tsCurrentTimestamp: '現在のタイムスタンプ',
+    tsUTC: 'UTC',
+    tsLocal: 'ローカル',
+    tsSeconds: '秒',
+    tsMilliseconds: 'ミリ秒',
+    tsCopyUTC: 'UTC をコピー',
+    tsCopyLocal: 'ローカルをコピー',
+    tsCopySeconds: '秒をコピー',
+    tsCopyMilliseconds: 'ミリ秒をコピー',
+
+    // ── Timezone Converter ──────────────────────────────────────────
+    tzDateAndTime: '日時',
+    tzFrom: '変換元タイムゾーン',
+    tzTo: '変換先タイムゾーン',
+    tzCopyResult: '結果をコピー',
+
+    // ── Sort Words ──────────────────────────────────────────────────
+    sortAscending: 'A → Z',
+    sortDescending: 'Z → A',
+    sortShortestFirst: '短い順',
+    sortLongestFirst: '長い順',
+    sortWords: '単語',
+    sortSorted: '並び替え済み',
+    sortCaseSensitive: '大文字小文字を区別',
+
+    // ── Reverse Text ────────────────────────────────────────────────
+    reverseCharacters: '文字を逆順にする',
+    reverseWordOrder: '単語順を逆にする',
+    reverseEachWord: '各単語内のテキストを逆にする',
+    reverseReversed: '反転済み',
+    reverseEachWordLabel: '各単語を反転',
+
+    // ── Add Punctuation ─────────────────────────────────────────────
+    punctPunctuation: '句読点',
+    punctAddMissing: 'ない場合に追加',
+    punctAlwaysAppend: '常に追加',
+    punctReplace: '既存を置換',
+    punctWithPunctuation: '句読点付き',
+
+    // ── Inline / Column Converter ───────────────────────────────────
+    iccColumnToInline: '列 → インライン',
+    iccInlineToColumn: 'インライン → 列',
+    iccColumnPerLine: '列（1行に1つ）',
+    iccInlineSeparated: 'インライン（区切り）',
+
+    // ── JSON Formatter ──────────────────────────────────────────────
+    jsonInput: 'JSON 入力',
+    jsonOutput: 'JSON 出力',
+
+    // ── Statistics ──────────────────────────────────────────────────
+    statsCount: '数量',
+    statsSum: '合計',
+    statsMean: '平均',
+    statsMedian: '中央値',
+    statsMode: '最頻値',
+    statsMin: '最小値',
+    statsMax: '最大値',
+    statsRange: '範囲',
+    statsVariance: '分散',
+    statsStdDev: '標準偏差',
+
+    // ── Unit Converter ──────────────────────────────────────────────
+    unitMeasurement: '測定単位',
+    unitFrom: 'から',
+    unitTo: 'へ',
+    unitEnterValue: '値を入力してください',
+
+    // ── Array Formatter ─────────────────────────────────────────────
+    quoteStyle: '引用符スタイル',
+    arrayItems: '項目（1行に1つ）',
+
+    // ── Number Sorter ───────────────────────────────────────────────
+    order: '順序',
+    nsSmallestFirst: '小さい順',
+    nsLargestFirst: '大きい順',
+    nsRemoveDuplicates: '重複を削除',
+    nsNumbers: '数字',
+
+    // ── Remove Whitespace / Remove Character ────────────────────────
+    remove: '削除',
+    cleaned: 'クリア済み',
+    wsAllWhitespace: 'すべての空白',
+    wsSpacesOnly: 'スペースのみ',
+    wsTabsOnly: 'タブのみ',
+    wsExtraSpaces: '余分なスペース（折りたたむ）',
+
+    // ── Text Style Tools ────────────────────────────────────────────
+    style: 'スタイル',
+    styleBold: '太字',
+    styleItalic: '斜体',
+    styleStrikethrough: '取り消し線',
+    outputBold: '太字出力',
+    outputItalic: '斜体出力',
+    outputStrikethrough: '取り消し線出力',
+
+    // ── Code Formatters ─────────────────────────────────────────────
+    xmlInput: 'XML入力',
+    xmlOutput: 'XML出力',
+    cssInput: 'CSS入力',
+    cssOutput: 'CSS出力',
+    jsInput: 'JavaScript入力',
+    jsOutput: 'JavaScript出力',
+    tsInput: 'TypeScript入力',
+    tsOutput: 'TypeScript出力',
+    htmlInput: 'HTML入力',
+    htmlOutput: 'HTML出力',
+
+    // ── Markdown Preview ────────────────────────────────────────────
+    mdRightPanel: '右パネル',
+    mdMarkdownInput: 'Markdown入力',
+    mdHtmlPreview: 'HTMLプレビュー',
+    mdFormattedMarkdown: 'フォーマット済みMarkdown',
+
+    // ── Misc Tools ──────────────────────────────────────────────────
+    copyLink: 'リンクをコピー',
+    plainText: 'プレーンテキスト',
+    jsonString: 'JSON文字列',
+    mdtDelimitedData: '区切りデータ',
+    mdtMarkdownTable: 'Markdownテーブル',
+    rlbReplaceWith: '改行を置き換える',
+    rlbMultiLine: '複数行入力',
+    rlbSingleLine: '1行',
+    rtfFormattedInput: 'フォーマット済み入力',
+
+    // ── Tool Descriptions ────────────────────────────────────────────
+    'desc:add-punctuation': '各行の末尾にピリオド、感嘆符、その他の句読点を追加します。',
+    'desc:bold-text': 'Unicode 文字を使って太字、斜体、取り消し線を適用 — Unicode に対応した場所ならどこにでも貼り付け可能です。',
+    'desc:case-converter': 'テキストを大文字、小文字、タイトルケース、キャメルケースなどに変換します。',
+    'desc:inline-column-converter': '1行1項目の列形式と区切り文字で結合したインライン形式を相互変換します。改行の削除も可能です。',
+    'desc:markdown-table': 'CSV またはタブ区切りデータを整形された Markdown テーブルに変換します。',
+    'desc:lorem-ipsum': '単語数、文数、段落数を指定してダミーの Lorem Ipsum テキストを生成します。',
+    'desc:markdown-preview': 'Markdown を記述してレンダリングされた HTML をプレビューするか、Prettier で整形します。',
+    'desc:remove-all-whitespace': 'テキストからすべてのスペース、タブ、改行を削除します。',
+    'desc:remove-character': 'テキストから特定の文字や文字セットを削除します。',
+    'desc:remove-text-formatting': 'Markdown、HTML タグ、その他の書式を取り除いてプレーンテキストにします。',
+    'desc:remove-trailing-whitespace': '各行末尾の余分なスペースとタブを取り除きます。',
+    'desc:reverse-text': '文字単位でテキストを逆順にする、または単語の順序を逆にします — モードを選択できます。',
+    'desc:sort-words': '単語をアルファベット順、長さ順に並べ替える、またはランダムにシャッフルします。',
+    'desc:text-compare': '2つのテキストを並べて比較し、行単位・単語単位で差分をハイライト表示します。',
+    'desc:word-counter': 'テキストの単語数、文字数、文の数、段落数をカウントします。',
+    'desc:word-frequency': '各単語の出現回数を数え、頻度順にランク付けします。',
+    'desc:base-converter': '2進数、8進数、10進数、16進数、テキストの間で値を変換します。',
+    'desc:engineering-cheat-sheet': 'SI接頭辞、コンデンサ、周波数などのクイックリファレンス表です。',
+    'desc:fahrenheit-celsius': '華氏、摂氏、ケルビンの間で温度を変換します。',
+    'desc:graph-calculator': 'x の関数をプロットし、結果、根（x切片）、y切片を確認します。',
+    'desc:number-sorter': '数値を昇順または降順に並べ替え、必要に応じて重複を削除します。',
+    'desc:pi-attenuator': '任意の dB 減衰量とインピーダンスに対する Pi（π）型アッテネータの抵抗値を計算します。',
+    'desc:percentage-calc': 'パーセンテージ、パーセンテージの変化、比率を計算します。',
+    'desc:random-number': 'カスタム範囲内でランダムな整数または小数を生成します。',
+    'desc:scientific-calc': '三角関数と対数演算に対応したフル機能の関数電卓です。',
+    'desc:statistics-calc': '平均値、中央値、最頻値、標準偏差などを計算します。',
+    'desc:unit-converter': '長さ、質量、温度、体積、面積などの単位を変換します。',
+    'desc:color-picker': '画面上の任意の色を選択し、HEX、RGB、HSL の値を即座に取得します。',
+    'desc:color-converter': 'HEX、RGB、HSL、HSV、CMYK の間で色を変換します。',
+    'desc:contrast-checker': 'WCAG アクセシビリティ基準に基づいてテキストと背景色のコントラストをチェックします。',
+    'desc:gradient-generator': '色をブレンドして CSS グラデーションを作成し、等間隔のカラーパレットをコピーします。',
+    'desc:ico-creator': '任意の画像をファビコン用のマルチサイズ .ico ファイルに変換します。',
+    'desc:image-converter': 'PNG、JPG、WEBP の間で画像を変換します — 品質と出力サイズのオプション付きです。',
+    'desc:image-cropper': 'ブラウザ内だけで画像をカスタム領域にトリミングします。',
+    'desc:image-resizer': 'アスペクト比を保持または無視しながら、画像を正確なピクセルサイズにリサイズします。',
+    'desc:png-minifier': 'ブラウザから離れることなく、スケーリングまたは再エンコードにより PNG のファイルサイズを削減します。',
+    'desc:remove-background': '単純な単色背景（白、黒、または自動）を削除し、透過 PNG として書き出します。',
+    'desc:video-to-gif': 'MP4 または WebM のクリップをブラウザ内でアニメーション GIF に変換します。',
+    'desc:array-formatter': '項目のリストを JavaScript、JSON、Python、または SQL の配列リテラルに整形します。',
+    'desc:base64': 'テキストやファイルを Base64 にエンコードし、Base64 文字列をデコードします。',
+    'desc:css-minifier': 'Prettier を使って CSS コードを整形または圧縮します。',
+    'desc:html-formatter': '整った一貫性のあるインデントで HTML を整形または圧縮します。',
+    'desc:js-formatter': 'Prettier を使って JavaScript コードを整形または圧縮します。',
+    'desc:json-formatter': 'JSON データを整形、検証、圧縮します。',
+    'desc:json-text-formatter': 'プレーンテキストを JSON 文字列としてエンコードし、JSON 文字列をテキストにデコードします。',
+    'desc:typescript-formatter': 'Prettier を使って TypeScript コードを整形または圧縮します。',
+    'desc:xml-formatter': '整った一貫性のあるインデントで XML を整形または圧縮します。',
+    'desc:regex-tester': '正規表現をインタラクティブにテスト・デバッグし、マッチ箇所をリアルタイムでハイライト表示します。',
+    'desc:url-encoder': 'URL とクエリ文字列コンポーネントをエンコード・デコードします。',
+    'desc:uuid-generator': 'RFC 準拠の UUID（v4）を即座に生成します。',
+    'desc:countdown-timer': '任意の時間で全画面カウントダウンタイマーを設定します。',
+    'desc:date-calculator': '2つの日付間の日数を計算します。',
+    'desc:task-list': '簡単な ToDo リストを作成し、完了したタスクにチェックを付けます。ブラウザに保存されます。',
+    'desc:timezone-converter': '任意の2つのタイムゾーン間で日付と時刻を変換します。',
+    'desc:unix-timestamp': 'Unix エポックタイムスタンプを人が読める日付に変換し、その逆も行います。',
+
+    // ── Tool Titles ───────────────────────────────────────────────────
+    'title:add-punctuation': '句読点を追加',
+    'title:bold-text': 'テキストスタイルジェネレーター',
+    'title:case-converter': '大文字小文字変換',
+    'title:inline-column-converter': 'インライン / 列 コンバーター',
+    'title:markdown-table': 'Markdown テーブルジェネレーター',
+    'title:lorem-ipsum': 'Lorem Ipsum ジェネレーター',
+    'title:markdown-preview': 'Markdown プレビュー',
+    'title:remove-all-whitespace': 'すべての空白を削除',
+    'title:remove-character': '文字を削除',
+    'title:remove-text-formatting': 'テキスト書式を削除',
+    'title:remove-trailing-whitespace': '末尾の空白を削除',
+    'title:reverse-text': 'テキストを反転',
+    'title:sort-words': '単語を並べ替え',
+    'title:text-compare': 'テキスト比較',
+    'title:word-counter': '文字数カウント',
+    'title:word-frequency': '単語頻度アナライザー',
+    'title:base-converter': '進数変換',
+    'title:engineering-cheat-sheet': '工学早見表',
+    'title:fahrenheit-celsius': '華氏から摂氏',
+    'title:graph-calculator': 'グラフ電卓',
+    'title:number-sorter': '数値ソート',
+    'title:pi-attenuator': 'Pi アッテネータ計算機',
+    'title:percentage-calc': 'パーセント計算機',
+    'title:random-number': '乱数ジェネレーター',
+    'title:scientific-calc': '関数電卓',
+    'title:statistics-calc': '統計計算機',
+    'title:unit-converter': '単位変換',
+    'title:color-picker': 'カラーピッカー',
+    'title:color-converter': 'カラーコンバーター',
+    'title:contrast-checker': 'コントラストチェッカー',
+    'title:gradient-generator': 'グラデーション・パレットジェネレーター',
+    'title:ico-creator': 'ICO 作成ツール',
+    'title:image-converter': '画像コンバーター',
+    'title:image-cropper': '画像トリミング',
+    'title:image-resizer': '画像リサイズ',
+    'title:png-minifier': 'PNG 圧縮ツール',
+    'title:remove-background': '背景除去',
+    'title:video-to-gif': '動画から GIF へ変換',
+    'title:array-formatter': '配列フォーマッター',
+    'title:base64': 'Base64 エンコーダー / デコーダー',
+    'title:css-minifier': 'CSS フォーマッター / 圧縮ツール',
+    'title:html-formatter': 'HTML フォーマッター / 圧縮ツール',
+    'title:js-formatter': 'JavaScript フォーマッター / 圧縮ツール',
+    'title:json-formatter': 'JSON フォーマッター / 圧縮ツール',
+    'title:json-text-formatter': 'JSON テキストフォーマッター',
+    'title:typescript-formatter': 'TypeScript フォーマッター / 圧縮ツール',
+    'title:xml-formatter': 'XML フォーマッター / 圧縮ツール',
+    'title:regex-tester': '正規表現テスター',
+    'title:url-encoder': 'URL エンコーダー / デコーダー',
+    'title:uuid-generator': 'UUID ジェネレーター',
+    'title:countdown-timer': 'カウントダウンタイマー',
+    'title:date-calculator': '日付計算機',
+    'title:task-list': 'タスクリスト',
+    'title:timezone-converter': 'タイムゾーンコンバーター',
+    'title:unix-timestamp': 'Unix タイムスタンプ変換',
   },
 };
 
 export function getTranslation(language, key) {
   return translations[language]?.[key] ?? translations.en[key] ?? key;
+}
+
+/** Localized tool description, falling back to the registry's English text when untranslated. */
+export function getPageDescription(pageId, language, fallback) {
+  return translations[language]?.[`desc:${pageId}`] ?? fallback;
+}
+
+/** Localized tool title, falling back to the registry's English text when untranslated. */
+export function getPageTitle(pageId, language, fallback) {
+  return translations[language]?.[`title:${pageId}`] ?? fallback;
 }

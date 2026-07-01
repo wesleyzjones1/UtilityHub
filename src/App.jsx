@@ -5,11 +5,11 @@ import { LanguageProvider } from './context/LanguageContext';
 import { AdPreferenceProvider } from './context/AdPreferenceContext';
 import { SupportProvider } from './context/SupportContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { CountdownProvider } from './context/CountdownContext';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
 import ToolPage from './pages/ToolPage/ToolPage';
-import About from './pages/About/About';
 import NotFound from './pages/NotFound/NotFound';
 import { PAGES } from './registry/pages';
 import { TOOL_COMPONENTS } from './registry/toolComponents';
@@ -21,7 +21,6 @@ function buildRouter() {
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: '/about', element: <About /> },
         { path: '/tools/category/:categoryId', element: <CategoryPage /> },
         ...PAGES.map(page => {
           const Component = TOOL_COMPONENTS[page.id] ?? ToolPage;
@@ -46,7 +45,9 @@ export default function App() {
         <AdPreferenceProvider>
           <FavoritesProvider>
             <SupportProvider>
-              <RouterProvider router={router} />
+              <CountdownProvider>
+                <RouterProvider router={router} />
+              </CountdownProvider>
             </SupportProvider>
           </FavoritesProvider>
         </AdPreferenceProvider>

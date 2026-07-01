@@ -4,12 +4,6 @@ import Button from '../../../components/ui/Button/Button';
 import { loadImage, renderToCanvas, canvasToBlob, downloadBlob, replaceExt, formatBytes } from '../../../utils/imageUtils';
 import styles from './PngMinifier.module.css';
 
-const HOW_TO_USE = [
-  'Drop a PNG image or click to browse.',
-  'Adjust the scale slider to reduce dimensions — smaller dimensions mean smaller files.',
-  'Click Download to save the optimized PNG.',
-];
-
 export default function PngMinifier({ page }) {
   const [file, setFile] = useState(null);
   const [scale, setScale] = useState(100);
@@ -72,7 +66,6 @@ export default function PngMinifier({ page }) {
   return (
     <ImageDropTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       file={file}
       onFile={handleFile}
       onClear={handleClear}

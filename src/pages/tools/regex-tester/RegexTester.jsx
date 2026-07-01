@@ -1,14 +1,8 @@
 import { useState, useMemo } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './RegexTester.module.css';
-
-const HOW_TO_USE = [
-  'Enter a regular expression pattern in the Pattern field.',
-  'Toggle flags (g, i, m) to control global, case-insensitive, and multiline matching.',
-  'Type or paste your test string below the pattern.',
-  'Matches are highlighted and listed with their positions.',
-];
 
 const DEFAULT_TEST = 'The quick brown fox jumps over the lazy dog.';
 const MAX_MATCHES = 50;
@@ -73,6 +67,7 @@ export default function RegexTester({ page }) {
   const [pattern, setPattern] = useState('');
   const [flags, setFlags] = useState({ g: true, i: false, m: false });
   const [testString, setTestString] = useState(DEFAULT_TEST);
+  const { t } = useLanguage();
 
   const { matches, error } = useMemo(
     () => getMatches(pattern, flags, testString),
@@ -96,17 +91,17 @@ export default function RegexTester({ page }) {
   if (!pattern) {
     statusLabel = null;
   } else if (error) {
-    statusLabel = <span className={styles.statusError}>Invalid pattern</span>;
+    statusLabel = <span className={styles.statusError}>{t('regexInvalidPattern')}</span>;
   } else {
     statusLabel = (
       <span className={matches.length > 0 ? styles.statusMatch : styles.statusNone}>
-        {matches.length > 0 ? `${matches.length} match${matches.length !== 1 ? 'es' : ''}` : 'No matches'}
+        {matches.length > 0 ? `${matches.length} match${matches.length !== 1 ? 'es' : ''}` : t('regexNoMatches').replace('.', '')}
       </span>
     );
   }
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         {/* Pattern row */}
         <div className={styles.patternRow}>
@@ -141,7 +136,7 @@ export default function RegexTester({ page }) {
 
         {/* Test string */}
         <div className={styles.section}>
-          <label className={styles.sectionLabel} htmlFor="regex-test-string">Test string</label>
+          <label className={styles.sectionLabel} htmlFor="regex-test-string">{t('regexTestString')}</label>
           <textarea
             id="regex-test-string"
             aria-label="Test string"
@@ -156,7 +151,7 @@ export default function RegexTester({ page }) {
         {/* Highlighted preview */}
         {highlighted && pattern && !error && (
           <div className={styles.section}>
-            <span className={styles.sectionLabel}>Preview</span>
+            <span className={styles.sectionLabel}>{t('regexPreview')}</span>
             <div className={styles.preview}>
               {highlighted.map((part, i) =>
                 part.highlight ? (
@@ -181,18 +176,18 @@ export default function RegexTester({ page }) {
         {/* Results */}
         <div className={styles.section}>
           <div className={styles.resultsHeader}>
-            <span className={styles.sectionLabel}>Matches</span>
+            <span className={styles.sectionLabel}>{t('regexMatches')}</span>
             {matchesText && <CopyButton value={matchesText} size="sm" />}
           </div>
           <div className={styles.results}>
             {!pattern && (
-              <p className={styles.placeholder}>Enter a pattern above</p>
+              <p className={styles.placeholder}>{t('regexEnterPattern')}</p>
             )}
             {pattern && error && (
-              <p className={styles.errorMsg}>Invalid pattern: {error}</p>
+              <p className={styles.errorMsg}>{t('regexInvalidPattern')}: {error}</p>
             )}
             {pattern && !error && matches.length === 0 && (
-              <p className={styles.placeholder}>No matches found.</p>
+              <p className={styles.placeholder}>{t('regexNoMatches')}</p>
             )}
             {pattern && !error && matches.length > 0 && (
               <ol className={styles.matchList}>

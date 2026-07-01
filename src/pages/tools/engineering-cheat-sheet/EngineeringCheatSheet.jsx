@@ -73,14 +73,9 @@ const SHORTHANDS = [
   { sym: 'MCU',  name: 'Microcontroller Unit', desc: 'Integrated microprocessor system' },
 ];
 
-const HOW_TO_USE = [
-  'Use this page as a quick reference for common engineering values.',
-  'All tables are read-only — scroll to find the section you need.',
-];
-
 export default function EngineeringCheatSheet({ page }) {
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <Section title="SI Prefixes">
         <table className={styles.table}>
           <thead>

@@ -4,9 +4,10 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import CategoryNav from './CategoryNav';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import { LanguageProvider } from '../../context/LanguageContext';
 
 function Wrapped() {
-  return <MemoryRouter><CategoryNav /></MemoryRouter>;
+  return <MemoryRouter><LanguageProvider><CategoryNav /></LanguageProvider></MemoryRouter>;
 }
 
 const firstCatId = Object.keys(CATEGORIES)[0];

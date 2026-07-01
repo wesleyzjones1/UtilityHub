@@ -4,12 +4,6 @@ import CopyButton from '../../../components/ui/CopyButton/CopyButton';
 import { hexToRgb, rgbToHex, hexToHsl } from '../../../utils/colorUtils';
 import styles from './GradientGenerator.module.css';
 
-const HOW_TO_USE = [
-  'Pick a start and end color — add more stops for multi-color blends.',
-  'Choose a gradient type and, for linear, the angle.',
-  'Copy the CSS value, or copy any of the evenly-spaced palette colors below.',
-];
-
 function buildGradient(type, angle, stops) {
   const colorStops = stops.map(s => `${s.color} ${s.position}%`).join(', ');
   if (type === 'radial') return `radial-gradient(circle, ${colorStops})`;
@@ -163,7 +157,7 @@ export default function GradientGenerator({ page }) {
   }
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         <div className={styles.controls}>
           <div className={styles.field}>

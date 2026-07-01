@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useState } from 'react';
-import { getTranslation } from '../i18n/translations';
+import { getTranslation, getPageDescription, getPageTitle } from '../i18n/translations';
 
 export const LANGUAGES = [
   { code: 'en', label: 'English',  short: 'EN' },
@@ -24,10 +24,16 @@ export function LanguageProvider({ children }) {
 
   const t = useCallback((key) => getTranslation(language, key), [language]);
 
+  /** Localized description for a registry page, falling back to its English text. */
+  const td = useCallback((page) => getPageDescription(page.id, language, page.description), [language]);
+
+  /** Localized title for a registry page, falling back to its English text. */
+  const tt = useCallback((page) => getPageTitle(page.id, language, page.title), [language]);
+
   const currentLanguage = LANGUAGES.find(l => l.code === language) ?? LANGUAGES[0];
 
   return (
-    <LanguageContext.Provider value={{ language, currentLanguage, changeLanguage, languages: LANGUAGES, t }}>
+    <LanguageContext.Provider value={{ language, currentLanguage, changeLanguage, languages: LANGUAGES, t, td, tt }}>
       {children}
     </LanguageContext.Provider>
   );

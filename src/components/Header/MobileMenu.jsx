@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CATEGORIES, PAGE_BY_CATEGORY } from '../../registry/pages';
+import { useLanguage } from '../../context/LanguageContext';
 import SearchBar from '../SearchBar/SearchBar';
 import styles from './MobileMenu.module.css';
 
@@ -21,16 +22,17 @@ function ChevronIcon({ open }) {
 
 export default function MobileMenu({ id, open, onClose }) {
   const [openCat, setOpenCat] = useState(null);
+  const { t, tt } = useLanguage();
 
   if (!open) return null;
 
   return (
-    <div id={id} className={styles.overlay} aria-modal="true" role="dialog" aria-label="Navigation menu">
+    <div id={id} className={styles.overlay} aria-modal="true" role="dialog" aria-label={t('navigationMenuLabel')}>
       <div className={styles.searchSection}>
         <SearchBar onClose={onClose} />
       </div>
 
-      <nav className={styles.nav} aria-label="Category navigation">
+      <nav className={styles.nav} aria-label={t('categoryNavigationLabel')}>
         {Object.values(CATEGORIES).map(cat => {
           const isOpen = openCat === cat.id;
           const pages = PAGE_BY_CATEGORY[cat.id] ?? [];
@@ -41,7 +43,7 @@ export default function MobileMenu({ id, open, onClose }) {
                 onClick={() => setOpenCat(isOpen ? null : cat.id)}
                 aria-expanded={isOpen}
               >
-                <span>{cat.label}</span>
+                <span>{t(`cat${cat.id.charAt(0).toUpperCase() + cat.id.slice(1)}`) || cat.label}</span>
                 <ChevronIcon open={isOpen} />
               </button>
 
@@ -50,7 +52,7 @@ export default function MobileMenu({ id, open, onClose }) {
                   {pages.map(page => (
                     <li key={page.id}>
                       <Link to={page.path} className={styles.toolLink} onClick={onClose}>
-                        {page.title}
+                        {tt(page)}
                       </Link>
                     </li>
                   ))}

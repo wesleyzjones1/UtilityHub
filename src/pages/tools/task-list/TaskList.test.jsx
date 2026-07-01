@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouter } from '../../../test-utils';
 import TaskList from './TaskList';
@@ -68,5 +68,22 @@ describe('TaskList', () => {
     renderWithRouter(<TaskList page={PAGE} />);
     await addTask(user, 'Buy milk');
     expect(store['uh-task-list']).toContain('Buy milk');
+  });
+
+  it('survives a full unmount and remount (e.g. navigating away and back, or reloading)', async () => {
+    const user = userEvent.setup();
+    const { unmount } = renderWithRouter(<TaskList page={PAGE} />);
+    await addTask(user, 'Buy milk');
+    await user.click(screen.getByRole('button', { name: 'Buy milk' }));
+
+    // Tear down the component entirely, without touching the backing store —
+    // this is what actually proves persistence, not just that setItem fired.
+    unmount();
+    cleanup();
+
+    renderWithRouter(<TaskList page={PAGE} />);
+    expect(screen.getByText('Buy milk')).toBeDefined();
+    expect(screen.getByText('1 of 1 done')).toBeDefined();
+    expect(screen.getByRole('button', { name: 'Buy milk' }).getAttribute('aria-pressed')).toBe('true');
   });
 });

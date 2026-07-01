@@ -71,8 +71,4 @@ describe('DualPanelTemplate', () => {
     expect(screen.getByRole('textbox', { name: 'Pretty JSON' })).toBeInTheDocument();
   });
 
-  it('renders how-to-use steps', () => {
-    renderTemplate({ howToUse: ['Paste JSON', 'Click format'] });
-    expect(screen.getByText('Paste JSON')).toBeInTheDocument();
-  });
 });

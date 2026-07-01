@@ -1,24 +1,22 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
+import { useLanguage } from '../../../context/LanguageContext';
 import { reverseText, reverseWords, reverseTextInEachWord } from '../../../utils/textTransforms';
 
-const MODE_OPTIONS = [
-  { value: 'characters', label: 'Reverse characters' },
-  { value: 'words',      label: 'Reverse word order' },
-  { value: 'each-word',  label: 'Reverse text in each word' },
-];
-
-const HOW_TO_USE = [
-  'Paste or type your text in the input panel.',
-  'Pick a mode: reverse every character, or reverse the order of words.',
-  'The reversed text appears instantly in the output panel.',
-  'Click "Copy" to copy the output.',
-];
+function useModeOptions(t) {
+  return [
+    { value: 'characters', label: t('reverseCharacters') },
+    { value: 'words',      label: t('reverseWordOrder') },
+    { value: 'each-word',  label: t('reverseEachWord') },
+  ];
+}
 
 export default function ReverseText({ page }) {
   const [input, setInput] = useState('');
   const [mode, setMode] = useState('characters');
+  const { t } = useLanguage();
+  const modeOptions = useModeOptions(t);
 
   const output = input
     ? mode === 'words'     ? reverseWords(input)
@@ -35,11 +33,10 @@ export default function ReverseText({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <ButtonGroup
-          label="Mode"
-          options={MODE_OPTIONS}
+          label={t('mode')}
+          options={modeOptions}
           value={mode}
           onChange={setMode}
         />
@@ -47,8 +44,8 @@ export default function ReverseText({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Original"
-      outputLabel="Reversed"
+      inputLabel={t('compareOriginal')}
+      outputLabel={t('reverseReversed')}
       inputMono
       outputMono
       inputPlaceholder={EXAMPLE}

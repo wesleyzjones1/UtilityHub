@@ -46,3 +46,234 @@
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
+
+/* ── Image tools (in-use snapshot) ── */
+.imgtool {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--color-surface);
+}
+
+.formatRow {
+  display: flex;
+  gap: 6px;
+}
+
+.pill {
+  padding: 3px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+}
+
+.pillActive {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.sample {
+  width: 62%;
+  max-width: 220px;
+}
+
+.sampleSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.arrow {
+  color: var(--color-text-muted);
+}
+
+.saved {
+  color: var(--color-success, #16a34a);
+}
+
+.strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* ── ICO creator: source image → icon sizes ── */
+.sizeRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.sizeChip {
+  display: inline-block;
+  border-radius: 3px;
+  background: var(--color-primary-subtle, rgba(59, 130, 246, 0.15));
+  border: 1px solid var(--color-primary, #3b82f6);
+}
+
+/* ── Image cropper: selection box over the image ── */
+.cropWrap {
+  position: relative;
+  width: 62%;
+  max-width: 220px;
+}
+
+.cropImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.cropBox {
+  position: absolute;
+  top: 18%;
+  left: 22%;
+  right: 20%;
+  bottom: 20%;
+  border: 2px dashed #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 0 999px rgba(0, 0, 0, 0.28);
+  border-radius: 2px;
+}
+
+.cropHandle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  border: 1px solid var(--color-primary, #3b82f6);
+  border-radius: 50%;
+}
+
+.chTL { top: -4px; left: -4px; }
+.chTR { top: -4px; right: -4px; }
+.chBL { bottom: -4px; left: -4px; }
+.chBR { bottom: -4px; right: -4px; }
+
+/* ── Image resizer: dimension fields ── */
+.dimRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dimField {
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background: var(--color-surface-2, #f3f4f6);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.dimX {
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+/* ── PNG minifier: compression bar ── */
+.barTrack {
+  width: 62%;
+  max-width: 220px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-surface-2, #f3f4f6);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.barFill {
+  display: block;
+  width: 38%;
+  height: 100%;
+  background: var(--color-success, #16a34a);
+}
+
+/* ── Before / after pairs (remove-bg, video-to-gif) ── */
+.baRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.baCell,
+.videoFrame,
+.gifCell {
+  position: relative;
+  width: 92px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  display: flex;
+}
+
+.baImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Checkerboard = transparency */
+.checker {
+  background-image:
+    linear-gradient(45deg, #c7ccd1 25%, transparent 25%),
+    linear-gradient(-45deg, #c7ccd1 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #c7ccd1 75%),
+    linear-gradient(-45deg, transparent 75%, #c7ccd1 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  background-color: #eef0f2;
+}
+
+.checker .baImg {
+  background: transparent;
+}
+
+/* Video frame play button */
+.playTri {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 13px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.92);
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+}
+
+.gifTag {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--color-primary, #3b82f6);
+  border-radius: 4px;
+}

@@ -64,9 +64,4 @@ describe('ImageToTextTemplate', () => {
     expect(screen.getByRole('button', { name: 'Download' })).toBeInTheDocument();
   });
 
-  it('renders how-to-use steps', () => {
-    renderTemplate({ howToUse: ['Drop an image', 'Copy Base64 string'] });
-    expect(screen.getByText('Drop an image')).toBeInTheDocument();
-    expect(screen.getByText('Copy Base64 string')).toBeInTheDocument();
-  });
 });

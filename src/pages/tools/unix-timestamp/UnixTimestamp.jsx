@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './UnixTimestamp.module.css';
-
-const HOW_TO_USE = [
-  'Enter a Unix timestamp (seconds since 1970-01-01 UTC) to see the human-readable date.',
-  'Or pick a date and time to get the corresponding Unix timestamp.',
-  'Click "Current timestamp" to load the current epoch second.',
-];
 
 function toLocalDatetimeValue(date) {
   const pad = n => String(n).padStart(2, '0');
@@ -21,6 +16,7 @@ function nowEpoch() {
 export default function UnixTimestamp({ page }) {
   const [epoch, setEpoch] = useState(String(nowEpoch()));
   const [datetime, setDatetime] = useState(toLocalDatetimeValue(new Date()));
+  const { t } = useLanguage();
 
   const epochNum = parseInt(epoch, 10);
   const epochDate = !isNaN(epochNum) ? new Date(epochNum * 1000) : null;
@@ -36,10 +32,10 @@ export default function UnixTimestamp({ page }) {
   }
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Epoch to Date</h2>
+          <h2 className={styles.sectionTitle}>{t('tsEpochToDate')}</h2>
           <div className={styles.inputRow}>
             <input
               type="number"
@@ -54,45 +50,45 @@ export default function UnixTimestamp({ page }) {
               className={styles.nowBtn}
               onClick={handleCurrentTimestamp}
             >
-              Current timestamp
+              {t('tsCurrentTimestamp')}
             </button>
           </div>
           {epochDate && (
             <div className={styles.results}>
               <div className={styles.resultRow}>
-                <span className={styles.resultLabel}>UTC</span>
+                <span className={styles.resultLabel}>{t('tsUTC')}</span>
                 <span className={styles.resultValue}>{utcString}</span>
-                <CopyButton value={utcString} label="Copy UTC" />
+                <CopyButton value={utcString} label={t('tsCopyUTC')} />
               </div>
               <div className={styles.resultRow}>
-                <span className={styles.resultLabel}>Local</span>
+                <span className={styles.resultLabel}>{t('tsLocal')}</span>
                 <span className={styles.resultValue}>{localString}</span>
-                <CopyButton value={localString} label="Copy local" />
+                <CopyButton value={localString} label={t('tsCopyLocal')} />
               </div>
             </div>
           )}
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Date to Epoch</h2>
+          <h2 className={styles.sectionTitle}>{t('tsDateToEpoch')}</h2>
           <input
             type="datetime-local"
             className={styles.input}
             value={datetime}
             onChange={e => setDatetime(e.target.value)}
-            aria-label="Date and time"
+            aria-label={t('tzDateAndTime')}
           />
           {datetimeEpochSec !== null && (
             <div className={styles.results}>
               <div className={styles.resultRow}>
-                <span className={styles.resultLabel}>Seconds</span>
+                <span className={styles.resultLabel}>{t('tsSeconds')}</span>
                 <span className={styles.resultValue}>{datetimeEpochSec}</span>
-                <CopyButton value={String(datetimeEpochSec)} label="Copy seconds" />
+                <CopyButton value={String(datetimeEpochSec)} label={t('tsCopySeconds')} />
               </div>
               <div className={styles.resultRow}>
-                <span className={styles.resultLabel}>Milliseconds</span>
+                <span className={styles.resultLabel}>{t('tsMilliseconds')}</span>
                 <span className={styles.resultValue}>{datetimeEpochMs2}</span>
-                <CopyButton value={String(datetimeEpochMs2)} label="Copy milliseconds" />
+                <CopyButton value={String(datetimeEpochMs2)} label={t('tsCopyMilliseconds')} />
               </div>
             </div>
           )}

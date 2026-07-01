@@ -4,20 +4,24 @@ import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import { recordRecentTool } from '../../hooks/useRecentTools';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import { useIsPreview } from '../../context/PreviewContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { getRelatedPages } from '../../registry/pages';
 import styles from './PageShell.module.css';
 
 /**
  * Shared wrapper for every tool page.
- * Renders: title/description → children → how-to-use → related tools.
+ * Renders: title/description → children → related tools.
  *
  * In preview mode (navbar hover snapshot) only the interactive content is
- * rendered — no header, how-to, related tools, or side effects.
+ * rendered — no header, related tools, or side effects.
  */
-export default function PageShell({ page, children, howToUse = [] }) {
+export default function PageShell({ page, children }) {
   const isPreview = useIsPreview();
+  const { t, td, tt } = useLanguage();
+  const description = td(page);
+  const title = tt(page);
 
-  useDocumentMeta({ title: page.title, description: page.description, enabled: !isPreview });
+  useDocumentMeta({ title, description, enabled: !isPreview });
 
   const related = isPreview ? [] : getRelatedPages(page.id, 4);
 
@@ -36,10 +40,10 @@ export default function PageShell({ page, children, howToUse = [] }) {
       {/* ── Page header ── */}
       <header className={styles.header}>
         <div className={styles.titleRow}>
-          <h1 className={styles.title}>{page.title}</h1>
-          <FavoriteButton pageId={page.id} title={page.title} />
+          <h1 className={styles.title}>{title}</h1>
+          <FavoriteButton pageId={page.id} title={title} />
         </div>
-        <p className={styles.description}>{page.description}</p>
+        <p className={styles.description}>{description}</p>
       </header>
 
       {/* ── Tool interface ── */}
@@ -47,31 +51,16 @@ export default function PageShell({ page, children, howToUse = [] }) {
         {children}
       </div>
 
-      {/* ── How to use ── */}
-      {howToUse.length > 0 && (
-        <section className={styles.howTo} aria-labelledby="how-to-heading">
-          <h2 id="how-to-heading" className={styles.howToTitle}>How to use</h2>
-          <ol className={styles.howToList}>
-            {howToUse.map((step, i) => (
-              <li key={i} className={styles.howToStep}>
-                <span className={styles.howToNum} aria-hidden="true">{i + 1}</span>
-                <span>{step}</span>
-              </li>
-            ))}
-          </ol>
-        </section>
-      )}
-
       {/* ── Related tools ── */}
       {related.length > 0 && (
         <section className={styles.related} aria-labelledby="related-heading">
-          <h2 id="related-heading" className={styles.relatedTitle}>Related tools</h2>
+          <h2 id="related-heading" className={styles.relatedTitle}>{t('relatedTools')}</h2>
           <ul className={styles.relatedGrid}>
             {related.map(p => (
               <li key={p.id}>
                 <Link to={p.path} className={styles.relatedCard}>
-                  <span className={styles.relatedCardTitle}>{p.title}</span>
-                  <span className={styles.relatedCardDesc}>{p.description}</span>
+                  <span className={styles.relatedCardTitle}>{tt(p)}</span>
+                  <span className={styles.relatedCardDesc}>{td(p)}</span>
                 </Link>
               </li>
             ))}

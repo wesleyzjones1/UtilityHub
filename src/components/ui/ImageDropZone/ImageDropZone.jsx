@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './ImageDropZone.module.css';
 
 const DEFAULT_ACCEPT = 'image/png,image/jpeg,image/gif,image/webp,image/svg+xml';
@@ -9,8 +10,8 @@ export default function ImageDropZone({
   accept = DEFAULT_ACCEPT,
   maxSizeBytes = 10 * 1024 * 1024,
   file: controlledFile,
-  label = 'Drop an image here',
-  sublabel = 'or click to browse',
+  label,
+  sublabel,
 }) {
   const inputRef = useRef(null);
   const dragCount = useRef(0);
@@ -18,6 +19,9 @@ export default function ImageDropZone({
   const [internalFile, setInternalFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [error, setError] = useState(null);
+  const { t } = useLanguage();
+  const resolvedLabel = label ?? t('dropImage');
+  const resolvedSublabel = sublabel ?? t('dropImageSub');
 
   const activeFile = controlledFile ?? internalFile;
 
@@ -90,7 +94,7 @@ export default function ImageDropZone({
       onClick={() => !activeFile && inputRef.current?.click()}
       role="button"
       tabIndex={activeFile ? -1 : 0}
-      aria-label={activeFile ? `Selected file: ${activeFile.name}` : label}
+      aria-label={activeFile ? `Selected file: ${activeFile.name}` : resolvedLabel}
       onKeyDown={(e) => { if (!activeFile && (e.key === 'Enter' || e.key === ' ')) inputRef.current?.click(); }}
     >
       <input
@@ -108,28 +112,29 @@ export default function ImageDropZone({
           file={activeFile}
           previewUrl={previewUrl}
           onClear={handleClear}
+          removeLabel={t('removeFile')}
         />
       ) : (
-        <EmptyPrompt label={label} sublabel={sublabel} dragging={dragging} error={error} />
+        <EmptyPrompt label={resolvedLabel} sublabel={resolvedSublabel} dragging={dragging} error={error} releaseLabel={t('releaseToUpload')} />
       )}
     </div>
   );
 }
 
-function EmptyPrompt({ label, sublabel, dragging, error }) {
+function EmptyPrompt({ label, sublabel, dragging, error, releaseLabel }) {
   return (
     <div className={styles.prompt}>
       <div className={styles.promptIcon} aria-hidden="true">
         <UploadIcon />
       </div>
-      <p className={styles.promptLabel}>{dragging ? 'Release to upload' : label}</p>
+      <p className={styles.promptLabel}>{dragging ? releaseLabel : label}</p>
       {!dragging && <p className={styles.promptSub}>{sublabel}</p>}
       {error && <p className={styles.errorMsg} role="alert">{error}</p>}
     </div>
   );
 }
 
-function FilePreview({ file, previewUrl, onClear }) {
+function FilePreview({ file, previewUrl, onClear, removeLabel }) {
   return (
     <div className={styles.preview} onClick={e => e.stopPropagation()}>
       {previewUrl && (
@@ -143,7 +148,7 @@ function FilePreview({ file, previewUrl, onClear }) {
         type="button"
         className={styles.clearBtn}
         onClick={onClear}
-        aria-label="Remove file"
+        aria-label={removeLabel}
       >
         <CloseIcon />
       </button>

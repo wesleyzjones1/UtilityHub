@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
+import { useLanguage } from '../../../context/LanguageContext';
 import { convertTemperature } from '../../../utils/converters';
 import styles from './FahrenheitCelsius.module.css';
 
-const HOW_TO_USE = [
-  'Type a temperature in any field — Fahrenheit, Celsius, or Kelvin.',
-  'The other two values update instantly.',
-  'Clear the field to reset.',
-];
-
 export default function FahrenheitCelsius({ page }) {
   const [active, setActive] = useState({ unit: 'f', value: '' });
+  const { t } = useLanguage();
 
   const result = convertTemperature(active.value, active.unit);
 
@@ -24,28 +20,28 @@ export default function FahrenheitCelsius({ page }) {
   }
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.grid}>
         <TempField
-          label="Fahrenheit"
+          label={t('tempFahrenheit')}
           unit="°F"
           value={displayFor('f')}
           onChange={v => handleChange('f', v)}
-          aria-label="Fahrenheit"
+          aria-label={t('tempFahrenheit')}
         />
         <TempField
-          label="Celsius"
+          label={t('tempCelsius')}
           unit="°C"
           value={displayFor('c')}
           onChange={v => handleChange('c', v)}
-          aria-label="Celsius"
+          aria-label={t('tempCelsius')}
         />
         <TempField
-          label="Kelvin"
+          label={t('tempKelvin')}
           unit="K"
           value={displayFor('k')}
           onChange={v => handleChange('k', v)}
-          aria-label="Kelvin"
+          aria-label={t('tempKelvin')}
         />
       </div>
     </PageShell>

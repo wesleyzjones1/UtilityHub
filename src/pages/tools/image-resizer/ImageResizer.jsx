@@ -5,12 +5,6 @@ import Toggle from '../../../components/ui/Toggle/Toggle';
 import { loadImage, renderToCanvas, canvasToBlob, downloadBlob, replaceExt, formatBytes } from '../../../utils/imageUtils';
 import styles from './ImageResizer.module.css';
 
-const HOW_TO_USE = [
-  'Drop any image or click to browse.',
-  'Enter the desired width or height — enable Lock Ratio to scale proportionally.',
-  'Click Download to save the resized image.',
-];
-
 export default function ImageResizer({ page }) {
   const [file, setFile] = useState(null);
   const [origImg, setOrigImg] = useState(null);
@@ -94,7 +88,6 @@ export default function ImageResizer({ page }) {
   return (
     <ImageDropTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       file={file}
       onFile={handleFile}
       onClear={handleClear}

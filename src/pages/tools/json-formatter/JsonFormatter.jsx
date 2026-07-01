@@ -1,23 +1,18 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
+import { useLanguage } from '../../../context/LanguageContext';
 import { formatJSON, minifyJSON } from '../../../utils/formatters';
-
-const MODE_OPTIONS = [
-  { value: 'format', label: 'Format' },
-  { value: 'minify', label: 'Minify' },
-];
-
-const HOW_TO_USE = [
-  'Paste your JSON into the input panel.',
-  'Choose Format to prettify with indentation, or Minify to compact it.',
-  'Invalid JSON will show an error message in the output.',
-  'Copy the result from the output panel.',
-];
 
 export default function JsonFormatter({ page }) {
   const [mode, setMode] = useState('format');
   const [input, setInput] = useState('');
+  const { t } = useLanguage();
+
+  const modeOptions = [
+    { value: 'format', label: t('format') },
+    { value: 'minify', label: t('minify') },
+  ];
 
   let output = '';
   if (input.trim()) {
@@ -31,11 +26,10 @@ export default function JsonFormatter({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <Select
-          label="Mode"
-          options={MODE_OPTIONS}
+          label={t('mode')}
+          options={modeOptions}
           value={mode}
           onChange={setMode}
         />
@@ -43,8 +37,8 @@ export default function JsonFormatter({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="JSON Input"
-      outputLabel="JSON Output"
+      inputLabel={t('jsonInput')}
+      outputLabel={t('jsonOutput')}
       inputMono
       outputMono
       inputPlaceholder='Paste JSON here… e.g. {"key": "value"}'

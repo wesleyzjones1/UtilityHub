@@ -23,8 +23,10 @@ describe('PercentageCalc', () => {
     expect(screen.getByText('30')).toBeDefined();
   });
 
-  it('shows a placeholder dash before input', () => {
+  it('shows the placeholder example answer as a hint before input', () => {
     renderWithRouter(<PercentageCalc page={PAGE} />);
-    expect(screen.getAllByText('—').length).toBe(1);
+    // Falls back to 15% of 200 = 30 instead of a bare dash.
+    expect(screen.getByText('30')).toBeDefined();
+    expect(screen.queryByText('—')).toBeNull();
   });
 });

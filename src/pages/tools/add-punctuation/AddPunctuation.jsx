@@ -2,6 +2,7 @@ import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
 import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
+import { useLanguage } from '../../../context/LanguageContext';
 import { addPunctuation } from '../../../utils/textTransforms';
 import styles from './AddPunctuation.module.css';
 
@@ -14,23 +15,20 @@ const PUNCT_OPTIONS = [
   { value: ':', label: ':', title: 'Colon' },
 ];
 
-const MODE_OPTIONS = [
-  { value: 'missing', label: 'Add if missing' },
-  { value: 'always',  label: 'Always append' },
-  { value: 'replace', label: 'Replace existing' },
-];
-
-const HOW_TO_USE = [
-  'Paste multi-line text into the input panel.',
-  'Choose the punctuation mark and the mode.',
-  '"Add if missing" only adds punctuation to lines that have none.',
-  'Click "Copy" to copy the result.',
-];
+function useModeOptions(t) {
+  return [
+    { value: 'missing', label: t('punctAddMissing') },
+    { value: 'always',  label: t('punctAlwaysAppend') },
+    { value: 'replace', label: t('punctReplace') },
+  ];
+}
 
 export default function AddPunctuation({ page }) {
   const [input, setInput] = useState('');
   const [punct, setPunct] = useState('.');
   const [mode, setMode] = useState('missing');
+  const { t } = useLanguage();
+  const modeOptions = useModeOptions(t);
 
   const output = input ? addPunctuation(input, punct, mode) : '';
 
@@ -40,18 +38,17 @@ export default function AddPunctuation({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.controls}>
           <ButtonGroup
-            label="Punctuation"
+            label={t('punctPunctuation')}
             options={PUNCT_OPTIONS}
             value={punct}
             onChange={setPunct}
           />
           <Select
-            label="Mode"
-            options={MODE_OPTIONS}
+            label={t('mode')}
+            options={modeOptions}
             value={mode}
             onChange={setMode}
           />
@@ -60,8 +57,7 @@ export default function AddPunctuation({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Input"
-      outputLabel="With Punctuation"
+      outputLabel={t('punctWithPunctuation')}
       inputPlaceholder={EXAMPLE}
       outputPlaceholder={outputPlaceholder}
     />

@@ -9,13 +9,11 @@ import AddPunctuation from '../pages/tools/add-punctuation/AddPunctuation';
 import ColorPicker from '../pages/tools/color-picker/ColorPicker';
 import CountdownTimer from '../pages/tools/countdown-timer/CountdownTimer';
 import IcoCreator from '../pages/tools/ico-creator/IcoCreator';
+import ImageConverter from '../pages/tools/image-converter/ImageConverter';
 import ImageCropper from '../pages/tools/image-cropper/ImageCropper';
 import ImageResizer from '../pages/tools/image-resizer/ImageResizer';
-import JpgToPng from '../pages/tools/jpg-to-png/JpgToPng';
 import PngMinifier from '../pages/tools/png-minifier/PngMinifier';
-import PngToJpg from '../pages/tools/png-to-jpg/PngToJpg';
 import RemoveBackground from '../pages/tools/remove-background/RemoveBackground';
-import SvgToPng from '../pages/tools/svg-to-png/SvgToPng';
 import VideoToGif from '../pages/tools/video-to-gif/VideoToGif';
 import ArrayFormatter from '../pages/tools/array-formatter/ArrayFormatter';
 import BaseConverter from '../pages/tools/base-converter/BaseConverter';
@@ -28,6 +26,7 @@ import JsonFormatter from '../pages/tools/json-formatter/JsonFormatter';
 import JsonTextFormatter from '../pages/tools/json-text-formatter/JsonTextFormatter';
 import MarkdownPreview from '../pages/tools/markdown-preview/MarkdownPreview';
 import MarkdownTable from '../pages/tools/markdown-table/MarkdownTable';
+import GraphCalculator from '../pages/tools/graph-calculator/GraphCalculator';
 import NumberSorter from '../pages/tools/number-sorter/NumberSorter';
 import PiAttenuator from '../pages/tools/pi-attenuator/PiAttenuator';
 import TypescriptFormatter from '../pages/tools/typescript-formatter/TypescriptFormatter';
@@ -71,13 +70,11 @@ export const TOOL_COMPONENTS = {
   'base-converter':         BaseConverter,
   'css-minifier':           CssMinifier,
   'ico-creator':            IcoCreator,
+  'image-converter':        ImageConverter,
   'image-cropper':          ImageCropper,
   'image-resizer':          ImageResizer,
-  'jpg-to-png':             JpgToPng,
   'png-minifier':           PngMinifier,
-  'png-to-jpg':             PngToJpg,
   'remove-background':      RemoveBackground,
-  'svg-to-png':             SvgToPng,
   'video-to-gif':           VideoToGif,
   'engineering-cheat-sheet': EngineeringCheatSheet,
   'fahrenheit-celsius':     FahrenheitCelsius,
@@ -87,6 +84,7 @@ export const TOOL_COMPONENTS = {
   'json-text-formatter':    JsonTextFormatter,
   'markdown-preview':       MarkdownPreview,
   'markdown-table':         MarkdownTable,
+  'graph-calculator':       GraphCalculator,
   'number-sorter':          NumberSorter,
   'pi-attenuator':          PiAttenuator,
   'typescript-formatter':   TypescriptFormatter,

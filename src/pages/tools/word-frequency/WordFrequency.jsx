@@ -2,20 +2,15 @@ import { useState, useMemo } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import Textarea from '../../../components/ui/Textarea/Textarea';
 import Toggle from '../../../components/ui/Toggle/Toggle';
+import { useLanguage } from '../../../context/LanguageContext';
 import { wordFrequency } from '../../../utils/textTransforms';
 import styles from './WordFrequency.module.css';
-
-const HOW_TO_USE = [
-  'Paste or type your text in the textarea.',
-  'The word frequency table updates automatically.',
-  'Toggle "Exclude stop words" to filter out common words like "the", "and", "of".',
-  'Toggle "Case sensitive" to count capitalized and lowercase forms separately.',
-];
 
 export default function WordFrequency({ page }) {
   const [text, setText] = useState('');
   const [excludeStop, setExcludeStop] = useState(false);
   const [caseSensitive, setCaseSensitive] = useState(false);
+  const { t } = useLanguage();
 
   const results = useMemo(
     () => wordFrequency(text, { caseSensitive, excludeStopWords: excludeStop }),
@@ -25,7 +20,25 @@ export default function WordFrequency({ page }) {
   const maxCount = results[0]?.count ?? 1;
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
+      <div className={styles.controls}>
+        <Toggle
+          checked={excludeStop}
+          onChange={setExcludeStop}
+          label={t('freqExcludeStop')}
+        />
+        <Toggle
+          checked={caseSensitive}
+          onChange={setCaseSensitive}
+          label={t('freqCaseSensitive')}
+        />
+        {results.length > 0 && (
+          <span className={styles.resultCount}>
+            {results.length} unique word{results.length !== 1 ? 's' : ''}
+          </span>
+        )}
+      </div>
+
       <Textarea
         value={text}
         onChange={setText}
@@ -35,33 +48,15 @@ export default function WordFrequency({ page }) {
         aria-label="Text to analyze"
       />
 
-      <div className={styles.controls}>
-        <Toggle
-          checked={excludeStop}
-          onChange={setExcludeStop}
-          label="Exclude stop words"
-        />
-        <Toggle
-          checked={caseSensitive}
-          onChange={setCaseSensitive}
-          label="Case sensitive"
-        />
-        {results.length > 0 && (
-          <span className={styles.resultCount}>
-            {results.length} unique word{results.length !== 1 ? 's' : ''}
-          </span>
-        )}
-      </div>
-
       {results.length > 0 ? (
         <div className={styles.tableWrap}>
           <table className={styles.table}>
             <thead>
               <tr>
                 <th className={styles.th}>#</th>
-                <th className={styles.th}>Word</th>
-                <th className={styles.th}>Count</th>
-                <th className={styles.th}>Frequency</th>
+                <th className={styles.th}>{t('freqWord')}</th>
+                <th className={styles.th}>{t('count')}</th>
+                <th className={styles.th}>{t('freqFrequency')}</th>
                 <th className={styles.th} aria-label="Bar chart"></th>
               </tr>
             </thead>
@@ -85,7 +80,7 @@ export default function WordFrequency({ page }) {
           </table>
         </div>
       ) : text ? (
-        <p className={styles.empty}>No words found.</p>
+        <p className={styles.empty}>{t('freqNoWords')}</p>
       ) : null}
     </PageShell>
   );

@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import PageShell from '../../../templates/PageShell/PageShell';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './DateCalculator.module.css';
-
-const HOW_TO_USE = [
-  'Select a start date and an end date.',
-  'The difference is calculated instantly in days, weeks, months, and years.',
-  'Dates work in either order — the absolute difference is always shown.',
-];
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -37,6 +32,7 @@ export default function DateCalculator({ page }) {
   const today = todayStr();
   const [start, setStart] = useState(today);
   const [end, setEnd] = useState(addDays(today, 30));
+  const { t } = useLanguage();
 
   const days = start && end ? calcDiff(start, end) : null;
   const weeks = days !== null ? (days / 7).toFixed(2) : null;
@@ -44,28 +40,28 @@ export default function DateCalculator({ page }) {
   const years = days !== null ? (days / 365.25).toFixed(4) : null;
 
   return (
-    <PageShell page={page} howToUse={HOW_TO_USE}>
+    <PageShell page={page}>
       <div className={styles.layout}>
         <div className={styles.inputs}>
           <label className={styles.fieldLabel}>
-            Start date
+            {t('dateStart')}
             <input
               type="date"
               className={styles.dateInput}
               value={start}
               onChange={e => setStart(e.target.value)}
-              aria-label="Start date"
+              aria-label={t('dateStart')}
             />
           </label>
           <span className={styles.arrow} aria-hidden="true">→</span>
           <label className={styles.fieldLabel}>
-            End date
+            {t('dateEnd')}
             <input
               type="date"
               className={styles.dateInput}
               value={end}
               onChange={e => setEnd(e.target.value)}
-              aria-label="End date"
+              aria-label={t('dateEnd')}
             />
           </label>
         </div>
@@ -74,22 +70,22 @@ export default function DateCalculator({ page }) {
           <div className={styles.card}>
             <div className={styles.mainResult}>
               <span className={styles.daysNumber}>{days}</span>
-              <span className={styles.daysLabel}>days</span>
-              <CopyButton value={String(days)} label="Copy days" />
+              <span className={styles.daysLabel}>{t('dateDays')}</span>
+              <CopyButton value={String(days)} label={t('dateCopyDays')} />
             </div>
             <p className={styles.summary}>{humanSummary(days)}</p>
             <div className={styles.breakdown}>
               <div className={styles.stat}>
                 <span className={styles.statValue}>{weeks}</span>
-                <span className={styles.statLabel}>weeks</span>
+                <span className={styles.statLabel}>{t('dateWeeks')}</span>
               </div>
               <div className={styles.stat}>
                 <span className={styles.statValue}>{months}</span>
-                <span className={styles.statLabel}>months</span>
+                <span className={styles.statLabel}>{t('dateMonths')}</span>
               </div>
               <div className={styles.stat}>
                 <span className={styles.statValue}>{years}</span>
-                <span className={styles.statLabel}>years</span>
+                <span className={styles.statLabel}>{t('dateYears')}</span>
               </div>
             </div>
           </div>

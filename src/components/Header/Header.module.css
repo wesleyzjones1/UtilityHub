@@ -42,6 +42,39 @@
   letter-spacing: -0.01em;
 }
 
+/* Countdown timer badge */
+.timerBadge {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 0.625rem;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  transition: background-color var(--transition-fast);
+}
+
+.timerBadgePaused {
+  background: var(--color-text-muted);
+}
+
+.timerBadgeDone {
+  background: #e53e3e;
+  animation: timerPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes timerPulse {
+  from { opacity: 1; }
+  to { opacity: 0.6; }
+}
+
 /* Right controls */
 .controls {
   display: flex;

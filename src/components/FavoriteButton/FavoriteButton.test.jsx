@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FavoritesProvider } from '../../context/FavoritesContext';
+import { LanguageProvider } from '../../context/LanguageContext';
 import FavoriteButton from './FavoriteButton';
 
 let store = {};
@@ -21,9 +22,11 @@ beforeEach(() => {
 
 function Wrapped(props) {
   return (
-    <FavoritesProvider>
-      <FavoriteButton pageId="word-counter" title="Word Counter" {...props} />
-    </FavoritesProvider>
+    <LanguageProvider>
+      <FavoritesProvider>
+        <FavoriteButton pageId="word-counter" title="Word Counter" {...props} />
+      </FavoritesProvider>
+    </LanguageProvider>
   );
 }
 

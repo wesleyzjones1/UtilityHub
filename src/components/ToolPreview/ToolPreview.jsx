@@ -1,11 +1,22 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { PreviewContext } from '../../context/PreviewContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { TOOL_COMPONENTS } from '../../registry/toolComponents';
 import { PREVIEW_OVERRIDES } from './previewOverrides';
 import styles from './ToolPreview.module.css';
 
 const GAP = 10;
-const WIDTH = 300;
+// The tool renders at this "desktop" width and we show this much of its height,
+// then scale both down to fit. Card width = CONTENT_W × scale.
+const CONTENT_W = 760;
+const CONTENT_H = 480;
+
+/** Bigger cards on wider screens so the content is easier to read. */
+function pickScale(vw) {
+  if (vw >= 1280) return 0.58;
+  if (vw >= 992) return 0.5;
+  return 0.4;
+}
 
 /**
  * Floating hover preview for navbar tool links. Renders a live, shrunk-down
@@ -19,6 +30,11 @@ const WIDTH = 300;
 export default function ToolPreview({ page, rect }) {
   const ref = useRef(null);
   const [pos, setPos] = useState(null);
+  const { td, tt } = useLanguage();
+
+  const scale = pickScale(typeof window !== 'undefined' ? window.innerWidth : 1280);
+  const width = Math.round(CONTENT_W * scale);
+  const vpHeight = Math.round(CONTENT_H * scale);
 
   useLayoutEffect(() => {
     if (!rect) return;
@@ -26,8 +42,8 @@ export default function ToolPreview({ page, rect }) {
 
     // Prefer the right of the anchor; flip to the left if it would overflow.
     let left = rect.right + GAP;
-    if (left + WIDTH > window.innerWidth - GAP) {
-      left = rect.left - GAP - WIDTH;
+    if (left + width > window.innerWidth - GAP) {
+      left = rect.left - GAP - width;
     }
     if (left < GAP) left = GAP;
 
@@ -39,7 +55,7 @@ export default function ToolPreview({ page, rect }) {
     if (top < GAP) top = GAP;
 
     setPos({ left, top });
-  }, [rect, page]);
+  }, [rect, page, width]);
 
   if (!page) return null;
 
@@ -53,10 +69,14 @@ export default function ToolPreview({ page, rect }) {
       style={{
         left: pos ? pos.left : (rect ? rect.right + GAP : 0),
         top: pos ? pos.top : (rect ? rect.top : 0),
+        width: `${width}px`,
+        '--vp-height': `${vpHeight}px`,
+        '--scale': scale,
         visibility: pos ? 'visible' : 'hidden',
       }}
       aria-hidden="true"
     >
+      <p className={styles.desc}>{td(page)}</p>
       <div className={styles.viewport}>
         {override ? (
           override
@@ -67,10 +87,9 @@ export default function ToolPreview({ page, rect }) {
             </PreviewContext.Provider>
           </div>
         ) : (
-          <div className={styles.fallback}>{page.title}</div>
+          <div className={styles.fallback}>{tt(page)}</div>
         )}
       </div>
-      <p className={styles.desc}>{page.description}</p>
     </div>
   );
 }

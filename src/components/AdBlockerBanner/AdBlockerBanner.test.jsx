@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AdPreferenceProvider } from '../../context/AdPreferenceContext';
 import { SupportProvider } from '../../context/SupportContext';
+import { LanguageProvider } from '../../context/LanguageContext';
 
 // Control ad blocker detection in tests via mock
 vi.mock('../../hooks/useAdBlocker', () => ({
@@ -28,11 +29,13 @@ beforeEach(() => {
 
 function Wrapped() {
   return (
-    <AdPreferenceProvider>
-      <SupportProvider>
-        <AdBlockerBanner />
-      </SupportProvider>
-    </AdPreferenceProvider>
+    <LanguageProvider>
+      <AdPreferenceProvider>
+        <SupportProvider>
+          <AdBlockerBanner />
+        </SupportProvider>
+      </AdPreferenceProvider>
+    </LanguageProvider>
   );
 }
 

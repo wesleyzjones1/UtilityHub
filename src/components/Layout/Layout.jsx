@@ -7,11 +7,13 @@ import AdBanner from '../AdBanner/AdBanner';
 import SupportModal from '../SupportModal/SupportModal';
 import CommandPalette from '../CommandPalette/CommandPalette';
 import { useSupport } from '../../context/SupportContext';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './Layout.module.css';
 
 export default function Layout() {
   const { pathname } = useLocation();
   const { open, closeSupport } = useSupport();
+  const { t } = useLanguage();
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function Layout() {
 
   return (
     <div className={styles.root}>
-      <a href="#main-content" className={styles.skipLink}>Skip to main content</a>
+      <a href="#main-content" className={styles.skipLink}>{t('skipToMainContent')}</a>
       <Header onOpenPalette={() => setPaletteOpen(true)} />
       <AdBlockerBanner />
       <main id="main-content" className={styles.main}>

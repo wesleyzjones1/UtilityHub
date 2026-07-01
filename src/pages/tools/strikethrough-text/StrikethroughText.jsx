@@ -1,26 +1,20 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
+import { useLanguage } from '../../../context/LanguageContext';
 import { toStrikethroughText } from '../../../utils/textTransforms';
-
-const HOW_TO_USE = [
-  'Type or paste your text in the input panel.',
-  'The output uses Unicode combining characters to add a strikethrough effect.',
-  'Copy the result and paste it into any app that renders Unicode — social media, chat, documents.',
-];
 
 export default function StrikethroughText({ page }) {
   const [input, setInput] = useState('');
+  const { t } = useLanguage();
   const output = input ? toStrikethroughText(input) : '';
 
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Input"
-      outputLabel="Strikethrough Output"
+      outputLabel={t('outputStrikethrough')}
       inputPlaceholder="Hello world"
       outputPlaceholder="H̶e̶l̶l̶o̶ ̶w̶o̶r̶l̶d"
     />

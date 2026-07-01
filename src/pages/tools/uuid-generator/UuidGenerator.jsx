@@ -2,13 +2,8 @@ import { useState, useCallback } from 'react';
 import SinglePanelTemplate from '../../../templates/SinglePanelTemplate/SinglePanelTemplate';
 import Select from '../../../components/ui/Select/Select';
 import CopyButton from '../../../components/ui/CopyButton/CopyButton';
+import { useLanguage } from '../../../context/LanguageContext';
 import styles from './UuidGenerator.module.css';
-
-const HOW_TO_USE = [
-  'Choose how many UUIDs you want to generate.',
-  'Click "Generate" to create random version-4 UUIDs.',
-  'Copy a single value with its copy button, or "Copy all" at once.',
-];
 
 const COUNT_OPTIONS = [
   { value: '1', label: '1 UUID' },
@@ -33,6 +28,7 @@ function makeUuid() {
 export default function UuidGenerator({ page }) {
   const [count, setCount] = useState('5');
   const [uuids, setUuids] = useState(() => [makeUuid()]);
+  const { t } = useLanguage();
 
   const generate = useCallback(() => {
     const n = Number(count) || 1;
@@ -42,12 +38,11 @@ export default function UuidGenerator({ page }) {
   return (
     <SinglePanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.controls}>
-          <Select label="Count" options={COUNT_OPTIONS} value={count} onChange={setCount} />
+          <Select label={t('count')} options={COUNT_OPTIONS} value={count} onChange={setCount} />
           <button type="button" className={styles.generateBtn} onClick={generate}>
-            Generate
+            {t('generate')}
           </button>
         </div>
       }
@@ -62,7 +57,7 @@ export default function UuidGenerator({ page }) {
       </div>
       {uuids.length > 1 && (
         <div className={styles.copyAll}>
-          <CopyButton value={uuids.join('\n')} size="sm" label="Copy all" />
+          <CopyButton value={uuids.join('\n')} size="sm" label={t('copyAll')} />
         </div>
       )}
     </SinglePanelTemplate>

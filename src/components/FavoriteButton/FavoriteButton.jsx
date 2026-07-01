@@ -1,4 +1,5 @@
 import { useFavorites } from '../../context/FavoritesContext';
+import { useLanguage } from '../../context/LanguageContext';
 import styles from './FavoriteButton.module.css';
 
 function StarIcon({ filled }) {
@@ -21,6 +22,7 @@ function StarIcon({ filled }) {
  */
 export default function FavoriteButton({ pageId, title, variant = 'default', showLabel = false }) {
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { t } = useLanguage();
   const fav = isFavorite(pageId);
 
   const cls = [
@@ -30,17 +32,19 @@ export default function FavoriteButton({ pageId, title, variant = 'default', sho
     fav ? styles.active : '',
   ].join(' ');
 
+  const label = t(fav ? 'favRemoveLabel' : 'favAddLabel').replace('{value}', title);
+
   return (
     <button
       type="button"
       className={cls}
       onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(pageId); }}
       aria-pressed={fav}
-      aria-label={fav ? `Remove ${title} from favorites` : `Add ${title} to favorites`}
-      title={fav ? 'Remove from favorites' : 'Add to favorites'}
+      aria-label={label}
+      title={t(fav ? 'favRemoveTitle' : 'favAddTitle')}
     >
       <StarIcon filled={fav} />
-      {showLabel && <span>{fav ? 'Saved' : 'Save to favorites'}</span>}
+      {showLabel && <span>{fav ? t('favoriteSaved') : t('favoriteSaveToFavorites')}</span>}
     </button>
   );
 }

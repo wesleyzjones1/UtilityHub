@@ -1,22 +1,13 @@
 import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import Select from '../../../components/ui/Select/Select';
+import { useLanguage } from '../../../context/LanguageContext';
 import { formatXML, minifyXML } from '../../../utils/formatters';
-
-const MODE_OPTIONS = [
-  { value: 'format', label: 'Format' },
-  { value: 'minify', label: 'Minify' },
-];
-
-const HOW_TO_USE = [
-  'Paste your XML into the input panel.',
-  'Choose Format to add proper indentation, or Minify to remove whitespace.',
-  'Copy the result from the output panel.',
-];
 
 export default function XmlFormatter({ page }) {
   const [mode, setMode] = useState('format');
   const [input, setInput] = useState('');
+  const { t } = useLanguage();
 
   let output = '';
   if (input.trim()) {
@@ -30,11 +21,10 @@ export default function XmlFormatter({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <Select
-          label="Mode"
-          options={MODE_OPTIONS}
+          label={t('mode')}
+          options={[{ value: 'format', label: t('format') }, { value: 'minify', label: t('minify') }]}
           value={mode}
           onChange={setMode}
         />
@@ -42,8 +32,8 @@ export default function XmlFormatter({ page }) {
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="XML Input"
-      outputLabel="XML Output"
+      inputLabel={t('xmlInput')}
+      outputLabel={t('xmlOutput')}
       inputMono
       outputMono
       inputPlaceholder="Paste XML here…"

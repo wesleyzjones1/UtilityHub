@@ -1,7 +1,7 @@
 .card {
   position: fixed;
   z-index: 300;
-  width: 300px;
+  width: 300px; /* overridden inline; responsive to screen width */
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -16,21 +16,21 @@
   to { opacity: 1; }
 }
 
-/* Clipped window that shows the shrunk-down snapshot. */
+/* Clipped window that shows the shrunk-down snapshot (below the caption). */
 .viewport {
   position: relative;
   width: 100%;
-  height: 190px;
+  height: var(--vp-height, 190px);
   overflow: hidden;
   background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
 }
 
 /* Renders the tool at a desktop-ish width, then scales it down to fit.
-   750px × 0.4 = 300px (the viewport width). */
+   Card width = 760px × scale (scale set inline, larger on wider screens). */
 .scaler {
-  width: 750px;
-  transform: scale(0.4);
+  width: 760px;
+  transform: scale(var(--scale, 0.4));
   transform-origin: top left;
   pointer-events: none;
 }

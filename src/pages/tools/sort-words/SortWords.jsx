@@ -2,27 +2,25 @@ import { useState } from 'react';
 import DualPanelTemplate from '../../../templates/DualPanelTemplate/DualPanelTemplate';
 import ButtonGroup from '../../../components/ui/ButtonGroup/ButtonGroup';
 import Toggle from '../../../components/ui/Toggle/Toggle';
+import { useLanguage } from '../../../context/LanguageContext';
 import { sortWords } from '../../../utils/textTransforms';
 import styles from './SortWords.module.css';
 
-const ORDER_OPTIONS = [
-  { value: 'asc',         label: 'A → Z' },
-  { value: 'desc',        label: 'Z → A' },
-  { value: 'length-asc',  label: 'Shortest first' },
-  { value: 'length-desc', label: 'Longest first' },
-];
-
-const HOW_TO_USE = [
-  'Paste or type words in the input panel (separated by spaces or newlines).',
-  'Choose a sort order.',
-  'Toggle case sensitivity to control uppercase/lowercase ordering.',
-  'Each sorted word appears on its own line in the output.',
-];
+function useOrderOptions(t) {
+  return [
+    { value: 'asc',         label: t('sortAscending') },
+    { value: 'desc',        label: t('sortDescending') },
+    { value: 'length-asc',  label: t('sortShortestFirst') },
+    { value: 'length-desc', label: t('sortLongestFirst') },
+  ];
+}
 
 export default function SortWords({ page }) {
   const [input, setInput] = useState('');
   const [order, setOrder] = useState('asc');
   const [caseSensitive, setCaseSensitive] = useState(false);
+  const { t } = useLanguage();
+  const orderOptions = useOrderOptions(t);
 
   const output = input ? sortWords(input, order, caseSensitive) : '';
 
@@ -32,27 +30,26 @@ export default function SortWords({ page }) {
   return (
     <DualPanelTemplate
       page={page}
-      howToUse={HOW_TO_USE}
       topControls={
         <div className={styles.controls}>
           <ButtonGroup
-            label="Sort order"
-            options={ORDER_OPTIONS}
+            label={t('sortOrder')}
+            options={orderOptions}
             value={order}
             onChange={setOrder}
           />
           <Toggle
             checked={caseSensitive}
             onChange={setCaseSensitive}
-            label="Case sensitive"
+            label={t('sortCaseSensitive')}
           />
         </div>
       }
       input={input}
       onInputChange={setInput}
       output={output}
-      inputLabel="Words"
-      outputLabel="Sorted"
+      inputLabel={t('sortWords')}
+      outputLabel={t('sortSorted')}
       inputMono
       outputMono
       inputPlaceholder={EXAMPLE}

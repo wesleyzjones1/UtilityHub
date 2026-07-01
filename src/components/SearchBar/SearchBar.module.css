@@ -42,6 +42,12 @@
   outline: 0;
   outline-offset: 0;
   min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input:focus-visible {
+  outline: 0;
 }
 
 .input::placeholder {

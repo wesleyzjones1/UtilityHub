@@ -31,8 +31,6 @@ export const translations = {
 
     // ── Home page ───────────────────────────────────────────────────
     heroTitle: 'Free tools for developers and power users',
-    heroSubStart: 'tools across',
-    heroSubEnd: 'categories — no sign-up required.',
 
     // ── PageShell ───────────────────────────────────────────────────
     relatedTools: 'Related tools',
@@ -362,8 +360,6 @@ export const translations = {
 
     // ── Home page ───────────────────────────────────────────────────
     heroTitle: 'Herramientas gratuitas para desarrolladores y usuarios avanzados',
-    heroSubStart: 'herramientas en',
-    heroSubEnd: 'categorías — sin registro.',
 
     // ── PageShell ───────────────────────────────────────────────────
     relatedTools: 'Herramientas relacionadas',
@@ -807,8 +803,6 @@ export const translations = {
 
     // ── Home page ───────────────────────────────────────────────────
     heroTitle: 'Outils gratuits pour développeurs et utilisateurs avancés',
-    heroSubStart: 'outils en',
-    heroSubEnd: 'catégories — sans inscription.',
 
     // ── PageShell ───────────────────────────────────────────────────
     relatedTools: 'Outils associés',
@@ -1252,8 +1246,6 @@ export const translations = {
 
     // ── Home page ───────────────────────────────────────────────────
     heroTitle: 'Kostenlose Tools für Entwickler und Power-User',
-    heroSubStart: 'Tools in',
-    heroSubEnd: 'Kategorien — keine Anmeldung erforderlich.',
 
     // ── PageShell ───────────────────────────────────────────────────
     relatedTools: 'Ähnliche Tools',
@@ -1697,8 +1689,6 @@ export const translations = {
 
     // ── Home page ───────────────────────────────────────────────────
     heroTitle: '面向开发者和高级用户的免费工具',
-    heroSubStart: '个工具，共',
-    heroSubEnd: '个分类 — 无需注册。',
 
     // ── PageShell ───────────────────────────────────────────────────
     relatedTools: '相关工具',
@@ -2142,8 +2132,6 @@ export const translations = {
 
     // ── Home page ───────────────────────────────────────────────────
     heroTitle: '開発者とパワーユーザーのための無料ツール',
-    heroSubStart: '個のツール、',
-    heroSubEnd: 'カテゴリ — 登録不要。',
 
     // ── PageShell ───────────────────────────────────────────────────
     relatedTools: '関連ツール',

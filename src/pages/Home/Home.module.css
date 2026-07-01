@@ -15,12 +15,6 @@
   margin-bottom: 0.875rem;
 }
 
-.heroSub {
-  font-size: 1rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.75rem;
-}
-
 /* Hero search */
 .heroSearchWrap {
   position: relative;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CATEGORIES, PAGE_BY_CATEGORY, PAGES, searchPages } from '../../registry/pages';
+import { CATEGORIES, PAGE_BY_CATEGORY, searchPages } from '../../registry/pages';
 import { CATEGORY_ICONS } from '../../registry/categoryIcons';
 import { useLanguage } from '../../context/LanguageContext';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';

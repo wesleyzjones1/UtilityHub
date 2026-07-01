@@ -48,11 +48,6 @@ describe('Home page', () => {
     expect(screen.getByRole('heading', { level: 1 })).toBeDefined();
   });
 
-  it('shows total tool count in the hero', () => {
-    render(<Wrapped />);
-    expect(screen.getByText(new RegExp(`${PAGES.length} tools`, 'i'))).toBeDefined();
-  });
-
   it('renders a category section for each category', () => {
     render(<Wrapped />);
     for (const cat of Object.values(CATEGORIES)) {
